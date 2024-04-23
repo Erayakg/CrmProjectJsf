@@ -82,4 +82,50 @@ public class SqlGenerator <T> {
         
     }
     
+    public String returnSelectSql() {
+        
+        System.out.println(instance.getClass().getName());
+
+        Field[] fields = instance.getClass().getDeclaredFields();
+
+        String sql = "SELECT ";
+
+        for (int i = 0; i < fields.length; i++) {
+                sql += fields[i].getName();
+                if (i < fields.length - 1) {
+                  sql += ", ";
+            }
+     }
+
+        sql += " FROM " + instance.getClass().getName();
+        System.out.println(sql);
+        return sql;
+        
+       }
+
+
+     public String returnDeleteSql(long id) {
+    
+     System.out.println(instance.getClass().getName());
+
+     String sql = "DELETE FROM " + instance.getClass().getName() + " WHERE id = " + id;
+    System.out.println(sql);
+    
+    return sql;
+    }
+    
+    public String returnSelectByIdSql(long id) {
+        
+    System.out.println(instance.getClass().getName());
+
+    String sql = "SELECT * FROM " + instance.getClass().getName() + " WHERE id = " + id;
+    System.out.println(sql);
+    
+    return sql;
+    
+    }
+
+
+    
+    
 }

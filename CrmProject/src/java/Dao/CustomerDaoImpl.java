@@ -4,17 +4,18 @@
  */
 package Dao;
 
+import entity.Customer;
 import java.util.List;
 
 /**
  *
  * @author erayb
  */
-public class CustomerDaoImpl extends BaseAbstractDao {
+public class CustomerDaoImpl extends BaseAbstractDao<Customer> implements DaoOperation<Customer>{
 
     @Override
-    public void create(Object t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void create(Customer t) {
+        super.createEntity(t);
     }
 
     @Override
@@ -23,14 +24,16 @@ public class CustomerDaoImpl extends BaseAbstractDao {
     }
 
     @Override
-    public List<Object> getList(Long id) {
+    public List<Customer> getList(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Object getByid(Long id) {
+    public Customer getByid(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+  
 
     
 }

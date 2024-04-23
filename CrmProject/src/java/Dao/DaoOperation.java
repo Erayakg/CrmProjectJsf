@@ -20,6 +20,4 @@ public interface  DaoOperation <T> {
     
     public T getByid(Long id);
     
-    
-    
 }

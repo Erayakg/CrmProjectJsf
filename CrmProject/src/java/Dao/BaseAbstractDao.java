@@ -19,13 +19,13 @@ import java.sql.SQLException;
  * @author erayb
  */
 
-public abstract class BaseAbstractDao implements DaoOperation<Object>{
-    
+public abstract class BaseAbstractDao <T > {
+
     private Connection connect;
     
     @EJB
-    SqlGenerator generator;
-        
+    SqlGenerator<T> generator;
+    
     public Connection getConnect() {
         if(this.connect==null){
 
@@ -41,11 +41,15 @@ public abstract class BaseAbstractDao implements DaoOperation<Object>{
         }
         return connect;
     }
+    public void createEntity(Object o){
+        
+        generator.returnCreateSql();
+        
+    }
+    
+    
+    
+    
     
 }
     
-    
-    
-    
-    
-
