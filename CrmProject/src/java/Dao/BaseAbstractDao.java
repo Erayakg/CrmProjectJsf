@@ -39,6 +39,12 @@ public abstract class BaseAbstractDao <T> extends DbConnect{
     }    
     
     
+Baran's_Branch
+    public void createEntity(Object o){
+        System.out.println(o.toString());   
+    }
+    }
+
     public void createEntity(){
         
                 String sql=generator.returnCreateSql();
@@ -60,4 +66,5 @@ public abstract class BaseAbstractDao <T> extends DbConnect{
     
 
 }
+main
     

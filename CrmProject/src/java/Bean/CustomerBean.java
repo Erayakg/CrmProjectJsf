@@ -22,6 +22,7 @@ public class CustomerBean implements Serializable {
     private CustomerDaoImpl customerdao;
     public CustomerBean(){
         customer=new Customer();
+        
         customerdao=new CustomerDaoImpl();
     }
 
