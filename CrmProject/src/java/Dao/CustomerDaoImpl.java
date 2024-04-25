@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import Util.SqlGenerator;
 import entity.Customer;
 import java.util.List;
 
@@ -11,12 +12,17 @@ import java.util.List;
  *
  * @author erayb
  */
+
 public class CustomerDaoImpl extends BaseAbstractDao<Customer> implements DaoOperation<Customer>{
+
+    public CustomerDaoImpl(SqlGenerator<Customer> generator) {
+        super(generator);
+    }
 
  
     @Override
     public void create(Customer t) {
-        super.createEntity(t);
+        super.createEntity();
     }
 
     @Override
