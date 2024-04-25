@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import Util.DbConnect;
 import Util.SqlGenerator;
 import constant.SqlConnConstant;
 import jakarta.ejb.EJB;
