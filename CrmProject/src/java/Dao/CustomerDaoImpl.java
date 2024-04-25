@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class CustomerDaoImpl extends BaseAbstractDao<Customer> implements DaoOperation<Customer>{
 
+ 
     @Override
     public void create(Customer t) {
         super.createEntity(t);

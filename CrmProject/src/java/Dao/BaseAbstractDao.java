@@ -19,13 +19,14 @@ import java.sql.SQLException;
  * @author erayb
  */
 
-public abstract class BaseAbstractDao <T > {
+public abstract class BaseAbstractDao <T> {
 
     private Connection connect;
+    private T instance;
+
+   
     
-    @EJB
-    SqlGenerator<T> generator;
-    
+   
     public Connection getConnect() {
         if(this.connect==null){
 
@@ -43,7 +44,6 @@ public abstract class BaseAbstractDao <T > {
     }
     public void createEntity(Object o){
         
-        generator.returnCreateSql();
         
     }
     

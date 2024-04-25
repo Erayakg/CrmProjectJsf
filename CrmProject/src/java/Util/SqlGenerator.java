@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
  *
  * @author erayb
  */
-@Stateless
+
 public class SqlGenerator <T> {
     
     private T instance;
