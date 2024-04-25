@@ -43,7 +43,7 @@ public abstract class BaseAbstractDao <T> {
         return connect;
     }
     public void createEntity(Object o){
-        
+           System.out.println(o.toString());
         
     }
     
