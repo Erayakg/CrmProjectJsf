@@ -39,18 +39,8 @@ public abstract class BaseAbstractDao <T> extends DbConnect{
     }    
     
     
-    public void createEntity(){
-        
-                String sql=generator.returnCreateSql();
-                connection=this.getConnect();
-
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-                    int result = preparedStatement.executeUpdate();
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(BaseAbstractDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void createEntity(Object o){
+        System.out.println(o.toString());   
     }
-}
+    }
     

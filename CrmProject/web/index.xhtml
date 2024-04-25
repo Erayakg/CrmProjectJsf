@@ -5,11 +5,13 @@
     <title>Kayıt Formu</title>
 </h:head>
 <h:body>
-    #{CustomerBean.saveUser}
-    
     <h3>Kullanıcı Bilgi Formu</h3>
     <h:form>
-
+        ID: <h:inputText id="id" value="#{CustomerBean.customer.id}" />
+        <br/>
+        Adı: <h:inputText id="name" value="#{CustomerBean.customer.name}" />
+        <br/>
+        Soyadı: <h:inputText id="surname" value="#{CustomerBean.customer.surName}" />
         <br/>
         <h:commandButton value="Kaydet" action="#{CustomerBean.saveUser}" />
     </h:form>
