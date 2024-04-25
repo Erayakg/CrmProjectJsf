@@ -39,11 +39,6 @@ public abstract class BaseAbstractDao <T> extends DbConnect{
     }    
     
     
-Baran's_Branch
-    public void createEntity(Object o){
-        System.out.println(o.toString());   
-    }
-    }
 
     public void createEntity(){
         
@@ -59,11 +54,6 @@ Baran's_Branch
         }
     }
 
-    public void createEntity(Object o){
-           System.out.println(o.toString());
-        
-    }
-    
 
 }
 main
