@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import Util.DbConnect;
 import Util.SqlGenerator;
 import constant.SqlConnConstant;
 import jakarta.ejb.EJB;
@@ -11,6 +12,10 @@ import jakarta.ejb.EJB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 
 
@@ -19,37 +24,33 @@ import java.sql.SQLException;
  * @author erayb
  */
 
-public abstract class BaseAbstractDao <T> {
+public abstract class BaseAbstractDao <T> extends DbConnect{
 
-    private Connection connect;
+    
     private T instance;
-
-   
     
+    Connection connection;
    
-    public Connection getConnect() {
-        if(this.connect==null){
+    SqlGenerator<T> generator;
+    
+    
+    public BaseAbstractDao(SqlGenerator<T> generator) {
+        this.generator = generator;
+    }    
+    
+    
+    public void createEntity(){
+        
+                String sql=generator.returnCreateSql();
+                connection=this.getConnect();
 
-            try{
-                
-                Class.forName(SqlConnConstant.JDBC_DRIVER);
-                
-                this.connect=DriverManager.getConnection(SqlConnConstant.Url,SqlConnConstant.userName,SqlConnConstant.Password);
-                
-            }catch(ClassNotFoundException | SQLException e){
-                System.out.println(e.getMessage());
-            }
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                    int result = preparedStatement.executeUpdate();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(BaseAbstractDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return connect;
     }
-    public void createEntity(Object o){
-        
-        
-    }
-    
-    
-    
-    
-    
 }
     
