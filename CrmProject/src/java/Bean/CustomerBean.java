@@ -4,6 +4,8 @@
  */
 package Bean;
 
+import Dao.CustomerDaoImpl;
+import entity.Customer;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -16,50 +18,32 @@ import java.io.Serializable;
 @SessionScoped
 public class CustomerBean implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    private String id;
-    private String name;
-    private String surname;
-
-    public CustomerBean() {
+    private Customer customer;
+    private CustomerDaoImpl customerdao;
+    public CustomerBean(){
+        customer=new Customer();
+        customerdao=new CustomerDaoImpl();
     }
 
-   
-
-    // Getter ve Setter metodları
-    public String getId() {
-        return id;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getName() {
-        return name;
+    public CustomerDaoImpl getCustomerdao() {
+        return customerdao;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerdao(CustomerDaoImpl customerdao) {
+        this.customerdao = customerdao;
     }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    // Veritabanına kaydetme işlemi için metod
+    
     public void saveUser() {
-        System.out.println("salgksdf");
-        System.out.println("salgksdf");
-        System.out.println("salgksdf");
-        System.out.println("salgksdf");
-        System.out.println("salgksdf");
-        System.out.println("salgksdf");
-        
+        customerdao.create(customer);
+        customer=new Customer();
     }
     
 }
