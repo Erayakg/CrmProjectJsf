@@ -1,9 +1,12 @@
-<<<<<<< OURS
+OURS
 /CrmProject/nbproject/private/
 /CrmProject/build/
 /CrmProject/dist/
-=======
+Baran's_Branch
+
 /CrmProject/nbproject/private/
 /CrmProject/build/
 /CrmProject/dist/
->>>>>>> THEIRS
+THEIRS
+
+main
