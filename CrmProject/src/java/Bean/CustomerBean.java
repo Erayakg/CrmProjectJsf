@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author gbara
  */
-@Named
+@Named(value="CustomerBean")
 @SessionScoped
 public class CustomerBean implements Serializable {
 
