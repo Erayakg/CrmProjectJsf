@@ -1,0 +1,136 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 26, 2024, 11:56:30 AM
+    Author     : gbara
+*/
+
+
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+/* Navbar Styles */
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #007bff; /* Alt menü arka plan rengi mavi */
+    min-width: 200px;
+    z-index: 1;
+    padding: 0;
+    border-radius: 4px; /* Alt menü köşeleri yuvarlatılmış */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Alt menüne hafif bir gölgelik eklenmiş */
+}
+
+.submenu li {
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-links li:hover .submenu {
+    display: block;
+}
+
+.submenu a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #fff; /* Metin rengi beyaz */
+    transition: background-color 0.3s ease; /* Buton rengi için animasyon */
+}
+
+.submenu a:hover {
+    background-color: #0056b3; /* Alt menü üzerine gelindiğinde arka plan rengi daha koyu mavi */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease; /* Buton rengi için animasyon */
+}
+
+.nav-links a:hover {
+    color: #ffc107; /* Buton rengi hover durumunda */
+}
+
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #007bff;
+    }
+
+    .nav-links li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .menu-toggle .bar.change {
+        background-color: #fff; /* Değiştirilen renk */
+    }
+}
