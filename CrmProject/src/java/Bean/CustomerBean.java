@@ -25,13 +25,11 @@ public class CustomerBean implements Serializable {
     private Customer customer;
     
     private CustomerDaoImpl customerdaoimpl;
-    
-    private SqlGenerator generator;
+ 
     
     public CustomerBean(){
         customer=new Customer();
-        generator=new SqlGenerator(customer);
-        customerdaoimpl=new CustomerDaoImpl(generator);
+        customerdaoimpl=new CustomerDaoImpl();
     }
 
     public Customer getCustomer() {
@@ -43,10 +41,11 @@ public class CustomerBean implements Serializable {
     }
 
     public void saveUser() {
-
-        customerdaoimpl.create();
+        customerdaoimpl.create(customer);
         customer=new Customer();
-
     }
+    
+    
+    
     
 }

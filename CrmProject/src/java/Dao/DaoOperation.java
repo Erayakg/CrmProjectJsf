@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface  DaoOperation <T> {
     
-    public void create();
+    public void create(T t);
     
     public void deleteById(Long id);
     

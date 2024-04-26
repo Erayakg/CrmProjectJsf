@@ -21,20 +21,16 @@ import Util.DbConnect;
 
 public abstract class AbstractDao extends DbConnect{
 
-    
-    
     Connection connection;
-   
-    SqlGenerator generator;
     
-    public AbstractDao(SqlGenerator generator) {
-        this.generator = generator;
-        
-    }    
+    SqlGenerator generator;
 
-    public void createEntity(){
+    public void createEntity(Object o) throws Exception{
         
-                String sql=generator.returnCreateSql();
+                generator=new SqlGenerator(o);
+                
+                String sql=generator.returnInsertSql();
+                
                 connection=this.getConnect();
 
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

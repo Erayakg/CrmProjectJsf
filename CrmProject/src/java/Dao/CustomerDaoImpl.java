@@ -4,26 +4,22 @@
  */
 package Dao;
 
-import Util.SqlGenerator;
 import entity.Customer;
-import java.util.List;
-import Util.DbConnect;
 import jakarta.ejb.Stateless;
+import java.util.List;
+
 
 /**
  *
  * @author erayb
  */
+
 public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Customer>{
 
-    public CustomerDaoImpl(SqlGenerator generator1) {
-        super(generator1);
-    }
- 
  
     @Override
-    public void create() {
-        this.create();
+    public void create(Customer customer) {
+        this.createEntity(customer);
     }
 
     @Override
@@ -40,8 +36,6 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Custome
     public Customer getByid(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-  
 
     
 }

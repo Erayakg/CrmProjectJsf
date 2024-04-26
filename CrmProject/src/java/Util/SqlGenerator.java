@@ -4,13 +4,13 @@
  */
 package Util;
 
-import jakarta.ejb.Stateless;
 import java.lang.reflect.Field;
-
+import java.lang.Long;
 /**
  *
  * @author erayb
  */
+
 public class SqlGenerator <T> {
     
     private T instance;
@@ -24,7 +24,7 @@ public class SqlGenerator <T> {
 
         if (type == String.class) {
             return "VARCHAR(255)";
-        } else if (type == int.class || type == Integer.class) {
+        } else if (type == int.class || type == Integer.class || type == Long.class) {
             return "INT";
         } else if (type == double.class || type == Double.class) {
             return "DOUBLE";
@@ -43,7 +43,7 @@ public class SqlGenerator <T> {
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
-        String sql = "INSERT INTO " + instance.getClass().getName() + " (";
+        String sql = "INSERT INTO " + instance.getClass().getSimpleName()+ " (";
         String values = "VALUES (";
 
         for (int i = 0; i < fields.length; i++) {
@@ -65,7 +65,7 @@ public class SqlGenerator <T> {
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
-        String sql = "CREATE TABLE " + instance.getClass().getName()+ " (";
+        String sql = "CREATE TABLE " + instance.getClass().getSimpleName()+ " (";
 
         for (int i = 0; i < fields.length; i++) {
             sql += fields[i].getName() + " " + getType(fields[i].getType());
