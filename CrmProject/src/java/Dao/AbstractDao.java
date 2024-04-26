@@ -40,7 +40,7 @@ public abstract class AbstractDao extends DbConnect{
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                        System.out.println(sql);
                     int result = preparedStatement.executeUpdate();
-                       
+                    preparedStatement.close();
                 } catch (SQLException ex) {
                         System.out.println("error"+ex);
                 }

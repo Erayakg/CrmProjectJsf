@@ -19,7 +19,7 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Custome
     public CustomerDaoImpl(SqlGenerator generator1) {
         super(generator1);
     }
-
+ 
  
     @Override
     public void create() {
