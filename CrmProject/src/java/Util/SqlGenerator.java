@@ -11,7 +11,6 @@ import java.lang.reflect.Field;
  *
  * @author erayb
  */
-
 public class SqlGenerator <T> {
     
     private T instance;

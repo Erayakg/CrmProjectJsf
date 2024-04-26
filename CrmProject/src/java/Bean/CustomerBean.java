@@ -5,7 +5,9 @@
 package Bean;
 
 import Dao.CustomerDaoImpl;
+import Util.SqlGenerator;
 import entity.Customer;
+import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -14,16 +16,22 @@ import java.io.Serializable;
  *
  * @author gbara
  */
-@Named(value="CustomerBean")
+@Named(value = "CustomerBean")
 @SessionScoped
 public class CustomerBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+        
     private Customer customer;
-    private CustomerDaoImpl customerdao;
+    
+    private CustomerDaoImpl customerdaoimpl;
+    
+    private SqlGenerator generator;
+    
     public CustomerBean(){
         customer=new Customer();
-        
-        customerdao=new CustomerDaoImpl();
+        generator=new SqlGenerator(customer);
+        customerdaoimpl=new CustomerDaoImpl(generator);
     }
 
     public Customer getCustomer() {
@@ -34,17 +42,11 @@ public class CustomerBean implements Serializable {
         this.customer = customer;
     }
 
-    public CustomerDaoImpl getCustomerdao() {
-        return customerdao;
-    }
-
-    public void setCustomerdao(CustomerDaoImpl customerdao) {
-        this.customerdao = customerdao;
-    }
-    
     public void saveUser() {
-        customerdao.create(customer);
+
+        customerdaoimpl.create();
         customer=new Customer();
+
     }
     
 }

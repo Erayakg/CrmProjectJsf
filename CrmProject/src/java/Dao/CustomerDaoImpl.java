@@ -7,22 +7,23 @@ package Dao;
 import Util.SqlGenerator;
 import entity.Customer;
 import java.util.List;
+import Util.DbConnect;
+import jakarta.ejb.Stateless;
 
 /**
  *
  * @author erayb
  */
+public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Customer>{
 
-public class CustomerDaoImpl extends BaseAbstractDao<Customer> implements DaoOperation<Customer>{
-
-    public CustomerDaoImpl(SqlGenerator<Customer> generator) {
-        super(generator);
+    public CustomerDaoImpl(SqlGenerator generator1) {
+        super(generator1);
     }
 
  
     @Override
-    public void create(Customer t) {
-        super.createEntity();
+    public void create() {
+        this.create();
     }
 
     @Override
