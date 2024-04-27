@@ -5,7 +5,7 @@
 package Bean;
 
 import Dao.CustomerDaoImpl;
-import entity.Customer;
+import entity.demoCustomer;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -21,29 +21,29 @@ public class CustomerBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
         
-    private Customer customer;
+    private demoCustomer customer;
     
     private CustomerDaoImpl customerdaoimpl;
  
     
     public CustomerBean(){
-        customer=new Customer();
+        customer=new demoCustomer();
         customerdaoimpl=new CustomerDaoImpl();
     }
 
-    public Customer getCustomer() {
+    public demoCustomer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(demoCustomer customer) {
         this.customer = customer;
     }
 
     public void saveUser() {
         
-        customerdaoimpl.create(customer);
+        customerdaoimpl.getByid(customer,customer.getId());
 
-        customer=new Customer();
+        customer=new demoCustomer();
     }
     
     

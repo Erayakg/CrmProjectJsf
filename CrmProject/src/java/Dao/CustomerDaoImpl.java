@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import entity.Customer;
+import entity.demoCustomer;
 import jakarta.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +17,11 @@ import java.util.logging.Logger;
  * @author erayb
  */
 
-public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Customer> {
+public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCustomer> {
 
  
     @Override
-    public void create(Customer customer) {
+    public void create(demoCustomer customer) {
        
         try {
             super.createEntity(customer);
@@ -31,18 +31,18 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Custome
     }
 
     @Override
-    public void deleteById(Customer t, Long id) {
+    public void deleteById(demoCustomer t, Long id) {
         super.delete(t, id);
     }
 
      @Override
-     public List<Customer> getList(Customer t) {
+     public List<demoCustomer> getList(demoCustomer t) {
          List<Object[]> tableData = super.returnTable(t);
-         List<Customer> customers = new ArrayList<>();
+         List<demoCustomer> customers = new ArrayList<>();
 
          tableData.forEach(row -> {
              
-             Customer customer = new Customer();
+             demoCustomer customer = new demoCustomer();
              customer.setId((Long) row[0]); 
              customer.setName((String) row[1]); 
              customer.setSurname((String) row[2]);
@@ -55,8 +55,9 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Custome
 
 
     @Override
-    public Customer getByid(Customer t, Long id) {
+    public demoCustomer getByid(demoCustomer t, Long id) {
         
-    return null;
+        return  (demoCustomer) super.returnObjectById(t, id);
+       
     }
 }

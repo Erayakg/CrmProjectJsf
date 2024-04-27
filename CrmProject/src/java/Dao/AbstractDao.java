@@ -21,7 +21,7 @@ import java.util.List;
  * @author erayb
  */
 
-public abstract class AbstractDao extends DbConnect{
+ public abstract class AbstractDao extends DbConnect{
 
     Connection connection;
     
@@ -96,6 +96,37 @@ public abstract class AbstractDao extends DbConnect{
 
             return table;
         }
+         
+
+       public Object returnObjectById(Object obj, Long id) {
+    Object object = null;
+
+    connection = this.getConnect();
+
+    try {
+        generator = new SqlGenerator(obj);
+
+        // id'ye göre select sorgusu oluştur
+        String sql = generator.returnSelectByIdSql(id);
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                int columnCount = resultSet.getMetaData().getColumnCount();
+                object = resultSet.getObject(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+    }
+    System.out.println(object);
+    return object;
+}
+
 
 }
     

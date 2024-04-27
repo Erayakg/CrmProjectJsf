@@ -8,7 +8,7 @@ package entity;
  *
  * @author erayb
  */
-public class Customer {
+public class demoCustomer {
     
     Long id;
     String name;
@@ -43,7 +43,7 @@ public class Customer {
         return "Customer{" + "id=" + id + ", name=" + name + ", Surname=" + surName + '}';
     }
 
-    public Customer() {
+    public demoCustomer() {
     }
     
 }
