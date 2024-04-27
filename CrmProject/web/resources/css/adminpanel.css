@@ -24,40 +24,6 @@ body {
     margin: 0 auto;
     padding: 20px;
 }
-
-/* Header Styles */
-.header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav-menu {
-    list-style: none;
-}
-
-.nav-menu li {
-    display: inline;
-    margin-right: 20px;
-}
-
-.nav-menu li a {
-    text-decoration: none;
-    color: #fff;
-}
-
-.nav-menu li a:hover {
-    color: #b0b0b0; /* İstenilen hover rengi */
-    transition: color 0.3s ease; /* Renk geçiş süresi ve türü */
-}
-
-
 /* Sidebar Styles */
 .sidebar {
     width: 20%;

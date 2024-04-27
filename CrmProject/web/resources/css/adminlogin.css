@@ -1,0 +1,91 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 27, 2024, 12:37:07 PM
+    Author     : gbara
+*/
+
+.admin-login-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-login-form {
+  padding: 20px;
+}
+
+.admin-login-form h1 {
+  font-size: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 2px 1px #4CAF50;
+  border-color: #4CAF50;
+}
+
+.form-group button[type="submit"] {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-group button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+@keyframes input-focus {
+  0% {
+    box-shadow: 0 0 2px 1px #ddd;
+  }
+  100% {
+    box-shadow: 0 0 2px 1px #4CAF50;
+    border-color: #4CAF50;
+  }
+}
+
+@keyframes button-hover {
+  0% {
+    background-color: #4CAF50;
+  }
+  100% {
+    background-color: #3e8e41;
+  }
+}
