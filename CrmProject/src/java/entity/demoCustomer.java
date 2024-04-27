@@ -11,7 +11,7 @@ package entity;
 public class demoCustomer {
     Long id;
     String name;
-    String surName;
+    String surname;
 
     public Long getId() {
         return id;
@@ -29,12 +29,12 @@ public class demoCustomer {
         this.name = name;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
     
     
