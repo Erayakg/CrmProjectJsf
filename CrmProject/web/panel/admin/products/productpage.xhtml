@@ -7,10 +7,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
+
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="../../../resources/css/adminnavbar.css" type="text/css"/>
-        <link rel="stylesheet" href="../../../resources/css/productpage.css" type="text/css"/>
+        <link rel="stylesheet" href="../../../../resources/css/adminnavbar.css" type="text/css"/>
+        <link rel="stylesheet" href="../../../../resources/css/productpage.css" type="text/css"/>
     </head>
     <body>
         <header class="header">
@@ -36,6 +37,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    
+                    <!-- Product listesi burada listelenir -->
+                    
+                    
                     <tr data-product-id="1">
                         <td>Product 1</td>
                         <td>This is a description of Product 1.</td>
@@ -54,7 +60,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                             <button class="delete-button">Delete</button>
                         </td>
                     </tr>
-                    <!-- Product listesi burada listelenir -->
                 </tbody>
             </table>
             <div id="edit-modal" class="modal">
@@ -82,7 +87,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                 <button type="submit">Add Product</button>
             </form>
         </div>
-        <script src="../../../resources/js/productpage.js" type="text/javascript"></script>
+        {#For #}
+        {#entity.Product.id}
+        {#entity.Product.name}
+        {#entity.Product.price}
+        <script src="../../../../resources/js/productpage.js" type="text/javascript"></script>
     </body>
 
 </html>
