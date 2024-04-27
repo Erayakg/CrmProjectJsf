@@ -56,9 +56,7 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<Custome
 
     @Override
     public Customer getByid(Customer t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+    return null;
     }
-
-
-    
 }

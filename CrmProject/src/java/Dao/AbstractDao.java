@@ -64,6 +64,8 @@ public abstract class AbstractDao extends DbConnect{
          public List<Object[]> returnTable(Object obj) {
              
             List<Object[]> table = new ArrayList<>();
+            
+            connection=this.getConnect();
 
             try {
                 

@@ -5,9 +5,7 @@
 package Bean;
 
 import Dao.CustomerDaoImpl;
-import Util.SqlGenerator;
 import entity.Customer;
-import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -43,8 +41,8 @@ public class CustomerBean implements Serializable {
 
     public void saveUser() {
         
-        List<Customer> list = customerdaoimpl.getList(customer);
-                
+        customerdaoimpl.create(customer);
+
         customer=new Customer();
     }
     

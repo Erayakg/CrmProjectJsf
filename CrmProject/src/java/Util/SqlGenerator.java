@@ -83,7 +83,7 @@ public class SqlGenerator <T> {
     
     public String returnSelectSql() {
         
-        System.out.println(instance.getClass().getName());
+        System.out.println(instance.getClass().getSimpleName());
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
