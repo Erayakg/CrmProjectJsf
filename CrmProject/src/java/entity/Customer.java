@@ -16,6 +16,7 @@ import java.util.List;
  *
  * @author erayb
  */
+
 @Entity
 public class Customer implements BaseEntity{
 
@@ -133,6 +134,45 @@ public class Customer implements BaseEntity{
  
 
     
+
+
+public class Customer {
+    
+    Long id;
+    String name;
+    String surName;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surName;
+    }
+
+    public void setSurname(String Surname) {
+        this.surName = Surname;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "id=" + id + ", name=" + name + ", Surname=" + surName + '}';
+    }
+
+    public Customer() {
+    }
 
     
 }

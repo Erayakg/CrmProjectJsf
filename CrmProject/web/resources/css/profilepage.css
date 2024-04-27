@@ -1,0 +1,23 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 26, 2024, 5:43:48 PM
+    Author     : gbara
+*/
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+#profile-info, #contact-info, #orders {
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+
+#profile-info h3, #contact-info h3, #orders h3 {
+    margin-top: 0;
+}

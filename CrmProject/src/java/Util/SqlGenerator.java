@@ -4,9 +4,8 @@
  */
 package Util;
 
-import jakarta.ejb.Stateless;
 import java.lang.reflect.Field;
-
+import java.lang.Long;
 /**
  *
  * @author erayb
@@ -25,7 +24,7 @@ public class SqlGenerator <T> {
 
         if (type == String.class) {
             return "VARCHAR(255)";
-        } else if (type == int.class || type == Integer.class) {
+        } else if (type == int.class || type == Integer.class || type == Long.class) {
             return "INT";
         } else if (type == double.class || type == Double.class) {
             return "DOUBLE";
@@ -44,7 +43,7 @@ public class SqlGenerator <T> {
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
-        String sql = "INSERT INTO " + instance.getClass().getName() + " (";
+        String sql = "INSERT INTO " + instance.getClass().getSimpleName()+ " (";
         String values = "VALUES (";
 
         for (int i = 0; i < fields.length; i++) {
@@ -66,7 +65,7 @@ public class SqlGenerator <T> {
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
-        String sql = "CREATE TABLE " + instance.getClass().getName()+ " (";
+        String sql = "CREATE TABLE " + instance.getClass().getSimpleName()+ " (";
 
         for (int i = 0; i < fields.length; i++) {
             sql += fields[i].getName() + " " + getType(fields[i].getType());
@@ -84,7 +83,7 @@ public class SqlGenerator <T> {
     
     public String returnSelectSql() {
         
-        System.out.println(instance.getClass().getName());
+        System.out.println(instance.getClass().getSimpleName());
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
@@ -97,7 +96,7 @@ public class SqlGenerator <T> {
             }
      }
 
-        sql += " FROM " + instance.getClass().getName();
+        sql += " FROM " + instance.getClass().getSimpleName();
         System.out.println(sql);
         return sql;
         
@@ -108,7 +107,7 @@ public class SqlGenerator <T> {
     
      System.out.println(instance.getClass().getName());
 
-     String sql = "DELETE FROM " + instance.getClass().getName() + " WHERE id = " + id;
+     String sql = "DELETE FROM " + instance.getClass().getSimpleName()+ " WHERE id = " + id;
     System.out.println(sql);
     
     return sql;
@@ -118,7 +117,7 @@ public class SqlGenerator <T> {
         
     System.out.println(instance.getClass().getName());
 
-    String sql = "SELECT * FROM " + instance.getClass().getName() + " WHERE id = " + id;
+    String sql = "SELECT * FROM " + instance.getClass().getSimpleName()+ " WHERE id = " + id;
     System.out.println(sql);
     
     return sql;

@@ -1,0 +1,89 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 27, 2024, 10:27:18 AM
+    Author     : gbara
+*/
+
+.campaign-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.campaign-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.campaign-header h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.campaign-header p {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.campaign-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.campaign-item {
+  width: calc(25% - 20px);
+  margin: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.campaign-item:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.campaign-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.campaign-item h2 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.campaign-item p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: block;
+  width: 100%;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #3e8e41;
+}

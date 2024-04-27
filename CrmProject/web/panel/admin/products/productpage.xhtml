@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="../../../resources/css/adminnavbar.css" type="text/css"/>
+        <link rel="stylesheet" href="../../../resources/css/productpage.css" type="text/css"/>
+    </head>
+    <body>
+        <header class="header">
+            <div class="logo">Admin Panel</div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="dashboard.xhtml">Dashboard</a></li>
+                    <li><a href="#">Feedbacks</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Tasks</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="container">
+            <h1>Product List</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-product-id="1">
+                        <td>Product 1</td>
+                        <td>This is a description of Product 1.</td>
+                        <td>$100</td>
+                        <td>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </td>
+                    </tr>
+                    <tr data-product-id="2">
+                        <td>Product 2</td>
+                        <td>This is a description of Product 2.</td>
+                        <td>$200</td>
+                        <td>
+                            <button class="edit-button">Edit</button>
+                            <button class="delete-button">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Product listesi burada listelenir -->
+                </tbody>
+            </table>
+            <div id="edit-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Edit Product</h2>
+                    <form>
+                        <input type="hidden" id="product-id" name="product-id"/>
+                        <label for="product-name-edit">Product Name:</label>
+                        <input type="text" id="product-name-edit" name="product-name"/>
+                        <label for="product-price-edit">Price:</label>
+                        <input type="number" id="product-price-edit" name="product-price"/>
+                        <button type="submit">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+            <h2>Add Product</h2>
+            <form>
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name" name="product-name"/>
+                <label for="product-price">Price:</label>
+                <input type="number" id="product-price" name="product-price"/>
+                <label for="product-description">Description:</label>
+                <textarea id="product-description" name="product-description"></textarea>
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+        <script src="../../../resources/js/productpage.js" type="text/javascript"></script>
+    </body>
+
+</html>

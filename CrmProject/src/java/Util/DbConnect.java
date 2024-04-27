@@ -2,31 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Dao;
+package Util;
 
-import Util.SqlGenerator;
 import constant.SqlConnConstant;
-import jakarta.ejb.EJB;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
 
 /**
  *
  * @author erayb
  */
-
-public abstract class BaseAbstractDao <T> {
-
-    private Connection connect;
-    private T instance;
-
-   
+public abstract class  DbConnect {
     
-   
+    private Connection connect;
+    
     public Connection getConnect() {
         if(this.connect==null){
 
@@ -41,15 +31,6 @@ public abstract class BaseAbstractDao <T> {
             }
         }
         return connect;
-    }
-    public void createEntity(Object o){
-        
-        
-    }
-    
-    
-    
-    
+    }   
     
 }
-    
