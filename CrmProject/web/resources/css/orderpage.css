@@ -3,20 +3,68 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Apr 26, 2024, 1:13:25 PM
+    Created on : Apr 27, 2024, 1:39:42 PM
     Author     : gbara
 */
-/* Reset CSS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.admin-orders-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Global Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+.admin-orders-header {
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-orders-header h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.admin-orders-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.admin-orders-section {
+  width: 49%;
+  margin-bottom: 20px;
+}
+
+.admin-orders-section h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.admin-orders-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.admin-orders-section li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-orders-section li:last-child {
+  border-bottom: none;
+}
+
+.admin-orders-section li:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.admin-orders-section li:hover {
+  background-color: #ddd;
 }
 
 .container {
@@ -52,19 +100,9 @@ body {
     background-color: #666; /* İstenilen hover arkaplan rengi */
     transition: background-color 0.3s ease; /* Arkaplan rengi geçiş süresi ve türü */
 }
-
-/* Main Content Styles */
-.main-content {
-    flex: 1;
-    padding: 20px;
-    background-color: #fff;
-}
-
-/* Footer Styles */
 .footer {
     background-color: #333;
     color: #fff;
     text-align: center;
     padding: 10px 0;
 }
-
