@@ -45,7 +45,7 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCus
              demoCustomer customer = new demoCustomer();
              customer.setId((Long) row[0]); 
              customer.setName((String) row[1]); 
-             customer.setSurname((String) row[2]);
+             customer.setSurName((String) row[2]);
              
              customers.add(customer);
          });
