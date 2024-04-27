@@ -11,6 +11,7 @@ import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -41,7 +42,9 @@ public class CustomerBean implements Serializable {
     }
 
     public void saveUser() {
-        customerdaoimpl.create(customer);
+        
+        List<Customer> list = customerdaoimpl.getList(customer);
+                
         customer=new Customer();
     }
     

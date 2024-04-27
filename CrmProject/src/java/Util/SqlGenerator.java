@@ -96,7 +96,7 @@ public class SqlGenerator <T> {
             }
      }
 
-        sql += " FROM " + instance.getClass().getName();
+        sql += " FROM " + instance.getClass().getSimpleName();
         System.out.println(sql);
         return sql;
         
@@ -107,7 +107,7 @@ public class SqlGenerator <T> {
     
      System.out.println(instance.getClass().getName());
 
-     String sql = "DELETE FROM " + instance.getClass().getName() + " WHERE id = " + id;
+     String sql = "DELETE FROM " + instance.getClass().getSimpleName()+ " WHERE id = " + id;
     System.out.println(sql);
     
     return sql;
@@ -117,7 +117,7 @@ public class SqlGenerator <T> {
         
     System.out.println(instance.getClass().getName());
 
-    String sql = "SELECT * FROM " + instance.getClass().getName() + " WHERE id = " + id;
+    String sql = "SELECT * FROM " + instance.getClass().getSimpleName()+ " WHERE id = " + id;
     System.out.println(sql);
     
     return sql;
