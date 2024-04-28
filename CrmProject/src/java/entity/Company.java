@@ -10,48 +10,28 @@ import java.util.Date;
  *
  * @author baran
  */
-public class Company implements BaseEntity {
+public class Company extends Account {
 
-    private Long id;
-    private String companyName;
     private Date creationDate;
     private Long TaxNumber;
-    private String phone;
-    private String Address;
-    private String mail;
 
-    public Company(Long id, String companyName, Date creationDate, Long TaxNumber, String phone, String Address, String mail) {
-        this.id = id;
-        this.companyName = companyName;
+    public Company(Long id, String name, Date creationDate, Long TaxNumber, String phone, String Address, String mail, String password) {
+        super(id, name, phone, Address, mail, password);
         this.creationDate = creationDate;
         this.TaxNumber = TaxNumber;
-        this.phone = phone;
-        this.Address = Address;
-        this.mail = mail;
-    }
-
-    public Company() {
     }
 
     public Company(Long id) {
-        this.id = id;
+        super(id);
     }
 
-    @Override
-    public long getId() {
-        return id;
+    public Company(String name, Date creationDate, Long TaxNumber, String phone, String Address, String mail, String password) {
+        super(name, phone, Address, mail, password);
+        this.creationDate = creationDate;
+        this.TaxNumber = TaxNumber;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public Company() {
     }
 
     public Date getCreationDate() {
@@ -68,30 +48,6 @@ public class Company implements BaseEntity {
 
     public void setTaxNumber(Long TaxNumber) {
         this.TaxNumber = TaxNumber;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public void setAddress(String Address) {
-        this.Address = Address;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
 }

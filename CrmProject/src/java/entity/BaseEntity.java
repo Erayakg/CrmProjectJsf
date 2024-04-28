@@ -9,6 +9,6 @@ package entity;
  * @author baran
  */
 public interface BaseEntity {
-   long  getId();
+  public long  getId();
     
 }
