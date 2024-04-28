@@ -5,15 +5,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>TODO supply a title</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="..\..\..\..\resources\css\navbar.css" type="text/css"/>
-        <link rel="stylesheet" href="..\..\..\..\resources\css\products.css" type="text/css"/>
-    </head>
-    <body>
+        <h:outputStylesheet library="css" name="navbar.css" />
+        <h:outputStylesheet library="css" name="products.css" />
+    </h:head>
+    <h:body>
         <header>
             <nav>
                 <div class="logo">CRM Logo</div>
@@ -68,5 +69,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
             </div>
         </div>
         <script src="resources/js/products.js" type="text/javascript"></script>
-    </body>
+    </h:body>
 </html>
