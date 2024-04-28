@@ -2,62 +2,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
     <h:head>
-        <title>HOMEPAGE</title>
+        <title>HOME PAGE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <h:outputStylesheet library="css" name="navbar.css" />
-        <h:outputStylesheet library="css" name="homepage.css" />
     </h:head>
     <h:body>
-        <header>
-            <nav>
-                <div class="logo">CRM Logo</div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="homepage.xhtml">Home Page</a></li>
-                    <li>
-                        Account
-                        <ul class="submenu">
-                            <li><a href="account/profilepage.xhtml">Profile</a></li>
-                            <li><a href="account/registerpage.xhtml">Register</a></li>
-                            <li><a href="account/loginpage.xhtml">Login</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        Products
-                        <ul class="submenu">
-                            <li><a href="product\productpage.xhtml">Products</a></li>
-                            <li><a href="product\campaign.xhtml">Campaign</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Settings</a>
-                        <ul class="submenu">
-                            <li><a href="#">Account Settings</a></li>
-                            <li><a href="#">Notification Settings</a></li>
-                            <li><a href="#">Privacy Settings</a></li>
-                            <li><a href="#">Themes and Customizations</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contactpage.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html"
+                        xmlns:ui="http://java.sun.com/jsf/facelets"
+                        template="/panel/template/homepagenavbar.xhtml">
+            <ui:define name="content">
+                <h:outputStylesheet library="css" name="homepage.css" />
+                <main>
+                    <section class="intro">
+                        <h1>Hoş Geldiniz</h1>
+                        <p>CRM sisteminize hoş geldiniz. Verimliliğinizi artırın, müşteri ilişkilerinizi güçlendirin.</p>
+                    </section>
+                </main>
+                <footer>
+                    <p>&copy; 2024 CRM Projesi</p>
+                </footer>
+            </ui:define>
+        </ui:composition>
+        <h:outputStylesheet library="js" name="homepage.js" />
 
-        <main>
-            <section class="intro">
-                <h1>Hoş Geldiniz</h1>
-                <p>CRM sisteminize hoş geldiniz. Verimliliğinizi artırın, müşteri ilişkilerinizi güçlendirin.</p>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 CRM Projesi</p>
-        </footer>
-        <script src="resources/js/homepage.js" type="text/javascript"></script>
     </h:body>
 </html>

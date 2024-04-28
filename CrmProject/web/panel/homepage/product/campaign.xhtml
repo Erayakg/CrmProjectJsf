@@ -1,80 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
--->
-
 <html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>TODO supply a title</title>
+        <title>Campaign Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputStylesheet library="css" name="navbar.css" />
-        <h:outputStylesheet library="css" name="campaign.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
     </h:head>
     <h:body>
-        <header>
-            <nav>
-                <div class="logo">CRM Logo</div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                        xmlns:h="http://xmlns.jcp.org/jsf/html"
+                        xmlns:ui="http://java.sun.com/jsf/facelets"
+                        template="/panel/template/homepagenavbar.xhtml">
+            <ui:define name="content">
+                <h:outputStylesheet library="css" name="campaign.css" />
+                <div class="campaign-container">
+                    <div class="campaign-header">
+                        <h1>Product Campaigns</h1>
+                        <p>Discover our latest product campaigns and promotions.</p>
+                    </div>
+                    <div class="campaign-list">
+                        <div class="campaign-item">
+
+                            <h2>10% Discount Campaign for Webkit</h2>
+                            <p>If you purchase Webkit, you can use the 10% discount on each product. Additionally, you get access to the customer analytics panel</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                        <div class="campaign-item">
+
+                            <h2>10% Discount Campaign for Data Science Kit</h2>
+                            <p>If you purchase Data Science Kit, you can use the 10% discount on each product. Additionally, you get access to the customer analytics panel</p>
+                            <a href="#" class="cta-button">Learn More</a>
+                        </div>
+                        <!-- Add more campaign items here -->
+                    </div>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="homepage.xhtml">Home Page</a></li>
-                    <li>
-                        Account
-                        <ul class="submenu">
-                            <li><a href="account/profilepage.xhtml">Profile</a></li>
-                            <li><a href="account/registerpage.xhtml">Register</a></li>
-                            <li><a href="account/loginpage.xhtml">Login</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        Products
-                        <ul class="submenu">
-                            <li><a href="product\productpage.xhtml">Products</a></li>
-                            <li><a href="#">Campaign</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Settings</a>
-                        <ul class="submenu">
-                            <li><a href="#">Account Settings</a></li>
-                            <li><a href="#">Notification Settings</a></li>
-                            <li><a href="#">Privacy Settings</a></li>
-                            <li><a href="#">Themes and Customizations</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="contactpage.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-        <div class="campaign-container">
-            <div class="campaign-header">
-                <h1>Product Campaigns</h1>
-                <p>Discover our latest product campaigns and promotions.</p>
-            </div>
-            <div class="campaign-list">
-                <div class="campaign-item">
-                    <img src="..\..\..\img\webcampaign.webp" alt="Campaign 1" />
-                    <h2>10% Discount Campaign for Webkit</h2>
-                    <p>If you purchase Webkit, you can use the 10% discount on each product. Additionally, you get access to the customer analytics panel</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-                <div class="campaign-item">
-                    <img src="..\..\..\img\datacampaign.webp" alt="Campaign 2" />
-                    <h2>10% Discount Campaign for Data Science Kit</h2>
-                    <p>If you purchase Data Science Kit, you can use the 10% discount on each product. Additionally, you get access to the customer analytics panel</p>
-                    <a href="#" class="cta-button">Learn More</a>
-                </div>
-                <!-- Add more campaign items here -->
-            </div>
-        </div>
-        <script src="resources/js/campaign.js" type="text/javascript"></script>
+            </ui:define>
+        </ui:composition>
+        <h:outputStylesheet library="js" name="campaign.js" />
     </h:body>
 </html>
