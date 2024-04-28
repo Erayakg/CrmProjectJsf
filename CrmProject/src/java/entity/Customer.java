@@ -6,9 +6,6 @@ package entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 
@@ -16,16 +13,9 @@ import java.util.List;
  *
  * @author erayb
  */
-
 @Entity
-public class Customer implements BaseEntity{
+public class Customer extends Account {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String phone;
     private int zipCode;
     private String address;
     private String country;
@@ -34,11 +24,22 @@ public class Customer implements BaseEntity{
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Notes> notes;
 
-    public Customer(Long İd, String firstName, String lastName, String phone, int zipCode, String address, String country, String city, String Companyİnformation, List<Notes> notes) {
-        this.id = İd;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phone = phone;
+    public Customer(int zipCode, String address, String country, String city, String Companyİnformation, List<Notes> notes, Long id, String name, String phone, String Address, String mail, String password) {
+        super(id, name, phone, Address, mail, password);
+        this.zipCode = zipCode;
+        this.address = address;
+        this.country = country;
+        this.city = city;
+        this.Companyİnformation = Companyİnformation;
+        this.notes = notes;
+    }
+
+    public Customer(Long id) {
+        super(id);
+    }
+
+    public Customer(int zipCode, String address, String country, String city, String Companyİnformation, List<Notes> notes, String name, String phone, String Address, String mail, String password) {
+        super(name, phone, Address, mail, password);
         this.zipCode = zipCode;
         this.address = address;
         this.country = country;
@@ -48,39 +49,6 @@ public class Customer implements BaseEntity{
     }
 
     public Customer() {
-    }
-
- 
-
-    public Customer(Long İd) {
-        this.id = İd;
-    }
-
-    
-    
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public int getZipCode() {
@@ -122,14 +90,13 @@ public class Customer implements BaseEntity{
     public void setCompanyİnformation(String Companyİnformation) {
         this.Companyİnformation = Companyİnformation;
     }
-    
-    public void setİd(Long İd) {
-        this.id = İd;
-    }
-   @Override
-    public long getId() {
-        return  id;
+
+    public List<Notes> getNotes() {
+        return notes;
     }
 
-   
+    public void setNotes(List<Notes> notes) {
+        this.notes = notes;
+    }
+
 }
