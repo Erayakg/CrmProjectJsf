@@ -4,14 +4,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="stylesheet" href="..\..\..\..\resources\css\navbar.css" type="text/css"/>
-        <link rel="stylesheet" href="..\..\..\..\resources\css\profilepage.css" type="text/css"/>
-    </head>
-    <body>
+        <h:outputStylesheet library="css" name="profilepage.css" />
+        <h:outputStylesheet library="css" name="navbar.css" />
+    </h:head>
+    <h:body>
         <header>
             <nav>
                 <div class="logo">CRM Logo</div>
@@ -71,5 +72,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
             </section>
         </main>
         <script src="script.js"></script>
-    </body>
+    </h:body>
 </html>
