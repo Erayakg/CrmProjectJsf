@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Admin Panel</title>
+        <h:outputStylesheet library="css" name="adminnavbar.css"/>
+    </h:head>
+        <header class="header">
+            <div class="logo">Admin Panel</div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="/CrmProject/panel//admin/dashboard/dashboard.xhtml">Dashboard</a></li>
+                    <li><a href="/CrmProject/panel//admin/feedbacks/feedbackpage.xhtml">Feedbacks</a></li>
+                    <li><a href="/CrmProject/panel//admin/products/productpage.xhtml">Products</a></li>
+                    <li><a href="/CrmProject/panel//admin/tasks/taskpage.xhtml">Tasks</a></li>
+                    <li><a href="/CrmProject/panel//admin/access/adminlogin.xhtml">Personal Login</a></li>
+                    <li><a href="/CrmProject/panel//admin/access/adminregister.xhtml">Personal Register</a></li>
+                </ul>
+            </nav>
+        </header>
+        <ui:insert name="content"></ui:insert>
+</html>
