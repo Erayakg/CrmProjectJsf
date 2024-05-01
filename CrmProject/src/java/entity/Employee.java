@@ -4,31 +4,29 @@
  */
 package entity;
 
-import jakarta.persistence.Entity;
-
 /**
  *
  * @author baran
  */
-@Entity
 public class Employee extends Account {
 
     private int serviceNumber;
     private boolean isEnabled;
     private Double salary;
-
-    public Employee(int serviceNumber, boolean isEnabled, Double salary, Long id, String name, String phone, String Address, String mail, String password) {
+    private String SurName;
+    public Employee(int serviceNumber, boolean isEnabled, Double salary, Long id, String name, String phone, String Address, String mail, String password, String surName) {
         super(id, name, phone, Address, mail, password);
         this.serviceNumber = serviceNumber;
         this.isEnabled = isEnabled;
         this.salary = salary;
     }
 
-    public Employee(int serviceNumber, boolean isEnabled, Double salary, String name, String phone, String Address, String mail, String password) {
+    public Employee(int serviceNumber, boolean isEnabled, Double salary, String name, String phone, String Address, String mail, String password, String surName) {
         super(name, phone, Address, mail, password);
         this.serviceNumber = serviceNumber;
         this.isEnabled = isEnabled;
         this.salary = salary;
+        this.SurName=surName;
     }
 
     public Employee(Long id) {
@@ -61,5 +59,14 @@ public class Employee extends Account {
     public void setSalary(Double salary) {
         this.salary = salary;
     }
+
+    public String getSurName() {
+        return SurName;
+    }
+
+    public void setSurName(String SurName) {
+        this.SurName = SurName;
+    }
+    
 
 }

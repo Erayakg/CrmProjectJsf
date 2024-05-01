@@ -4,47 +4,43 @@
  */
 package entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
 import java.util.List;
 
 /**
  *
  * @author erayb
  */
-@Entity
 public class Customer extends Account {
 
+    private String surName;
     private int zipCode;
     private String address;
     private String country;
     private String city;
-    private String Companyİnformation;
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Notes> notes;
 
-    public Customer(int zipCode, String address, String country, String city, String Companyİnformation, List<Notes> notes, Long id, String name, String phone, String Address, String mail, String password) {
+    public Customer(String surName, int zipCode, String address, String country, String city, List<Notes> notes, Long id, String name, String phone, String Address, String mail, String password) {
         super(id, name, phone, Address, mail, password);
+        this.surName = surName;
         this.zipCode = zipCode;
         this.address = address;
         this.country = country;
         this.city = city;
-        this.Companyİnformation = Companyİnformation;
         this.notes = notes;
     }
+
+   
 
     public Customer(Long id) {
         super(id);
     }
 
-    public Customer(int zipCode, String address, String country, String city, String Companyİnformation, List<Notes> notes, String name, String phone, String Address, String mail, String password) {
+    public Customer(int zipCode, String address, String country, String city, List<Notes> notes, String name, String phone, String Address, String mail, String password) {
         super(name, phone, Address, mail, password);
         this.zipCode = zipCode;
         this.address = address;
         this.country = country;
         this.city = city;
-        this.Companyİnformation = Companyİnformation;
         this.notes = notes;
     }
 
@@ -83,14 +79,6 @@ public class Customer extends Account {
         this.city = city;
     }
 
-    public String getCompanyİnformation() {
-        return Companyİnformation;
-    }
-
-    public void setCompanyİnformation(String Companyİnformation) {
-        this.Companyİnformation = Companyİnformation;
-    }
-
     public List<Notes> getNotes() {
         return notes;
     }
@@ -98,5 +86,14 @@ public class Customer extends Account {
     public void setNotes(List<Notes> notes) {
         this.notes = notes;
     }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+    
 
 }

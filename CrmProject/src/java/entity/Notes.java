@@ -4,31 +4,22 @@
  */
 package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import java.util.Date;
 
 /**
  *
  * @author baran
  */
-@Entity
+
 public class Notes implements BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
     private Long id;
     private String noteData;
     private String noteContent;
     private String title;
     private Date creatDate;
     private Date updateData;
-    @ManyToOne()
-    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     public Notes(Long id, String noteData, String noteContent, String title, Date creatDate, Date updateData, Customer customer) {

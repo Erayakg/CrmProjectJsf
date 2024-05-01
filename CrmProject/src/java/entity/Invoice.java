@@ -4,20 +4,15 @@
  */
 package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 
 /**
  *
  * @author 90552
  */
-@Entity
 public class Invoice implements BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   
     private long Id;
     private String customerName;
     private LocalDateTime issueDate;
