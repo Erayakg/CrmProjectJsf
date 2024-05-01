@@ -41,9 +41,14 @@ public class CustomerBean implements Serializable {
 
     public void saveUser() {
         
-        customerdaoimpl.getByid(customer,customer.getId());
+        customerdaoimpl.create(customer);
 
         customer=new demoCustomer();
+    }
+    public  void  deleteUser(){
+        customerdaoimpl.getByid(customer, customer.getId());   
+        customer=new demoCustomer();
+
     }
     
     
