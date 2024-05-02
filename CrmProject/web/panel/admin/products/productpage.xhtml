@@ -23,7 +23,11 @@
                                 <th>Product Name</th>
                                 <th>Description</th>
                                 <th>Price</th>
-                                <th>Actions</th>
+                                <th>Stock Quantity</th>
+                                <th>Created Date</th>
+                                <th>Last Modified Date</th>
+                                <th>Is Active? </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +36,10 @@
                                 <td>Product 1</td>
                                 <td>This is a description of Product 1.</td>
                                 <td>$100</td>
+                                <td>200</td>
+                                <td>25.04.2024/10:32:50</td>
+                                <td>25.04.2024/10:32:50</td>
+                                <td>Active</td>
                                 <td>
                                     <button class="edit-button">Edit</button>
                                     <button class="delete-button">Delete</button>
@@ -41,6 +49,10 @@
                                 <td>Product 2</td>
                                 <td>This is a description of Product 2.</td>
                                 <td>$200</td>
+                                <td>200</td>
+                                <td>25.04.2024/10:32:50</td>
+                                <td>25.04.2024/10:32:50</td>
+                                <td>Active</td>
                                 <td>
                                     <button class="edit-button">Edit</button>
                                     <button class="delete-button">Delete</button>
@@ -64,11 +76,19 @@
                     </div>
                     <h2>Add Product</h2>
                     <form>
-                        <label for="product-name">Product Name:</label>
+                        <label for="product-name">Product Name: </label>
                         <input type="text" id="product-name" name="product-name"/>
-                        <label for="product-price">Price:</label>
+                        <label for="product-price">Description: </label>
                         <input type="number" id="product-price" name="product-price"/>
-                        <label for="product-description">Description:</label>
+                        <label for="product-description">Price: </label>
+                        <textarea id="product-description" name="product-description"></textarea>
+                        <label for="product-description">Stock Quantity: </label>
+                        <textarea id="product-description" name="product-description"></textarea>
+                        <label for="product-description">Created Date: </label>
+                        <textarea id="product-description" name="product-description"></textarea>
+                        <label for="product-description">Last Modified Date: </label>
+                        <textarea id="product-description" name="product-description"></textarea>
+                        <label for="product-description">Is Active: </label>
                         <textarea id="product-description" name="product-description"></textarea>
                         <button type="submit">Add Product</button>
                     </form>

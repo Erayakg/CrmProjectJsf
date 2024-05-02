@@ -14,17 +14,14 @@ import jakarta.resource.cci.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 /**
  *
  * @author erayb
  */
-
- public abstract class AbstractDao extends DbConnect{
+public abstract class AbstractDao extends DbConnect {
 
     Connection connection;
-    
+
     SqlGenerator generator;
     
      
@@ -36,6 +33,21 @@ import java.util.List;
                 
                 connection=this.getConnect();
 
+    public void createEntity(Object o) throws Exception {
+
+        generator = new SqlGenerator(o);
+
+        String sql = generator.returnInsertSql();
+
+        connection = this.getConnect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            System.out.println(sql);
+            int result = preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            System.out.println("error" + ex);
+        }
                 try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                        System.out.println(sql);
                     int result = preparedStatement.executeUpdate();
@@ -61,75 +73,86 @@ import java.util.List;
                         System.out.println("error"+ex);
                 }
     }
-     
-    public void delete(Object o,Long id){
-        
-              generator=new SqlGenerator(o);
-                
-                String sql=generator.returnDeleteSql(id);
-                
-                connection=this.getConnect();
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                       System.out.println(sql);
-                    int result = preparedStatement.executeUpdate();
-                    preparedStatement.close();
-                } catch (SQLException ex) {
-                        System.out.println("error"+ex);
-                }
-        } 
-    
-         public List<Object[]> returnTable(Object obj) {
-             
-            List<Object[]> table = new ArrayList<>();
-            
-            connection=this.getConnect();
+    public void delete(Object o, Long id) {
 
-            try {
-                
-                generator = new SqlGenerator(obj);
-                
-                String sql = generator.returnSelectSql();
+        generator = new SqlGenerator(o);
 
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                    
-                    System.out.println(sql);
-                    
-                    ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
-                    
-                    while (resultSet.next()) {
-                        int columnCount = resultSet.getMetaData().getColumnCount();
-                        Object[] row = new Object[columnCount];
-                        for (int i = 1; i <= columnCount; i++) {
-                            row[i - 1] = resultSet.getObject(i);
-                        }
-                        table.add(row);
-                    }
-                } catch (SQLException ex) {
-                    System.out.println("Error: " + ex.getMessage());
-                }
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+        String sql = generator.returnDeleteSql(id);
 
-            return table;
+        connection = this.getConnect();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            System.out.println(sql);
+            int result = preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            System.out.println("error" + ex);
         }
-         
+    }
 
+    public List<Object[]> returnTable(Object obj) {
+
+        List<Object[]> table = new ArrayList<>();
+
+        connection = this.getConnect();
+
+        try {
+
+            generator = new SqlGenerator(obj);
+
+            String sql = generator.returnSelectSql();
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                System.out.println(sql);
+
+                ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    int columnCount = resultSet.getMetaData().getColumnCount();
+                    Object[] row = new Object[columnCount];
+                    for (int i = 1; i <= columnCount; i++) {
+                        row[i - 1] = resultSet.getObject(i);
+                    }
+                    table.add(row);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        return table;
+    }
        public Object returnObjectById(Object obj, Long id) {
            
     Object object = null;
 
-    connection = this.getConnect();
+    public Object returnObjectById(Object obj, Long id) {
+        Object object = null;
 
-    try {
-        generator = new SqlGenerator(obj);
+        connection = this.getConnect();
 
+        try {
+            generator = new SqlGenerator(obj);
         
         String sql = generator.returnSelectByIdSql(id);
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            // id'ye göre select sorgusu oluştur
+            String sql = generator.returnSelectByIdSql(id);
 
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+                ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    int columnCount = resultSet.getMetaData().getColumnCount();
+                    object = resultSet.getObject(1);
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex.getMessage());
             java.sql.ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -145,13 +168,13 @@ import java.util.List;
                 
                 
             }
-        } catch (SQLException ex) {
-            System.out.println("Error: " + ex.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error: " + e.getMessage());
+        System.out.println(object);
+        return object;
     }
+
     return object;
     }
 }
-    

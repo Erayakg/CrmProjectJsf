@@ -10,18 +10,24 @@
         <title>Admin Panel</title>
         <h:outputStylesheet library="css" name="adminnavbar.css"/>
     </h:head>
-        <header class="header">
-            <div class="logo">Admin Panel</div>
-            <nav class="navbar">
-                <ul class="nav-menu">
-                    <li><a href="/CrmProject/panel//admin/dashboard/dashboard.xhtml">Dashboard</a></li>
-                    <li><a href="/CrmProject/panel//admin/feedbacks/feedbackpage.xhtml">Feedbacks</a></li>
-                    <li><a href="/CrmProject/panel//admin/products/productpage.xhtml">Products</a></li>
-                    <li><a href="/CrmProject/panel//admin/tasks/taskpage.xhtml">Tasks</a></li>
-                    <li><a href="/CrmProject/panel//admin/access/adminlogin.xhtml">Personal Login</a></li>
-                    <li><a href="/CrmProject/panel//admin/access/adminregister.xhtml">Personal Register</a></li>
-                </ul>
-            </nav>
-        </header>
-        <ui:insert name="content"></ui:insert>
+    <header class="header">
+        <div class="logo">Admin Panel</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/CrmProject/panel//admin/dashboard/dashboard.xhtml">Dashboard</a></li>
+                <li>
+                    Contact
+                    <ul class="submenu">
+                        <li><a href="/CrmProject/panel//admin/contact/feedbacks/feedbackpage.xhtml">Feedbacks</a></li>
+                        <li><a href="/CrmProject/panel//admin/contact/reports/reportpage.xhtml">Reports</a></li>
+                    </ul>
+                </li>
+                <li><a href="/CrmProject/panel//admin/products/productpage.xhtml">Products</a></li>
+                <li><a href="/CrmProject/panel//admin/tasks/taskpage.xhtml">Tasks</a></li>
+                <li><a href="/CrmProject/panel//admin/access/personalLogin.xhtml">Personal Login</a></li>
+                <li><a href="/CrmProject/panel//admin/access/personalRegister.xhtml">Personal Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <ui:insert name="content"></ui:insert>
 </html>

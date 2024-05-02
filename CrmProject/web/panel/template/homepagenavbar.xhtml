@@ -10,35 +10,35 @@
         <title>Home Page</title>
         <h:outputStylesheet library="css" name="navbar.css"/>
     </h:head>
-        <header>
-            <nav>
-                <div class="logo">CRM Logo</div>
-                <div class="menu-toggle" id="mobile-menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-                <ul class="nav-links">
-                    <li><h:link value="Home Page" outcome="/panel/homepage/homepage.xhtml"/></li>
-                    <li>
-                        Account
-                        <ul class="submenu">
-                            <li><a href="/CrmProject/panel//homepage/account/profilepage.xhtml">Profile</a></li>
-                            <li><a href="/CrmProject/panel//homepage/account/registerpage.xhtml">Register</a></li>
-                            <li><a href="/CrmProject/panel//homepage/account/loginpage.xhtml">Login</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        Products
-                        <ul class="submenu">
-                            <li><a href="/CrmProject/panel//homepage/product/productpage.xhtml">Products</a></li>
-                            <li><a href="/CrmProject/panel//homepage/product/campaign.xhtml">Campaign</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/CrmProject/panel//homepage/contact/contactpage.xhtml">Contact</a></li>
-                    <li><a href="/CrmProject/panel//homepage/feedback/feedbackpage.xhtml">Feedback</a></li>
-                </ul>
-            </nav>
-        </header>
-        <ui:insert name="content"></ui:insert>
+    <header>
+        <nav>
+            <div class="logo">CRM Logo</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><h:link value="Home Page" outcome="/panel/homepage/homepage.xhtml"/></li>
+                <li>
+                    Account
+                    <ul class="submenu">
+                        <li><a href="/CrmProject/panel//homepage/account/profilepage.xhtml">Profile</a></li>
+                        <li><a href="/CrmProject/panel//homepage/account/registerpage.xhtml">Register</a></li>
+                        <li><a href="/CrmProject/panel//homepage/account/loginpage.xhtml">Login</a></li>
+                    </ul>
+                </li>
+                <li>
+                    Products
+                    <ul class="submenu">
+                        <li><a href="/CrmProject/panel//homepage/product/productpage.xhtml">Products</a></li>
+                        <li><a href="/CrmProject/panel//homepage/product/campaign.xhtml">Campaign</a></li>
+                    </ul>
+                </li>
+                <li><a href="/CrmProject/panel//homepage/contact/contactpage.xhtml">Contact</a></li>
+                <li><a href="/CrmProject/panel//homepage/feedback/feedbackpage.xhtml">Feedback</a></li>
+            </ul>
+        </nav>
+    </header>
+    <ui:insert name="content"></ui:insert>
 </html>

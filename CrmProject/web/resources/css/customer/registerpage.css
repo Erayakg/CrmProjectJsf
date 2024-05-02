@@ -36,7 +36,24 @@ label {
 
 input[type="text"],
 input[type="email"],
+input[type="name"],
+input[type="surname"],
+input[type="phone"],
+input[type="zipcode"],
+input[type="address"],
+input[type="country"],
+input[type="city"],
 input[type="password"] {
+    border: none;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-size: 1.1rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+select {
     border: none;
     border-radius: 5px;
     background-color: #f5f5f5;

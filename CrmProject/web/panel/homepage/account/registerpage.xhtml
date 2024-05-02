@@ -6,6 +6,9 @@
     <h:head>
         <title>Register Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script></script>
+
     </h:head>
     <h:body>
         <ui:composition xmlns="http://www.w3.org/1999/xhtml"
@@ -17,8 +20,14 @@
                 <div class="container">
                     <h1>Register</h1>
                     <form>
-                        <label for="name">Name Surname:</label>
+                        <label for="name">First Name:</label>
                         <input type="text" id="name" name="name" />
+                        
+                        <label for="name">Last Name:</label>
+                        <input type="text" id="name" name="name" />
+                        
+                        <label for="phone">Phone:</label>
+                        <input type="phone" id="phone" name="phone" />
 
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" />
@@ -26,15 +35,34 @@
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" />
 
+                        
                         <label for="password">Reset Password:</label>
                         <input type="password" id="password" name="password" />
-
+                        
+                        <label for="zipcode">Zip Code:</label>
+                        <input type="zipcode" id="zipcode" name="zipcode" />
+                        
+                        <label for="address">Address</label>
+                        <input type="address" id="address" name="address" />
+                        
+                        <label for="country">Country:</label>
+                        <select id="country" name="country">
+                            <option>Select a country</option>
+                        </select>
+                        
+                        <label for="city">City</label>
+                        <select id="city" name="city">
+                            <option>Select a city</option>
+                        </select>
+                        
                         <input type="submit" value="Register" />
 
                     </form>
                     <p>Already registered? <a href="loginpage.xhtml">Login here</a></p>
                 </div>
+                
             </ui:define>
         </ui:composition>
+        
     </h:body>
 </html>
