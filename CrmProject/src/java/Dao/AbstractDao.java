@@ -26,7 +26,25 @@ import java.util.List;
     Connection connection;
     
     SqlGenerator generator;
+    
+     
+    public void createTableConn(Object o) throws Exception{
+        
+                generator=new SqlGenerator(o);
+                
+                String sql=generator.returnCreateSql();
+                
+                connection=this.getConnect();
 
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                       System.out.println(sql);
+                    int result = preparedStatement.executeUpdate();
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                        System.out.println("error"+ex);
+                }
+    }
+     
     public void createEntity(Object o) throws Exception{
         
                 generator=new SqlGenerator(o);
@@ -99,6 +117,7 @@ import java.util.List;
          
 
        public Object returnObjectById(Object obj, Long id) {
+           
     Object object = null;
 
     connection = this.getConnect();
@@ -106,16 +125,25 @@ import java.util.List;
     try {
         generator = new SqlGenerator(obj);
 
-        // id'ye göre select sorgusu oluştur
+        
         String sql = generator.returnSelectByIdSql(id);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
+            java.sql.ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
+                
                 int columnCount = resultSet.getMetaData().getColumnCount();
                 object = resultSet.getObject(1);
+                
+                 for (int i = 1; i <= columnCount; i++) {
+                    String columnName = resultSet.getMetaData().getColumnName(i);
+                    Object columnValue = resultSet.getObject(i);
+                    System.out.println("Column: " + columnName + ", Value: " + columnValue);
+                }
+                
+                
             }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -123,10 +151,7 @@ import java.util.List;
     } catch (Exception e) {
         System.out.println("Error: " + e.getMessage());
     }
-    System.out.println(object);
     return object;
-}
-
-
+    }
 }
     
