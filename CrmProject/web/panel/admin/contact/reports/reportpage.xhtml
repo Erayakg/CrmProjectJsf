@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Admin Reports Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="reportspage.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
+            <ui:define name="content">
+                <div class="reports-container">
+                    <h1>Reports</h1>
+                    <h:dataTable value="#{reportsBean.reports}" var="report" styleClass="reports-table" headerClass="reports-header" rowClasses="odd-row,even-row">
+                        <h:column>
+                            <f:facet name="header">Report ID</f:facet>
+                            #{report.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Submitted By</f:facet>
+                            #{report.submitter}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Message</f:facet>
+                            #{report.message}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Date Submitted</f:facet>
+                            #{report.dateSubmitted}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+        <h:outputScript library="js" name="reportspage.js" />
+    </h:body>
+</html>

@@ -1,7 +1,3 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
 /* 
     Created on : Apr 27, 2024, 10:50:07 AM
     Author     : gbara
@@ -20,21 +16,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     font-weight: bold;
 }
 
-.nav-menu {
+.nav-links {
     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
 }
 
-.nav-menu li {
-    display: inline;
+.nav-links li {
+    display: inline-block;
     margin-right: 20px;
+    position: relative;
 }
 
-.nav-menu li a {
+.nav-links a {
     text-decoration: none;
     color: #fff;
+    transition: color 0.3s ease;
 }
 
-.nav-menu li a:hover {
-    color: #b0b0b0; /* İstenilen hover rengi */
-    transition: color 0.3s ease; /* Renk geçiş süresi ve türü */
+.nav-links a:hover {
+    color: #b0b0b0; /* Hover color */
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333; /* Dropdown background color */
+    width: auto; /* Öğenin içeriğine göre genişler */
+    min-width: 200px; /* Minimum genişlik garantisi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0;
+    border-radius: 4px;
+    text-align: left; /* Metin hizalaması */
+}
+
+.submenu li {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+.submenu a {
+    padding: 10px;
+    color: #fff; /* Text color */
+    display: block;
+}
+
+.submenu a:hover {
+    background-color: #0056b3; /* Background color on hover */
+}
+
+.nav-links li:hover .submenu {
+    display: block; /* Display the submenu */
 }
