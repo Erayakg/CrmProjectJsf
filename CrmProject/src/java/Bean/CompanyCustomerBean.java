@@ -1,6 +1,5 @@
 package Bean;
 
-import Bean.BaseBean;
 import Dao.CompanyCustomerDaoImpl;
 import entity.CompanyCustomer;
 import jakarta.enterprise.context.SessionScoped;

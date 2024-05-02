@@ -18,7 +18,7 @@ import java.util.List;
 @SessionScoped
 public class ContactBean implements BaseBean<Object> {
 
-    /*  private Contact contact;
+    private Contact contact;
 
     private ContactDaoImpl contactDaoImpl;
 
@@ -72,5 +72,5 @@ public class ContactBean implements BaseBean<Object> {
     @Override
     public List<Object> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }*/
+    }
 }

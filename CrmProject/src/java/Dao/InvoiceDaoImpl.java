@@ -4,41 +4,37 @@
  */
 package Dao;
 
-import entity.Campaign;
+import entity.Invoice;
 import java.util.List;
 
 /**
  *
  * @author baran
  */
-public class CampaignDaoImpl implements DaoOperation<Campaign>{
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
+public class InvoiceDaoImpl extends AbstractDao implements DaoOperation<Invoice> {
 
     @Override
-    public void create(Campaign t) {
+    public void createTable(Invoice t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
+    public void create(Invoice t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Campaign> getList(Campaign t) {
+    public void deleteById(Invoice t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
+    public List<Invoice> getList(Invoice t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void createTable(Campaign t) {
+    public Invoice getByid(Invoice t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
