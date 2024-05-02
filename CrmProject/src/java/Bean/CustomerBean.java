@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Named(value = "CustomerBean")
 @SessionScoped
-public class CustomerBean implements Serializable {
+public class CustomerBean  implements Serializable {
 
     private static final long serialVersionUID = 1L;
         
@@ -40,9 +40,7 @@ public class CustomerBean implements Serializable {
     }
 
     public void saveUser() {
-        
         customerdaoimpl.create(customer);
-
         customer=new demoCustomer();
     }
     public  void  deleteUser(){
