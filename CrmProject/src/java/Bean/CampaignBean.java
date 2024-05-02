@@ -17,11 +17,11 @@ import java.util.List;
  */
 @Named(value = "CampaingBean")
 @SessionScoped
-public class CampaignBean  implements BaseBean<Object>{
-    
+public class CampaignBean implements BaseBean<Object> {
+
     private Campaign campaign;
-    
-    private CampaignDaoImpl campaingDaoImpl;
+
+    private CampaignDaoImpl campaignDaoImpl;
 
     public Campaign getCampaign() {
         if (this.campaign == null) {
@@ -35,14 +35,14 @@ public class CampaignBean  implements BaseBean<Object>{
     }
 
     public CampaignDaoImpl getCampaingDaoImpl() {
-        if (this.campaingDaoImpl == null) {
-            campaingDaoImpl = new CampaignDaoImpl();
+        if (this.campaignDaoImpl == null) {
+            campaignDaoImpl = new CampaignDaoImpl();
         }
-        return campaingDaoImpl;
+        return campaignDaoImpl;
     }
 
     public void setCampaingDaoImpl(CampaignDaoImpl campaingDaoImpl) {
-        this.campaingDaoImpl = campaingDaoImpl;
+        this.campaignDaoImpl = campaingDaoImpl;
     }
 
     public CampaignBean() {
@@ -51,31 +51,29 @@ public class CampaignBean  implements BaseBean<Object>{
 
     public CampaignBean(Campaign campaign, CampaignDaoImpl campaingDaoImpl) {
         this.campaign = campaign;
-        this.campaingDaoImpl = campaingDaoImpl;
+        this.campaignDaoImpl = campaingDaoImpl;
     }
 
     @Override
     public void save() {
 
-        this.getCampaingDaoImpl().create(getCampaign());
+        this.getCampaingDaoImpl().create(this.getCampaign());
     }
 
     @Override
     public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.getCampaingDaoImpl().deleteById(this.getCampaign(), this.getCampaign().getId());
     }
 
     @Override
     public Object getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getCampaingDaoImpl().getByid(this.getCampaign(), this.getCampaign().getId());
     }
 
     @Override
     public List<Object> getList() {
+        //return  this.getCampaingDaoImpl().getList(getCampaign());
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    
-
 
 }
