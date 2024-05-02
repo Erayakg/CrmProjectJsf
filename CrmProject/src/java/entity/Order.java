@@ -12,33 +12,30 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  
     private long Id; 
     private LocalDateTime OrderDate;// Sipariş tarihi
-    private Address ShippingAddress ; // Gönderim adresi
-    private Address BillingAddress ; // Fatura adresi
-    private String Items ; // Sipariş kalemleri
+    private String ShippingAddress ; // Gönderim adresi
+    private String BillingAddress ; // Fatura adresi
     private float TotalAmount ; // Toplam tutar
     private boolean Status ; // Sipariş durumu
 
     public Order() {
     }
 
-    public Order(long Id) {
-        this.Id = Id;
-    }
-
-    public Order(long Id, LocalDateTime OrderDate, Address ShippingAddress, Address BillingAddress, String Items, float TotalAmount, boolean Status) {
+    public Order(long Id, LocalDateTime OrderDate, String ShippingAddress, String BillingAddress, float TotalAmount, boolean Status) {
         this.Id = Id;
         this.OrderDate = OrderDate;
         this.ShippingAddress = ShippingAddress;
         this.BillingAddress = BillingAddress;
-        this.Items = Items;
         this.TotalAmount = TotalAmount;
         this.Status = Status;
+    }
+    
+
+    public Order(long Id) {
+        this.Id = Id;
     }
 
     public long getId() {
@@ -57,28 +54,20 @@ public class Order {
         this.OrderDate = OrderDate;
     }
 
-    public Address getShippingAddress() {
+    public String getShippingAddress() {
         return ShippingAddress;
     }
 
-    public void setShippingAddress(Address ShippingAddress) {
+    public void setShippingAddress(String ShippingAddress) {
         this.ShippingAddress = ShippingAddress;
     }
 
-    public Address getBillingAddress() {
+    public String getBillingAddress() {
         return BillingAddress;
     }
 
-    public void setBillingAddress(Address BillingAddress) {
+    public void setBillingAddress(String BillingAddress) {
         this.BillingAddress = BillingAddress;
-    }
-
-    public String getItems() {
-        return Items;
-    }
-
-    public void setItems(String Items) {
-        this.Items = Items;
     }
 
     public float getTotalAmount() {
@@ -96,6 +85,10 @@ public class Order {
     public void setStatus(boolean Status) {
         this.Status = Status;
     }
-    
+
+   
+
+
+  
     
 }

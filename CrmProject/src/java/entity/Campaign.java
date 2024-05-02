@@ -1,15 +1,9 @@
 
 package entity;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 
 public class Campaign implements BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
     private String name;
     private String description;

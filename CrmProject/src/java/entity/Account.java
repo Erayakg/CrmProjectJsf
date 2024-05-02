@@ -4,7 +4,6 @@
  */
 package entity;
 
-import jakarta.mail.event.MailEvent;
 
 /**
  *
@@ -91,4 +90,5 @@ public abstract class Account implements BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+    
 }

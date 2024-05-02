@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 
 public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCustomer> {
-
+   
  
     @Override
     public void create(demoCustomer customer) {

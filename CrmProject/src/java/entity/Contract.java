@@ -4,9 +4,6 @@
  */
 package entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.util.Date;
 
@@ -14,10 +11,7 @@ import java.util.Date;
  *
  * @author baran
  */
-@Entity
 public class Contract implements BaseEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private  Date startDate;
@@ -72,6 +66,18 @@ public class Contract implements BaseEntity{
 
     public void setAmount(Long amount) {
         this.amount = amount;
+    }
+
+    public Contract(long id, String name, Date startDate, Date finishDate, String state, Long amount) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.state = state;
+        this.amount = amount;
+    }
+
+    public Contract() {
     }
     
     
