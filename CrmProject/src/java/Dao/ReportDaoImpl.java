@@ -4,43 +4,37 @@
  */
 package Dao;
 
-import Bean.BaseBeanImpl;
-import Bean.CampaignBean;
-import entity.Campaign;
+import entity.Report;
 import java.util.List;
 
 /**
  *
- * @author baran
+ * @author furka
  */
-public class CampaignDaoImpl implements DaoOperation<Campaign>{
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
+public class ReportDaoImpl extends AbstractDao implements DaoOperation<Report>{
 
     @Override
-    public void create(Campaign t) {
+    public void createTable(Report t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
+    public void create(Report t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Campaign> getList(Campaign t) {
+    public void deleteById(Report t, Long id) {
+         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Report> getList(Report t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void createTable(Campaign t) {
+    public Report getByid(Report t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

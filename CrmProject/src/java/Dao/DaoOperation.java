@@ -12,6 +12,8 @@ import java.util.List;
  */
 public interface  DaoOperation <T> {
     
+    public void createTable(T t);
+    
     public void create(T t);
     
     public void deleteById(T t,Long id);

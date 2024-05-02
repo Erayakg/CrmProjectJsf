@@ -4,43 +4,37 @@
  */
 package Dao;
 
-import Bean.BaseBeanImpl;
-import Bean.CampaignBean;
-import entity.Campaign;
+import entity.PersonalCustomer;
 import java.util.List;
 
 /**
  *
- * @author baran
+ * @author furka
  */
-public class CampaignDaoImpl implements DaoOperation<Campaign>{
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
+public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation<PersonalCustomer>{
 
     @Override
-    public void create(Campaign t) {
+    public void createTable(PersonalCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
+    public void create(PersonalCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Campaign> getList(Campaign t) {
+    public void deleteById(PersonalCustomer t, Long id) {
+         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<PersonalCustomer> getList(PersonalCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void createTable(Campaign t) {
+    public PersonalCustomer getByid(PersonalCustomer t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

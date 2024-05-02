@@ -17,18 +17,17 @@ import java.util.List;
  */
 @Named(value = "CustomerBean")
 @SessionScoped
-public class CustomerBean  implements Serializable {
+public class CustomerBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-        
+
     private demoCustomer customer;
-    
+
     private CustomerDaoImpl customerdaoimpl;
- 
-    
-    public CustomerBean(){
-        customer=new demoCustomer();
-        customerdaoimpl=new CustomerDaoImpl();
+
+    public CustomerBean() {
+        customer = new demoCustomer();
+        customerdaoimpl = new CustomerDaoImpl();
     }
 
     public demoCustomer getCustomer() {
@@ -40,16 +39,15 @@ public class CustomerBean  implements Serializable {
     }
 
     public void saveUser() {
-        customerdaoimpl.create(customer);
-        customer=new demoCustomer();
+
+        //customerdaoimpl.create(customer);
+        customerdaoimpl.getByid(customer, customer.getId());
     }
-    public  void  deleteUser(){
-        customerdaoimpl.getByid(customer, customer.getId());   
-        customer=new demoCustomer();
+
+    public void deleteUser() {
+        customerdaoimpl.getByid(customer, customer.getId());
+        customer = new demoCustomer();
 
     }
-    
-    
-    
-    
+
 }

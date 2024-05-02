@@ -4,43 +4,37 @@
  */
 package Dao;
 
-import Bean.BaseBeanImpl;
-import Bean.CampaignBean;
-import entity.Campaign;
+import entity.CompanyCustomer;
 import java.util.List;
 
 /**
  *
- * @author baran
+ * @author furka
  */
-public class CampaignDaoImpl implements DaoOperation<Campaign>{
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-    }
+public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<CompanyCustomer>{
 
     @Override
-    public void create(Campaign t) {
+    public void createTable(CompanyCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
+    public void create(CompanyCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Campaign> getList(Campaign t) {
+    public void deleteById(CompanyCustomer t, Long id) {
+         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<CompanyCustomer> getList(CompanyCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void createTable(Campaign t) {
+    public CompanyCustomer getByid(CompanyCustomer t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

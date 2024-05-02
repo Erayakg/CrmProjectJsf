@@ -24,12 +24,13 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCus
     public void create(demoCustomer customer) {
        
         try {
+            
             super.createEntity(customer);
         } catch (Exception ex) {
             System.out.println("error"+ex);
         }
     }
-
+    
     @Override
     public void deleteById(demoCustomer t, Long id) {
         super.delete(t, id);
@@ -57,7 +58,22 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCus
     @Override
     public demoCustomer getByid(demoCustomer t, Long id) {
         
-        return  (demoCustomer) super.returnObjectById(t, id);
+        Object returnObjectById = super.returnObjectById(t, id);
+        
+        return  null; 
        
     }
+
+    @Override
+    public void createTable(demoCustomer t) {
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+                System.out.println("error"+ ex);
+
+        }
+    }
+
+  
+    
 }

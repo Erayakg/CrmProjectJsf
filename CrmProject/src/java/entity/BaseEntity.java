@@ -4,11 +4,14 @@
  */
 package entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author baran
  */
-public interface BaseEntity {
+public interface BaseEntity extends Serializable{
+    
   public long  getId();
     
 }
