@@ -26,7 +26,7 @@ public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes>{
 
     @Override
     public void deleteById(Notes t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override

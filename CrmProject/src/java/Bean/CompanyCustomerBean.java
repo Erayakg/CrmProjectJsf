@@ -1,3 +1,4 @@
+package Bean;
 
 import Bean.BaseBean;
 import Dao.CompanyCustomerDaoImpl;

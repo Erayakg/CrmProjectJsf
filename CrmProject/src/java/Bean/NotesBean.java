@@ -17,7 +17,8 @@ import java.util.List;
 @Named(value = "NotesBean")
 @SessionScoped
 public class NotesBean implements BaseBean<Object> {
-     private Notes notes;
+
+    private Notes notes;
 
     private NotesDaoImpl notesDaoImpl;
 

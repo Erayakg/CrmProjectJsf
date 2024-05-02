@@ -16,8 +16,8 @@ import java.util.List;
  */
 @Named(value = "ContractBean")
 @SessionScoped
-public class FeedbackBean implements BaseBean<Object>{
-    
+public class FeedbackBean implements BaseBean<Object> {
+
     private Feedback feedback;
 
     private FeedbackDaoImpl feedbackDaoImpl;

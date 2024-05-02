@@ -18,7 +18,7 @@ import java.util.List;
 @SessionScoped
 public class ContactBean implements BaseBean<Object> {
 
-  /*  private Contact contact;
+    /*  private Contact contact;
 
     private ContactDaoImpl contactDaoImpl;
 
