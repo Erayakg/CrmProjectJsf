@@ -3,19 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bean;
+import java.io.Serial;
 import java.util.List;
+import java.io.Serializable;
+
 
 /**
  *
  * @author baran
  */
-public interface BaseBean<Dao, Entity> {
+public interface BaseBean<Entity>  extends Serializable{
 
-    public void save(Dao dao, Entity entity);
+    public void save();
 
-    public void delete(Dao dao, Entity entity);
+    public void delete();
 
-    public Entity getById(Dao dao, Entity entity);
+    public Entity getById();
 
-    public List<Entity> getList(Dao dao, Entity entity);
+    public List<Entity> getList();
 }

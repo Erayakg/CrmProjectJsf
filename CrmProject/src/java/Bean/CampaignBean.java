@@ -9,6 +9,7 @@ import entity.Campaign;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -16,8 +17,10 @@ import java.io.Serializable;
  */
 @Named(value = "CampaingBean")
 @SessionScoped
-public class CampaignBean extends BaseBeanImpl implements Serializable {
+public class CampaignBean  implements BaseBean<Object>{
+    
     private Campaign campaign;
+    
     private CampaignDaoImpl campaingDaoImpl;
 
     public Campaign getCampaign() {
@@ -50,6 +53,29 @@ public class CampaignBean extends BaseBeanImpl implements Serializable {
         this.campaign = campaign;
         this.campaingDaoImpl = campaingDaoImpl;
     }
+
+    @Override
+    public void save() {
+
+        this.getCampaingDaoImpl().create(getCampaign());
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public Object getById() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Object> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     
+
 
 }
