@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bean;
-import java.io.Serial;
 import java.util.List;
 import java.io.Serializable;
 

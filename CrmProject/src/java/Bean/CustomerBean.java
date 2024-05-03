@@ -9,13 +9,12 @@ import entity.demoCustomer;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
  * @author gbara
  */
-@Named(value = "CustomerBean")
+@Named
 @SessionScoped
 public class CustomerBean implements Serializable {
 

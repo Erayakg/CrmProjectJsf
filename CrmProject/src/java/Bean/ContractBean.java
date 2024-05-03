@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author furka
  */
-@Named(value = "ContractBean")
+@Named
 @SessionScoped
 public class ContractBean implements BaseBean<Object> {
 

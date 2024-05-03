@@ -8,11 +8,14 @@ import Util.SqlGenerator;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import Util.DbConnect;
-import jakarta.resource.cci.ResultSet;
+
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  *
@@ -23,6 +26,14 @@ public abstract class AbstractDao extends DbConnect {
     Connection connection;
 
     SqlGenerator generator;
+
+    public Connection getConnection() {
+        if(this.connection==null){
+            return super.getConnect();
+        }
+        return connection;
+    }
+    
     
      
     public void createTableConn(Object o) throws Exception{
@@ -32,6 +43,7 @@ public abstract class AbstractDao extends DbConnect {
                 String sql=generator.returnCreateSql();
                 
                 connection=this.getConnect();
+    }
 
     public void createEntity(Object o) throws Exception {
 
@@ -57,22 +69,7 @@ public abstract class AbstractDao extends DbConnect {
                 }
     }
      
-    public void createEntity(Object o) throws Exception{
-        
-                generator=new SqlGenerator(o);
-                
-                String sql=generator.returnInsertSql();
-                
-                connection=this.getConnect();
-
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                       System.out.println(sql);
-                    int result = preparedStatement.executeUpdate();
-                    preparedStatement.close();
-                } catch (SQLException ex) {
-                        System.out.println("error"+ex);
-                }
-    }
+ 
 
     public void delete(Object o, Long id) {
 
@@ -126,22 +123,36 @@ public abstract class AbstractDao extends DbConnect {
 
         return table;
     }
-       public Object returnObjectById(Object obj, Long id) {
+    
+    
+    public  Object returnObjectById(Object o ,long  id)throws SQLException{
+        Object object=null;
+        
+        connection=this.getConnect();
+        generator= new SqlGenerator(object);
+        String sql = generator.returnSelectByIdSql(id);
+        
+        
+        Statement st =getConnection().createStatement();
+        
+        ResultSet rs =st.executeQuery(sql);
+        object=rs.getObject(1);
+        System.out.println(object.toString());
+        
+        return  null;
+        
+        
+    }
+    
+      /* public Object returnObjectById(Object obj, Long id) throws SQLException {
            
-    Object object = null;
-
-    public Object returnObjectById(Object obj, Long id) {
         Object object = null;
 
         connection = this.getConnect();
 
-        try {
             generator = new SqlGenerator(obj);
         
         String sql = generator.returnSelectByIdSql(id);
-
-            // id'ye göre select sorgusu oluştur
-            String sql = generator.returnSelectByIdSql(id);
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
@@ -155,19 +166,22 @@ public abstract class AbstractDao extends DbConnect {
                 System.out.println("Error: " + ex.getMessage());
             java.sql.ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                
-                int columnCount = resultSet.getMetaData().getColumnCount();
-                object = resultSet.getObject(1);
-                
-                 for (int i = 1; i <= columnCount; i++) {
-                    String columnName = resultSet.getMetaData().getColumnName(i);
-                    Object columnValue = resultSet.getObject(i);
-                    System.out.println("Column: " + columnName + ", Value: " + columnValue);
+                try {
+                    if (resultSet.next()) {
+                        
+                        int columnCount = resultSet.getMetaData().getColumnCount();
+                        object = resultSet.getObject(1);
+                        
+                        for (int i = 1; i <= columnCount; i++) {
+                            String columnName = resultSet.getMetaData().getColumnName(i);
+                            Object columnValue = resultSet.getObject(i);
+                            System.out.println("Column: " + columnName + ", Value: " + columnValue);
+                        }
+                        
+                        
+                    }   } catch (SQLException ex1) {
+                    Logger.getLogger(AbstractDao.class.getName()).log(Level.SEVERE, null, ex1);
                 }
-                
-                
-            }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -176,5 +190,5 @@ public abstract class AbstractDao extends DbConnect {
     }
 
     return object;
-    }
+    }*/
 }

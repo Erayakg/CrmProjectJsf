@@ -6,7 +6,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
 
-@Named(value = "CompanyCustomerBean")
+@Named
 @SessionScoped
 public class CompanyCustomerBean implements BaseBean<Object> {
 

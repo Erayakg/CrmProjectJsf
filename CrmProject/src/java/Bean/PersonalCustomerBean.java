@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author furka
  */
-@Named(value = "PersonalCustomerBean")
+@Named
 @SessionScoped
 public class PersonalCustomerBean implements BaseBean<Object> {
 

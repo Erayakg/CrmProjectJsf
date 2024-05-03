@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author baran
  */
-@Named(value = "InvoiceBean")
+@Named
 @SessionScoped
 public class InvoiceBean implements BaseBean<Object>{
 

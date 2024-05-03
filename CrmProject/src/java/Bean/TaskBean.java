@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author furka
  */
-@Named(value = "TaskBean")
+@Named
 @SessionScoped
 public class TaskBean implements BaseBean<Object> {
      private Task task;
@@ -23,7 +23,7 @@ public class TaskBean implements BaseBean<Object> {
 
     public Task getTask() {
         if (this.task == null) {
-            task = new Task();
+            //task = new Task();
         }
         return task;
     }

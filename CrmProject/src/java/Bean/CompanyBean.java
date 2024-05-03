@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author baran
  */
-@Named(value = "CustomerBean")
+@Named(value = "customerBean")
 @SessionScoped
 public class CompanyBean implements BaseBean<Object> {
 

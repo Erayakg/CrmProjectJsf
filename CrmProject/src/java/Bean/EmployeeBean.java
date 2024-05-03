@@ -7,6 +7,7 @@ package Bean;
 import Dao.EmployeeDaoImpl;
 import entity.Employee;
 import jakarta.enterprise.context.SessionScoped;
+
 import jakarta.inject.Named;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
  *
  * @author baran
  */
-@Named(value = "EmployeeBean")
+@Named
 @SessionScoped
 public class EmployeeBean implements BaseBean<Object> {
 

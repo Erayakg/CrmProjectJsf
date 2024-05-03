@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author baran
  */
-@Named(value = "CampaingBean")
+@Named
 @SessionScoped
 public class CampaignBean implements BaseBean<Object> {
 

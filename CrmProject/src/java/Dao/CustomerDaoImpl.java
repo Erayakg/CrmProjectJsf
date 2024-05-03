@@ -5,11 +5,8 @@
 package Dao;
 
 import entity.demoCustomer;
-import jakarta.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -58,7 +55,7 @@ public class CustomerDaoImpl extends AbstractDao implements DaoOperation<demoCus
     @Override
     public demoCustomer getByid(demoCustomer t, Long id) {
         
-        Object returnObjectById = super.returnObjectById(t, id);
+        //Object returnObjectById = super.returnObjectById(t, id);
         
         return  null; 
        
