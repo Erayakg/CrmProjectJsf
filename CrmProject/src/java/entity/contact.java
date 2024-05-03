@@ -8,6 +8,11 @@ package entity;
  *
  * @author baran
  */
-public class contact {
+public class Contact implements BaseEntity{
+
+    @Override
+    public long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

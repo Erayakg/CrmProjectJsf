@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  *
  * @author baran
  */
-public class task implements BaseEntity{
+public class Task implements BaseEntity{
     private Long id;
     private  String title;
     private  String descirption;
@@ -59,7 +59,7 @@ public class task implements BaseEntity{
         this.lastUpdate = lastUpdate;
     }
 
-    public task(Long id, String title, String descirption, LocalDateTime duaDate, LocalDateTime lastUpdate) {
+    public Task(Long id, String title, String descirption, LocalDateTime duaDate, LocalDateTime lastUpdate) {
         this.id = id;
         this.title = title;
         this.descirption = descirption;

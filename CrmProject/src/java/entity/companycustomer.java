@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author baran
  */
-public class companycustomer extends Customer{
+public class Companycustomer extends Customer{
     private String companyInformation;
 
     public String getCompanyInformation() {
@@ -21,14 +21,14 @@ public class companycustomer extends Customer{
         this.companyInformation = companyInformation;
     }
 
-    public companycustomer(String companyInformation, String surName, int zipCode, String address, String country, String city, List<Notes> notes, Long id, String name, String phone, String Address, String mail, String password) {
+    public Companycustomer(String companyInformation, String surName, int zipCode, String address, String country, String city, List<Notes> notes, Long id, String name, String phone, String Address, String mail, String password) {
         super(surName, zipCode, address, country, city, notes, id, name, phone, Address, mail, password);
         this.companyInformation = companyInformation;
     }
 
     
 
-    public companycustomer() {
+    public Companycustomer() {
     }
     
 }
