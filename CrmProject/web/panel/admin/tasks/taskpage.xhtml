@@ -1,39 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Admin Task Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html"
-                        xmlns:ui="http://java.sun.com/jsf/facelets"
-                        template="/panel/template/adminnavbar.xhtml">
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="taskpage.css" />
                 <div id="container">
                     <h1>Tasks</h1>
                     <ul id="tasks">
-                        <li>
-                            <h2>John Doe</h2>
-                            <p><strong>Email:</strong> john.doe@example.com</p>
-                            <p><strong>Description:</strong> This is a sample description.</p>
-                        </li>
-                        <li>
-                            <h2>Baran Güçlü</h2>
-                            <p><strong>Email:</strong> baran@example.com</p>
-                            <p><strong>Description:</strong> This is a sample description.</p>
-                        </li>
-                        <li>
-                            <h2>Eray Akgül</h2>
-                            <p><strong>Email:</strong> eray@example.com</p>
-                            <p><strong>Description:</strong> This is a sample description.</p>
-                        </li>
-                        <!-- Add more tasks here -->
+                        <ui:repeat value="#{tasksBean.tasks}" var="task">
+                            <li>
+                                <h2>#{task.title}</h2>
+                                <p><strong>Email:</strong> #{task.email}</p>
+                                <p><strong>Description:</strong> #{task.description}</p>
+                                <p><strong>Due Date: </strong> #{task.dueDate}</p>
+                                <p><strong>Last Update: </strong> #{task.lastUpdate}</p>
+                            </li>
+                        </ui:repeat>
                     </ul>
                 </div>
             </ui:define>

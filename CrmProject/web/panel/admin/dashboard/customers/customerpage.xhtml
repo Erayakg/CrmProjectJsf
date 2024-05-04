@@ -26,18 +26,22 @@
                                     <h:commandButton id="searchButton" value="Search" action="#{customerBean.searchCustomers}" styleClass="search-button"/>
                                 </div>
                             </h:form>
-                            <h:dataTable value="#{customerBean.customers}" var="customer" styleClass="customers-table" headerClass="customers-table-header" rowClasses="customers-table-row-odd,customers-table-row-even">
+                            <h:dataTable value="#{customerBean.customer}" var="customer" styleClass="customers-table" headerClass="customers-table-header" rowClasses="customers-table-row-odd,customers-table-row-even">
                                 <h:column>
                                     <f:facet name="header">Customer ID</f:facet>
-                                    #{customer.id}
+                                    #{customerBean.customer.id}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Name</f:facet>
-                                    #{customer.name}
+                                    #{customerBean.customer.name}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Surname</f:facet>
+                                    #{customerBean.customer.surname}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Email</f:facet>
-                                    #{customer.email}
+                                    #{customer.mail}
                                 </h:column>
                                 <h:column>
                                     <f:facet name="header">Phone</f:facet>

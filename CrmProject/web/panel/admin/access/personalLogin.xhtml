@@ -21,11 +21,11 @@
                         <h:form id="admin-login-form">
                             <div class="form-group">
                                 <label for="personnel-service-number">Personel Service Number</label>
-                                <h:inputText id="personnel-service-number" value="#{personalLoginBean.personnelServiceNumber}" required="true" requiredMessage="Personel service number is required"/>
+                                <h:inputText id="personnel-service-number" value="#{employeeBean.employee.serviceNumber}" required="true" requiredMessage="Personel service number is required"/>
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <h:inputSecret id="password" value="#{personalLoginBean.password}" required="true" requiredMessage="Password is required"/>
+                                <h:inputSecret id="password" value="#{employeeBean.employee.password}" required="true" requiredMessage="Password is required"/>
                             </div>
                             <div class="form-group">
                                 <h:commandButton value="Login" action="#{personalLoginBean.login}" styleClass="cta-button"/>
