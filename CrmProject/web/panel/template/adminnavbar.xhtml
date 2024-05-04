@@ -10,24 +10,36 @@
         <title>Admin Panel</title>
         <h:outputStylesheet library="css" name="adminnavbar.css"/>
     </h:head>
-    <header class="header">
-        <div class="logo">Admin Panel</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/CrmProject/panel//admin/dashboard/dashboard.xhtml">Dashboard</a></li>
-                <li>
-                    Contact
-                    <ul class="submenu">
-                        <li><a href="/CrmProject/panel//admin/contact/feedbacks/feedbackpage.xhtml">Feedbacks</a></li>
-                        <li><a href="/CrmProject/panel//admin/contact/reports/reportpage.xhtml">Reports</a></li>
-                    </ul>
-                </li>
-                <li><a href="/CrmProject/panel//admin/products/productpage.xhtml">Products</a></li>
-                <li><a href="/CrmProject/panel//admin/tasks/taskpage.xhtml">Tasks</a></li>
-                <li><a href="/CrmProject/panel//admin/access/personalLogin.xhtml">Personal Login</a></li>
-                <li><a href="/CrmProject/panel//admin/access/personalRegister.xhtml">Personal Register</a></li>
-            </ul>
-        </nav>
-    </header>
-    <ui:insert name="content"></ui:insert>
+    <body>
+        <header class="header">
+            <div class="logo">Admin Panel</div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="#{view.viewId.contains('/panel/admin/dashboard/') ? 'active' : ''}">
+                        <h:link value="Dashboard" outcome="/panel/admin/dashboard/dashboard.xhtml" />
+                    </li>
+                    <li class="#{view.viewId.contains('/panel/admin/contact/') ? 'active' : ''}">
+                        Contact
+                        <ul class="submenu">
+                            <li><h:link value="Feedbacks" outcome="/panel/admin/contact/feedbacks/feedbackpage.xhtml" /></li>
+                            <li><h:link value="Reports" outcome="/panel/admin/contact/reports/reportpage.xhtml" /></li>
+                        </ul>
+                    </li>
+                    <li class="#{view.viewId.contains('/panel/admin/products/productpage.xhtml') ? 'active' : ''}">
+                        <h:link value="Products" outcome="/panel/admin/products/productpage.xhtml" />
+                    </li>
+                    <li class="#{view.viewId.contains('/panel/admin/tasks/taskpage.xhtml') ? 'active' : ''}">
+                        <h:link value="Tasks" outcome="/panel/admin/tasks/taskpage.xhtml" />
+                    </li>
+                    <li class="#{view.viewId.contains('/panel/admin/access/personalLogin.xhtml') ? 'active' : ''}">
+                        <h:link value="Personal Login" outcome="/panel/admin/access/personalLogin.xhtml" />
+                    </li>
+                    <li class="#{view.viewId.contains('/panel/admin/access/personalRegister.xhtml') ? 'active' : ''}">
+                        <h:link value="Personal Register" outcome="/panel/admin/access/personalRegister.xhtml" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <ui:insert name="content"></ui:insert>
+    </body>
 </html>

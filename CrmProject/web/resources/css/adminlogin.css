@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   border-color: #4CAF50;
 }
 
-.form-group button[type="submit"] {
+.cta-button {
   display: block;
   width: 100%;
   background-color: #4CAF50;
@@ -67,7 +67,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   transition: all 0.3s ease-in-out;
 }
 
-.form-group button[type="submit"]:hover {
+.cta-button:hover {
   background-color: #3e8e41;
 }
 
