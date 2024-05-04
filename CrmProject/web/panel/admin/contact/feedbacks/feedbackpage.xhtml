@@ -1,55 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Admin Feedbacks Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html"
-                        xmlns:ui="http://java.sun.com/jsf/facelets"
-                        template="/panel/template/adminnavbar.xhtml">
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="feedbackpage.css" />
                 <div id="content">
                     <div class="feedbacks-container">
-                        <div class="feedback">
-                            <div class="feedback-header">
-                                <div class="name">John Doe</div>
-                                <div class="date">01/01/2022</div>
+                        <ui:repeat value="#{feedbacksBean.feedbacks}" var="feedback">
+                            <div class="feedback">
+                                <div class="feedback-header">
+                                    <div class="name">#{feedback.name}</div>
+                                    <div class="date">#{feedback.date}</div>
+                                </div>
+                                <div class="feedback-body">#{feedback.desciprtion}</div>
+                                <h:commandButton value="Reply" styleClass="reply-button" action="#{feedbacksBean.toggleReplyForm(feedback.id)}"/>
+                                <h:panelGroup rendered="#{feedback.replyVisible}">
+                                    <h:form styleClass="reply-form">
+                                        <h:inputTextarea value="#{feedbacksBean.replyMessage}" styleClass="reply-textarea"/>
+                                        <h:commandButton value="Send" action="#{feedbacksBean.sendReply(feedback.id)}" styleClass="send-button"/>
+                                    </h:form>
+                                </h:panelGroup>
                             </div>
-                            <div class="feedback-body">This is a sample feedback from John Doe.</div>
-                            <button class="reply-button" onclick="toggleReplyForm(this)">Reply</button>
-                            <div class="reply-form-container" style="display: none;">
-                                <form class="reply-form">
-                                    <textarea name="reply-message"></textarea>
-                                    <button type="submit">Send</button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="feedback">
-                            <div class="feedback-header">
-                                <div class="name">John Doe</div>
-                                <div class="date">01/01/2022</div>
-                            </div>
-                            <div class="feedback-body">This is a sample feedback from John Doe.</div>
-                            <button class="reply-button" onclick="toggleReplyForm(this)">Reply</button>
-                            <div class="reply-form-container" style="display: none;">
-                                <form class="reply-form">
-                                    <textarea name="reply-message"></textarea>
-                                    <button type="submit">Send</button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- Add more feedbacks here -->
+                        </ui:repeat>
                     </div>
                 </div>
+                <h:outputScript library="js" name="feedbackpage.js" />
             </ui:define>
         </ui:composition> 
-
-        <h:outputScript library="js" name="feedbackpage.js" />
     </h:body>
 </html>

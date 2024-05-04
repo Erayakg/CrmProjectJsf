@@ -2,100 +2,77 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Admin Product Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-
-        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html"
-                        xmlns:ui="http://java.sun.com/jsf/facelets"
-                        template="/panel/template/adminnavbar.xhtml">
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="productpage.css" />
-                <div class="container">
-                    <h1>Product List</h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product Name</th>
-                                <th>Description</th>
-                                <th>Price</th>
-                                <th>Stock Quantity</th>
-                                <th>Created Date</th>
-                                <th>Last Modified Date</th>
-                                <th>Is Active? </th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Product listesi burada listelenir -->
-                            <tr data-product-id="1">
-                                <td>Product 1</td>
-                                <td>This is a description of Product 1.</td>
-                                <td>$100</td>
-                                <td>200</td>
-                                <td>25.04.2024/10:32:50</td>
-                                <td>25.04.2024/10:32:50</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="edit-button">Edit</button>
-                                    <button class="delete-button">Delete</button>
-                                </td>
-                            </tr>
-                            <tr data-product-id="2">
-                                <td>Product 2</td>
-                                <td>This is a description of Product 2.</td>
-                                <td>$200</td>
-                                <td>200</td>
-                                <td>25.04.2024/10:32:50</td>
-                                <td>25.04.2024/10:32:50</td>
-                                <td>Active</td>
-                                <td>
-                                    <button class="edit-button">Edit</button>
-                                    <button class="delete-button">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div id="edit-modal" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h2>Edit Product</h2>
-                            <form>
-                                <input type="hidden" id="product-id" name="product-id"/>
-                                <label for="product-name-edit">Product Name:</label>
-                                <input type="text" id="product-name-edit" name="product-name"/>
-                                <label for="product-price-edit">Price:</label>
-                                <input type="number" id="product-price-edit" name="product-price"/>
-                                <button type="submit">Save Changes</button>
-                            </form>
-                        </div>
+                <h:form>
+                    <div class="container">
+                        <h1>Product List</h1>
+                        <h:dataTable value="#{productsBean.products}" var="product" styleClass="products-table">
+                            <h:column>
+                                <f:facet name="header">Product Name</f:facet>
+                                #{product.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Description</f:facet>
+                                #{product.description}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Price</f:facet>
+                                #{product.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Stock Quantity</f:facet>
+                                #{product.stock}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Created Date</f:facet>
+                                #{product.createdDate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Last Modified Date</f:facet>
+                                #{product.lastModifiedDate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Is Active?</f:facet>
+                                #{product.active}
+                            </h:column>
+                            <h:column>
+                                <h:commandButton value="Edit" action="#{productsBean.editProduct(product.id)}" styleClass="edit-button"/>
+                                <h:commandButton value="Delete" action="#{productsBean.deleteProduct(product.id)}" styleClass="delete-button"/>
+                            </h:column>
+                        </h:dataTable>
+
+                        <h2>Add Product</h2>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="product-name" value="Product Name:"/>
+                            <h:inputText id="product-name" value="#{productsBean.newProduct.name}" />
+
+                            <h:outputLabel for="product-description" value="Description:"/>
+                            <h:inputTextarea id="product-description" value="#{productsBean.newProduct.description}" />
+
+                            <h:outputLabel for="product-price" value="Price:"/>
+                            <h:inputText id="product-price" value="#{productsBean.newProduct.price}" />
+
+                            <h:outputLabel for="product-stock" value="Stock Quantity:"/>
+                            <h:inputText id="product-stock" value="#{productsBean.newProduct.stock}" />
+
+                            <h:outputLabel for="product-active" value="Is Active:"/>
+                            <h:selectBooleanCheckbox id="product-active" value="#{productsBean.newProduct.active}" />
+
+                            <h:commandButton value="Add Product" action="#{productsBean.addProduct()}" styleClass="add-button"/>
+                        </h:panelGrid>
                     </div>
-                    <h2>Add Product</h2>
-                    <form>
-                        <label for="product-name">Product Name: </label>
-                        <input type="text" id="product-name" name="product-name"/>
-                        <label for="product-price">Description: </label>
-                        <input type="number" id="product-price" name="product-price"/>
-                        <label for="product-description">Price: </label>
-                        <textarea id="product-description" name="product-description"></textarea>
-                        <label for="product-description">Stock Quantity: </label>
-                        <textarea id="product-description" name="product-description"></textarea>
-                        <label for="product-description">Created Date: </label>
-                        <textarea id="product-description" name="product-description"></textarea>
-                        <label for="product-description">Last Modified Date: </label>
-                        <textarea id="product-description" name="product-description"></textarea>
-                        <label for="product-description">Is Active: </label>
-                        <textarea id="product-description" name="product-description"></textarea>
-                        <button type="submit">Add Product</button>
-                    </form>
-                </div>
+                </h:form>
             </ui:define>
         </ui:composition> 
         <h:outputScript library="js" name="productpage.js" />
     </h:body>
-
 </html>
