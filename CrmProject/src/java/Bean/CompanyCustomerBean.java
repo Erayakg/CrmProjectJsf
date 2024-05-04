@@ -8,12 +8,21 @@ import java.util.List;
 
 @Named
 @SessionScoped
-public class CompanyCustomerBean implements BaseBean<Object> {
+public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
 
     private CompanyCustomer companycustomer;
 
     private CompanyCustomerDaoImpl companycustomerDaoImpl;
 
+     public CompanyCustomerBean() {
+
+    }
+
+    public CompanyCustomerBean(CompanyCustomer companycustomer, CompanyCustomerDaoImpl companycustomerDaoImpl) {
+        this.companycustomer = companycustomer;
+        this.companycustomerDaoImpl = companycustomerDaoImpl;
+    }
+    
     public CompanyCustomer getCompanyCustomer() {
         if (this.companycustomer == null) {
             companycustomer = new CompanyCustomer();
@@ -36,15 +45,7 @@ public class CompanyCustomerBean implements BaseBean<Object> {
         this.companycustomerDaoImpl = companycustomerDaoImpl;
     }
 
-    public CompanyCustomerBean() {
-
-    }
-
-    public CompanyCustomerBean(CompanyCustomer companycustomer, CompanyCustomerDaoImpl companycustomerDaoImpl) {
-        this.companycustomer = companycustomer;
-        this.companycustomerDaoImpl = companycustomerDaoImpl;
-    }
-
+   
     @Override
     public void save() {
 
@@ -57,12 +58,12 @@ public class CompanyCustomerBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
-        return this.companycustomerDaoImpl.getByid(this.getCompanyCustomer(), getCompanyCustomer().getId());
+    public List<CompanyCustomer> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Object> getList() {
+    public CompanyCustomer getById() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

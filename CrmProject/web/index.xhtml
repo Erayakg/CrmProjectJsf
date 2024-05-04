@@ -7,13 +7,13 @@
 <h:body>
     <h3>Kullanıcı Bilgi Formu</h3>
     <h:form> 
-        ID: <h:inputText id="id" value="#{CustomerBean.customer.id}" />
+        ID: <h:inputText id="id" value="#{demoCustomerBean.customer.id}" />
         <br/>
-        Adı: <h:inputText id="name" value="#{CustomerBean.customer.name}" />
+        Adı: <h:inputText id="name" value="#{demoCustomerBean.customer.name}" />
         <br/>
-        Soyadı: <h:inputText id="surname" value="#{CustomerBean.customer.surname}" />
+        Soyadı: <h:inputText id="surname" value="#{demoCustomerBean.customer.surname}" />
         <br/>
-        <h:commandButton value="Kaydet" action="#{CustomerBean.saveUser()}" />
+        <h:commandButton value="Kaydet" action="#{demoCustomerBean.saveUser()}" />
     </h:form>
 </h:body>
 </html>

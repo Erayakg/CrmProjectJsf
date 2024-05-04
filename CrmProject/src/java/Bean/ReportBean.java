@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class ReportBean implements BaseBean<Object> {
+public class ReportBean implements BaseBean<Report> {
 
     private Report report;
 
@@ -65,12 +65,12 @@ public class ReportBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Report getById() {
         return this.reportDaoImpl.getByid(this.getReport(), getReport().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Report> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

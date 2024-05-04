@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class CampaignBean implements BaseBean<Object> {
+public class CampaignBean implements BaseBean<Campaign> {
 
     private Campaign campaign;
 
@@ -65,14 +65,15 @@ public class CampaignBean implements BaseBean<Object> {
         this.getCampaingDaoImpl().deleteById(this.getCampaign(), this.getCampaign().getId());
     }
 
+ 
     @Override
-    public Object getById() {
-        return this.getCampaingDaoImpl().getByid(this.getCampaign(), this.getCampaign().getId());
+    public List<Campaign> getList() {
+        //return  this.getCampaingDaoImpl().getList(getCampaign());
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Object> getList() {
-        //return  this.getCampaingDaoImpl().getList(getCampaign());
+    public Campaign getById() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

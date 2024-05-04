@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class OrderBean implements BaseBean<Object> {
+public class OrderBean implements BaseBean<Order> {
 
     private Order order;
 
@@ -65,12 +65,12 @@ public class OrderBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Order getById() {
         return this.orderDaoImpl.getByid(this.getOrder(), getOrder().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Order> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

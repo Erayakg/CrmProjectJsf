@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class TaskBean implements BaseBean<Object> {
+public class TaskBean implements BaseBean<Task> {
      private Task task;
 
     private TaskDaoImpl taskDaoImpl;
@@ -64,12 +64,12 @@ public class TaskBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Task getById() {
         return this.taskDaoImpl.getByid(this.getTask(), getTask().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Task> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

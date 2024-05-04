@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class InvoiceBean implements BaseBean<Object>{
+public class InvoiceBean implements BaseBean<Invoice>{
 
     private Invoice Invoice;
     private InvoiceDaoImpl invoiceDaoImpl;
@@ -54,12 +54,12 @@ public class InvoiceBean implements BaseBean<Object>{
     }
 
     @Override
-    public Object getById() {
+    public Invoice getById() {
         return this.getInvoiceDaoImpl().getByid(this.getInvoice(), this.getInvoice().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Invoice> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
