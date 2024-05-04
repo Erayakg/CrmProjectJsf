@@ -14,9 +14,9 @@ import java.util.List;
  *
  * @author baran
  */
-@Named(value = "customerBean")
+@Named
 @SessionScoped
-public class CompanyBean implements BaseBean<Object> {
+public class CompanyBean implements BaseBean<Company> {
 
     private Company Company;
     private CompanyDaoImpl companyDaoImpl;
@@ -53,13 +53,14 @@ public class CompanyBean implements BaseBean<Object> {
         this.getCompanyDaoImpl().deleteById(this.getCompany(), this.getCompany().getId());
     }
 
+
     @Override
-    public Object getById() {
-        return this.getCompanyDaoImpl().getByid(this.getCompany(), this.getCompany().getId());
+    public List<Company> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Object> getList() {
+    public Company getById() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

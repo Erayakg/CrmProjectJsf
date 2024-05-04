@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class ProductBean implements BaseBean<Object> {
+public class ProductBean implements BaseBean<Product> {
 
     private Product product;
 
@@ -65,12 +65,12 @@ public class ProductBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Product getById() {
         return this.productDaoImpl.getByid(this.getProduct(), getProduct().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Product> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

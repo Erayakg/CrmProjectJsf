@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class ContactBean implements BaseBean<Object> {
+public class ContactBean implements BaseBean<Contact> {
 
     private Contact contact;
 
@@ -65,12 +65,12 @@ public class ContactBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Contact getById() {
         return this.contactDaoImpl.getByid(this.getContact(), getContact().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Contact> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

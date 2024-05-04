@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class FeedbackBean implements BaseBean<Object> {
+public class FeedbackBean implements BaseBean<Feedback> {
 
     private Feedback feedback;
 
@@ -65,12 +65,12 @@ public class FeedbackBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Feedback getById() {
         return this.feedbackDaoImpl.getByid(this.getFeedback(), getFeedback().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Feedback> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

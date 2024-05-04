@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class ContractBean implements BaseBean<Object> {
+public class ContractBean implements BaseBean<Contract> {
 
     private Contract contract;
 
@@ -65,12 +65,12 @@ public class ContractBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Contract getById() {
         return this.contractDaoImpl.getByid(this.getContract(), getContract().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Contract> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

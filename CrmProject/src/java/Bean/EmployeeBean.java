@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class EmployeeBean implements BaseBean<Object> {
+public class EmployeeBean implements BaseBean<Employee> {
 
     private Employee employee;
     private EmployeeDaoImpl employeeDaoImpl;
@@ -50,12 +50,12 @@ public class EmployeeBean implements BaseBean<Object> {
     }
 
     @Override
-    public Object getById() {
+    public Employee getById() {
         return this.getEmployeeDaoImpl().getByid(getEmployee(), this.getEmployee().getId());
     }
 
     @Override
-    public List<Object> getList() {
+    public List<Employee> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

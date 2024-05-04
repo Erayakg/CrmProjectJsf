@@ -5,10 +5,12 @@
 package Bean;
 
 import Dao.CustomerDaoImpl;
+import entity.Customer;
 import entity.demoCustomer;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -16,37 +18,26 @@ import java.io.Serializable;
  */
 @Named
 @SessionScoped
-public class CustomerBean implements Serializable {
+public class CustomerBean  implements  BaseBean<Customer>{
 
-    private static final long serialVersionUID = 1L;
-
-    private demoCustomer customer;
-
-    private CustomerDaoImpl customerdaoimpl;
-
-    public CustomerBean() {
-        customer = new demoCustomer();
-        customerdaoimpl = new CustomerDaoImpl();
+    @Override
+    public void save() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public demoCustomer getCustomer() {
-        return customer;
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void setCustomer(demoCustomer customer) {
-        this.customer = customer;
+    @Override
+    public Customer getById() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void saveUser() {
-
-        //customerdaoimpl.create(customer);
-        customerdaoimpl.getByid(customer, customer.getId());
-    }
-
-    public void deleteUser() {
-        customerdaoimpl.getByid(customer, customer.getId());
-        customer = new demoCustomer();
-
+    @Override
+    public List<Customer> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
