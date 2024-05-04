@@ -1,12 +1,7 @@
-/* 
-    Created on : Apr 27, 2024, 10:50:07 AM
-    Author     : gbara
-*/
-
 /* Header Styles */
 .header {
-    background-color: #333;
-    color: #fff;
+    background-color: #2C3E50; /* Dark blue background */
+    color: #ECF0F1; /* Light grey text */
     padding: 10px 0;
     text-align: center;
 }
@@ -29,14 +24,25 @@
     position: relative;
 }
 
+.nav-links li.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px; /* Height of the underline */
+    background-color: #18BC9C; /* Cyan color for active underline */
+    position: absolute;
+    left: 0;
+    bottom: -10px; /* Adjusts position of the underline */
+}
+
 .nav-links a {
     text-decoration: none;
-    color: #fff;
+    color: #ECF0F1; /* Consistent text color for all links */
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #b0b0b0; /* Hover color */
+    color: #95A5A6; /* Light grey text on hover */
 }
 
 .submenu {
@@ -44,32 +50,32 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #333; /* Dropdown background color */
-    width: auto; /* Öğenin içeriğine göre genişler */
-    min-width: 200px; /* Minimum genişlik garantisi */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #34495E; /* Darker shade for submenu */
+    width: auto; /* Width based on content */
+    min-width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Stronger shadow for better visibility */
     z-index: 1000;
     padding: 0;
     border-radius: 4px;
-    text-align: left; /* Metin hizalaması */
+    text-align: left;
 }
 
 .submenu li {
     display: block;
     width: 100%;
-    border-bottom: 1px solid #ddd;
 }
 
 .submenu a {
     padding: 10px;
-    color: #fff; /* Text color */
+    color: #ECF0F1; /* Light grey text */
     display: block;
+    transition: background-color 0.3s ease;
 }
 
 .submenu a:hover {
-    background-color: #0056b3; /* Background color on hover */
+    background-color: #18BC9C; /* Cyan background on hover */
 }
 
 .nav-links li:hover .submenu {
-    display: block; /* Display the submenu */
+    display: block; /* Display the submenu on hover */
 }

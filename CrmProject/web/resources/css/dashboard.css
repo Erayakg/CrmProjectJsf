@@ -20,6 +20,7 @@ body {
 }
 
 /* Sidebar Styles */
+/* Sidebar Styles */
 .sidebar {
     width: 25%;
     background-color: #343a40;
@@ -35,7 +36,12 @@ body {
     margin-bottom: 10px;
 }
 
-.sidebar-menu li a {
+.sidebar-menu li.active a {
+    background-color: #495057; /* Change the background color for active link */
+    font-weight: bold; /* Make the active link bold */
+}
+
+.sidebar-menu a {
     display: block;
     text-decoration: none;
     color: #fff;
@@ -44,9 +50,10 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar-menu li a:hover {
-    background-color: #495057;
+.sidebar-menu a:hover {
+    background-color: #495057; /* Ensure hover background matches the active background */
 }
+
 
 /* Main Content Styles */
 
