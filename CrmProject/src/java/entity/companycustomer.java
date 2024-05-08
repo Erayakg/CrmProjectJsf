@@ -30,5 +30,10 @@ public class CompanyCustomer extends Customer{
 
     public CompanyCustomer() {
     }
+
+    @Override
+    public String toString() {
+        return "CompanyCustomer{" + "companyInformation=" + companyInformation + '}';
+    }
     
 }

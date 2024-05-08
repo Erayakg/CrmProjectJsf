@@ -20,5 +20,10 @@ public class PersonalCustomer extends Customer{
     public PersonalCustomer() {
     }
 
+    @Override
+    public String toString() {
+        return "PersonalCustomer{" + '}';
+    }
+
   
 }

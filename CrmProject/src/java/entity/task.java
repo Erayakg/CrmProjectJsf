@@ -5,6 +5,7 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
@@ -66,6 +67,44 @@ public class Task implements BaseEntity{
         this.descirption = descirption;
         this.duaDate = duaDate;
         this.lastUpdate = lastUpdate;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.title);
+        hash = 37 * hash + Objects.hashCode(this.descirption);
+        hash = 37 * hash + Objects.hashCode(this.duaDate);
+        hash = 37 * hash + Objects.hashCode(this.lastUpdate);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Task other = (Task) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.descirption, other.descirption)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.duaDate, other.duaDate)) {
+            return false;
+        }
+        return Objects.equals(this.lastUpdate, other.lastUpdate);
     }
     
     
