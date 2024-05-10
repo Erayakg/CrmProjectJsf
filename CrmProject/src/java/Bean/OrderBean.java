@@ -5,7 +5,9 @@
 package Bean;
 
 import Dao.OrderDaoImpl;
-import entity.Order;
+import Dao.ProductDaoImpl;
+import entity.Orders;
+import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -16,31 +18,40 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class OrderBean implements BaseBean<Order> {
+public class OrderBean implements BaseBean<Orders> {
 
-    private Order order;
+    private Orders order;
 
     private OrderDaoImpl orderDaoImpl;
+    private ProductDaoImpl productDaoImpl;
+    
+    
+    public ProductDaoImpl getProductDaoImpl() {
+        if (this.productDaoImpl == null) {
+            productDaoImpl = new ProductDaoImpl();
+        }
+        return productDaoImpl;
+    }
 
-    public Order getOrder() {
+    public Orders getOrder() {
         if (this.order == null) {
-            order = new Order();
+            order = new Orders();
         }
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 
-    public OrderDaoImpl getCampaingDaoImpl() {
+    public OrderDaoImpl getOrderDaoImpl() {
         if (this.orderDaoImpl == null) {
             orderDaoImpl = new OrderDaoImpl();
         }
         return orderDaoImpl;
     }
 
-    public void setCampaingDaoImpl(OrderDaoImpl orderDaoImpl) {
+    public void setOrderDaoImpl(OrderDaoImpl orderDaoImpl) {
         this.orderDaoImpl = orderDaoImpl;
     }
 
@@ -48,7 +59,7 @@ public class OrderBean implements BaseBean<Order> {
 
     }
 
-    public OrderBean(Order order, OrderDaoImpl orderDaoImpl) {
+    public OrderBean(Orders order, OrderDaoImpl orderDaoImpl) {
         this.order = order;
         this.orderDaoImpl = orderDaoImpl;
     }
@@ -56,21 +67,26 @@ public class OrderBean implements BaseBean<Order> {
     @Override
     public void save() {
 
-        this.orderDaoImpl.create(this.getOrder());
+        getOrderDaoImpl().createTable(order);
+        getOrderDaoImpl().create(order);
     }
 
     @Override
     public void delete(Long id) {
-        this.orderDaoImpl.deleteById(this.getOrder(), getOrder().getId());
+        getOrderDaoImpl().deleteById(order, id);
     }
 
     @Override
-    public Order getById() {
-        return this.orderDaoImpl.getByid(this.getOrder(), getOrder().getId());
+    public Orders getById() {
+        return getOrderDaoImpl().getByid(this.getOrder(), getOrder().getId());
     }
 
     @Override
-    public List<Order> getList() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Orders> getList() {
+            return getOrderDaoImpl().getList();
     }
+    public void addProductToOrder(Orders o,Product p){
+        productDaoImpl.addProductToOrder(o,p);
+    }
+
 }

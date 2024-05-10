@@ -15,38 +15,38 @@
                 <h:form>
                     <div class="container">
                         <h1>Product List</h1>
-                     
+                        <!-- Product List Table -->
+                        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
+                            <h:column>
+                                <f:facet name="header">Product Name</f:facet>
+                                #{product.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Description</f:facet>
+                                #{product.description}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Price</f:facet>
+                                #{product.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Stock Quantity</f:facet>
+                                #{product.stockQuantity}
+                            </h:column>
+                            <h:column>
+                                <!-- Add to Order Button -->
+                                <h:commandButton value="Add to Order" action="#{orderBean.addProductToOrder(order,product)}" styleClass="add-to-order-button"/>
+                            </h:column>
+                            <h:column>
+                                <!-- Delete Button -->
+                                <h:commandButton value="Delete Selected Products" action="#{productBean.delete(product.id)}" styleClass="delete-button"/>
+                            </h:column>
+                        </h:dataTable>
 
-
-
-        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
-            <h:column>
-                <f:facet name="header">Product Name</f:facet>
-                #{product.name}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Description</f:facet>
-                #{product.description}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Price</f:facet>
-                #{product.price}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Stock Quantity</f:facet>
-                #{product.stockQuantity}
-            </h:column>
-            <h:column>
-                <h:commandButton value="Add to Order"  styleClass="add-to-order-button"/>
-            </h:column>
-             <h:column>
-<h:commandButton value="Delete Selected Products" action="#{productBean.delete(product.id)}" styleClass="delete-button"/>
-            </h:column>
-        </h:dataTable>
-
-<h2>Add Product</h2>
+                        <!-- Add Product Section -->
+                        <h2>Add Product</h2>
                         <h:panelGrid columns="2">
-                              <h:outputLabel for="product-id" value="Product id"/>
+                            <h:outputLabel for="product-id" value="Product id"/>
                             <h:inputText id="product-id" value="#{productBean.product.id}" />
                             
                             <h:outputLabel for="product-name" value="Product Name:"/>
@@ -63,9 +63,69 @@
 
                             <h:outputLabel for="product-active" value="Is Active:"/>
                             <h:selectBooleanCheckbox id="product-active" value="#{productBean.product.isActive}" />
+                            
+                            <h:commandButton value="Show Orders" action="#{orderBean.getOrdersByProductId(product.id)}" styleClass="show-orders-button"/>
 
+                            <!-- Add Product Button -->
                             <h:commandButton value="Add Product" action="#{productBean.save()}" styleClass="add-button"/>
                         </h:panelGrid>
+                        
+                        <h2>Add Order</h2>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="order-id" value="order id"/>
+                            <h:inputText id="order-id" value="#{orderBean.order.id}" />
+                            
+                            <h:outputLabel for="order-detail" value="Order detail"/>
+                            <h:inputText id="order-detail" value="#{orderBean.order.detail}" />
+
+
+                            <h:outputLabel for="order-shippingAddress" value="PrshippingAddress:"/>
+                            <h:inputText id="order-shippingAddress" value="#{orderBean.order.shippingAddress}" />
+
+                            <h:outputLabel for="order-status" value="Order status:"/>
+                            <h:inputText id="order-status" value="#{orderBean.order.status}" />
+
+                            <h:outputLabel for="order-Amoun" value="order-Amount:"/>
+                            <h:inputText id="order-Amount" value="#{orderBean.order.totalAmount}" />
+
+                            
+
+                            <!-- Add Product Button -->
+                            <h:commandButton value="Add order" action="#{orderBean.save()}" styleClass="add-button"/>
+                        </h:panelGrid>
+                        
+                        
+                        
+
+                        <!-- Orders Section -->
+                        <h2>Orders</h2>
+                        <h:dataTable value="#{orderBean.getList()}" var="order" styleClass="orders-table">
+                            <h:column>
+                                <f:facet name="header">Order ID</f:facet>
+                                #{order.Id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Order Date</f:facet>
+                                #{order.orderDate}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Shipping Address</f:facet>
+                                #{order.shippingAddress}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Total Amount</f:facet>
+                                #{order.totalAmount}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Status</f:facet>
+                                #{order.status}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Detail</f:facet>
+
+                                <h:commandButton value="Show Details" action="#{orderBean.showOrderDetails(order)}" styleClass="show-details-button"/>
+                            </h:column>
+                        </h:dataTable>
                     </div>
                 </h:form>
             </ui:define>

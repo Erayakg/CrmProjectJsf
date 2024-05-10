@@ -21,7 +21,7 @@ public class Invoice implements BaseEntity {
     private boolean status; // Sipariş durumu
     private List<Product> detail;
     private String billingAddress;
-    private Order order;
+    private Orders order;
 
     @Override
     public Long getId() {
@@ -80,18 +80,18 @@ public class Invoice implements BaseEntity {
         this.billingAddress = billingAddress;
     }
 
-    public Order getOrder() {
+    public Orders getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    public void setOrder(Orders order) {
         this.order = order;
     }
 
     public Invoice() {
     }
 
-    public Invoice(Long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail, String billingAddress, Order order) {
+    public Invoice(Long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail, String billingAddress, Orders order) {
         this.Id = Id;
         this.orderDate = orderDate;
         this.shippingAddress = shippingAddress;

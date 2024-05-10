@@ -138,5 +138,28 @@ public class SqlGenerator<T> {
         return sql;
 
     }
+    
+public String returnUpdateSql(long id) throws IllegalAccessException {
+    
+    System.out.println(instance.getClass().getName());
+
+    Field[] fields = instance.getClass().getDeclaredFields();
+
+    String sql = "UPDATE " + instance.getClass().getSimpleName()+ " SET ";
+
+    for (int i = 0; i < fields.length; i++) {
+        fields[i].setAccessible(true);
+        if (!fields[i].getName().equals("id")) {
+            sql += fields[i].getName() + " = '" + fields[i].get(instance) + "'";
+            if (i < fields.length - 1) {
+                sql += ", ";
+            }
+        }
+    }
+
+    sql += " WHERE id = " + id;
+    System.out.println(sql);
+    return sql;
+}
 
 }
