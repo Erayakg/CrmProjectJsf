@@ -6,73 +6,66 @@ package entity;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author 90552
  */
-public class Invoice implements BaseEntity{
+public class Invoice extends Order implements BaseEntity{
+    
+    private String billingAddress;
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
+    }
+
+    public Invoice(String billingAddress, long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail) {
+        super(Id, orderDate, shippingAddress, totalAmount, status, detail);
+        this.billingAddress = billingAddress;
+    }
+
    
-    private long Id;
-    private String customerName;
-    private LocalDateTime issueDate;
-    private float totalAmount;
-    private boolean isPaid;
 
     public Invoice() {
     }
 
     public Invoice(long Id) {
-        this.Id = Id;
-    }
-
-    public Invoice(long Id, String customerName, LocalDateTime issueDate, float totalAmount, boolean isPaid) {
-        this.Id = Id;
-        this.customerName = customerName;
-        this.issueDate = issueDate;
-        this.totalAmount = totalAmount;
-        this.isPaid = isPaid;
+        super(Id);
     }
 
     @Override
-    public long getId() {
-        return Id;
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.billingAddress);
+        return hash;
     }
 
-    public void setId(long Id) {
-        this.Id = Id;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Invoice other = (Invoice) obj;
+        return Objects.equals(this.billingAddress, other.billingAddress);
     }
 
-    public String getCustomerName() {
-        return customerName;
+    @Override
+    public String toString() {
+        return "Invoice{" + "billingAddress=" + billingAddress + '}';
     }
+    
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public LocalDateTime getIssueDate() {
-        return issueDate;
-    }
-
-    public void setIssueDate(LocalDateTime issueDate) {
-        this.issueDate = issueDate;
-    }
-
-    public float getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(float totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public boolean isIsPaid() {
-        return isPaid;
-    }
-
-    public void setIsPaid(boolean isPaid) {
-        this.isPaid = isPaid;
-    }
+  
     
 }
