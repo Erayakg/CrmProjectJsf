@@ -32,6 +32,17 @@ public class Product implements BaseEntity {
     public Long getId() {
         return id;
     }
+
+    public Product(Long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
+        this.isActive = isActive;
+    }
     
    
     public void setId(Long id) {
@@ -94,10 +105,6 @@ public class Product implements BaseEntity {
         this.isActive = isActive;
     }
 
-
-   
-
-   
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + ", isActive=" + isActive + '}';

@@ -17,6 +17,10 @@
                         <h1>Product List</h1>
                         <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
                             <h:column>
+                                <f:facet name="header">Product ID</f:facet>
+                                #{product.id}
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">Product Name</f:facet>
                                 #{product.name}
                             </h:column>

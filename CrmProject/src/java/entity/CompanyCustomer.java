@@ -19,8 +19,8 @@ public class CompanyCustomer  implements BaseEntity{
     }
     
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -40,7 +40,7 @@ public class CompanyCustomer  implements BaseEntity{
         this.companyName = companyName;
         this.id = id;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 5;
