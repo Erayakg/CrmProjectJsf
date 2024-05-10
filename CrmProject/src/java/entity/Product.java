@@ -89,6 +89,10 @@ public class Product implements BaseEntity {
         this.isActive = isActive;
     }
 
+    public Product() {
+    }
+    
+
     public Product(long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {
         this.id = id;
         this.name = name;
