@@ -45,6 +45,10 @@ public abstract class AbstractDao extends DbConnect {
                 String sql=generator.returnCreateSql();
                 
                 connection=this.getConnect();
+                Statement st =getConnection().createStatement();
+        
+                ResultSet rs =st.executeQuery(sql);
+                
     }
 
     public void createEntity(Object o) throws Exception {
@@ -135,7 +139,7 @@ public abstract class AbstractDao extends DbConnect {
         object=rs.getObject(1);
         System.out.println(object.toString());
         
-        return  null;
+        return  object;
         
         
     }
