@@ -16,18 +16,17 @@
                     <div class="feedbacks-container">
                         <ui:repeat value="#{feedbacksBean.feedbacks}" var="feedback">
                             <div class="feedback">
+                                <div class="name">#{feedback.id}</div>
                                 <div class="feedback-header">
-                                    <div class="name">#{feedback.name}</div>
-                                    <div class="date">#{feedback.date}</div>
+                                    <div class="name">#{feedback.title}</div>
+                                    <div class="date">#{feedback.subject}</div>
                                 </div>
                                 <div class="feedback-body">#{feedback.desciprtion}</div>
+                                <div class="feedback-body">#{feedback.response}</div>
+                                <div class="feedback-body">#{feedback.status}</div>
+                                <div class="feedback-body">#{feedback.date}</div>
+                                
                                 <h:commandButton value="Reply" styleClass="reply-button" action="#{feedbacksBean.toggleReplyForm(feedback.id)}"/>
-                                <h:panelGroup rendered="#{feedback.replyVisible}">
-                                    <h:form styleClass="reply-form">
-                                        <h:inputTextarea value="#{feedbacksBean.replyMessage}" styleClass="reply-textarea"/>
-                                        <h:commandButton value="Send" action="#{feedbacksBean.sendReply(feedback.id)}" styleClass="send-button"/>
-                                    </h:form>
-                                </h:panelGroup>
                             </div>
                         </ui:repeat>
                     </div>

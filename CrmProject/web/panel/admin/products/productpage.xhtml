@@ -17,6 +17,10 @@
                         <h1>Product List</h1>
                         <h:dataTable value="#{productsBean.products}" var="product" styleClass="products-table">
                             <h:column>
+                                <f:facet name="header">Product ID</f:facet>
+                                #{product.id}
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">Product Name</f:facet>
                                 #{product.name}
                             </h:column>
@@ -30,7 +34,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Stock Quantity</f:facet>
-                                #{product.stock}
+                                #{product.stockQuantity}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Created Date</f:facet>

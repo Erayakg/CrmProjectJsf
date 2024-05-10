@@ -28,14 +28,12 @@
                     <li class="#{view.viewId.contains('/panel/admin/products/productpage.xhtml') ? 'active' : ''}">
                         <h:link value="Products" outcome="/panel/admin/products/productpage.xhtml" />
                     </li>
-                    <li class="#{view.viewId.contains('/panel/admin/tasks/taskpage.xhtml') ? 'active' : ''}">
-                        <h:link value="Tasks" outcome="/panel/admin/tasks/taskpage.xhtml" />
-                    </li>
+                    
                     <li class="#{view.viewId.contains('/panel/admin/access/personalLogin.xhtml') ? 'active' : ''}">
-                        <h:link value="Personal Login" outcome="/panel/admin/access/personalLogin.xhtml" />
+                        <h:link value="Personal Login" outcome="/panel/admin/access/employeeLogin.xhtml" />
                     </li>
                     <li class="#{view.viewId.contains('/panel/admin/access/personalRegister.xhtml') ? 'active' : ''}">
-                        <h:link value="Personal Register" outcome="/panel/admin/access/personalRegister.xhtml" />
+                        <h:link value="Personal Register" outcome="/panel/admin/access/employeeRegister.xhtml" />
                     </li>
                 </ul>
             </nav>

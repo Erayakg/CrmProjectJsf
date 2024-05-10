@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Employee Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <h:outputStylesheet library="css" name="adminregister.css" />
+    </h:head>
+    <h:body>
+
+        
+        <div class="admin-register-container">
+            <div class="admin-register-form">
+                <h1>Employee Register</h1>
+                <h:form>
+                    <div class="form-group">
+                        <label for="name">Name: </label>
+                        <h:inputText id="name" value="#{employeeBean.employee.name}" required="true" requiredMessage="Name is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname: </label>
+                        <h:inputText id="surname" value="#{employeeBean.employee.surname}" required="true" requiredMessage="Surname is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail: </label>
+                        <h:inputText id="email" value="#{employeeBean.employee.mail}" required="true" requiredMessage="Email is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone: </label>
+                        <h:inputText id="phone" value="#{employeeBean.employee.phone}" required="true" requiredMessage="Phone is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <h:inputSecret id="password" value="#{employeeBean.employee.password}" required="true" requiredMessage="Password is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="resetPassword">Reset Password: </label>
+                        <h:inputSecret id="resetPassword" value="#{employeeBean.employee.password}" required="true" requiredMessage="Reset password is required" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address: </label>
+                        <h:inputText id="address" value="#{employeeBean.employee.address}" required="true" requiredMessage="Address is required" />
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Register" action="#{employeeBean.register()}" styleClass="cta-button" />
+                    </div>
+                </h:form>
+            </div>
+        </div>
+        <h:outputScript library="js" name="adminregister.js" />
+
+    </h:body>
+</html>
