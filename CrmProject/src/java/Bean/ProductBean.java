@@ -8,6 +8,7 @@ import Dao.ProductDaoImpl;
 import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class ProductBean implements BaseBean<Product> {
         
         if (this.product == null) {
             product = new Product();
+            product.setCreatedDate(LocalDateTime.now());
         }
         
         return product;
@@ -37,7 +39,7 @@ public class ProductBean implements BaseBean<Product> {
         this.product = product;
     }
 
-    public ProductDaoImpl getCampaingDaoImpl() {
+    public ProductDaoImpl getProductDaoImpl() {
         if (this.productDaoImpl == null) {
             productDaoImpl = new ProductDaoImpl();
         }
@@ -46,12 +48,12 @@ public class ProductBean implements BaseBean<Product> {
 
     @Override
     public void save() {
-        getCampaingDaoImpl().createTable(product);
+        getProductDaoImpl().create(product);
     }
 
     @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void delete(Long id) {
+        getProductDaoImpl().deleteById(product,id);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class ProductBean implements BaseBean<Product> {
 
     @Override
     public List<Product> getList() {
-        return null;
+        return getProductDaoImpl().getList();
     }
 
 }

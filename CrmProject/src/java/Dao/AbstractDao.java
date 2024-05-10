@@ -62,17 +62,10 @@ public abstract class AbstractDao extends DbConnect {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             System.out.println(sql);
             int result = preparedStatement.executeUpdate();
-            preparedStatement.close();
+         
         } catch (SQLException ex) {
             System.out.println("error" + ex);
         }
-                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                       System.out.println(sql);
-                    int result = preparedStatement.executeUpdate();
-                    preparedStatement.close();
-                } catch (SQLException ex) {
-                        System.out.println("error"+ex);
-                }
     }
      
  
@@ -88,13 +81,13 @@ public abstract class AbstractDao extends DbConnect {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             System.out.println(sql);
             int result = preparedStatement.executeUpdate();
-            preparedStatement.close();
         } catch (SQLException ex) {
             System.out.println("error" + ex);
         }
     }
 
     public List<Object[]> returnTable(Object obj) throws SQLException {
+        
     List<Object[]> table = new ArrayList<>();
     Connection connection = null;
     try {
@@ -117,7 +110,6 @@ public abstract class AbstractDao extends DbConnect {
         }
     } finally {
         if (connection != null) {
-            connection.close();
         }
     }
     return table;

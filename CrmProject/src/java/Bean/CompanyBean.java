@@ -49,7 +49,7 @@ public class CompanyBean implements BaseBean<Company> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.getCompanyDaoImpl().deleteById(this.getCompany(), this.getCompany().getId());
     }
 

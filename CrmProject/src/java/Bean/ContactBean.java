@@ -60,7 +60,7 @@ public class ContactBean implements BaseBean<Contact> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.contactDaoImpl.deleteById(this.getContact(), getContact().getId());
     }
 

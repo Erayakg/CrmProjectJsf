@@ -19,9 +19,9 @@ public class Notes implements BaseEntity {
     private Customer customer;
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public Long getId() {
+        return id;
+        }
 
     public void setId(Long id) {
         this.id = id;
@@ -68,7 +68,7 @@ public class Notes implements BaseEntity {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.id);
+    
         hash = 83 * hash + Objects.hashCode(this.content);
         hash = 83 * hash + Objects.hashCode(this.title);
         hash = 83 * hash + Objects.hashCode(this.customer);
@@ -93,9 +93,7 @@ public class Notes implements BaseEntity {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
+       
         return Objects.equals(this.customer, other.customer);
     }
 

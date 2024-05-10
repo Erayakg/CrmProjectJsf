@@ -60,7 +60,7 @@ public class ReportBean implements BaseBean<Report> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.reportDaoImpl.deleteById(this.getReport(), getReport().getId());
     }
 

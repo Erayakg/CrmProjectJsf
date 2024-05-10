@@ -53,7 +53,7 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.companycustomerDaoImpl.deleteById(this.getCompanyCustomer(), getCompanyCustomer().getId());
     }
 

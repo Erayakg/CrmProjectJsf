@@ -60,7 +60,7 @@ public class NotesBean implements BaseBean<Notes> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.notesDaoImpl.deleteById(this.getNotes(), getNotes().getId());
     }
 
