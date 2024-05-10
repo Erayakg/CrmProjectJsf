@@ -33,7 +33,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
         this.personalcustomer = personalcustomer;
     }
 
-    public PersonalCustomerDaoImpl getCampaingDaoImpl() {
+    public PersonalCustomerDaoImpl personalcustomerDaoImpl() {
         if (this.personalcustomerDaoImpl == null) {
             personalcustomerDaoImpl = new PersonalCustomerDaoImpl();
         }
@@ -45,6 +45,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
     }
 
     public PersonalCustomerBean() {
+        this.personalcustomerDaoImpl=new PersonalCustomerDaoImpl();
 
     }
 
@@ -55,7 +56,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
 
     @Override
     public void save() {
-
+        this.personalcustomerDaoImpl.createTable(this.getPersonalCustomer());
         this.personalcustomerDaoImpl.create(this.getPersonalCustomer());
     }
 

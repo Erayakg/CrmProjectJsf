@@ -12,11 +12,62 @@
     </h:head>
     <h:body>
         <ui:composition template="/panel/template/adminnavbar.xhtml">
-
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="admincustomer.css" />
                 <div class="container">
                     <ui:include src="/panel/template/dashboardsidebar.xhtml"></ui:include>
+                    <h:form id="personalCustomerForm">
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h:outputLabel for="id" value="Personel Customer ID" />
+                            <h:inputText id="id" value="#{personalCustomerBean.personalCustomer.id}" />
+
+                            <h:outputLabel for="name" value="Name" />
+                            <h:inputText id="name" value="#{personalCustomerBean.personalCustomer.name}" />
+
+                            <h:outputLabel for="surname" value="Surname:" />
+                            <h:inputText id="surname" value="#{personalCustomerBean.personalCustomer.surname}" />
+
+                            <h:outputLabel for="address" value="Address:" />
+                            <h:inputText id="address" value="#{personalCustomerBean.personalCustomer.address}" />
+
+                            <h:outputLabel for="mail" value="Email:" />
+                            <h:inputText id="mail" value="#{personalCustomerBean.personalCustomer.mail}" />
+                            
+                            <h:outputLabel for="phone" value="Phone: " />
+                            <h:inputText id="phone" value="#{personalCustomerBean.personalCustomer.phone}" />
+
+                        </h:panelGrid>
+                        <h:commandButton value="Add" action="#{personalCustomerBean.save()}"/>
+                        <h:commandButton value="Update" action="#{personalCustomerBean.update}" />
+                        <h:commandButton value="Delete" action="#{personalCustomerBean.delete}" />
+                    </h:form>
+                    <h:dataTable value="#{personalCustomerBean.personalCustomer}" var="customer">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Name: </f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.name}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Surname: </f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.surname}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Address</f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.address}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Phone: </f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.phone}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{personalCustomerBean.personalCustomer.mail}" />
+                        </h:column>
+                    </h:dataTable>
                 </div>
                 <footer class="footer">
                     <p>&copy; 2024 Admin Panel</p>
