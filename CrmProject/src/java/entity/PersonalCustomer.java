@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 public class PersonalCustomer implements BaseEntity {
 
-    private Long id;
+    private  Long id;
     private String phone;
     private String address;
     private String mail;

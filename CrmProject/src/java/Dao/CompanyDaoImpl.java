@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dao;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import entity.Company;
 import java.util.List;
 
@@ -47,5 +48,28 @@ public class CompanyDaoImpl extends AbstractDao implements DaoOperation<Company>
     public Company getByid(Company t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+ 
+ public static Company mapToObject(Object[] row) {
+       
+        Company company=new Company();
+        company.setId(((Number) row[0]).longValue());
+        company.setMail((String) row [1]);
+        company.setAddress((String) row[2]);
+        company.setPhone((String)row[3]);
+        company.setTaxNumber((Long)row [4]);
+        company.setPassword((String )row [5]);
+        return company;
+ }    
 
+     @Override
+    public void update(Long id) {
+        Company company= new Company();
+        company=this.getByid(company, id);
+        try {
+            super.update(company, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(CompanyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

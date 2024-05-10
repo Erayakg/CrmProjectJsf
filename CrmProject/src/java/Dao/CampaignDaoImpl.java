@@ -5,6 +5,12 @@
 package Dao;
 
 import entity.Campaign;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,7 +36,17 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
 
     @Override
     public List<Campaign> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Campaign> campaignList = new ArrayList<>();
+        try {
+            List<Object[]> table = super.returnTable(new Campaign());
+
+            for (Object[] row : table) {
+                campaignList.add(mapToObject(row));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return campaignList;
     }
 
     @Override
@@ -45,5 +61,16 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
+    }
+
+    public static Campaign mapToObject(Object[] row) {
+        Campaign campaign = new Campaign();
+        campaign.setId(((Number) row[0]).longValue());
+        campaign.setName((String) row[1]);
+        campaign.setDescription((String) row[2]);
+        campaign.setStartDate((LocalDateTime) row[3]);
+        campaign.setEndDate((LocalDateTime) row[4]);
+        campaign.setIsActive((Boolean) row[5]);
+        return campaign;
     }
 }

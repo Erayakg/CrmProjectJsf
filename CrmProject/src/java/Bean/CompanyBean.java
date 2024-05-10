@@ -53,17 +53,19 @@ public class CompanyBean implements BaseBean<Company> {
         this.getCompanyDaoImpl().deleteById(this.getCompany(), this.getCompany().getId());
     }
 
-
     @Override
     public List<Company> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getCompanyDaoImpl().getList();
     }
 
     @Override
     public Company getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.getCompanyDaoImpl().getByid(this.getCompany(), this.getCompany().getId());
     }
 
-    
+    @Override
+    public void update() {
+        this.getCompanyDaoImpl().update(getCompany().getId());
+    }
 
 }
