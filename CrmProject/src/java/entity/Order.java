@@ -17,7 +17,7 @@ public class Order  implements  BaseEntity{
     private List<Product> detail;
 
     @Override
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
@@ -83,15 +83,17 @@ public class Order  implements  BaseEntity{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + (int) (this.Id ^ (this.Id >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.orderDate);
-        hash = 67 * hash + Objects.hashCode(this.shippingAddress);
-        hash = 67 * hash + Float.floatToIntBits(this.totalAmount);
-        hash = 67 * hash + (this.status ? 1 : 0);
-        hash = 67 * hash + Objects.hashCode(this.detail);
+        int hash = 5;
+        hash = 37 * hash + (int) (this.Id ^ (this.Id >>> 32));
+        hash = 37 * hash + Objects.hashCode(this.orderDate);
+        hash = 37 * hash + Objects.hashCode(this.shippingAddress);
+        hash = 37 * hash + Float.floatToIntBits(this.totalAmount);
+        hash = 37 * hash + (this.status ? 1 : 0);
+        hash = 37 * hash + Objects.hashCode(this.detail);
         return hash;
     }
+
+  
 
     @Override
     public boolean equals(Object obj) {
@@ -105,28 +107,17 @@ public class Order  implements  BaseEntity{
             return false;
         }
         final Order other = (Order) obj;
-        if (this.Id != other.Id) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.totalAmount) != Float.floatToIntBits(other.totalAmount)) {
-            return false;
-        }
-        if (this.status != other.status) {
-            return false;
-        }
-        if (!Objects.equals(this.shippingAddress, other.shippingAddress)) {
-            return false;
-        }
-        if (!Objects.equals(this.orderDate, other.orderDate)) {
-            return false;
-        }
-        return Objects.equals(this.detail, other.detail);
+        return this.Id == other.Id;
     }
 
     @Override
     public String toString() {
         return "Order{" + "Id=" + Id + ", orderDate=" + orderDate + ", shippingAddress=" + shippingAddress + ", totalAmount=" + totalAmount + ", status=" + status + ", detail=" + detail + '}';
     }
+
+   
+
+    
    
    
 

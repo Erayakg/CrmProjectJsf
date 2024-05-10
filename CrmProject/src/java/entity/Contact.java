@@ -10,21 +10,21 @@ import java.util.Objects;
  *
  * @author erayb
  */
-public class Contact implements BaseEntity{
+public class Contact implements BaseEntity {
+
     private Long id;
     private String subject;
     private String description;
     private String title;
-    
+
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
-    
 
     public String getSubject() {
         return subject;
@@ -66,11 +66,8 @@ public class Contact implements BaseEntity{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.subject);
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.title);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -86,15 +83,6 @@ public class Contact implements BaseEntity{
             return false;
         }
         final Contact other = (Contact) obj;
-        if (!Objects.equals(this.subject, other.subject)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
         return Objects.equals(this.id, other.id);
     }
 
@@ -102,6 +90,6 @@ public class Contact implements BaseEntity{
     public String toString() {
         return "Contact{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + '}';
     }
-    
-    
+
+
 }

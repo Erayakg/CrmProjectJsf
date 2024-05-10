@@ -13,7 +13,15 @@ public class Campaign implements BaseEntity {
     private LocalDateTime endDate;
     private boolean isActive;
 
-  
+   @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -117,4 +125,5 @@ public class Campaign implements BaseEntity {
         return "Campaign{" + "id=" + id + ", name=" + name + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", isActive=" + isActive + '}';
     }
 
+   
 }

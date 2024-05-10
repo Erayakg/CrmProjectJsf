@@ -21,8 +21,8 @@ public class Report implements BaseEntity {
     private String ReportEmail;
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+        return id;
     }
 
     public void setId(Long id) {
@@ -84,12 +84,12 @@ public class Report implements BaseEntity {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.subject);
-        hash = 59 * hash + Objects.hashCode(this.description);
-        hash = 59 * hash + Objects.hashCode(this.title);
-        hash = 59 * hash + Objects.hashCode(this.date);
-        hash = 59 * hash + Objects.hashCode(this.ReportEmail);
+        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.subject);
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.title);
+        hash = 37 * hash + Objects.hashCode(this.date);
+        hash = 37 * hash + Objects.hashCode(this.ReportEmail);
         return hash;
     }
 
@@ -105,28 +105,9 @@ public class Report implements BaseEntity {
             return false;
         }
         final Report other = (Report) obj;
-        if (!Objects.equals(this.subject, other.subject)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.ReportEmail, other.ReportEmail)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return Objects.equals(this.date, other.date);
+        return Objects.equals(this.id, other.id);
     }
 
-    @Override
-    public String toString() {
-        return "Report{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", date=" + date + ", ReportEmail=" + ReportEmail + '}';
-    }
+   
 
-    
 }
