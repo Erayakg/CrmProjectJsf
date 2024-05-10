@@ -6,7 +6,8 @@ package entity;
 
 import java.util.Objects;
 
-public class Feedback  implements  BaseEntity{
+public class Feedback implements BaseEntity {
+
     private Long id;
     private String subject;
     private String description;
@@ -14,13 +15,14 @@ public class Feedback  implements  BaseEntity{
     private String response;
     private Boolean status;
     private Employee employee;
-    private Customer customer;
-    
-    
 
     @Override
     public Long getId() {
-       return id;
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getSubject() {
@@ -63,20 +65,7 @@ public class Feedback  implements  BaseEntity{
         this.status = status;
     }
 
-    public Feedback(Long id, String subject, String description, String title, String response, Boolean status, Employee employee, Customer customer) {
-        this.id = id;
-        this.subject = subject;
-        this.description = description;
-        this.title = title;
-        this.response = response;
-        this.status = status;
-        this.employee = employee;
-        this.customer = customer;
-    }
-
     public Employee getEmployee() {
-        if(employee==null)
-            employee=new Employee();
         return employee;
     }
 
@@ -84,17 +73,15 @@ public class Feedback  implements  BaseEntity{
         this.employee = employee;
     }
 
-    public Customer getCustomer() {
-        if(customer==null)
-            customer=new Customer();
-        return customer;
+    public Feedback(Long id, String subject, String description, String title, String response, Boolean status, Employee employee) {
+        this.id = id;
+        this.subject = subject;
+        this.description = description;
+        this.title = title;
+        this.response = response;
+        this.status = status;
+        this.employee = employee;
     }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    
 
     public Feedback() {
     }
@@ -102,7 +89,13 @@ public class Feedback  implements  BaseEntity{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.subject);
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + Objects.hashCode(this.response);
+        hash = 53 * hash + Objects.hashCode(this.status);
+        hash = 53 * hash + Objects.hashCode(this.employee);
         return hash;
     }
 
@@ -123,12 +116,7 @@ public class Feedback  implements  BaseEntity{
 
     @Override
     public String toString() {
-        return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + ", employee=" + employee + ", customer=" + customer + '}';
+        return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + ", employee=" + employee + '}';
     }
 
-   
-
-   
-    
-    
 }
