@@ -15,7 +15,7 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
     private CompanyCustomerDaoImpl companycustomerDaoImpl;
 
      public CompanyCustomerBean() {
-
+           companycustomerDaoImpl = new CompanyCustomerDaoImpl();
     }
 
     public CompanyCustomerBean(CompanyCustomer companycustomer, CompanyCustomerDaoImpl companycustomerDaoImpl) {
@@ -48,7 +48,11 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
    
     @Override
     public void save() {
-
+        if(this.companycustomer==null){
+            this.companycustomer=new CompanyCustomer();
+        }
+        this.companycustomerDaoImpl.createTable(this.getCompanyCustomer());
+            
         this.companycustomerDaoImpl.create(this.getCompanyCustomer());
     }
 

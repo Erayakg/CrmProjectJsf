@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Company Customer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <h:outputStylesheet library="css" name="admincustomer.css" />
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
+
+            <ui:define name="content">
+                <h:outputStylesheet library="css" name="admincustomer.css" />
+                <div class="container">
+                    <ui:include src="/panel/template/dashboardsidebar.xhtml"></ui:include>
+                    <h:form id="companyCustomerForm">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            
+                            <h:outputLabel for="id" value="Company ID" />
+                            <h:inputText id="id" value="#{companyCustomerBean.companyCustomer.id}" />
+                            
+                            
+                            <h:outputLabel for="name" value="Company Name" />
+                            <h:inputText id="name" value="#{companyCustomerBean.companyCustomer.companyName}" />
+                            
+                            <h:outputLabel for="phone" value="Phone:" />
+                            <h:inputText id="phone" value="#{companyCustomerBean.companyCustomer.phone}" />
+                            
+                            <h:outputLabel for="address" value="Address:" />
+                            <h:inputText id="address" value="#{companyCustomerBean.companyCustomer.address}" />
+
+                            <h:outputLabel for="mail" value="Email:" />
+                            <h:inputText id="mail" value="#{companyCustomerBean.companyCustomer.mail}" />
+
+                        </h:panelGrid>
+                        <h:commandButton value="Add" action="#{companyCustomerBean.save()}"/>
+                        <h:commandButton value="Update" action="#{companyCustomerBean.updateCompanyCustomer}" />
+                        <h:commandButton value="Delete" action="#{companyCustomerBean.deleteCompanyCustomer}" />
+                    </h:form>
+                    <h:dataTable value="#{companyCustomerBean.companyCustomer}" var="customer">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{companyCustomerBean.companyCustomer.id}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Company Name: </f:facet>
+                            <h:outputText value="#{companyCustomerBean.companyCustomer.companyName}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Phone</f:facet>
+                            <h:outputText value="#{companyCustomerBean.companyCustomer.phone}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Address</f:facet>
+                            <h:outputText value="#{companyCustomerBean.companyCustomer.address}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Email</f:facet>
+                            <h:outputText value="#{companyCustomerBean.companyCustomer.mail}" />
+                        </h:column>
+                    </h:dataTable>
+                </div>
+                <footer class="footer">
+                    <p>&copy; 2024 Admin Panel</p>
+                </footer>
+                <h:outputScript library="js" name="admincustomer.js" />
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

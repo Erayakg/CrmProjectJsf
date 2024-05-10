@@ -7,8 +7,11 @@
         <li class="#{view.viewId.contains('/panel/admin/dashboard/orders/orderpage.xhtml') ? 'active' : ''}">
             <h:link value="Orders" outcome="/panel/admin/dashboard/orders/orderpage.xhtml" />
         </li>
-        <li class="#{view.viewId.contains('/panel/admin/dashboard/customers/customerpage.xhtml') ? 'active' : ''}">
-            <h:link value="Customers" outcome="/panel/admin/dashboard/customers/customerpage.xhtml" />
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/customers/personalCustomer.xhtml') ? 'active' : ''}">
+            <h:link value="Personal Customers" outcome="/panel/admin/dashboard/customers/personalCustomer.xhtml" />
+        </li>
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/customers/companyCustomer.xhtml') ? 'active' : ''}">
+            <h:link value="Company Customers" outcome="/panel/admin/dashboard/customers/companyCustomer.xhtml" />
         </li>
     </ul>
 </aside>
