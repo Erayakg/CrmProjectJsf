@@ -1,118 +1,160 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : Apr 27, 2024, 1:55:32 PM
-    Author     : gbara
-*/
-.admin-customers-container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.admin-customers-header {
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-.admin-customers-header h1 {
-  font-size: 24px;
-  margin-bottom: 0;
-}
-
-.admin-customers-content {
-  padding: 20px;
-}
-
-.admin-customers-search {
-  margin-bottom: 20px;
-}
-
-.admin-customers-search input[type="text"] {
-  width: 50%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.admin-customers-search button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.admin-customers-search button:hover {
-  background-color: #3e8e41;
-}
-
-#customers-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#customers-table th,
-#customers-table td {
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-#customers-table th {
-  background-color: #ddd;
-  font-weight: bold;
-}
-
-#customers-table tr:nth-child(even) {
-  background-color: #f5f5f5;
-}
-
-#customers-table tr:hover {
-  background-color: #ddd;
-}
 .container {
     display: flex;
+    flex-direction: column;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
-/* Sidebar Styles */
+
+/* Sidebar styles */
 .sidebar {
-    width: 20%;
-    background-color: #333;
+    width: 25%;
+    background-color: #343a40;
     color: #fff;
     padding: 20px;
-    display: block; /* Display it by default */
 }
 
 .sidebar-menu {
     list-style: none;
+    padding: 0;
 }
 
 .sidebar-menu li {
     margin-bottom: 10px;
 }
 
-.sidebar-menu li a {
+.sidebar-menu a {
     display: block;
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s; /* Renk için geçiş efekti */
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
-.sidebar-menu li a:hover {
-    background-color: #666; /* İstenilen hover arkaplan rengi */
-    transition: background-color 0.3s ease; /* Arkaplan rengi geçiş süresi ve türü */
+
+.sidebar-menu a:hover,
+.sidebar-menu li.active a {
+    background-color: #495057;
 }
+
+/* Content container */
+.admin-customers-container {
+    flex-grow: 1;
+    background-color: #fff;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-customers-header {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.admin-customers-header h1 {
+    font-size: 24px;
+}
+
+/* Button styles */
+.button-container {
+    margin: 20px 0;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.button-container button:hover {
+    background-color: #3e8e41;
+}
+
+/* Footer styles */
 .footer {
     background-color: #333;
     color: #fff;
+    padding: 10px;
     text-align: center;
-    padding: 10px 0;
+}
+
+/* Form and table styles */
+#companyCustomerForm {
+    margin-bottom: 20px;
+}
+
+h:panelGrid {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+h:inputText, h:outputText {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+h:commandButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 4px 2px;
+}
+
+h:commandButton:hover {
+    background-color: #45a049;
+}
+
+h:dataTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+h:dataTable, h:column {
+    border: 1px solid #ddd;
+}
+
+h:dataTable h:column {
+    padding: 12px;
+}
+
+h:dataTable h:column:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+f:facet {
+    font-weight: bold;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+}
+
+h:dataTable h:outputText {
+    display: block;
+    padding: 8px;
 }

@@ -22,8 +22,6 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
         }
     }
 
-
-
     @Override
     public void create(CompanyCustomer t) {
         try {
