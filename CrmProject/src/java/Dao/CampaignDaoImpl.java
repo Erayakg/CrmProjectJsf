@@ -29,7 +29,7 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
     }
 
     @Override
-    public List<Campaign> getList(Campaign t) {
+    public List<Campaign> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

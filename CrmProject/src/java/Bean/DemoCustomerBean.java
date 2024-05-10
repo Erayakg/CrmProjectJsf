@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author erayb
  */
-@Named(value = "demoCustomerBean")
+@Named
 @SessionScoped
 public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
@@ -26,14 +26,23 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
     private DemoCustomerDao customerdaoimpl;
 
-    public DemoCustomerBean(demoCustomer customer, DemoCustomerDao customerdaoimpl) {
-        this.customer = customer;
-        this.customerdaoimpl = customerdaoimpl;
+    public DemoCustomerBean() {
     }
 
-   
+    
+    
+    
+    public DemoCustomerDao getDaoCustomer(){
+        if (this.customerdaoimpl==null) {
+            this.customerdaoimpl=new DemoCustomerDao();
+        }
+        return customerdaoimpl;
+    }
 
     public demoCustomer getCustomer() {
+        if (this.customer==null) {
+            this.customer=new demoCustomer();
+        }
         return customer;
     }
 
@@ -43,13 +52,13 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
     public void saveUser() {
 
-        customerdaoimpl.create(customer);
+        //getDaoCustomer().create(customer);
         
-        //customerdaoimpl.getByid(customer, customer.getId());
+        getDaoCustomer().getList();
     }
 
     public void deleteUser() {
-        customerdaoimpl.getByid(customer, customer.getId());
+        getDaoCustomer().getByid(customer, customer.getId());
         customer = new demoCustomer();
 
     }

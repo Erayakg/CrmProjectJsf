@@ -39,7 +39,7 @@ public class EmployeeDaoImpl extends AbstractDao implements DaoOperation<Employe
     }
     
     @Override
-    public List<Employee> getList(Employee t) {
+    public List<Employee> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

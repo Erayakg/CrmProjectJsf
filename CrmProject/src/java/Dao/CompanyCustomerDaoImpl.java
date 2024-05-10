@@ -40,7 +40,7 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
     }
 
     @Override
-    public List<CompanyCustomer> getList(CompanyCustomer t) {
+    public List<CompanyCustomer> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

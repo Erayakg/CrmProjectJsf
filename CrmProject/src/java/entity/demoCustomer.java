@@ -36,6 +36,11 @@ public class demoCustomer {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+    @Override
+    public String toString() {
+        return "demoCustomer{" + "id=" + id + ", name=" + name + ", surname=" + surname + '}';
+    }
     
     
 }

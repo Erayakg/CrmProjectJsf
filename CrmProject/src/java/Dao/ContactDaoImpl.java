@@ -37,7 +37,7 @@ public class ContactDaoImpl extends AbstractDao implements DaoOperation<Contact>
     }
     
     @Override
-    public List<Contact> getList(Contact t) {
+    public List<Contact> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

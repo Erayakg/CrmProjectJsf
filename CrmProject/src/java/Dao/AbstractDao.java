@@ -15,6 +15,8 @@ import Util.DbConnect;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.ResultSetMetaData;
+
 
 
 /**
@@ -88,41 +90,35 @@ public abstract class AbstractDao extends DbConnect {
         }
     }
 
-    public List<Object[]> returnTable(Object obj) {
-
-        List<Object[]> table = new ArrayList<>();
-
+    public List<Object[]> returnTable(Object obj) throws SQLException {
+    List<Object[]> table = new ArrayList<>();
+    Connection connection = null;
+    try {
         connection = this.getConnect();
-
-        try {
-
-            generator = new SqlGenerator(obj);
-
-            String sql = generator.returnSelectSql();
-
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-                System.out.println(sql);
-
-                ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    int columnCount = resultSet.getMetaData().getColumnCount();
-                    Object[] row = new Object[columnCount];
-                    for (int i = 1; i <= columnCount; i++) {
-                        row[i - 1] = resultSet.getObject(i);
-                    }
-                    table.add(row);
-                }
-            } catch (SQLException ex) {
-                System.out.println("Error: " + ex.getMessage());
+        SqlGenerator generator = new SqlGenerator(obj);
+        String sql = generator.returnSelectSql();
+        
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        
+        ResultSetMetaData metaData = rs.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        
+        while (rs.next()) {
+            Object[] row = new Object[columnCount];
+            for (int i = 0; i < columnCount; i++) {
+                row[i] = rs.getObject(i + 1);
             }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            table.add(row);
         }
-
-        return table;
+    } finally {
+        if (connection != null) {
+            connection.close();
+        }
     }
+    return table;
+}
+
     
     
     public  Object returnObjectById(Object o ,long  id)throws SQLException{

@@ -37,7 +37,7 @@ public class TaskDaoImpl extends AbstractDao implements DaoOperation<Task> {
     }
     
     @Override
-    public List<Task> getList(Task t) {
+    public List<Task> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

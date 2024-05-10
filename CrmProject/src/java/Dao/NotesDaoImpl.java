@@ -37,7 +37,7 @@ public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes> {
     }
     
     @Override
-    public List<Notes> getList(Notes t) {
+    public List<Notes> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

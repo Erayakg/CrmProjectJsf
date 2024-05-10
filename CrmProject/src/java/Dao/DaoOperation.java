@@ -18,7 +18,7 @@ public interface  DaoOperation <T> {
     
     public void deleteById(T t,Long id);
     
-    public List<T> getList(T t);
+    public List<T> getList();
     
     public T getByid(T t,Long id);
     
