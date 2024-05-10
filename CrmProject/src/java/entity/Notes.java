@@ -16,6 +16,7 @@ public class Notes implements BaseEntity {
     private String content;
     private String title;
 
+    @Override
     public Long getId() {
         return id;
     }
