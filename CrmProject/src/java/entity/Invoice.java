@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Invoice implements BaseEntity {
 
-    private long Id;
+    private Long Id;
     private LocalDateTime orderDate;// Sipariş tarihi
     private String shippingAddress; // gonderim adresi
     private float totalAmount; // Toplam tutar
@@ -37,8 +37,8 @@ public class Invoice implements BaseEntity {
     }
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+        return Id;
     }
 
     public void setId(long Id) {

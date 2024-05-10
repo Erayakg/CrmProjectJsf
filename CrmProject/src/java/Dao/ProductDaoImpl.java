@@ -4,8 +4,10 @@
  */
 package Dao;
 
+import entity.Order;
 import entity.Product;
 import java.util.List;
+import java.sql.*;
 
 /**
  *
@@ -25,7 +27,7 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
     @Override
     public void create(Product t) {
         try {
-            super.createEntity(t);
+            super.createTableConn(t);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
@@ -45,5 +47,26 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
     public Product getByid(Product t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    public void addProductToCampaign(Order order, Product product) {
+    
+    String sql = "INSERT INTO Campaign_Product (campaign_id, product_id) VALUES (?, ?)";
+    
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        statement.setLong(1, order.getId());
+        statement.setLong(2, product.getId());
+        
+        int rowsInserted = statement.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("A new product added to the campaign successfully!");
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+    }
+    
+    
+    
+
     
 }

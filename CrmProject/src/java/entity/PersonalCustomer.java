@@ -76,4 +76,6 @@ public class PersonalCustomer extends Customer implements BaseEntity {
         return "PersonalCustomer{" + "name=" + name + ", surname=" + surname + '}';
     }
 
+  
+
 }

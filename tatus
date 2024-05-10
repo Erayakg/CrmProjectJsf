@@ -1,0 +1,210 @@
+[1mdiff --git a/CrmProject/src/java/Bean/OrderBean.java b/CrmProject/src/java/Bean/OrderBean.java[m
+[1mindex d2e777c..5bf47fa 100644[m
+[1m--- a/CrmProject/src/java/Bean/OrderBean.java[m
+[1m+++ b/CrmProject/src/java/Bean/OrderBean.java[m
+[36m@@ -5,7 +5,9 @@[m
+ package Bean;[m
+ [m
+ import Dao.OrderDaoImpl;[m
+[32m+[m[32mimport Dao.ProductDaoImpl;[m
+ import entity.Order;[m
+[32m+[m[32mimport entity.Product;[m
+ import jakarta.enterprise.context.SessionScoped;[m
+ import jakarta.inject.Named;[m
+ import java.util.List;[m
+[36m@@ -21,7 +23,16 @@[m [mpublic class OrderBean implements BaseBean<Order> {[m
+     private Order order;[m
+ [m
+     private OrderDaoImpl orderDaoImpl;[m
+[32m+[m[32m    private ProductDaoImpl productDao;[m
+[32m+[m[41m    [m
+[32m+[m[32m    public ProductDaoImpl getProductDaoImpl() {[m
+[32m+[m[32m        if (this.productDao == null) {[m
+[32m+[m[32m            productDao = new ProductDaoImpl();[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return productDao;[m
+[32m+[m[32m    }[m
+ [m
+[32m+[m[41m    [m
+     public Order getOrder() {[m
+         if (this.order == null) {[m
+             order = new Order();[m
+[36m@@ -72,5 +83,10 @@[m [mpublic class OrderBean implements BaseBean<Order> {[m
+     @Override[m
+     public List<Order> getList() {[m
+          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody[m
+[32m+[m[32m    }[m[41m   [m
+[32m+[m[41m    [m
+[32m+[m[32m    public void setProduct(Order o ,Product p){[m
+[32m+[m[32m        productDao.addProductToCampaign(o, p);[m
+[32m+[m[41m        [m
+     }[m
+ }[m
+[1mdiff --git a/CrmProject/src/java/Bean/ProductBean.java b/CrmProject/src/java/Bean/ProductBean.java[m
+[1mindex 4096fd4..2d8a34f 100644[m
+[1m--- a/CrmProject/src/java/Bean/ProductBean.java[m
+[1m+++ b/CrmProject/src/java/Bean/ProductBean.java[m
+[36m@@ -71,6 +71,6 @@[m [mpublic class ProductBean implements BaseBean<Product> {[m
+ [m
+     @Override[m
+     public List<Product> getList() {[m
+[31m-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody[m
+[32m+[m[32m        return null;[m
+     }[m
+ }[m
+[1mdiff --git a/CrmProject/src/java/Dao/FeedbackDaoImpl.java b/CrmProject/src/java/Dao/FeedbackDaoImpl.java[m
+[1mindex 5acfbee..fd9d8c9 100644[m
+[1m--- a/CrmProject/src/java/Dao/FeedbackDaoImpl.java[m
+[1m+++ b/CrmProject/src/java/Dao/FeedbackDaoImpl.java[m
+[36m@@ -38,7 +38,7 @@[m [mpublic class FeedbackDaoImpl extends AbstractDao implements DaoOperation<Feedbac[m
+     [m
+     @Override[m
+     public List<Feedback> getList( ) {[m
+[31m-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody[m
+[32m+[m[32m        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBod   y[m
+     }[m
+     [m
+     @Override[m
+[1mdiff --git a/CrmProject/src/java/Dao/ProductDaoImpl.java b/CrmProject/src/java/Dao/ProductDaoImpl.java[m
+[1mindex 43a1770..4fe88d1 100644[m
+[1m--- a/CrmProject/src/java/Dao/ProductDaoImpl.java[m
+[1m+++ b/CrmProject/src/java/Dao/ProductDaoImpl.java[m
+[36m@@ -4,8 +4,10 @@[m
+  */[m
+ package Dao;[m
+ [m
+[32m+[m[32mimport entity.Order;[m
+ import entity.Product;[m
+ import java.util.List;[m
+[32m+[m[32mimport java.sql.*;[m
+ [m
+ /**[m
+  *[m
+[36m@@ -25,7 +27,7 @@[m [mpublic class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>[m
+     @Override[m
+     public void create(Product t) {[m
+         try {[m
+[31m-            super.createEntity(t);[m
+[32m+[m[32m            super.createTableConn(t);[m
+         } catch (Exception ex) {[m
+             System.out.println("error" + ex);[m
+         }[m
+[36m@@ -46,4 +48,25 @@[m [mpublic class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>[m
+         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody[m
+     }[m
+     [m
+[32m+[m[32m    public void addProductToCampaign(Order order, Product product) {[m
+[32m+[m[41m    [m
+[32m+[m[32m    String sql = "INSERT INTO Campaign_Product (campaign_id, product_id) VALUES (?, ?)";[m
+[32m+[m[41m    [m
+[32m+[m[32m    try (PreparedStatement statement = connection.prepareStatement(sql)) {[m
+[32m+[m[32m        statement.setLong(1, order.getId());[m
+[32m+[m[32m        statement.setLong(2, product.getId());[m
+[32m+[m[41m        [m
+[32m+[m[32m        int rowsInserted = statement.executeUpdate();[m
+[32m+[m[32m        if (rowsInserted > 0) {[m
+[32m+[m[32m            System.out.println("A new product added to the campaign successfully!");[m
+[32m+[m[32m        }[m
+[32m+[m[32m    } catch (SQLException ex) {[m
+[32m+[m[32m        ex.printStackTrace();[m
+[32m+[m[32m    }[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m
+[32m+[m[41m    [m
+ }[m
+[1mdiff --git a/CrmProject/src/java/entity/CompanyCustomer.java b/CrmProject/src/java/entity/CompanyCustomer.java[m
+[1mindex 22cdc62..28727a6 100644[m
+[1m--- a/CrmProject/src/java/entity/CompanyCustomer.java[m
+[1m+++ b/CrmProject/src/java/entity/CompanyCustomer.java[m
+[36m@@ -40,10 +40,6 @@[m [mpublic class CompanyCustomer  implements BaseEntity{[m
+         this.companyName = companyName;[m
+         this.id = id;[m
+     }[m
+[31m-[m
+[31m-    public CompanyCustomer() {[m
+[31m-    }[m
+[31m-[m
+     [m
+     @Override[m
+     public int hashCode() {[m
+[1mdiff --git a/CrmProject/src/java/entity/Product.java b/CrmProject/src/java/entity/Product.java[m
+[1mindex dd382b4..91eda0d 100644[m
+[1m--- a/CrmProject/src/java/entity/Product.java[m
+[1m+++ b/CrmProject/src/java/entity/Product.java[m
+[36m@@ -93,9 +93,6 @@[m [mpublic class Product implements BaseEntity {[m
+         this.isActive = isActive;[m
+     }[m
+ [m
+[31m-    public Product() {[m
+[31m-    }[m
+[31m-    [m
+ [m
+     public Product(long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {[m
+         this.id = id;[m
+[1mdiff --git a/CrmProject/web/panel/admin/products/productpage.xhtml b/CrmProject/web/panel/admin/products/productpage.xhtml[m
+[1mindex f1b0f8c..726f58c 100644[m
+[1m--- a/CrmProject/web/panel/admin/products/productpage.xhtml[m
+[1m+++ b/CrmProject/web/panel/admin/products/productpage.xhtml[m
+[36m@@ -7,15 +7,15 @@[m
+     <h:head>[m
+         <title>Admin Product Page</title>[m
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>[m
+[32m+[m[32m        <h:outputStylesheet library="css" name="productpage.css" />[m
+     </h:head>[m
+     <h:body>[m
+         <ui:composition template="/panel/template/adminnavbar.xhtml">[m
+             <ui:define name="content">[m
+[31m-                <h:outputStylesheet library="css" name="productpage.css" />[m
+                 <h:form>[m
+                     <div class="container">[m
+                         <h1>Product List</h1>[m
+[31m-                        <h:dataTable value="#{productsBean.products}" var="product" styleClass="products-table">[m
+[32m+[m[32m                        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">[m
+                             <h:column>[m
+                                 <f:facet name="header">Product Name</f:facet>[m
+                                 #{product.name}[m
+[36m@@ -42,32 +42,32 @@[m
+                             </h:column>[m
+                             <h:column>[m
+                                 <f:facet name="header">Is Active?</f:facet>[m
+[31m-                                #{product.active}[m
+[32m+[m[32m                                #{product.active ? 'Yes' : 'No'}[m
+                             </h:column>[m
+                             <h:column>[m
+[31m-                                <h:commandButton value="Edit" action="#{productsBean.editProduct(product.id)}" styleClass="edit-button"/>[m
+[31m-                                <h:commandButton value="Delete" action="#{productsBean.deleteProduct(product.id)}" styleClass="delete-button"/>[m
+[32m+[m[32m                                <h:commandButton value="Edit" action="#{productBean.editProduct(product.id)}" styleClass="edit-button"/>[m
+[32m+[m[32m                                <h:commandButton value="Delete" action="#{productBean.deleteProduct(product.id)}" styleClass="delete-button"/>[m
+                             </h:column>[m
+                         </h:dataTable>[m
+ [m
+                         <h2>Add Product</h2>[m
+                         <h:panelGrid columns="2">[m
+                             <h:outputLabel for="product-name" value="Product Name:"/>[m
+[31m-                            <h:inputText id="product-name" value="#{productsBean.newProduct.name}" />[m
+[32m+[m[32m                            <h:inputText id="product-name" value="#{productBean.product.name}" />[m
+ [m
+                             <h:outputLabel for="product-description" value="Description:"/>[m
+[31m-                            <h:inputTextarea id="product-description" value="#{productsBean.newProduct.description}" />[m
+[32m+[m[32m                            <h:inputTextarea id="product-description" value="#{productBean.product.description}" />[m
+ [m
+                             <h:outputLabel for="product-price" value="Price:"/>[m
+[31m-                            <h:inputText id="product-price" value="#{productsBean.newProduct.price}" />[m
+[32m+[m[32m                            <h:inputText id="product-price" value="#{productBean.product.price}" />[m
+ [m
+                             <h:outputLabel for="product-stock" value="Stock Quantity:"/>[m
+[31m-                            <h:inputText id="product-stock" value="#{productsBean.newProduct.stock}" />[m
+[32m+[m[32m                            <h:inputText id="product-stock" value="#{productBean.product.stock}" />[m
+ [m
+                             <h:outputLabel for="product-active" value="Is Active:"/>[m
+[31m-                            <h:selectBooleanCheckbox id="product-active" value="#{productsBean.newProduct.active}" />[m
+[32m+[m[32m                            <h:selectBooleanCheckbox id="product-active" value="#{productBean.product.active}" />[m
+ [m
+[31m-                            <h:commandButton value="Add Product" action="#{productsBean.addProduct()}" styleClass="add-button"/>[m
+[32m+[m[32m                            <h:commandButton value="Add Product" action="#{productBean.addProduct()}" styleClass="add-button"/>[m
+                         </h:panelGrid>[m
+                     </div>[m
+                 </h:form>[m

@@ -1,0 +1,96 @@
+[1mdiff --cc CrmProject/src/java/entity/CompanyCustomer.java[m
+[1mindex 28727a6,9a0729c..0000000[m
+[1m--- a/CrmProject/src/java/entity/CompanyCustomer.java[m
+[1m+++ b/CrmProject/src/java/entity/CompanyCustomer.java[m
+[36m@@@ -40,7 -40,7 +40,11 @@@[m [mpublic class CompanyCustomer  implement[m
+          this.companyName = companyName;[m
+          this.id = id;[m
+      }[m
+[32m++<<<<<<< HEAD[m
+[32m +    [m
+[32m++=======[m
+[32m+ [m
+[32m++>>>>>>> 5e198fa13a457005e4b213d176f6a6989b35f674[m
+      @Override[m
+      public int hashCode() {[m
+          int hash = 5;[m
+[1mdiff --cc CrmProject/src/java/entity/Product.java[m
+[1mindex a919936,b392656..0000000[m
+[1m--- a/CrmProject/src/java/entity/Product.java[m
+[1m+++ b/CrmProject/src/java/entity/Product.java[m
+[36m@@@ -94,10 -93,70 +94,15 @@@[m [mpublic class Product implements BaseEnt[m
+          this.isActive = isActive;[m
+      }[m
+  [m
+[32m++<<<<<<< HEAD[m
+[32m++=======[m
+[32m+     [m
+[32m+     [m
+[32m++>>>>>>> 5e198fa13a457005e4b213d176f6a6989b35f674[m
+  [m
+[31m -    public Product(long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {[m
+[31m -        this.id = id;[m
+[31m -        this.name = name;[m
+[31m -        this.description = description;[m
+[31m -        this.price = price;[m
+[31m -        this.stockQuantity = stockQuantity;[m
+[31m -        this.createdDate = createdDate;[m
+[31m -        this.lastModifiedDate = lastModifiedDate;[m
+[31m -        this.isActive = isActive;[m
+[31m -    }[m
+[31m -[m
+[31m -    @Override[m
+[31m -    public int hashCode() {[m
+[31m -        int hash = 7;[m
+[31m -        hash = 19 * hash + (int) (this.id ^ (this.id >>> 32));[m
+[31m -        hash = 19 * hash + Objects.hashCode(this.name);[m
+[31m -        hash = 19 * hash + Objects.hashCode(this.description);[m
+[31m -        hash = 19 * hash + Float.floatToIntBits(this.price);[m
+[31m -        hash = 19 * hash + this.stockQuantity;[m
+[31m -        hash = 19 * hash + Objects.hashCode(this.createdDate);[m
+[31m -        hash = 19 * hash + Objects.hashCode(this.lastModifiedDate);[m
+[31m -        hash = 19 * hash + (this.isActive ? 1 : 0);[m
+[31m -        return hash;[m
+[31m -    }[m
+[31m -[m
+[31m -    @Override[m
+[31m -    public boolean equals(Object obj) {[m
+[31m -        if (this == obj) {[m
+[31m -            return true;[m
+[31m -        }[m
+[31m -        if (obj == null) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (getClass() != obj.getClass()) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        final Product other = (Product) obj;[m
+[31m -        if (this.id != other.id) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (Float.floatToIntBits(this.price) != Float.floatToIntBits(other.price)) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (this.stockQuantity != other.stockQuantity) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (this.isActive != other.isActive) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (!Objects.equals(this.name, other.name)) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (!Objects.equals(this.description, other.description)) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        if (!Objects.equals(this.createdDate, other.createdDate)) {[m
+[31m -            return false;[m
+[31m -        }[m
+[31m -        return Objects.equals(this.lastModifiedDate, other.lastModifiedDate);[m
+[31m -    }[m
+[32m +   [m
+  [m
+[32m +   [m
+      @Override[m
+      public String toString() {[m
+          return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + ", isActive=" + isActive + '}';[m

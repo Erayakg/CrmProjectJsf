@@ -22,11 +22,15 @@ public class ProductBean implements BaseBean<Product> {
 
     private ProductDaoImpl productDaoImpl;
 
+    
     public Product getProduct() {
+        
         if (this.product == null) {
             product = new Product();
         }
+        
         return product;
+        
     }
 
     public void setProduct(Product product) {
@@ -40,37 +44,24 @@ public class ProductBean implements BaseBean<Product> {
         return productDaoImpl;
     }
 
-    public void setCampaingDaoImpl(ProductDaoImpl productDaoImpl) {
-        this.productDaoImpl = productDaoImpl;
-    }
-
-    public ProductBean() {
-
-    }
-
-    public ProductBean(Product product, ProductDaoImpl productDaoImpl) {
-        this.product = product;
-        this.productDaoImpl = productDaoImpl;
-    }
-
     @Override
     public void save() {
-
-        this.productDaoImpl.create(this.getProduct());
+        getCampaingDaoImpl().createTable(product);
     }
 
     @Override
     public void delete() {
-        this.productDaoImpl.deleteById(this.getProduct(), getProduct().getId());
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Product getById() {
-        return this.productDaoImpl.getByid(this.getProduct(), getProduct().getId());
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public List<Product> getList() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
+
 }
