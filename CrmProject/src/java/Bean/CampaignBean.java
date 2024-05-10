@@ -76,5 +76,7 @@ public class CampaignBean implements BaseBean<Campaign> {
     public Campaign getById() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }

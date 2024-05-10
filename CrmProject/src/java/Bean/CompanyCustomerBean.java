@@ -63,11 +63,14 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
 
     @Override
     public List<CompanyCustomer> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companycustomerDaoImpl.getList();
     }
 
     @Override
     public CompanyCustomer getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companycustomerDaoImpl.getByid(getCompanyCustomer(),getCompanyCustomer().getId());
     }
+
+    
+    
 }
