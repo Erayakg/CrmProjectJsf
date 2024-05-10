@@ -5,7 +5,9 @@
 package Bean;
 
 import Dao.OrderDaoImpl;
+import Dao.ProductDaoImpl;
 import entity.Order;
+import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -22,6 +24,16 @@ public class OrderBean implements BaseBean<Order> {
 
     private OrderDaoImpl orderDaoImpl;
 
+    private ProductDaoImpl productDao;
+    
+    public ProductDaoImpl getProductDaoImpl() {
+        if (this.productDao == null) {
+            productDao = new ProductDaoImpl();
+        }
+        return productDao;
+    }
+
+    
     public Order getOrder() {
         if (this.order == null) {
             order = new Order();
@@ -72,5 +84,10 @@ public class OrderBean implements BaseBean<Order> {
     @Override
     public List<Order> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }   
+    
+    public void setProduct(Order o ,Product p){
+        productDao.addProductToCampaign(o, p);
+        
     }
 }
