@@ -11,13 +11,48 @@ import java.util.Objects;
  *
  * @author 90552
  */
+public class Report implements BaseEntity {
 
-public class Report extends Contact implements BaseEntity{
+    private Long id;
+    private String subject;
+    private String description;
+    private String title;
+    private LocalDateTime date;
+    private String ReportEmail;
 
-    private LocalDateTime date;  
-    private  String ReportEmail;
+    @Override
+    public long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
-    
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public LocalDateTime getDate() {
         return date;
     }
@@ -34,8 +69,11 @@ public class Report extends Contact implements BaseEntity{
         this.ReportEmail = ReportEmail;
     }
 
-    public Report( LocalDateTime date, String ReportEmail, Long id, String subject, String description, String title) {
-        super(id, subject, description, title);
+    public Report(Long id, String subject, String description, String title, LocalDateTime date, String ReportEmail) {
+        this.id = id;
+        this.subject = subject;
+        this.description = description;
+        this.title = title;
         this.date = date;
         this.ReportEmail = ReportEmail;
     }
@@ -43,15 +81,15 @@ public class Report extends Contact implements BaseEntity{
     public Report() {
     }
 
-    public Report(Long id) {
-        super(id);
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + Objects.hashCode(this.date);
-        hash = 29 * hash + Objects.hashCode(this.ReportEmail);
+        int hash = 7;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.subject);
+        hash = 59 * hash + Objects.hashCode(this.description);
+        hash = 59 * hash + Objects.hashCode(this.title);
+        hash = 59 * hash + Objects.hashCode(this.date);
+        hash = 59 * hash + Objects.hashCode(this.ReportEmail);
         return hash;
     }
 
@@ -67,7 +105,19 @@ public class Report extends Contact implements BaseEntity{
             return false;
         }
         final Report other = (Report) obj;
+        if (!Objects.equals(this.subject, other.subject)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
         if (!Objects.equals(this.ReportEmail, other.ReportEmail)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return Objects.equals(this.date, other.date);
@@ -75,10 +125,8 @@ public class Report extends Contact implements BaseEntity{
 
     @Override
     public String toString() {
-        return "Report{" + "date=" + date + ", ReportEmail=" + ReportEmail + '}';
+        return "Report{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", date=" + date + ", ReportEmail=" + ReportEmail + '}';
     }
 
-   
-  
     
 }

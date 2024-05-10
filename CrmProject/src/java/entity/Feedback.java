@@ -6,12 +6,44 @@ package entity;
 
 import java.util.Objects;
 
-public class Feedback  extends Contact implements  BaseEntity{
+public class Feedback  implements  BaseEntity{
     //customerİd,personelID,urunİd
-    
+    private Long id;
+    private String subject;
+    private String description;
+    private String title;
     private String response;
     private Boolean status;
-    
+
+    @Override
+    public long getId() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getResponse() {
         return response;
     }
@@ -28,8 +60,11 @@ public class Feedback  extends Contact implements  BaseEntity{
         this.status = status;
     }
 
-    public Feedback(String response, Boolean status, Long id, String subject, String description, String title) {
-        super(id, subject, description, title);
+    public Feedback(Long id, String subject, String description, String title, String response, Boolean status) {
+        this.id = id;
+        this.subject = subject;
+        this.description = description;
+        this.title = title;
         this.response = response;
         this.status = status;
     }
@@ -37,15 +72,15 @@ public class Feedback  extends Contact implements  BaseEntity{
     public Feedback() {
     }
 
-    public Feedback(Long id) {
-        super(id);
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.response);
-        hash = 47 * hash + Objects.hashCode(this.status);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.subject);
+        hash = 41 * hash + Objects.hashCode(this.description);
+        hash = 41 * hash + Objects.hashCode(this.title);
+        hash = 41 * hash + Objects.hashCode(this.response);
+        hash = 41 * hash + Objects.hashCode(this.status);
         return hash;
     }
 
@@ -61,7 +96,19 @@ public class Feedback  extends Contact implements  BaseEntity{
             return false;
         }
         final Feedback other = (Feedback) obj;
+        if (!Objects.equals(this.subject, other.subject)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
         if (!Objects.equals(this.response, other.response)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return Objects.equals(this.status, other.status);
@@ -69,11 +116,8 @@ public class Feedback  extends Contact implements  BaseEntity{
 
     @Override
     public String toString() {
-        return "Feedback{" + "response=" + response + ", status=" + status + '}';
+        return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + '}';
     }
-
-   
     
-
     
 }
