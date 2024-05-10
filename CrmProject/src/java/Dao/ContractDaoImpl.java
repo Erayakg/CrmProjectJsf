@@ -50,7 +50,7 @@ public class ContractDaoImpl extends AbstractDao implements DaoOperation<Contrac
                 contractlist.add(mapToObject(row));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CompanyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ContractDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return contractlist;
     }
