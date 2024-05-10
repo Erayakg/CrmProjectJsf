@@ -21,11 +21,19 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">Submitted By</f:facet>
-                            #{report.submitter}
+                            #{report.title}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Message</f:facet>
-                            #{report.message}
+                            #{report.subject}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Message</f:facet>
+                            #{report.description}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Message</f:facet>
+                            #{report.reportEmail}
                         </h:column>
                         <h:column>
                             <f:facet name="header">Date Submitted</f:facet>

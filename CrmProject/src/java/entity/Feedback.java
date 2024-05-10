@@ -7,13 +7,16 @@ package entity;
 import java.util.Objects;
 
 public class Feedback  implements  BaseEntity{
-    //customerİd,personelID,urunİd
     private Long id;
     private String subject;
     private String description;
     private String title;
     private String response;
     private Boolean status;
+    private Employee employee;
+    private Customer customer;
+    
+    
 
     @Override
     public long getId() {
@@ -60,27 +63,53 @@ public class Feedback  implements  BaseEntity{
         this.status = status;
     }
 
-    public Feedback(Long id, String subject, String description, String title, String response, Boolean status) {
+    public Feedback(Long id, String subject, String description, String title, String response, Boolean status, Employee employee, Customer customer) {
         this.id = id;
         this.subject = subject;
         this.description = description;
         this.title = title;
         this.response = response;
         this.status = status;
+        this.employee = employee;
+        this.customer = customer;
     }
+
+    public Employee getEmployee() {
+        if(employee==null)
+            employee=new Employee();
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Customer getCustomer() {
+        if(customer==null)
+            customer=new Customer();
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    
 
     public Feedback() {
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.subject);
-        hash = 41 * hash + Objects.hashCode(this.description);
-        hash = 41 * hash + Objects.hashCode(this.title);
-        hash = 41 * hash + Objects.hashCode(this.response);
-        hash = 41 * hash + Objects.hashCode(this.status);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.subject);
+        hash = 97 * hash + Objects.hashCode(this.description);
+        hash = 97 * hash + Objects.hashCode(this.title);
+        hash = 97 * hash + Objects.hashCode(this.response);
+        hash = 97 * hash + Objects.hashCode(this.status);
+        hash = 97 * hash + Objects.hashCode(this.employee);
+        hash = 97 * hash + Objects.hashCode(this.customer);
         return hash;
     }
 
@@ -111,13 +140,21 @@ public class Feedback  implements  BaseEntity{
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        return Objects.equals(this.status, other.status);
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
+        if (!Objects.equals(this.employee, other.employee)) {
+            return false;
+        }
+        return Objects.equals(this.customer, other.customer);
     }
 
     @Override
     public String toString() {
-        return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + '}';
+        return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + ", employee=" + employee + ", customer=" + customer + '}';
     }
+
+   
     
     
 }
