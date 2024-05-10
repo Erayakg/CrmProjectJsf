@@ -5,29 +5,33 @@
 package Bean;
 
 import Dao.CustomerDaoImpl;
+import Dao.DemoCustomerDao;
 import entity.demoCustomer;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author erayb
  */
-@Named
+@Named(value = "demoCustomerBean")
 @SessionScoped
-public class DemoCustomerBean implements Serializable {
+public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
     private static final long serialVersionUID = 1L;
 
     private demoCustomer customer;
 
-    private CustomerDaoImpl customerdaoimpl;
+    private DemoCustomerDao customerdaoimpl;
 
-    public DemoCustomerBean() {
-        customer = new demoCustomer();
-        customerdaoimpl = new CustomerDaoImpl();
+    public DemoCustomerBean(demoCustomer customer, DemoCustomerDao customerdaoimpl) {
+        this.customer = customer;
+        this.customerdaoimpl = customerdaoimpl;
     }
+
+   
 
     public demoCustomer getCustomer() {
         return customer;
@@ -40,6 +44,7 @@ public class DemoCustomerBean implements Serializable {
     public void saveUser() {
 
         customerdaoimpl.create(customer);
+        
         //customerdaoimpl.getByid(customer, customer.getId());
     }
 
@@ -47,6 +52,26 @@ public class DemoCustomerBean implements Serializable {
         customerdaoimpl.getByid(customer, customer.getId());
         customer = new demoCustomer();
 
+    }
+
+    @Override
+    public void save() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void delete() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public demoCustomer getById() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<demoCustomer> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
