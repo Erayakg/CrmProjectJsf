@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public class Product implements BaseEntity {
    
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private float price;
@@ -25,15 +25,16 @@ public class Product implements BaseEntity {
     private boolean isActive;
 
     public Product() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+        return id;
     }
-
-    public void setId(long id) {
+    
+   
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,71 +94,10 @@ public class Product implements BaseEntity {
         this.isActive = isActive;
     }
 
-    public Product() {
-    }
-    
 
-    public Product(long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-        this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
-        this.isActive = isActive;
-    }
+   
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 19 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 19 * hash + Objects.hashCode(this.name);
-        hash = 19 * hash + Objects.hashCode(this.description);
-        hash = 19 * hash + Float.floatToIntBits(this.price);
-        hash = 19 * hash + this.stockQuantity;
-        hash = 19 * hash + Objects.hashCode(this.createdDate);
-        hash = 19 * hash + Objects.hashCode(this.lastModifiedDate);
-        hash = 19 * hash + (this.isActive ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Product other = (Product) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (Float.floatToIntBits(this.price) != Float.floatToIntBits(other.price)) {
-            return false;
-        }
-        if (this.stockQuantity != other.stockQuantity) {
-            return false;
-        }
-        if (this.isActive != other.isActive) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.createdDate, other.createdDate)) {
-            return false;
-        }
-        return Objects.equals(this.lastModifiedDate, other.lastModifiedDate);
-    }
-
+   
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + ", isActive=" + isActive + '}';

@@ -6,6 +6,7 @@ package Util;
 
 import java.lang.reflect.Field;
 import java.lang.Long;
+import java.time.LocalDateTime;
 /**
  *
  * @author erayb
@@ -20,22 +21,24 @@ public class SqlGenerator <T> {
         this.instance = instance;
     }
  
-     private String getType(Class<?> type) {
-
-        if (type == String.class) {
-            return "VARCHAR(255)";
-        } else if (type == int.class || type == Integer.class || type == Long.class) {
-            return "INT";
-        } else if (type == double.class || type == Double.class) {
-            return "DOUBLE";
-        } else if (type == float.class || type == Float.class) {
-            return "FLOAT";
-        } else if (type == boolean.class || type == Boolean.class) {
-            return "BOOLEAN";
-        } else {
-            return "error";
-        }
+   private String getType(Class<?> type) {
+    if (type == String.class) {
+        return "VARCHAR(255)";
+    } else if (type == int.class || type == Integer.class || type == Long.class) {
+        return "INT";
+    } else if (type == double.class || type == Double.class) {
+        return "DOUBLE";
+    } else if (type == float.class || type == Float.class) {
+        return "FLOAT";
+    } else if (type == boolean.class || type == Boolean.class) {
+        return "BOOLEAN";
+    } else if (type == LocalDateTime.class) {
+        return "TIMESTAMP";
+    } else {
+        return "error";
     }
+}
+
  
     public String returnInsertSql() throws Exception {
 

@@ -40,10 +40,6 @@ public class CompanyCustomer  implements BaseEntity{
         this.companyName = companyName;
         this.id = id;
     }
-
-    public CompanyCustomer() {
-    }
-
     
     @Override
     public int hashCode() {

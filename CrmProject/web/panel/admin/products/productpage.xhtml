@@ -7,15 +7,15 @@
     <h:head>
         <title>Admin Product Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="productpage.css" />
     </h:head>
     <h:body>
         <ui:composition template="/panel/template/adminnavbar.xhtml">
             <ui:define name="content">
-                <h:outputStylesheet library="css" name="productpage.css" />
                 <h:form>
                     <div class="container">
                         <h1>Product List</h1>
-                        <h:dataTable value="#{productsBean.products}" var="product" styleClass="products-table">
+                        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
                             <h:column>
                                 <f:facet name="header">Product Name</f:facet>
                                 #{product.name}
@@ -30,7 +30,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Stock Quantity</f:facet>
-                                #{product.stock}
+                                #{product.stockQuantity}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Created Date</f:facet>
@@ -42,32 +42,35 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Is Active?</f:facet>
-                                #{product.active}
+                                #{product.active ? 'Yes' : 'No'}
                             </h:column>
                             <h:column>
-                                <h:commandButton value="Edit" action="#{productsBean.editProduct(product.id)}" styleClass="edit-button"/>
-                                <h:commandButton value="Delete" action="#{productsBean.deleteProduct(product.id)}" styleClass="delete-button"/>
+                                <h:commandButton value="Edit" action="#{productBean.editProduct(product.id)}" styleClass="edit-button"/>
+                                <h:commandButton value="Delete" action="#{productBean.deleteProduct(product.id)}" styleClass="delete-button"/>
                             </h:column>
                         </h:dataTable>
 
                         <h2>Add Product</h2>
                         <h:panelGrid columns="2">
+                              <h:outputLabel for="product-id" value="Product id"/>
+                            <h:inputText id="product-id" value="#{productBean.product.id}" />
+                            
                             <h:outputLabel for="product-name" value="Product Name:"/>
-                            <h:inputText id="product-name" value="#{productsBean.newProduct.name}" />
+                            <h:inputText id="product-name" value="#{productBean.product.name}" />
 
                             <h:outputLabel for="product-description" value="Description:"/>
-                            <h:inputTextarea id="product-description" value="#{productsBean.newProduct.description}" />
+                            <h:inputTextarea id="product-description" value="#{productBean.product.description}" />
 
                             <h:outputLabel for="product-price" value="Price:"/>
-                            <h:inputText id="product-price" value="#{productsBean.newProduct.price}" />
+                            <h:inputText id="product-price" value="#{productBean.product.price}" />
 
                             <h:outputLabel for="product-stock" value="Stock Quantity:"/>
-                            <h:inputText id="product-stock" value="#{productsBean.newProduct.stock}" />
+                            <h:inputText id="product-stock" value="#{productBean.product.stockQuantity}" />
 
                             <h:outputLabel for="product-active" value="Is Active:"/>
-                            <h:selectBooleanCheckbox id="product-active" value="#{productsBean.newProduct.active}" />
+                            <h:selectBooleanCheckbox id="product-active" value="#{productBean.product.isActive}" />
 
-                            <h:commandButton value="Add Product" action="#{productsBean.addProduct()}" styleClass="add-button"/>
+                            <h:commandButton value="Add Product" action="#{productBean.save()}" styleClass="add-button"/>
                         </h:panelGrid>
                     </div>
                 </h:form>
