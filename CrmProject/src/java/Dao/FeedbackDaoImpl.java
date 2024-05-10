@@ -12,30 +12,38 @@ import java.util.List;
  * @author furka
  */
 public class FeedbackDaoImpl extends AbstractDao implements DaoOperation<Feedback> {
-
+    
     @Override
     public void createTable(Feedback t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void create(Feedback t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createEntity(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void deleteById(Feedback t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super.delete(t, id);
     }
-
+    
     @Override
     public List<Feedback> getList(Feedback t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public Feedback getByid(Feedback t, Long id) {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

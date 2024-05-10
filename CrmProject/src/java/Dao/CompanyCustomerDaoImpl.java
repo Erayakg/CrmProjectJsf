@@ -15,17 +15,28 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
 
     @Override
     public void createTable(CompanyCustomer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
+
+
 
     @Override
     public void create(CompanyCustomer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+
+            super.createEntity(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
 
     @Override
     public void deleteById(CompanyCustomer t, Long id) {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     super.delete(t, id);
     }
 
     @Override

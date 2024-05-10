@@ -4,7 +4,6 @@
  */
 package Dao;
 
-
 import entity.Notes;
 import java.util.List;
 
@@ -12,28 +11,36 @@ import java.util.List;
  *
  * @author furka
  */
-public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes>{
-
+public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes> {
+    
     @Override
     public void createTable(Notes t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void create(Notes t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createEntity(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void deleteById(Notes t, Long id) {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super.delete(t, id);
     }
-
+    
     @Override
     public List<Notes> getList(Notes t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public Notes getByid(Notes t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
