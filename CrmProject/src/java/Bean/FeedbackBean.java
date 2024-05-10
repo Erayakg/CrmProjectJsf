@@ -60,7 +60,7 @@ public class FeedbackBean implements BaseBean<Feedback> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.feedbackDaoImpl.deleteById(this.getFeedback(), getFeedback().getId());
     }
 

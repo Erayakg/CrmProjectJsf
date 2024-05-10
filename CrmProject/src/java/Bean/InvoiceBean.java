@@ -49,7 +49,7 @@ public class InvoiceBean implements BaseBean<Invoice>{
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.getInvoiceDaoImpl().deleteById(this.getInvoice(), this.getInvoice().getId());
     }
 

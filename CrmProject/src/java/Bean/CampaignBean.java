@@ -61,7 +61,7 @@ public class CampaignBean implements BaseBean<Campaign> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.getCampaingDaoImpl().deleteById(this.getCampaign(), this.getCampaign().getId());
     }
 

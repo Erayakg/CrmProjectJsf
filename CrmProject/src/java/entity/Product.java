@@ -21,7 +21,6 @@ public class Product implements BaseEntity {
     private float price;
     private int stockQuantity ;
     private LocalDateTime createdDate ;
-    private LocalDateTime lastModifiedDate;
     private boolean isActive;
 
     public Product() {
@@ -33,14 +32,13 @@ public class Product implements BaseEntity {
         return id;
     }
 
-    public Product(Long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, LocalDateTime lastModifiedDate, boolean isActive) {
+    public Product(Long id, String name, String description, float price, int stockQuantity, LocalDateTime createdDate, boolean isActive) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.createdDate = createdDate;
-        this.lastModifiedDate = lastModifiedDate;
         this.isActive = isActive;
     }
     
@@ -89,13 +87,7 @@ public class Product implements BaseEntity {
         this.createdDate = createdDate;
     }
 
-    public LocalDateTime getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(LocalDateTime lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
+    
 
     public boolean isIsActive() {
         return isActive;
@@ -107,7 +99,7 @@ public class Product implements BaseEntity {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", createdDate=" + createdDate + ", lastModifiedDate=" + lastModifiedDate + ", isActive=" + isActive + '}';
+        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stockQuantity=" + stockQuantity + ", createdDate=" + createdDate  + ", isActive=" + isActive + '}';
     }
     
 

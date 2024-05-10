@@ -45,7 +45,7 @@ public class EmployeeBean implements BaseBean<Employee> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.getEmployeeDaoImpl().deleteById(this.getEmployee(), this.getEmployee().getId());
     }
 

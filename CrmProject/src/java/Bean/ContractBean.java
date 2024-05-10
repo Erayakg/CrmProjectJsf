@@ -60,7 +60,7 @@ public class ContractBean implements BaseBean<Contract> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.contractDaoImpl.deleteById(this.getContract(), getContract().getId());
     }
 

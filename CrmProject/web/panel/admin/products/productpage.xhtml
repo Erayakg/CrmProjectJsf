@@ -15,46 +15,36 @@
                 <h:form>
                     <div class="container">
                         <h1>Product List</h1>
-                        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
-                            <h:column>
-                                <f:facet name="header">Product ID</f:facet>
-                                #{product.id}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Product Name</f:facet>
-                                #{product.name}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Description</f:facet>
-                                #{product.description}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Price</f:facet>
-                                #{product.price}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Stock Quantity</f:facet>
-                                #{product.stockQuantity}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Created Date</f:facet>
-                                #{product.createdDate}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Last Modified Date</f:facet>
-                                #{product.lastModifiedDate}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Is Active?</f:facet>
-                                #{product.active ? 'Yes' : 'No'}
-                            </h:column>
-                            <h:column>
-                                <h:commandButton value="Edit" action="#{productBean.editProduct(product.id)}" styleClass="edit-button"/>
-                                <h:commandButton value="Delete" action="#{productBean.deleteProduct(product.id)}" styleClass="delete-button"/>
-                            </h:column>
-                        </h:dataTable>
+                     
 
-                        <h2>Add Product</h2>
+
+
+        <h:dataTable value="#{productBean.getList()}" var="product" styleClass="products-table">
+            <h:column>
+                <f:facet name="header">Product Name</f:facet>
+                #{product.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{product.description}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{product.price}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Stock Quantity</f:facet>
+                #{product.stockQuantity}
+            </h:column>
+            <h:column>
+                <h:commandButton value="Add to Order"  styleClass="add-to-order-button"/>
+            </h:column>
+             <h:column>
+<h:commandButton value="Delete Selected Products" action="#{productBean.delete(product.id)}" styleClass="delete-button"/>
+            </h:column>
+        </h:dataTable>
+
+<h2>Add Product</h2>
                         <h:panelGrid columns="2">
                               <h:outputLabel for="product-id" value="Product id"/>
                             <h:inputText id="product-id" value="#{productBean.product.id}" />

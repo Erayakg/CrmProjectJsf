@@ -23,7 +23,7 @@ public class CustomerBean  implements  BaseBean<Customer>{
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -15,7 +15,7 @@ public interface BaseBean<Entity>  extends Serializable{
 
     public void save();
 
-    public void delete();
+    public void delete(Long id);
 
     public Entity getById();
 

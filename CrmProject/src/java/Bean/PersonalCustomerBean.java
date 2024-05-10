@@ -60,7 +60,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
     }
 
     @Override
-    public void delete() {
+    public void delete(Long id) {
         this.personalcustomerDaoImpl.deleteById(this.getPersonalCustomer(), getPersonalCustomer().getId());
     }
 
