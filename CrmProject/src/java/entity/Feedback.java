@@ -19,8 +19,8 @@ public class Feedback  implements  BaseEntity{
     
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+       return id;
     }
 
     public String getSubject() {
@@ -101,15 +101,8 @@ public class Feedback  implements  BaseEntity{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.subject);
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.title);
-        hash = 97 * hash + Objects.hashCode(this.response);
-        hash = 97 * hash + Objects.hashCode(this.status);
-        hash = 97 * hash + Objects.hashCode(this.employee);
-        hash = 97 * hash + Objects.hashCode(this.customer);
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -125,34 +118,15 @@ public class Feedback  implements  BaseEntity{
             return false;
         }
         final Feedback other = (Feedback) obj;
-        if (!Objects.equals(this.subject, other.subject)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-        if (!Objects.equals(this.response, other.response)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.employee, other.employee)) {
-            return false;
-        }
-        return Objects.equals(this.customer, other.customer);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
         return "Feedback{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", response=" + response + ", status=" + status + ", employee=" + employee + ", customer=" + customer + '}';
     }
+
+   
 
    
     

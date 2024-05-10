@@ -22,8 +22,8 @@ public class Contract implements BaseEntity{
     private   String description;
 
     @Override
-    public long getId() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Long getId() {
+      return id;
     }
 
     public void setId(long id) {
@@ -81,13 +81,7 @@ public class Contract implements BaseEntity{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.startDate);
-        hash = 29 * hash + Objects.hashCode(this.finishDate);
-        hash = 29 * hash + Objects.hashCode(this.status);
-        hash = 29 * hash + Objects.hashCode(this.amount);
-        hash = 29 * hash + Objects.hashCode(this.description);
+        hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
         return hash;
     }
 
@@ -103,31 +97,15 @@ public class Contract implements BaseEntity{
             return false;
         }
         final Contract other = (Contract) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.status, other.status)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.startDate, other.startDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.finishDate, other.finishDate)) {
-            return false;
-        }
-        return Objects.equals(this.amount, other.amount);
+        return this.id == other.id;
     }
 
     @Override
     public String toString() {
         return "Contract{" + "id=" + id + ", name=" + name + ", startDate=" + startDate + ", finishDate=" + finishDate + ", status=" + status + ", amount=" + amount + ", description=" + description + '}';
     }
-    
+
+
+
    
 }
