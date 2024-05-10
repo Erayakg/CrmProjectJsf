@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +43,7 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
                 campaignList.add(mapToObject(row));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CampaignDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return campaignList;
     }
@@ -72,5 +71,16 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
         campaign.setEndDate((LocalDateTime) row[4]);
         campaign.setIsActive((Boolean) row[5]);
         return campaign;
+    }
+
+    @Override
+    public void update(Long id) {
+        Campaign campaign= new Campaign();
+        campaign=this.getByid(campaign, id);
+        try {
+            super.update(campaign, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(CampaignDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
