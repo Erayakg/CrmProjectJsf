@@ -10,10 +10,24 @@ import java.util.Objects;
  *
  * @author baran
  */
-public class Employee extends Account {
+public class Employee implements  BaseEntity{
+    private Long id;
     private Double salary;
     private String name;
     private String surname;
+    private String phone;
+    private String address;
+    private String mail;
+    private String password;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Double getSalary() {
         return salary;
@@ -39,26 +53,63 @@ public class Employee extends Account {
         this.surname = surname;
     }
 
-    public Employee(Double salary, String name, String surname, Long id, String phone, String address, String mail, String password) {
-        super(id, phone, address, mail, password);
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Employee(Long id, Double salary, String name, String surname, String phone, String address, String mail, String password) {
+        this.id = id;
         this.salary = salary;
         this.name = name;
         this.surname = surname;
+        this.phone = phone;
+        this.address = address;
+        this.mail = mail;
+        this.password = password;
     }
 
     public Employee() {
     }
 
-    public Employee(Long id) {
-        super(id);
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.salary);
-        hash = 43 * hash + Objects.hashCode(this.name);
-        hash = 43 * hash + Objects.hashCode(this.surname);
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.salary);
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.surname);
+        hash = 59 * hash + Objects.hashCode(this.phone);
+        hash = 59 * hash + Objects.hashCode(this.address);
+        hash = 59 * hash + Objects.hashCode(this.mail);
+        hash = 59 * hash + Objects.hashCode(this.password);
         return hash;
     }
 
@@ -74,21 +125,12 @@ public class Employee extends Account {
             return false;
         }
         final Employee other = (Employee) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.surname, other.surname)) {
-            return false;
-        }
-        return Objects.equals(this.salary, other.salary);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Employee{" + "salary=" + salary + ", name=" + name + ", surname=" + surname + '}';
+        return "Employee{" + "id=" + id + ", salary=" + salary + ", name=" + name + ", surname=" + surname + ", phone=" + phone + ", address=" + address + ", mail=" + mail + ", password=" + password + '}';
     }
     
-
-
-   
 }

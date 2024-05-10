@@ -11,22 +11,22 @@ import java.util.Objects;
  *
  * @author baran
  */
-public class Contract implements BaseEntity{
-    //company customer
-    private long id;
-    private String name;
-    private  Date startDate;
-    private  Date finishDate;
-    private String status;
-    private  Long amount;
-    private   String description;
+public class Contract implements BaseEntity {
 
-    @Override
+    //company customer
+    private Long id;
+    private String name;
+    private Date startDate;
+    private Date finishDate;
+    private String status;
+    private Long amount;
+    private String description;
+
     public Long getId() {
-      return id;
+        return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,10 +78,29 @@ public class Contract implements BaseEntity{
         this.description = description;
     }
 
+    public Contract(Long id, String name, Date startDate, Date finishDate, String status, Long amount, String description) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.status = status;
+        this.amount = amount;
+        this.description = description;
+    }
+
+    public Contract() {
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 79 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.startDate);
+        hash = 53 * hash + Objects.hashCode(this.finishDate);
+        hash = 53 * hash + Objects.hashCode(this.status);
+        hash = 53 * hash + Objects.hashCode(this.amount);
+        hash = 53 * hash + Objects.hashCode(this.description);
         return hash;
     }
 
@@ -97,7 +116,7 @@ public class Contract implements BaseEntity{
             return false;
         }
         final Contract other = (Contract) obj;
-        return this.id == other.id;
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
@@ -106,6 +125,4 @@ public class Contract implements BaseEntity{
     }
 
 
-
-   
 }

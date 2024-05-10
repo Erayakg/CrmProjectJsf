@@ -60,14 +60,13 @@ public class Contact implements BaseEntity {
     public Contact() {
     }
 
-    public Contact(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 47 * hash + Objects.hashCode(this.id);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.subject);
+        hash = 31 * hash + Objects.hashCode(this.description);
+        hash = 31 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
@@ -91,5 +90,5 @@ public class Contact implements BaseEntity {
         return "Contact{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + '}';
     }
 
-
+   
 }

@@ -83,13 +83,13 @@ public class Report implements BaseEntity {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.id);
-        hash = 37 * hash + Objects.hashCode(this.subject);
-        hash = 37 * hash + Objects.hashCode(this.description);
-        hash = 37 * hash + Objects.hashCode(this.title);
-        hash = 37 * hash + Objects.hashCode(this.date);
-        hash = 37 * hash + Objects.hashCode(this.ReportEmail);
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.subject);
+        hash = 29 * hash + Objects.hashCode(this.description);
+        hash = 29 * hash + Objects.hashCode(this.title);
+        hash = 29 * hash + Objects.hashCode(this.date);
+        hash = 29 * hash + Objects.hashCode(this.ReportEmail);
         return hash;
     }
 
@@ -106,6 +106,11 @@ public class Report implements BaseEntity {
         }
         final Report other = (Report) obj;
         return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", date=" + date + ", ReportEmail=" + ReportEmail + '}';
     }
 
    

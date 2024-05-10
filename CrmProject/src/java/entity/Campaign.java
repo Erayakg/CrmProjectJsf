@@ -6,19 +6,19 @@ import java.util.Objects;
 public class Campaign implements BaseEntity {
 
     //product Many to many
-    private long id;
+    private Long id;
     private String name;
     private String description;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private boolean isActive;
 
-   @Override
+    @Override
     public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -65,7 +65,7 @@ public class Campaign implements BaseEntity {
     public Campaign() {
     }
 
-    public Campaign(long id, String name, String description, LocalDateTime startDate, LocalDateTime endDate, boolean isActive) {
+    public Campaign(Long id, String name, String description, LocalDateTime startDate, LocalDateTime endDate, boolean isActive) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -74,19 +74,15 @@ public class Campaign implements BaseEntity {
         this.isActive = isActive;
     }
 
-    public Campaign(long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 53 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 53 * hash + Objects.hashCode(this.name);
-        hash = 53 * hash + Objects.hashCode(this.description);
-        hash = 53 * hash + Objects.hashCode(this.startDate);
-        hash = 53 * hash + Objects.hashCode(this.endDate);
-        hash = 53 * hash + (this.isActive ? 1 : 0);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.description);
+        hash = 41 * hash + Objects.hashCode(this.startDate);
+        hash = 41 * hash + Objects.hashCode(this.endDate);
+        hash = 41 * hash + (this.isActive ? 1 : 0);
         return hash;
     }
 
@@ -102,28 +98,14 @@ public class Campaign implements BaseEntity {
             return false;
         }
         final Campaign other = (Campaign) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (this.isActive != other.isActive) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.startDate, other.startDate)) {
-            return false;
-        }
-        return Objects.equals(this.endDate, other.endDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Campaign{" + "id=" + id + ", name=" + name + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", isActive=" + isActive + '}';
+        return Objects.equals(this.id, other.id);
     }
 
    
+    
+ @Override
+    public String toString() {
+        return "Campaign{" + "id=" + id + ", name=" + name + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", isActive=" + isActive + '}';
+    }
+    
 }

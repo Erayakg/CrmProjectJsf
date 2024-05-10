@@ -12,16 +12,13 @@ import java.util.Objects;
 
 public class Notes implements BaseEntity {
 
-  //
     private Long id;
     private String content;
     private String title;
-    private Customer customer;
 
-    @Override
     public Long getId() {
         return id;
-        }
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -43,35 +40,21 @@ public class Notes implements BaseEntity {
         this.title = title;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Notes(Long id, String content, String title, Customer customer) {
+    public Notes(Long id, String content, String title) {
         this.id = id;
         this.content = content;
         this.title = title;
-        this.customer = customer;
     }
 
     public Notes() {
     }
 
-    public Notes(Long id) {
-        this.id = id;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-    
-        hash = 83 * hash + Objects.hashCode(this.content);
-        hash = 83 * hash + Objects.hashCode(this.title);
-        hash = 83 * hash + Objects.hashCode(this.customer);
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.id);
+        hash = 71 * hash + Objects.hashCode(this.content);
+        hash = 71 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
@@ -87,19 +70,15 @@ public class Notes implements BaseEntity {
             return false;
         }
         final Notes other = (Notes) obj;
-        if (!Objects.equals(this.content, other.content)) {
-            return false;
-        }
-        if (!Objects.equals(this.title, other.title)) {
-            return false;
-        }
-       
-        return Objects.equals(this.customer, other.customer);
+        return Objects.equals(this.id, other.id);
     }
 
     @Override
     public String toString() {
-        return "Notes{" + "id=" + id + ", content=" + content + ", title=" + title + ", customer=" + customer + '}';
+        return "Notes{" + "id=" + id + ", content=" + content + ", title=" + title + '}';
     }
 
+    
+
+    
 }
