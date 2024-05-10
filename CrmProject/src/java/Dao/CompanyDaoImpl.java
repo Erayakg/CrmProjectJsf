@@ -15,17 +15,27 @@ public class CompanyDaoImpl extends AbstractDao implements DaoOperation<Company>
 
     @Override
     public void createTable(Company t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
 
     @Override
     public void create(Company t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        try {
+
+            super.createEntity(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
 
     @Override
     public void deleteById(Company t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super.delete(t, id);
     }
 
     @Override
@@ -37,5 +47,5 @@ public class CompanyDaoImpl extends AbstractDao implements DaoOperation<Company>
     public Company getByid(Company t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

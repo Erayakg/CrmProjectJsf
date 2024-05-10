@@ -11,28 +11,36 @@ import java.util.List;
  *
  * @author furka
  */
-public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation<PersonalCustomer>{
-
+public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation<PersonalCustomer> {
+    
     @Override
     public void createTable(PersonalCustomer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createTableConn(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void create(PersonalCustomer t) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try {
+            super.createEntity(t);
+        } catch (Exception ex) {
+            System.out.println("error" + ex);
+        }
     }
-
+    
     @Override
     public void deleteById(PersonalCustomer t, Long id) {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        super.delete(t, id);
     }
-
+    
     @Override
     public List<PersonalCustomer> getList(PersonalCustomer t) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     @Override
     public PersonalCustomer getByid(PersonalCustomer t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
