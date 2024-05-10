@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Bean;
-
-import Dao.CustomerDaoImpl;
 import Dao.DemoCustomerDao;
 import entity.demoCustomer;
 import jakarta.enterprise.context.SessionScoped;

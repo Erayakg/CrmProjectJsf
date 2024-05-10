@@ -22,6 +22,7 @@ public class Contract implements BaseEntity {
     private Long amount;
     private String description;
 
+    @Override
     public Long getId() {
         return id;
     }
