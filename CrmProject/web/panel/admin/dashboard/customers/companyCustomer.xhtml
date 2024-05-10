@@ -9,7 +9,7 @@
         <title>Company Customer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <h:outputStylesheet library="css" name="admincustomer.css" />
-        
+
     </h:head>
     <h:body>
         <ui:composition template="/panel/template/adminnavbar.xhtml">
@@ -20,17 +20,17 @@
                     <ui:include src="/panel/template/dashboardsidebar.xhtml"></ui:include>
                     <h:form id="companyCustomerForm">
                         <h:panelGrid columns="2" cellpadding="5">
-                            
+
                             <h:outputLabel for="id" value="Company ID" />
                             <h:inputText id="id" value="#{companyCustomerBean.companyCustomer.id}" />
-                            
-                            
+
+
                             <h:outputLabel for="name" value="Company Name" />
                             <h:inputText id="name" value="#{companyCustomerBean.companyCustomer.companyName}" />
-                            
+
                             <h:outputLabel for="phone" value="Phone:" />
                             <h:inputText id="phone" value="#{companyCustomerBean.companyCustomer.phone}" />
-                            
+
                             <h:outputLabel for="address" value="Address:" />
                             <h:inputText id="address" value="#{companyCustomerBean.companyCustomer.address}" />
 
@@ -39,31 +39,34 @@
 
                         </h:panelGrid>
                         <h:commandButton value="Add" action="#{companyCustomerBean.save()}"/>
-                        <h:commandButton value="Update" action="#{companyCustomerBean.updateCompanyCustomer}" />
-                        <h:commandButton value="Delete" action="#{companyCustomerBean.deleteCompanyCustomer}" />
+
+                        <h:commandButton value="Delete" action="#{companyCustomerBean.delete(companyCustomerBean.companyCustomer.id)}" />
                     </h:form>
-                    <h:dataTable value="#{companyCustomerBean.companyCustomer}" var="customer">
-                        <h:column>
-                            <f:facet name="header">ID</f:facet>
-                            <h:outputText value="#{companyCustomerBean.companyCustomer.id}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Company Name: </f:facet>
-                            <h:outputText value="#{companyCustomerBean.companyCustomer.companyName}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Phone</f:facet>
-                            <h:outputText value="#{companyCustomerBean.companyCustomer.phone}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Address</f:facet>
-                            <h:outputText value="#{companyCustomerBean.companyCustomer.address}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Email</f:facet>
-                            <h:outputText value="#{companyCustomerBean.companyCustomer.mail}" />
-                        </h:column>
-                    </h:dataTable>
+                    <h:form>
+                        <h:dataTable value="#{companyCustomerBean.list}" var="customer">
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{customer.id}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Company Name:</f:facet>
+                                <h:outputText value="#{customer.companyName}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Phone</f:facet>
+                                <h:outputText value="#{customer.phone}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Address</f:facet>
+                                <h:outputText value="#{customer.address}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Email</f:facet>
+                                <h:outputText value="#{customer.mail}" />
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+
                 </div>
                 <footer class="footer">
                     <p>&copy; 2024 Admin Panel</p>

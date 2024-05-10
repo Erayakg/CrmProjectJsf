@@ -4,14 +4,20 @@
  */
 package Dao;
 
+import static Dao.ProductDaoImpl.mapToObject;
 import entity.CompanyCustomer;
+import entity.Product;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author furka
  */
-public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<CompanyCustomer>{
+public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<CompanyCustomer> {
 
     @Override
     public void createTable(CompanyCustomer t) {
@@ -34,17 +40,38 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
 
     @Override
     public void deleteById(CompanyCustomer t, Long id) {
-     super.delete(t, id);
+        super.delete(t, id);
     }
 
     @Override
     public List<CompanyCustomer> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<CompanyCustomer> CompanyCustomerList = new ArrayList<>();
+        try {
+            List<Object[]> table = super.returnTable(new CompanyCustomer());
+
+            for (Object[] row : table) {
+                CompanyCustomerList.add(mapToObject(row));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return CompanyCustomerList;
+    }
+
+    public static CompanyCustomer mapToObject(Object[] row) {
+        CompanyCustomer customer = new CompanyCustomer();
+        customer.setId(((Number) row[0]).longValue());
+        customer.setPhone((String) row[1]);
+        customer.setAddress((String) row[2]);
+        customer.setMail((String) row[3]);
+        customer.setPassword((String) row[4]);
+        customer.setCompanyName((String) row[5]);
+        return customer;
     }
 
     @Override
     public CompanyCustomer getByid(CompanyCustomer t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }
