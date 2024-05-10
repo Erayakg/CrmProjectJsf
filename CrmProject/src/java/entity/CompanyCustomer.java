@@ -13,6 +13,10 @@ import java.util.Objects;
 public class CompanyCustomer  implements BaseEntity{
     private  String companyName;
     private  Long id;
+
+    public CompanyCustomer() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     @Override
     public long getId() {

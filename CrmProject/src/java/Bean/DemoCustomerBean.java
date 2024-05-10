@@ -54,7 +54,7 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
         //getDaoCustomer().create(customer);
         
-        getDaoCustomer().getList();
+        getDaoCustomer().createTable(customer);
     }
 
     public void deleteUser() {
