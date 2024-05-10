@@ -29,7 +29,7 @@ public class FeedbackDaoImpl extends AbstractDao implements DaoOperation<Feedbac
     }
 
     @Override
-    public List<Feedback> getList(Feedback t) {
+    public List<Feedback> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

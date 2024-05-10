@@ -29,7 +29,7 @@ public class InvoiceDaoImpl extends AbstractDao implements DaoOperation<Invoice>
     }
 
     @Override
-    public List<Invoice> getList(Invoice t) {
+    public List<Invoice> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

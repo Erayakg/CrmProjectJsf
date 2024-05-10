@@ -29,7 +29,7 @@ public class OrderDaoImpl extends AbstractDao implements DaoOperation<Order> {
     }
 
     @Override
-    public List<Order> getList(Order t) {
+    public List<Order> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

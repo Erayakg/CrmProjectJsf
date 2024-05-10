@@ -29,7 +29,7 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
     }
 
     @Override
-    public List<Product> getList(Product t) {
+    public List<Product> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

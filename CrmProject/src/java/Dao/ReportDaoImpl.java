@@ -29,7 +29,7 @@ public class ReportDaoImpl extends AbstractDao implements DaoOperation<Report>{
     }
 
     @Override
-    public List<Report> getList(Report t) {
+    public List<Report> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

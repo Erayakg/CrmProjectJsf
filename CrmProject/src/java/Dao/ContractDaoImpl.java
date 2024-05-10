@@ -29,7 +29,7 @@ public class ContractDaoImpl extends AbstractDao implements DaoOperation<Contrac
     }
 
     @Override
-    public List<Contract> getList(Contract t) {
+    public List<Contract> getList( ) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

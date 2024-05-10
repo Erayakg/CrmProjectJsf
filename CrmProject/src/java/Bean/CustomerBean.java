@@ -4,12 +4,9 @@
  */
 package Bean;
 
-import Dao.CustomerDaoImpl;
 import entity.Customer;
-import entity.demoCustomer;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
-import java.io.Serializable;
 import java.util.List;
 
 /**
