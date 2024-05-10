@@ -21,7 +21,6 @@ public interface BaseBean<Entity>  extends Serializable{
 
     public List<Entity> getList();
     
-    
-    
-   
+    public void update();
+
 }

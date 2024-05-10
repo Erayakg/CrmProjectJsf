@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.ResultSetMetaData;
 
-
-
 /**
  *
  * @author erayb
@@ -30,25 +28,23 @@ public abstract class AbstractDao extends DbConnect {
     SqlGenerator generator;
 
     public Connection getConnection() {
-        if(this.connection==null){
+        if (this.connection == null) {
             return super.getConnect();
         }
         return connection;
     }
-    
-    
-     
-    public void createTableConn(Object o) throws Exception{
-        
-                generator=new SqlGenerator(o);
-                
-                String sql=generator.returnCreateSql();
-                
-                connection=this.getConnect();
-                Statement st =getConnection().createStatement();
-        
-                ResultSet rs =st.executeQuery(sql);
-                
+
+    public void createTableConn(Object o) throws Exception {
+
+        generator = new SqlGenerator(o);
+
+        String sql = generator.returnCreateSql();
+
+        connection = this.getConnect();
+        Statement st = getConnection().createStatement();
+
+        ResultSet rs = st.executeQuery(sql);
+
     }
 
     public void createEntity(Object o) throws Exception {
@@ -62,13 +58,11 @@ public abstract class AbstractDao extends DbConnect {
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             System.out.println(sql);
             int result = preparedStatement.executeUpdate();
-         
+
         } catch (SQLException ex) {
             System.out.println("error" + ex);
         }
     }
-     
- 
 
     public void delete(Object o, Long id) {
 
@@ -86,57 +80,76 @@ public abstract class AbstractDao extends DbConnect {
         }
     }
 
-    public List<Object[]> returnTable(Object obj) throws SQLException {
-        
-    List<Object[]> table = new ArrayList<>();
-    Connection connection = null;
-    try {
-        connection = this.getConnect();
-        SqlGenerator generator = new SqlGenerator(obj);
-        String sql = generator.returnSelectSql();
-        
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        
-        ResultSetMetaData metaData = rs.getMetaData();
-        int columnCount = metaData.getColumnCount();
-        
-        while (rs.next()) {
-            Object[] row = new Object[columnCount];
-            for (int i = 0; i < columnCount; i++) {
-                row[i] = rs.getObject(i + 1);
-            }
-            table.add(row);
-        }
-    } finally {
-        if (connection != null) {
-        }
-    }
-    return table;
-}
+    public void update(Object o, Long id) throws IllegalAccessException {
+        generator = new SqlGenerator(o);
 
-    
-    
-    public  Object returnObjectById(Object o ,long  id)throws SQLException{
-        Object object=null;
-        
-        connection=this.getConnect();
-        generator= new SqlGenerator(object);
-        String sql = generator.returnSelectByIdSql(id);
-        
-        
-        Statement st =getConnection().createStatement();
-        
-        ResultSet rs =st.executeQuery(sql);
-        object=rs.getObject(1);
-        System.out.println(object.toString());
-        
-        return  object;
-        
-        
+        try {
+            String sql = generator.returnUpdateSql(id);
+            connection = this.getConnect();
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                System.out.println(sql);
+                int result = preparedStatement.executeUpdate();
+                if (result > 0) {
+                    System.out.println("Update successful");
+                } else {
+                    System.out.println("Update failed");
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQL Error: " + ex.getMessage());
+            }
+        } catch (Exception ex) {
+            System.out.println("General Error: " + ex.getMessage());
+        }
     }
-    
-      /* public Object returnObjectById(Object obj, Long id) throws SQLException {
+
+    public List<Object[]> returnTable(Object obj) throws SQLException {
+
+        List<Object[]> table = new ArrayList<>();
+        Connection connection = null;
+        try {
+            connection = this.getConnect();
+            SqlGenerator generator = new SqlGenerator(obj);
+            String sql = generator.returnSelectSql();
+
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] row = new Object[columnCount];
+                for (int i = 0; i < columnCount; i++) {
+                    row[i] = rs.getObject(i + 1);
+                }
+                table.add(row);
+            }
+        } finally {
+            if (connection != null) {
+            }
+        }
+        return table;
+    }
+
+    public Object returnObjectById(Object o, long id) throws SQLException {
+        Object object = null;
+
+        connection = this.getConnect();
+        generator = new SqlGenerator(object);
+        String sql = generator.returnSelectByIdSql(id);
+
+        Statement st = getConnection().createStatement();
+
+        ResultSet rs = st.executeQuery(sql);
+        object = rs.getObject(1);
+        System.out.println(object.toString());
+
+        return object;
+
+    }
+
+    /* public Object returnObjectById(Object obj, Long id) throws SQLException {
            
         Object object = null;
 

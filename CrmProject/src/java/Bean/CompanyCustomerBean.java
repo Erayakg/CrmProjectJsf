@@ -71,6 +71,11 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
         return this.companycustomerDaoImpl.getByid(getCompanyCustomer(),getCompanyCustomer().getId());
     }
 
+    @Override
+    public void update() {
+       this.companycustomerDaoImpl.update(getCompanyCustomer().getId());
+    }
+
     
     
 }
