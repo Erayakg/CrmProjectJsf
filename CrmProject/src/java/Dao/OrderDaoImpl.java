@@ -4,17 +4,21 @@
  */
 package Dao;
 
-import entity.Order;
+import com.sun.istack.logging.Logger;
+import entity.Orders;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 
 /**
  *
  * @author furka
  */
-public class OrderDaoImpl extends AbstractDao implements DaoOperation<Order> {
+public class OrderDaoImpl extends AbstractDao implements DaoOperation<Orders> {
     
     @Override
-    public void createTable(Order t) {
+    public void createTable(Orders t) {
         try {
             super.createTableConn(t);
         } catch (Exception ex) {
@@ -23,7 +27,7 @@ public class OrderDaoImpl extends AbstractDao implements DaoOperation<Order> {
     }
     
     @Override
-    public void create(Order t) {
+    public void create(Orders t) {
         try {
             super.createEntity(t);
         } catch (Exception ex) {
@@ -32,17 +36,37 @@ public class OrderDaoImpl extends AbstractDao implements DaoOperation<Order> {
     }
     
     @Override
-    public void deleteById(Order t, Long id) {
+    public void deleteById(Orders t, Long id) {
         super.delete(t, id);
     }
     
     @Override
-    public List<Order> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Orders> getList( ) {
+                List<Orders> productList = new ArrayList<>();
+        try {
+            List<Object[]> table = super.returnTable(new Orders());
+
+            for (Object[] row : table) {
+                productList.add(mapToObject(row));
+            }
+        } catch (SQLException ex) {
+            System.out.println("error"+ex);
+        }
+        return productList;
     }
+     private Orders mapToObject(Object[] row) {
+        long id = (long) row[0];
+        LocalDateTime orderDate = (LocalDateTime) row[1];
+        String shippingAddress = (String) row[2];
+        float totalAmount = (float) row[3];
+        boolean status = (boolean) row[4];
+     
+        return new Orders(id, orderDate, shippingAddress, totalAmount, status, null); 
+
+     }
     
     @Override
-    public Order getByid(Order t, Long id) {
+    public Orders getByid(Orders t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

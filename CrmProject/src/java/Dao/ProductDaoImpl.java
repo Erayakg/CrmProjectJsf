@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import entity.Order;
+import entity.Orders;
 import entity.Product;
 import java.util.List;
 import java.sql.*;
@@ -75,7 +75,7 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    public void addProductToCampaign(Order order, Product product) {
+    public void addProductToOrder(Orders order, Product product) {
     
     String sql = "INSERT INTO ORDER_Product (order_id, product_id) VALUES (?, ?)";
     

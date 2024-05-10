@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
-public class Order  implements  BaseEntity{
+public class Orders  implements  BaseEntity{
   //invoice, customer,
     private long Id; 
     private LocalDateTime orderDate;// Sipariş tarihi
@@ -65,7 +65,7 @@ public class Order  implements  BaseEntity{
         this.detail = detail;
     }
 
-    public Order(long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail) {
+    public Orders(long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail) {
         this.Id = Id;
         this.orderDate = orderDate;
         this.shippingAddress = shippingAddress;
@@ -74,10 +74,10 @@ public class Order  implements  BaseEntity{
         this.detail = detail;
     }
 
-    public Order() {
+    public Orders() {
     }
 
-    public Order(long Id) {
+    public Orders(long Id) {
         this.Id = Id;
     }
 
@@ -106,7 +106,7 @@ public class Order  implements  BaseEntity{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Order other = (Order) obj;
+        final Orders other = (Orders) obj;
         return this.Id == other.Id;
     }
 
