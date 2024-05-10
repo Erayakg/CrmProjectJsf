@@ -4,6 +4,7 @@
  */
 package entity;
 
+import java.util.Objects;
 
 /**
  *
@@ -12,35 +13,10 @@ package entity;
 public abstract class Account implements BaseEntity {
 
     private Long id;
-    private String name;
     private String phone;
-    private String Address;
+    private String address;
     private String mail;
     private String password;
-
-    public Account(Long id, String name, String phone, String Address, String mail, String password) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.Address = Address;
-        this.mail = mail;
-        this.password = password;
-    }
-
-    public Account() {
-    }
-
-    public Account(String name, String phone, String Address, String mail, String password) {
-        this.name = name;
-        this.phone = phone;
-        this.Address = Address;
-        this.mail = mail;
-        this.password = password;
-    }
-
-    public Account(Long id) {
-        this.id = id;
-    }
 
     @Override
     public long getId() {
@@ -49,14 +25,6 @@ public abstract class Account implements BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPhone() {
@@ -68,11 +36,11 @@ public abstract class Account implements BaseEntity {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getMail() {
@@ -90,5 +58,63 @@ public abstract class Account implements BaseEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public Account() {
+    }
+
+    public Account(Long id) {
+        this.id = id;
+    }
+
+    public Account(Long id, String phone, String address, String mail, String password) {
+        this.id = id;
+        this.phone = phone;
+        this.address = address;
+        this.mail = mail;
+        this.password = password;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.phone);
+        hash = 67 * hash + Objects.hashCode(this.address);
+        hash = 67 * hash + Objects.hashCode(this.mail);
+        hash = 67 * hash + Objects.hashCode(this.password);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Account other = (Account) obj;
+        if (!Objects.equals(this.phone, other.phone)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.mail, other.mail)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        return Objects.equals(this.id, other.id);
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" + "id=" + id + ", phone=" + phone + ", address=" + address + ", mail=" + mail + ", password=" + password + '}';
+    }
+
 }

@@ -5,65 +5,80 @@
 package entity;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
  * @author 90552
  */
 
-public class Report implements BaseEntity{
+public class Report extends Contact implements BaseEntity{
 
-    private long Id; 
-    private String Title;
-    private LocalDateTime Date;  
-    private String Content;
+    private LocalDateTime date;  
     private  String ReportEmail;
+
+    
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public String getReportEmail() {
+        return ReportEmail;
+    }
+
+    public void setReportEmail(String ReportEmail) {
+        this.ReportEmail = ReportEmail;
+    }
+
+    public Report( LocalDateTime date, String ReportEmail, Long id, String subject, String description, String title) {
+        super(id, subject, description, title);
+        this.date = date;
+        this.ReportEmail = ReportEmail;
+    }
 
     public Report() {
     }
 
-    public Report(long Id) {
-        this.Id = Id;
-    }
-
-    public Report(long Id, String Title, LocalDateTime Date, String Content) {
-        this.Id = Id;
-        this.Title = Title;
-        this.Date = Date;
-        this.Content = Content;
+    public Report(Long id) {
+        super(id);
     }
 
     @Override
-    public long getId() {
-        return Id;
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.date);
+        hash = 29 * hash + Objects.hashCode(this.ReportEmail);
+        return hash;
     }
 
-    public void setId(long Id) {
-        this.Id = Id;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Report other = (Report) obj;
+        if (!Objects.equals(this.ReportEmail, other.ReportEmail)) {
+            return false;
+        }
+        return Objects.equals(this.date, other.date);
     }
 
-    public String getTitle() {
-        return Title;
+    @Override
+    public String toString() {
+        return "Report{" + "date=" + date + ", ReportEmail=" + ReportEmail + '}';
     }
 
-    public void setTitle(String Title) {
-        this.Title = Title;
-    }
-
-    public LocalDateTime getDate() {
-        return Date;
-    }
-
-    public void setDate(LocalDateTime Date) {
-        this.Date = Date;
-    }
-
-    public String getContent() {
-        return Content;
-    }
-
-    public void setContent(String Content) {
-        this.Content = Content;
-    }
+   
+  
     
 }

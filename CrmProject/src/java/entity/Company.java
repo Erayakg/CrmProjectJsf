@@ -3,51 +3,63 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entity;
-
-import java.util.Date;
+import java.util.Objects;
 
 /**
  *
  * @author baran
  */
 public class Company extends Account {
+    
+    private Long taxNumber;
 
-    private Date creationDate;
-    private Long TaxNumber;
+    public Long getTaxNumber() {
+        return taxNumber;
+    }
 
-    public Company(Long id, String name, Date creationDate, Long TaxNumber, String phone, String Address, String mail, String password) {
-        super(id, name, phone, Address, mail, password);
-        this.creationDate = creationDate;
-        this.TaxNumber = TaxNumber;
+    public void setTaxNumber(Long taxNumber) {
+        this.taxNumber = taxNumber;
+    }
+
+    public Company(Long taxNumber, Long id, String phone, String address, String mail, String password) {
+        super(id, phone, address, mail, password);
+        this.taxNumber = taxNumber;
+    }
+
+    public Company() {
     }
 
     public Company(Long id) {
         super(id);
     }
 
-    public Company(String name, Date creationDate, Long TaxNumber, String phone, String Address, String mail, String password) {
-        super(name, phone, Address, mail, password);
-        this.creationDate = creationDate;
-        this.TaxNumber = TaxNumber;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.taxNumber);
+        return hash;
     }
 
-    public Company() {
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Company other = (Company) obj;
+        return Objects.equals(this.taxNumber, other.taxNumber);
     }
 
-    public Date getCreationDate() {
-        return creationDate;
+    @Override
+    public String toString() {
+        return "Company{" + "taxNumber=" + taxNumber + '}';
     }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public Long getTaxNumber() {
-        return TaxNumber;
-    }
-
-    public void setTaxNumber(Long TaxNumber) {
-        this.TaxNumber = TaxNumber;
-    }
+    
+    
 
 }

@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package entity;
-
-import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -13,56 +12,27 @@ import java.util.Date;
 
 public class Notes implements BaseEntity {
 
-  
+  //
     private Long id;
-    private String noteData;
-    private String noteContent;
+    private String content;
     private String title;
-    private Date creatDate;
-    private Date updateData;
     private Customer customer;
-
-    public Notes(Long id, String noteData, String noteContent, String title, Date creatDate, Date updateData, Customer customer) {
-        this.id = id;
-        this.noteData = noteData;
-        this.noteContent = noteContent;
-        this.title = title;
-        this.creatDate = creatDate;
-        this.updateData = updateData;
-        this.customer = customer;
-    }
-
-    public Notes() {
-    }
-
-    public Notes(Long id) {
-        this.id = id;
-    }
-    
 
     @Override
     public long getId() {
-        return id;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getNoteData() {
-        return noteData;
+    public String getContent() {
+        return content;
     }
 
-    public void setNoteData(String noteData) {
-        this.noteData = noteData;
-    }
-
-    public String getNoteContent() {
-        return noteContent;
-    }
-
-    public void setNoteContent(String noteContent) {
-        this.noteContent = noteContent;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getTitle() {
@@ -73,28 +43,65 @@ public class Notes implements BaseEntity {
         this.title = title;
     }
 
-    public Date getCreatDate() {
-        return creatDate;
-    }
-
-    public void setCreatDate(Date creatDate) {
-        this.creatDate = creatDate;
-    }
-
-    public Date getUpdateData() {
-        return updateData;
-    }
-
-    public void setUpdateData(Date updateData) {
-        this.updateData = updateData;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Notes(Long id, String content, String title, Customer customer) {
+        this.id = id;
+        this.content = content;
+        this.title = title;
+        this.customer = customer;
+    }
+
+    public Notes() {
+    }
+
+    public Notes(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.content);
+        hash = 83 * hash + Objects.hashCode(this.title);
+        hash = 83 * hash + Objects.hashCode(this.customer);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Notes other = (Notes) obj;
+        if (!Objects.equals(this.content, other.content)) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return Objects.equals(this.customer, other.customer);
+    }
+
+    @Override
+    public String toString() {
+        return "Notes{" + "id=" + id + ", content=" + content + ", title=" + title + ", customer=" + customer + '}';
     }
 
 }

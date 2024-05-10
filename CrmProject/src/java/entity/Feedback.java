@@ -4,44 +4,76 @@
  */
 package entity;
 
-public class Feedback implements  BaseEntity{
-    private long id;
-    //customerİd,personelİd,urunİd
-    private  String subject;
-    private  String desciprtion;
+import java.util.Objects;
 
-    @Override
-    public long getId() {
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
+public class Feedback  extends Contact implements  BaseEntity{
+    //customerİd,personelID,urunİd
+    
+    private String response;
+    private Boolean status;
+    
+    public String getResponse() {
+        return response;
     }
 
-    public String getSubject() {
-        return subject;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public Boolean getStatus() {
+        return status;
     }
 
-    public String getDesciprtion() {
-        return desciprtion;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public void setDesciprtion(String desciprtion) {
-        this.desciprtion = desciprtion;
-    }
-
-    public Feedback(long id, String subject, String desciprtion) {
-        this.id = id;
-        this.subject = subject;
-        this.desciprtion = desciprtion;
+    public Feedback(String response, Boolean status, Long id, String subject, String description, String title) {
+        super(id, subject, description, title);
+        this.response = response;
+        this.status = status;
     }
 
     public Feedback() {
     }
+
+    public Feedback(Long id) {
+        super(id);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.response);
+        hash = 47 * hash + Objects.hashCode(this.status);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Feedback other = (Feedback) obj;
+        if (!Objects.equals(this.response, other.response)) {
+            return false;
+        }
+        return Objects.equals(this.status, other.status);
+    }
+
+    @Override
+    public String toString() {
+        return "Feedback{" + "response=" + response + ", status=" + status + '}';
+    }
+
+   
     
+
     
 }
