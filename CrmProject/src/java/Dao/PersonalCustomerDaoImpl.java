@@ -39,6 +39,8 @@ public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation
     public void deleteById(PersonalCustomer t, Long id) {
         super.delete(t, id);
     }
+    
+    
 
     @Override
     public List<PersonalCustomer> getList() {

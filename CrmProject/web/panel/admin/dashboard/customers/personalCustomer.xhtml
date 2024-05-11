@@ -14,11 +14,11 @@
         <ui:composition template="/panel/template/adminnavbar.xhtml">
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="admincustomer.css" />
+                
                 <div class="container">
                     <ui:include src="/panel/template/dashboardsidebar.xhtml"></ui:include>
                     <h:form id="personalCustomerForm">
                         <h:panelGrid columns="2" cellpadding="5">
-
                             <h:outputLabel for="id" value="Personel Customer ID" />
                             <h:inputText id="id" value="#{personalCustomerBean.personalCustomer.id}" />
 
