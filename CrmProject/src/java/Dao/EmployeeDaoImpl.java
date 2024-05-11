@@ -14,6 +14,11 @@ import java.util.List;
  * @author baran
  */
 public class EmployeeDaoImpl extends AbstractDao implements DaoOperation<Employee> {
+
+    @Override
+    public void update(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     @Override
     public void createTable(Employee t) {

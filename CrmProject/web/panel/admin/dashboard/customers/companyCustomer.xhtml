@@ -41,6 +41,17 @@
                         <h:commandButton value="Add" action="#{companyCustomerBean.save()}"/>
                         <h:commandButton value="Update" action="#{companyCustomerBean.update()}" />
                         <h:commandButton value="Delete" action="#{companyCustomerBean.delete(companyCustomerBean.companyCustomer.id)}" />
+                        <h:commandButton value="Add Note" styleClass="toggleNoteForm" />
+                        <h:panelGroup id="noteForm" styleClass="noteForm" layout="block">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel for="noteTitle" value="Note Title:" />
+                                <h:inputText id="noteTitle" value="#{notesBean.notes.title}" />
+
+                                <h:outputLabel for="noteContent" value="Note Content:" />
+                                <h:inputTextarea id="noteContent" value="#{notesBean.notes.content}" />
+                            </h:panelGrid>
+                            <h:commandButton value="Save Note" action="#{notesBean.save()}" />
+                        </h:panelGroup>
                     </h:form>
                     <h:form>
                         <h:dataTable value="#{companyCustomerBean.list}" var="customer">

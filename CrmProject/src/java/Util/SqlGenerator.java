@@ -27,7 +27,7 @@ public class SqlGenerator<T> {
         } else if (type == int.class || type == Integer.class || type == Long.class) {
             return "INT";
         } else if (type == double.class || type == Double.class) {
-            return "DOUBLE";
+            return "DOUBLE PRECISION";
         } else if (type == float.class || type == Float.class) {
             return "FLOAT";
         } else if (type == boolean.class || type == Boolean.class) {
