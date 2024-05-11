@@ -23,6 +23,8 @@ public class EmployeeBean implements BaseBean<Employee> {
     private EmployeeDaoImpl employeeDaoImpl;
 
     public Employee getEmployee() {
+        if(this.employee==null)
+            employee=new Employee();
         return employee;
     }
 
@@ -31,6 +33,8 @@ public class EmployeeBean implements BaseBean<Employee> {
     }
 
     public EmployeeDaoImpl getEmployeeDaoImpl() {
+        if(this.employeeDaoImpl==null)
+            employeeDaoImpl=new EmployeeDaoImpl();
         return employeeDaoImpl;
     }
 
@@ -40,6 +44,7 @@ public class EmployeeBean implements BaseBean<Employee> {
 
     @Override
     public void save() {
+        this.getEmployeeDaoImpl().createTable(getEmployee());
         this.getEmployeeDaoImpl().create(getEmployee());
 
     }
@@ -56,6 +61,11 @@ public class EmployeeBean implements BaseBean<Employee> {
 
     @Override
     public List<Employee> getList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void update() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

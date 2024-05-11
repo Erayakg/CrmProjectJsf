@@ -11,16 +11,16 @@ body {
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
+    display: flex; /* Yatay olarak hizalama */
+    flex-direction: row; /* İçerikleri yatay sırala */
+    max-width: 100%; /* Konteyner genişliğini tam ekran yap */
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Sidebar styles */
 .sidebar {
-    width: 25%;
+    width: 20%; /* Sidebar genişliğini ayarla */
     background-color: #343a40;
     color: #fff;
     padding: 20px;
@@ -51,9 +51,9 @@ body {
 
 /* Content container */
 .admin-customers-container {
-    flex-grow: 1;
+    flex-grow: 1; /* İçerik konteynerini geri kalan alana yay */
     background-color: #fff;
-    margin: 20px;
+    margin-left: 20px; /* Sidebar ile arasında boşluk bırak */
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -157,4 +157,8 @@ f:facet {
 h:dataTable h:outputText {
     display: block;
     padding: 8px;
+}
+.noteForm {
+    display: none; /* Not formunu gizle */
+    margin-top: 20px;
 }

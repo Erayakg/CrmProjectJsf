@@ -64,7 +64,7 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
                 CompanyCustomerList.add(mapToObject(row));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CompanyCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return CompanyCustomerList;
     }

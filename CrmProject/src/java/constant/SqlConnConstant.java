@@ -13,6 +13,6 @@ public class SqlConnConstant {
      public static final String JDBC_DRIVER = "org.postgresql.Driver";
      public  static final String Url = "jdbc:postgresql://localhost:5432/CrmProject";
      public static final String userName = "postgres";
-     public  static final String Password = "1905";
+     public  static final String Password = "123456";
 
 }

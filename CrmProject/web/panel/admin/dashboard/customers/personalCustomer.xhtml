@@ -28,44 +28,44 @@
                             <h:outputLabel for="surname" value="Surname:" />
                             <h:inputText id="surname" value="#{personalCustomerBean.personalCustomer.surname}" />
 
-                            <h:outputLabel for="address" value="Address:" />
-                            <h:inputText id="address" value="#{personalCustomerBean.personalCustomer.address}" />
+                            <h:outputLabel for="address" value="E-mail: " />
+                            <h:inputText id="address" value="#{personalCustomerBean.personalCustomer.mail}" />
 
-                            <h:outputLabel for="mail" value="Email:" />
-                            <h:inputText id="mail" value="#{personalCustomerBean.personalCustomer.mail}" />
+                            <h:outputLabel for="mail" value="Phone: " />
+                            <h:inputText id="mail" value="#{personalCustomerBean.personalCustomer.phone}" />
                             
-                            <h:outputLabel for="phone" value="Phone: " />
-                            <h:inputText id="phone" value="#{personalCustomerBean.personalCustomer.phone}" />
+                            <h:outputLabel for="phone" value="Address: " />
+                            <h:inputText id="phone" value="#{personalCustomerBean.personalCustomer.address}" />
 
                         </h:panelGrid>
                         <h:commandButton value="Add" action="#{personalCustomerBean.save()}"/>
                         <h:commandButton value="Update" action="#{personalCustomerBean.update}" />
-                        <h:commandButton value="Delete" action="#{personalCustomerBean.delete}" />
+                        <h:commandButton value="Delete" action="#{personalCustomerBean.delete(personalCustomerBean.personalCustomer.id)}" />
                     </h:form>
-                    <h:dataTable value="#{personalCustomerBean.personalCustomer}" var="customer">
+                    <h:dataTable value="#{personalCustomerBean.list}" var="customer">
                         <h:column>
                             <f:facet name="header">ID</f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.id}" />
+                            <h:outputText value="#{customer.id}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">Name: </f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.name}" />
+                            <h:outputText value="#{customer.name}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">Surname: </f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.surname}" />
+                            <h:outputText value="#{customer.surname}" />
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Address</f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.address}" />
+                            <f:facet name="header">E-Mail:</f:facet>
+                            <h:outputText value="#{customer.mail}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">Phone: </f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.phone}" />
+                            <h:outputText value="#{customer.phone}" />
                         </h:column>
                         <h:column>
-                            <f:facet name="header">Email</f:facet>
-                            <h:outputText value="#{personalCustomerBean.personalCustomer.mail}" />
+                            <f:facet name="header">Address: </f:facet>
+                            <h:outputText value="#{customer.address}" />
                         </h:column>
                     </h:dataTable>
                 </div>
