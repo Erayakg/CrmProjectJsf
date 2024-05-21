@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Admin Panel</title>
+        <h:outputStylesheet library="css" name="adminnavbar.css"/>
+    </h:head>
+    <h:body>
+        <header class="header">
+            <div class="logo">Admin Panel</div>
+            <nav>
+                <ul class="nav-links">
+                    <li>
+                        <h:link value="Employees" outcome="#{navigationBean.goToEmployee()}" />
+                    </li>
+                    <li >
+                        <h:link value="Profile" outcome="#{navigationBean.goToProfile()}" />
+                    </li>
+                    <li >
+                        <h:link value="Logout" outcome="#{navigationBean.goToLogout()}" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <ui:insert name="content"></ui:insert>
+    </h:body>
+</html>

@@ -73,12 +73,10 @@ public class CompanyDaoImpl extends AbstractDao implements DaoOperation<Company>
         return company;
  }    
 
-     @Override
-    public void update(Long id) {
-        Company company= new Company();
-        company=this.getByid(company, id);
+    @Override
+    public void update(Company c,Long id) {
         try {
-            super.update(company, id);
+            super.updateDao(c, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(CompanyDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

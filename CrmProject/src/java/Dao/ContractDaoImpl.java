@@ -74,11 +74,9 @@ public class ContractDaoImpl extends AbstractDao implements DaoOperation<Contrac
  }    
 
      @Override
-    public void update(Long id) {
-        Contract company= new Contract();
-        company=this.getByid(company, id);
+    public void update(Contract c,Long id) {
         try {
-            super.update(company, id);
+            super.updateDao(c, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ContractDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -92,8 +92,12 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
     }
 
     @Override
-    public void update(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update (Product p,Long id) {
+        try {
+            super.updateDao(p, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

@@ -74,11 +74,9 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
     }
 
     @Override
-    public void update(Long id) {
-        Campaign campaign= new Campaign();
-        campaign=this.getByid(campaign, id);
+    public void update(Campaign c,Long id) {
         try {
-            super.update(campaign, id);
+            super.updateDao(c, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(CampaignDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

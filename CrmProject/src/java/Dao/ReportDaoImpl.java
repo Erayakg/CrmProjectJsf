@@ -6,6 +6,8 @@ package Dao;
 
 import entity.Report;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -47,8 +49,12 @@ public class ReportDaoImpl extends AbstractDao implements DaoOperation<Report> {
     }
 
     @Override
-    public void update(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Report r,Long id) {
+        try {
+            super.updateDao(r, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(ReportDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -50,4 +50,23 @@ public class NavigationBean implements Serializable {
     public String goToCompanyCustomers() {
         return "/panel/admin/dashboard/customers/companyCustomer.xhtml?faces-redirect=true";
     }
+    
+    public String goToEmployee(){
+        return "/panel/admin/adminp/employee.xhtml";
+    }
+    public String goToProfile(){
+        return "/panel/admin/adminp/profile.xhtml";
+    }
+    public String adminHome(){
+        return "/panel/admin/adminp/home.xhtml";
+    }
+    public String goToLogout(){
+        return "/panel/admin/access/adminLogin.xhtml";
+    }
+    public String adminLogin(){
+        return "/panel/admin/access/adminLogin.xhtml";
+    }
+    public String employeeLogin(){
+        return "/panel/admin/access/employeeLogin.xhtml";
+    }
 }

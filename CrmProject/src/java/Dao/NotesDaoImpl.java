@@ -71,11 +71,9 @@ public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes> {
     }
 
     @Override
-    public void update(Long id) {
-        Notes notes = new Notes();
-        notes = this.getByid(notes, id);
+    public void update(Notes n,Long id) {
         try {
-            super.update(notes, id);
+            super.updateDao(n, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(NotesDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

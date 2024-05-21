@@ -99,7 +99,7 @@ public class SqlGenerator<T> {
 
     public String returnSelectSql() {
 
-        System.out.println(instance.getClass().getSimpleName());
+        
 
         Field[] fields = instance.getClass().getDeclaredFields();
 
@@ -113,7 +113,7 @@ public class SqlGenerator<T> {
         }
 
         sql += " FROM " + instance.getClass().getSimpleName();
-        System.out.println(sql);
+        
         return sql;
 
     }

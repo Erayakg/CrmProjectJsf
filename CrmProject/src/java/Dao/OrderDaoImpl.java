@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.sql.*;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  *
@@ -71,8 +72,12 @@ public class OrderDaoImpl extends AbstractDao implements DaoOperation<Orders> {
     }
 
     @Override
-    public void update(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void update(Orders o,Long id) {
+        try {
+            super.updateDao(o, id);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(OrderDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

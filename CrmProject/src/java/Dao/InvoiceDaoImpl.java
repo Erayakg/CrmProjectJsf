@@ -75,12 +75,10 @@ public class InvoiceDaoImpl extends AbstractDao implements DaoOperation<Invoice>
         return invoice;
  }    
 
-     @Override
-    public void update(Long id) {
-        Invoice invoice= new Invoice();
-        invoice=this.getByid(invoice, id);
+    @Override
+    public void update(Invoice i,Long id) {
         try {
-            super.update(invoice, id);
+            super.updateDao(i, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(InvoiceDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
