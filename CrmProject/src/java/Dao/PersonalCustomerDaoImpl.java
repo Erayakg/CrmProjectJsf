@@ -76,11 +76,10 @@ public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation
     }
 
     @Override
-    public void update(Long id) {
-        PersonalCustomer personalCustomer = new PersonalCustomer();
-        personalCustomer = this.getByid(personalCustomer, id);
+    public void update(PersonalCustomer p,Long id) {
+        
         try {
-            super.update(personalCustomer, id);
+            super.updateDao(p, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(PersonalCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

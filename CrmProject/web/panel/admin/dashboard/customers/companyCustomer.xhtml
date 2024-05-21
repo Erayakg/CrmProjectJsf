@@ -13,7 +13,6 @@
     </h:head>
     <h:body>
         <ui:composition template="/panel/template/adminnavbar.xhtml">
-
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="admincustomer.css" />
                 <div class="container">
@@ -39,7 +38,7 @@
 
                         </h:panelGrid>
                         <h:commandButton value="Add" action="#{companyCustomerBean.save()}"/>
-                        <h:commandButton value="Update" action="#{companyCustomerBean.update()}" />
+                        <h:commandButton value="Update" action="#{companyCustomerBean.update1()}" />
                         <h:commandButton value="Delete" action="#{companyCustomerBean.delete(companyCustomerBean.companyCustomer.id)}" />
                         <h:commandButton value="Add Note" styleClass="toggleNoteForm" />
                         <h:panelGroup id="noteForm" styleClass="noteForm" layout="block">

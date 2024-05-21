@@ -75,11 +75,9 @@ public class FeedbackDaoImpl extends AbstractDao implements DaoOperation<Feedbac
  }    
 
      @Override
-    public void update(Long id) {
-        Feedback feedback= new Feedback();
-        feedback=this.getByid(feedback, id);
+    public void update(Feedback f,Long id) {
         try {
-            super.update(feedback, id);
+            super.updateDao(f, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(FeedbackDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

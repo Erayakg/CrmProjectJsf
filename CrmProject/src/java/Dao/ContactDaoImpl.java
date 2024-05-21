@@ -71,11 +71,10 @@ public class ContactDaoImpl extends AbstractDao implements DaoOperation<Contact>
     }
 
     @Override
-    public void update(Long id) {
-        Contact contact = new Contact();
-        contact = this.getByid(contact, id);
+    public void update(Contact c,Long id) {
+        
         try {
-            super.update(contact, id);
+            super.updateDao(c, id);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(ContactDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

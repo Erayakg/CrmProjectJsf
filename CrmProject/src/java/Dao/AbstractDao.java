@@ -80,7 +80,7 @@ public abstract class AbstractDao extends DbConnect {
         }
     }
 
-    public void update(Object o, Long id) throws IllegalAccessException {
+    public void updateDao(Object o, Long id) throws IllegalAccessException {
         generator = new SqlGenerator(o);
 
         try {

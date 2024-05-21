@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Admin Panel</title>
+        <h:outputStylesheet library="css" name="adminnavbar.css"/>
+    </h:head>
+    <h:body>
+        <header class="header">
+            <div class="logo">Personal Admin Page</div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="#{navigationBean.isActive('/panel/admin/dashboard/dashboard.xhtml')}">
+                        <h:link value="Dashboard" outcome="#{navigationBean.goToDashboard()}" />
+                    </li>
+                    <li class="#{navigationBean.isActive('/panel/admin/contact/')}">
+                        Contact
+                        <ul class="submenu">
+                            <li>
+                                <h:link value="Feedbacks" outcome="#{navigationBean.goToFeedbacks()}" />
+                            </li>
+                            <li>
+                                <h:link value="Reports" outcome="#{navigationBean.goToReports()}" />
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="#{navigationBean.isActive('/panel/admin/products/productpage.xhtml')}">
+                        <h:link value="Products" outcome="#{navigationBean.goToProducts()}" />
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <ui:insert name="content"></ui:insert>
+    </h:body>
+</html>

@@ -19,16 +19,7 @@ import java.util.logging.Logger;
  */
 public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<CompanyCustomer> {
 
-    @Override
-    public void update(Long id) {
-        CompanyCustomer customer= new CompanyCustomer();
-        customer=this.getByid(customer, id);
-        try {
-            super.update(customer, id);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(CompanyCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     @Override
     public void createTable(CompanyCustomer t) {
@@ -91,4 +82,15 @@ public class CompanyCustomerDaoImpl extends AbstractDao implements DaoOperation<
         return (CompanyCustomer) returnObjectById;
     }
 
+    @Override
+    public void update(CompanyCustomer t, Long id) {
+        try {
+            super.updateDao(t, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(CompanyCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+   
+  
 }

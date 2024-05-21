@@ -81,5 +81,9 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer>, Seriali
     public List<PersonalCustomer> getList() {
         return this.personalcustomerDaoImpl.getList();
     }
+
+    public void update1() {
+         this.personalcustomerDaoImpl.update(this.getPersonalCustomer(), getPersonalCustomer().getId());
+    }
     
 }
