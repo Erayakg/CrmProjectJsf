@@ -20,4 +20,6 @@ public interface  DaoOperation <T> {
     
     public T getByid(Long id);
     
+    public void update(T t,Long id);
+    
 }

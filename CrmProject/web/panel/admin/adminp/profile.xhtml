@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Company Profile</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="/panel/template/adminToNavbar.xhtml">
+            <ui:define name="content">
+
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+                <div class="container mt-3">
+                    <!-- Company Profile Section -->
+                    <div class="card">
+                        <div class="card-header">Company Profile</div>
+                        <div class="card-body">
+                            <h:form>
+                                <h:panelGrid columns="2">
+                                    
+                                    <h:outputLabel for="updateCompanyPhone" value="Company Phone:"/>
+                                    <h:inputText id="updateCompanyPhone" value="#{companyBean.company.phone}" class="form-control"/>
+
+                                    <h:outputLabel for="updateCompanyAddress" value="Company Address:"/>
+                                    <h:inputText id="updateCompanyAddress" value="#{companyBean.company.address}" class="form-control"/>
+
+                                    <h:outputLabel for="updateCompanyMail" value="Company Email:"/>
+                                    <h:inputText id="updateCompanyMail" value="#{companyBean.company.mail}" type="email" class="form-control"/>
+
+                                    <h:outputLabel for="updateCompanyTaxNumber" value="Tax Number:"/>
+                                    <h:inputText id="updateCompanyTaxNumber" value="#{companyBean.company.taxNumber}" class="form-control"/>
+
+
+                                    <h:outputLabel for="updateCompanyPassword" value="New Password:"/>
+                                    <h:inputSecret id="updateCompanyPassword" value="#{companyBean.company.password}" redisplay="false" class="form-control"/>
+                                </h:panelGrid>
+                                <h:commandButton value="Update Profile" action="#{companyBean.update1()}" class="btn btn-success"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

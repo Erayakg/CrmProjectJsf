@@ -60,14 +60,23 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
     public void delete(Long id) {
         this.companycustomerDaoImpl.deleteById(this.getCompanyCustomer(), getCompanyCustomer().getId());
     }
-
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     @Override
     public List<CompanyCustomer> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companycustomerDaoImpl.getList();
     }
 
     @Override
     public CompanyCustomer getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companycustomerDaoImpl.getByid(getCompanyCustomer(),getCompanyCustomer().getId());
     }
+
+    
+    public void update1() {
+       this.companycustomerDaoImpl.update(getCompanyCustomer(),getCompanyCustomer().getId());
+    }
+
 }

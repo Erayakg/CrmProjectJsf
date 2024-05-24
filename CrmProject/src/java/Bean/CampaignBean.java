@@ -68,13 +68,24 @@ public class CampaignBean implements BaseBean<Campaign> {
  
     @Override
     public List<Campaign> getList() {
-        //return  this.getCampaingDaoImpl().getList(getCampaign());
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return  this.getCampaingDaoImpl().getList();
     }
 
     @Override
     public Campaign getById() {
+        return this.getCampaingDaoImpl().getByid(this.getCampaign(),this.getCampaign().getId());
+    }
+
+    
+    public void update1() {
+        this.getCampaingDaoImpl().update(getCampaign(),getCampaign().getId());
+    }
+
+    @Override
+    public void update() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }

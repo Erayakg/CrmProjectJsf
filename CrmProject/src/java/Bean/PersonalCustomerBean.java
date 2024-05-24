@@ -8,6 +8,7 @@ import Dao.PersonalCustomerDaoImpl;
 import entity.PersonalCustomer;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,7 +17,7 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
+public class PersonalCustomerBean implements BaseBean<PersonalCustomer>, Serializable{
 
     private PersonalCustomer personalcustomer;
 
@@ -33,7 +34,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
         this.personalcustomer = personalcustomer;
     }
 
-    public PersonalCustomerDaoImpl getCampaingDaoImpl() {
+    public PersonalCustomerDaoImpl personalcustomerDaoImpl() {
         if (this.personalcustomerDaoImpl == null) {
             personalcustomerDaoImpl = new PersonalCustomerDaoImpl();
         }
@@ -45,6 +46,7 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
     }
 
     public PersonalCustomerBean() {
+        this.personalcustomerDaoImpl=new PersonalCustomerDaoImpl();
 
     }
 
@@ -54,8 +56,14 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
     }
 
     @Override
-    public void save() {
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
+    
+    @Override
+    public void save() {
+        
         this.personalcustomerDaoImpl.create(this.getPersonalCustomer());
     }
 
@@ -71,6 +79,11 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
 
     @Override
     public List<PersonalCustomer> getList() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.personalcustomerDaoImpl.getList();
     }
+
+    public void update1() {
+         this.personalcustomerDaoImpl.update(this.getPersonalCustomer(), getPersonalCustomer().getId());
+    }
+    
 }

@@ -10,9 +10,9 @@
         <title>Admin Panel</title>
         <h:outputStylesheet library="css" name="adminnavbar.css"/>
     </h:head>
-    <body>
+    <h:body>
         <header class="header">
-            <div class="logo">Admin Panel</div>
+            <div class="logo">Personal Admin Page</div>
             <nav>
                 <ul class="nav-links">
                     <li class="#{navigationBean.isActive('/panel/admin/dashboard/dashboard.xhtml')}">
@@ -32,16 +32,9 @@
                     <li class="#{navigationBean.isActive('/panel/admin/products/productpage.xhtml')}">
                         <h:link value="Products" outcome="#{navigationBean.goToProducts()}" />
                     </li>
-                    
-                    <li class="#{navigationBean.isActive('/panel/admin/access/employeeLogin.xhtml')}">
-                        <h:link value="Personal Login" outcome="#{navigationBean.goToEmployeeLogin()}" />
-                    </li>
-                    <li class="#{navigationBean.isActive('/panel/admin/access/employeeRegister.xhtml')}">
-                        <h:link value="Personal Register" outcome="#{navigationBean.goToEmployeeRegister()}" />
-                    </li>
                 </ul>
             </nav>
         </header>
         <ui:insert name="content"></ui:insert>
-    </body>
+    </h:body>
 </html>

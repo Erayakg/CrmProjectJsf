@@ -5,14 +5,18 @@
 package Dao;
 
 import entity.PersonalCustomer;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author furka
  */
 public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation<PersonalCustomer> {
-    
+
     @Override
     public void createTable(PersonalCustomer t) {
         try {
@@ -21,7 +25,7 @@ public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
     public void create(PersonalCustomer t) {
         try {
@@ -30,20 +34,55 @@ public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
     public void deleteById(PersonalCustomer t, Long id) {
         super.delete(t, id);
     }
     
+    
+
     @Override
     public List<PersonalCustomer> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<PersonalCustomer> personalCustomerlist = new ArrayList<>();
+        try {
+            List<Object[]> table = super.returnTable(new PersonalCustomer());
+
+            for (Object[] row : table) {
+                personalCustomerlist.add(mapToObject(row));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonalCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return personalCustomerlist;
     }
-    
+
     @Override
     public PersonalCustomer getByid(PersonalCustomer t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
+    public static PersonalCustomer mapToObject(Object[] row) {
+
+        PersonalCustomer personalCustomer = new PersonalCustomer();
+        personalCustomer.setId(((Number) row[0]).longValue());
+        personalCustomer.setName((String) row[1]);
+        personalCustomer.setSurname((String) row[2]);
+        personalCustomer.setMail((String) row[3]);
+        personalCustomer.setPhone((String) row[4]);
+        personalCustomer.setAddress((String) row[5]);
+        personalCustomer.setPassword((String) row[6]);
+        return personalCustomer;
+    }
+
+    @Override
+    public void update(PersonalCustomer p,Long id) {
+        
+        try {
+            super.updateDao(p, id);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(PersonalCustomerDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
