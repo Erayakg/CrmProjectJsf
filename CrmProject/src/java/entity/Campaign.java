@@ -1,11 +1,12 @@
 package entity;
 
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
 public class Campaign implements BaseEntity {
 
-    //product Many to many
     private Long id;
     private String name;
     private String description;

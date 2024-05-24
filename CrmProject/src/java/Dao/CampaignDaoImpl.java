@@ -11,39 +11,33 @@ import java.util.List;
  *
  * @author baran
  */
-public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaign> {
+public class CampaignDaoImpl extends AbstractDao<Campaign> implements DaoOperation<Campaign> {
+
+    public CampaignDaoImpl() {
+        super(Campaign.class);
+    }
 
     @Override
     public void create(Campaign campaign) {
         try {
-
-            super.createEntity(campaign);
+            super.saveJpa(campaign);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
-        super.delete(t, id);
+    public void deleteById(Long id) {
+        super.delete(id);
     }
 
     @Override
     public List<Campaign> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            return super.findAll();
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void createTable(Campaign t) {
-        try {
-            super.createTableConn(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public Campaign getByid(Long id) {
+        return super.find(id);
     }
 }

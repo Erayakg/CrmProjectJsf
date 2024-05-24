@@ -4,13 +4,19 @@
  */
 package entity;
 
+import jakarta.persistence.*;
 import java.util.Objects;
+
+
 
 /**
  *
  * @author baran
  */
+@Entity 
 public class Company  implements BaseEntity{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String phone;
     private String address;

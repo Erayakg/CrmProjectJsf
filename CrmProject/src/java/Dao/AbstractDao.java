@@ -8,179 +8,127 @@ import Util.SqlGenerator;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
+
 import Util.DbConnect;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
-import java.sql.Statement;
-import java.util.ArrayList;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceUnit;
+import jakarta.transaction.UserTransaction;
 import java.util.List;
-import java.sql.ResultSetMetaData;
+import javax.naming.InitialContext;
 
 
 
-/**
- *
- * @author erayb
- */
-public abstract class AbstractDao extends DbConnect {
+public abstract class AbstractDao<T> extends DbConnect {
 
-    Connection connection;
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("CrmProjectPU");
+    private Class<T> entityClass;
 
-    SqlGenerator generator;
-
-    public Connection getConnection() {
-        if(this.connection==null){
-            return super.getConnect();
-        }
-        return connection;
-    }
-    
-    
-     
-    public void createTableConn(Object o) throws Exception{
-        
-                generator=new SqlGenerator(o);
-                
-                String sql=generator.returnCreateSql();
-                
-                connection=this.getConnect();
-                Statement st =getConnection().createStatement();
-        
-                ResultSet rs =st.executeQuery(sql);
-                
+    public AbstractDao(Class<T> entityClass) {
+        this.entityClass = entityClass;
     }
 
-    public void createEntity(Object o) throws Exception {
+    public void saveJpa(T entity) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
 
-        generator = new SqlGenerator(o);
+            em.joinTransaction();
+            em.persist(entity);
 
-        String sql = generator.returnInsertSql();
-
-        connection = this.getConnect();
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            System.out.println(sql);
-            int result = preparedStatement.executeUpdate();
-         
-        } catch (SQLException ex) {
-            System.out.println("error" + ex);
-        }
-    }
-     
- 
-
-    public void delete(Object o, Long id) {
-
-        generator = new SqlGenerator(o);
-
-        String sql = generator.returnDeleteSql(id);
-
-        connection = this.getConnect();
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            System.out.println(sql);
-            int result = preparedStatement.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    public List<Object[]> returnTable(Object obj) throws SQLException {
-        
-    List<Object[]> table = new ArrayList<>();
-    Connection connection = null;
-    try {
-        connection = this.getConnect();
-        SqlGenerator generator = new SqlGenerator(obj);
-        String sql = generator.returnSelectSql();
-        
-        Statement st = connection.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        
-        ResultSetMetaData metaData = rs.getMetaData();
-        int columnCount = metaData.getColumnCount();
-        
-        while (rs.next()) {
-            Object[] row = new Object[columnCount];
-            for (int i = 0; i < columnCount; i++) {
-                row[i] = rs.getObject(i + 1);
-            }
-            table.add(row);
-        }
-    } finally {
-        if (connection != null) {
-        }
-    }
-    return table;
-}
-
-    
-    
-    public  Object returnObjectById(Object o ,long  id)throws SQLException{
-        Object object=null;
-        
-        connection=this.getConnect();
-        generator= new SqlGenerator(object);
-        String sql = generator.returnSelectByIdSql(id);
-        
-        
-        Statement st =getConnection().createStatement();
-        
-        ResultSet rs =st.executeQuery(sql);
-        object=rs.getObject(1);
-        System.out.println(object.toString());
-        
-        return  object;
-        
-        
-    }
-    
-      /* public Object returnObjectById(Object obj, Long id) throws SQLException {
-           
-        Object object = null;
-
-        connection = this.getConnect();
-
-            generator = new SqlGenerator(obj);
-        
-        String sql = generator.returnSelectByIdSql(id);
-
-            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
-                ResultSet resultSet = (ResultSet) preparedStatement.executeQuery();
-
-                if (resultSet.next()) {
-                    int columnCount = resultSet.getMetaData().getColumnCount();
-                    object = resultSet.getObject(1);
-                }
-            } catch (SQLException ex) {
-                System.out.println("Error: " + ex.getMessage());
-            java.sql.ResultSet resultSet = preparedStatement.executeQuery();
-
-                try {
-                    if (resultSet.next()) {
-                        
-                        int columnCount = resultSet.getMetaData().getColumnCount();
-                        object = resultSet.getObject(1);
-                        
-                        for (int i = 1; i <= columnCount; i++) {
-                            String columnName = resultSet.getMetaData().getColumnName(i);
-                            Object columnValue = resultSet.getObject(i);
-                            System.out.println("Column: " + columnName + ", Value: " + columnValue);
-                        }
-                        
-                        
-                    }   } catch (SQLException ex1) {
-                    Logger.getLogger(AbstractDao.class.getName()).log(Level.SEVERE, null, ex1);
-                }
+            transaction.commit();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
         }
-        System.out.println(object);
-        return object;
     }
 
-    return object;
-    }*/
+    public T find(Object id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(entityClass, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<T> findAll() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e", entityClass).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void update(T entity) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
+
+            em.joinTransaction();
+            em.merge(entity);
+
+            transaction.commit();
+        } catch (Exception e) {
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void delete(Object id) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
+
+            em.joinTransaction();
+            T entity = em.find(entityClass, id);
+            if (entity != null) {
+                em.remove(entity);
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public static void close() {
+        emf.close();
+    }
 }

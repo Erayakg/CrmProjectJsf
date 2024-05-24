@@ -68,7 +68,7 @@ public class OrderBean implements BaseBean<Orders> {
     public void save() {
 
         getOrderDaoImpl().createTable(order);
-        getOrderDaoImpl().create(order);
+       // getOrderDaoImpl().create(order);
     }
 
     @Override

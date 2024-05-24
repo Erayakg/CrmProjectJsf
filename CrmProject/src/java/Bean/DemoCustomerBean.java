@@ -23,11 +23,11 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
     private demoCustomer customer;
 
     private DemoCustomerDao customerdaoimpl;
-
+  
+    
     public DemoCustomerBean() {
     }
 
-    
     
     
     public DemoCustomerDao getDaoCustomer(){
@@ -49,10 +49,8 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
     }
 
     public void saveUser() {
-
-        //getDaoCustomer().create(customer);
-        
-        getDaoCustomer().createTable(customer);
+        getDaoCustomer().saveJpa(this.customer);
+       
     }
 
     public void deleteUser() {

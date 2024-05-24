@@ -97,35 +97,7 @@
                         
                         
 
-                        <!-- Orders Section -->
-                        <h2>Orders</h2>
-                        <h:dataTable value="#{orderBean.getList()}" var="order" styleClass="orders-table">
-                            <h:column>
-                                <f:facet name="header">Order ID</f:facet>
-                                #{order.Id}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Order Date</f:facet>
-                                #{order.orderDate}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Shipping Address</f:facet>
-                                #{order.shippingAddress}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Total Amount</f:facet>
-                                #{order.totalAmount}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Status</f:facet>
-                                #{order.status}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Detail</f:facet>
-
-                                <h:commandButton value="Show Details" action="#{orderBean.showOrderDetails(order)}" styleClass="show-details-button"/>
-                            </h:column>
-                        </h:dataTable>
+                        
                     </div>
                 </h:form>
             </ui:define>
