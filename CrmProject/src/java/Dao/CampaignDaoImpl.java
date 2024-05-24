@@ -16,25 +16,31 @@ import java.util.List;
  *
  * @author baran
  */
-public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaign> {
+public class CampaignDaoImpl extends AbstractDao<Campaign> implements DaoOperation<Campaign> {
+
+    public CampaignDaoImpl() {
+        super(Campaign.class);
+    }
 
     @Override
     public void create(Campaign campaign) {
         try {
-
-            super.createEntity(campaign);
+            super.saveJpa(campaign);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
 
     @Override
-    public void deleteById(Campaign t, Long id) {
-        super.delete(t, id);
+    public void deleteById(Long id) {
+        super.delete(id);
     }
 
     @Override
     public List<Campaign> getList() {
+<<<<<<< HEAD
+            return super.findAll();
+=======
         List<Campaign> campaignList = new ArrayList<>();
         try {
             List<Object[]> table = super.returnTable(new Campaign());
@@ -46,20 +52,12 @@ public class CampaignDaoImpl extends AbstractDao implements DaoOperation<Campaig
             Logger.getLogger(CampaignDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return campaignList;
+>>>>>>> fdc1e0db410be055e244031756276dbca2dbfaf0
     }
 
     @Override
-    public Campaign getByid(Campaign t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void createTable(Campaign t) {
-        try {
-            super.createTableConn(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public Campaign getByid(Long id) {
+        return super.find(id);
     }
 
     public static Campaign mapToObject(Object[] row) {

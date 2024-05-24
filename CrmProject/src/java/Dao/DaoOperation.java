@@ -11,16 +11,14 @@ import java.util.List;
  * @author erayb
  */
 public interface  DaoOperation <T> {
-    
-    public void createTable(T t);
-    
+        
     public void create(T t);
     
-    public void deleteById(T t,Long id);
+    public void deleteById(Long id);
     
     public List<T> getList();
     
-    public T getByid(T t,Long id);
+    public T getByid(Long id);
     
     public void update(T t,Long id);
     

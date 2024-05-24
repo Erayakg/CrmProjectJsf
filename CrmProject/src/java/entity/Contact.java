@@ -4,14 +4,16 @@
  */
 package entity;
 
+import jakarta.persistence.*;
 import java.util.Objects;
 
 /**
  *
  * @author erayb
  */
+@Entity
 public class Contact implements BaseEntity {
-
+    @Id
     private Long id;
     private String subject;
     private String description;

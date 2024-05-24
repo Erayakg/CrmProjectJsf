@@ -8,23 +8,38 @@ import Util.SqlGenerator;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
+
 import Util.DbConnect;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
-import java.sql.Statement;
-import java.util.ArrayList;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceUnit;
+import jakarta.transaction.UserTransaction;
 import java.util.List;
-import java.sql.ResultSetMetaData;
+import javax.naming.InitialContext;
 
+<<<<<<< HEAD
+
+
+public abstract class AbstractDao<T> extends DbConnect {
+=======
 /**
  *
  * @author erayb
  */
 public abstract class AbstractDao extends DbConnect {
+>>>>>>> fdc1e0db410be055e244031756276dbca2dbfaf0
 
-    Connection connection;
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("CrmProjectPU");
+    private Class<T> entityClass;
 
+<<<<<<< HEAD
+    public AbstractDao(Class<T> entityClass) {
+        this.entityClass = entityClass;
+=======
     SqlGenerator generator;
 
     public Connection getConnection() {
@@ -45,12 +60,22 @@ public abstract class AbstractDao extends DbConnect {
 
         ResultSet rs = st.executeQuery(sql);
 
+>>>>>>> fdc1e0db410be055e244031756276dbca2dbfaf0
     }
 
-    public void createEntity(Object o) throws Exception {
+    public void saveJpa(T entity) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
 
-        generator = new SqlGenerator(o);
+            em.joinTransaction();
+            em.persist(entity);
 
+<<<<<<< HEAD
+            transaction.commit();
+=======
         String sql = generator.returnInsertSql();
 
         connection = this.getConnect();
@@ -187,13 +212,93 @@ public abstract class AbstractDao extends DbConnect {
                     }   } catch (SQLException ex1) {
                     Logger.getLogger(AbstractDao.class.getName()).log(Level.SEVERE, null, ex1);
                 }
+>>>>>>> fdc1e0db410be055e244031756276dbca2dbfaf0
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
         }
-        System.out.println(object);
-        return object;
     }
 
-    return object;
-    }*/
+    public T find(Object id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(entityClass, id);
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<T> findAll() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e", entityClass).getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void update(T entity) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
+
+            em.joinTransaction();
+            em.merge(entity);
+
+            transaction.commit();
+        } catch (Exception e) {
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public void delete(Object id) {
+        EntityManager em = emf.createEntityManager();
+        UserTransaction transaction = null;
+        try {
+            transaction = (UserTransaction)new InitialContext().lookup("java:comp/UserTransaction");
+            transaction.begin();
+
+            em.joinTransaction();
+            T entity = em.find(entityClass, id);
+            if (entity != null) {
+                em.remove(entity);
+            }
+
+            transaction.commit();
+        } catch (Exception e) {
+            try {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+    }
+
+    public static void close() {
+        emf.close();
+    }
 }
