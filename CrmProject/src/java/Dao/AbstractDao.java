@@ -4,7 +4,7 @@
  */
 package Dao;
 
-import Util.SqlGenerator;
+
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -23,7 +23,7 @@ import javax.naming.InitialContext;
 
 
 
-public abstract class AbstractDao<T> {
+public abstract class AbstractDao<T> extends DbConnect {
 
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("CrmProjectPU");
     private Class<T> entityClass;
