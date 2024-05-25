@@ -15,29 +15,25 @@
             <div class="logo">Admin Panel</div>
             <nav>
                 <ul class="nav-links">
-                    <li class="#{navigationBean.isActive('/panel/admin/dashboard/dashboard.xhtml')}">
-                        <h:link value="Dashboard" outcome="#{navigationBean.goToDashboard()}" />
+                    <li class="#{view.viewId.contains('/panel/admin/dashboard/') ? 'active' : ''}">
+                        <h:link value="Dashboard" outcome="/panel/admin/dashboard/dashboard.xhtml" />
                     </li>
-                    <li class="#{navigationBean.isActive('/panel/admin/contact/')}">
+                    <li class="#{view.viewId.contains('/panel/admin/contact/') ? 'active' : ''}">
                         Contact
                         <ul class="submenu">
-                            <li>
-                                <h:link value="Feedbacks" outcome="#{navigationBean.goToFeedbacks()}" />
-                            </li>
-                            <li>
-                                <h:link value="Reports" outcome="#{navigationBean.goToReports()}" />
-                            </li>
+                            <li><h:link value="Feedbacks" outcome="/panel/admin/contact/feedbacks/feedbackpage.xhtml" /></li>
+                            <li><h:link value="Reports" outcome="/panel/admin/contact/reports/reportpage.xhtml" /></li>
                         </ul>
                     </li>
-                    <li class="#{navigationBean.isActive('/panel/admin/products/productpage.xhtml')}">
-                        <h:link value="Products" outcome="#{navigationBean.goToProducts()}" />
+                    <li class="#{view.viewId.contains('/panel/admin/products/productpage.xhtml') ? 'active' : ''}">
+                        <h:link value="Products" outcome="/panel/admin/products/productpage.xhtml" />
                     </li>
                     
-                    <li class="#{navigationBean.isActive('/panel/admin/access/employeeLogin.xhtml')}">
-                        <h:link value="Personal Login" outcome="#{navigationBean.goToEmployeeLogin()}" />
+                    <li class="#{view.viewId.contains('/panel/admin/access/personalLogin.xhtml') ? 'active' : ''}">
+                        <h:link value="Personal Login" outcome="/panel/admin/access/employeeLogin.xhtml" />
                     </li>
-                    <li class="#{navigationBean.isActive('/panel/admin/access/employeeRegister.xhtml')}">
-                        <h:link value="Personal Register" outcome="#{navigationBean.goToEmployeeRegister()}" />
+                    <li class="#{view.viewId.contains('/panel/admin/access/personalRegister.xhtml') ? 'active' : ''}">
+                        <h:link value="Personal Register" outcome="/panel/admin/access/employeeRegister.xhtml" />
                     </li>
                 </ul>
             </nav>

@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * @author furka
  */
 public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product> {
-
+    
     @Override
     public void createTable(Product t) {
         try {
@@ -27,7 +27,7 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
             System.out.println("error" + ex);
         }
     }
-
+    
     @Override
     public void create(Product t) {
         try {
@@ -36,13 +36,13 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
             System.out.println("error" + ex);
         }
     }
-
+    
     @Override
     public void deleteById(Product t, Long id) {
         super.delete(t, id);
     }
-
-    @Override
+    
+   @Override
     public List<Product> getList() {
         List<Product> productList = new ArrayList<>();
         try {
@@ -56,48 +56,44 @@ public class ProductDaoImpl extends AbstractDao implements DaoOperation<Product>
         }
         return productList;
     }
-
-    public static Product mapToObject(Object[] row) {
-        Product product = new Product();
-        product.setId(((Number) row[0]).longValue());
-        product.setName((String) row[1]);
-        product.setDescription((String) row[2]);
-        product.setPrice(((Number) row[3]).floatValue());
-        product.setStockQuantity((Integer) row[4]);
-
-        product.setIsActive((Boolean) row[6]);
-        return product;
-    }
+    
+    
+   public static Product mapToObject(Object[] row) {
+    Product product = new Product();
+    product.setId(((Number)row[0]).longValue()); 
+    product.setName((String) row[1]); 
+    product.setDescription((String) row[2]); 
+    product.setPrice(((Number)row[3]).floatValue()); 
+    product.setStockQuantity((Integer) row[4]); 
+  
+    product.setIsActive((Boolean) row[6]); 
+    return product;
+}
 
     @Override
     public Product getByid(Product t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
     public void addProductToOrder(Orders order, Product product) {
-
-        String sql = "INSERT INTO ORDER_Product (order_id, product_id) VALUES (?, ?)";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setLong(1, order.getId());
-            statement.setLong(2, product.getId());
-
-            int rowsInserted = statement.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("A new product added to the campaign successfully!");
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    
+    String sql = "INSERT INTO ORDER_Product (order_id, product_id) VALUES (?, ?)";
+    
+    try (PreparedStatement statement = connection.prepareStatement(sql)) {
+        statement.setLong(1, order.getId());
+        statement.setLong(2, product.getId());
+        
+        int rowsInserted = statement.executeUpdate();
+        if (rowsInserted > 0) {
+            System.out.println("A new product added to the campaign successfully!");
         }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
-
-    @Override
-    public void update (Product p,Long id) {
-        try {
-            super.updateDao(p, id);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ProductDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
+    
+    
+    
 
+    
 }

@@ -6,27 +6,11 @@
     text-align: center;
 }
 
-.logo a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s ease;
-    font-size: 32px; /* Increase the font size */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.logo a:hover, .logo a:focus {
-    color: #18BC9C;
-    text-decoration: none; /* Remove the underline on hover and focus */
-}
-
-.logo a:visited {
-    text-decoration: none;
-    color: white;
-}
-
-.logo a:active {
-    color: #18BC9C;
-    box-shadow: none; /* Remove the pressed effect */
-}
 .nav-links {
     list-style: none;
     margin: 0;

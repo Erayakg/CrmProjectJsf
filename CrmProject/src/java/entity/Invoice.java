@@ -19,6 +19,7 @@ public class Invoice implements BaseEntity {
     private String shippingAddress; // gonderim adresi
     private float totalAmount; // Toplam tutar
     private boolean status; // Sipariş durumu
+    private List<Product> detail;
     private String billingAddress;
     private Orders order;
 
@@ -63,6 +64,14 @@ public class Invoice implements BaseEntity {
         this.status = status;
     }
 
+    public List<Product> getDetail() {
+        return detail;
+    }
+
+    public void setDetail(List<Product> detail) {
+        this.detail = detail;
+    }
+
     public String getBillingAddress() {
         return billingAddress;
     }
@@ -79,29 +88,31 @@ public class Invoice implements BaseEntity {
         this.order = order;
     }
 
-    public Invoice(Long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, String billingAddress, Orders order) {
+    public Invoice() {
+    }
+
+    public Invoice(Long Id, LocalDateTime orderDate, String shippingAddress, float totalAmount, boolean status, List<Product> detail, String billingAddress, Orders order) {
         this.Id = Id;
         this.orderDate = orderDate;
         this.shippingAddress = shippingAddress;
         this.totalAmount = totalAmount;
         this.status = status;
+        this.detail = detail;
         this.billingAddress = billingAddress;
         this.order = order;
     }
 
-    public Invoice() {
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.Id);
-        hash = 89 * hash + Objects.hashCode(this.orderDate);
-        hash = 89 * hash + Objects.hashCode(this.shippingAddress);
-        hash = 89 * hash + Float.floatToIntBits(this.totalAmount);
-        hash = 89 * hash + (this.status ? 1 : 0);
-        hash = 89 * hash + Objects.hashCode(this.billingAddress);
-        hash = 89 * hash + Objects.hashCode(this.order);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.Id);
+        hash = 17 * hash + Objects.hashCode(this.orderDate);
+        hash = 17 * hash + Objects.hashCode(this.shippingAddress);
+        hash = 17 * hash + Float.floatToIntBits(this.totalAmount);
+        hash = 17 * hash + (this.status ? 1 : 0);
+        hash = 17 * hash + Objects.hashCode(this.detail);
+        hash = 17 * hash + Objects.hashCode(this.billingAddress);
+        hash = 17 * hash + Objects.hashCode(this.order);
         return hash;
     }
 
@@ -122,10 +133,9 @@ public class Invoice implements BaseEntity {
 
     @Override
     public String toString() {
-        return "Invoice{" + "Id=" + Id + ", orderDate=" + orderDate + ", shippingAddress=" + shippingAddress + ", totalAmount=" + totalAmount + ", status=" + status + ", billingAddress=" + billingAddress + ", order=" + order + '}';
+        return "Invoice{" + "Id=" + Id + ", orderDate=" + orderDate + ", shippingAddress=" + shippingAddress + ", totalAmount=" + totalAmount + ", status=" + status + ", detail=" + detail + ", billingAddress=" + billingAddress + ", order=" + order + '}';
     }
 
-   
     
 
     

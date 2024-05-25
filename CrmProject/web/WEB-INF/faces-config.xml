@@ -1,0 +1,13 @@
+<faces-config version="4.0"
+              xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
+    <navigation-rule>
+        <from-view-id>/panel/admin/access/personalLogin.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>adminpanel</from-outcome>
+            <to-view-id>/panel//admin/adminpanel.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
