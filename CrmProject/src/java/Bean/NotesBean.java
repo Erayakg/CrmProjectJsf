@@ -21,7 +21,7 @@ public class NotesBean implements BaseBean<Notes> {
     private Notes notes;
 
     private NotesDaoImpl notesDaoImpl;
-    
+
     public Notes getNotes() {
         if (this.notes == null) {
             notes = new Notes();
@@ -45,8 +45,6 @@ public class NotesBean implements BaseBean<Notes> {
     }
 
     public NotesBean() {
-        notesDaoImpl=new NotesDaoImpl();
-        
 
     }
 
@@ -57,7 +55,7 @@ public class NotesBean implements BaseBean<Notes> {
 
     @Override
     public void save() {
-        this.notesDaoImpl.createTable(this.getNotes());
+
         this.notesDaoImpl.create(this.getNotes());
     }
 
@@ -75,10 +73,4 @@ public class NotesBean implements BaseBean<Notes> {
     public List<Notes> getList() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

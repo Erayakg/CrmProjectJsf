@@ -3,13 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dao;
+
 import entity.Contract;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -40,45 +36,14 @@ public class ContractDaoImpl extends AbstractDao implements DaoOperation<Contrac
         super.delete(t, id);
     }
 
-  @Override
-    public List<Contract> getList() {
-        List<Contract> contractlist = new ArrayList<>();
-        try {
-            List<Object[]> table = super.returnTable(new Contract());
-
-            for (Object[] row : table) {
-                contractlist.add(mapToObject(row));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ContractDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return contractlist;
+    @Override
+    public List<Contract> getList( ) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Contract getByid(Contract t, Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
- 
- public static Contract mapToObject(Object[] row) {
-       
-        Contract contract=new Contract();
-        contract.setId(((Number) row[0]).longValue());
-        contract.setName((String) row [1]);
-        contract.setAmount(((Number) row[2]).longValue());
-        contract.setDescription((String)row[3]);
-        contract.setStatus((String)row [4]);
-        contract.setStartDate((Date )row [5]);
-        contract.setFinishDate((Date )row [6]);
-        return contract;
- }    
 
-     @Override
-    public void update(Contract c,Long id) {
-        try {
-            super.updateDao(c, id);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(ContractDaoImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 }

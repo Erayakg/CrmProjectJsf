@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aside class="sidebar" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ul class="sidebar-menu">
-        <li class="#{navigationBean.isActive('/panel/admin/dashboard/dashboard.xhtml')}">
-            <h:link value="Dashboard" outcome="#{navigationBean.goToDashboard()}" />
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/dashboard.xhtml') ? 'active' : ''}">
+            <h:link value="Dashboard" outcome="/panel/admin/dashboard/dashboard.xhtml" />
         </li>
-        <li class="#{navigationBean.isActive('/panel/admin/dashboard/orders/orderpage.xhtml')}">
-            <h:link value="Orders" outcome="#{navigationBean.goToOrders()}" />
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/orders/orderpage.xhtml') ? 'active' : ''}">
+            <h:link value="Orders" outcome="/panel/admin/dashboard/orders/orderpage.xhtml" />
         </li>
-        <li class="#{navigationBean.isActive('/panel/admin/dashboard/customers/personalCustomer.xhtml')}">
-            <h:link value="Personal Customers" outcome="#{navigationBean.goToPersonalCustomers()}" />
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/customers/personalCustomer.xhtml') ? 'active' : ''}">
+            <h:link value="Personal Customers" outcome="/panel/admin/dashboard/customers/personalCustomer.xhtml" />
         </li>
-        <li class="#{navigationBean.isActive('/panel/admin/dashboard/customers/companyCustomer.xhtml')}">
-            <h:link value="Company Customers" outcome="#{navigationBean.goToCompanyCustomers()}" />
+        <li class="#{view.viewId.contains('/panel/admin/dashboard/customers/companyCustomer.xhtml') ? 'active' : ''}">
+            <h:link value="Company Customers" outcome="/panel/admin/dashboard/customers/companyCustomer.xhtml" />
         </li>
     </ul>
 </aside>

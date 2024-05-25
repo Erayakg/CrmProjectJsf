@@ -20,7 +20,4 @@ public interface BaseBean<Entity>  extends Serializable{
     public Entity getById();
 
     public List<Entity> getList();
-    
-    public void update();
-
 }
