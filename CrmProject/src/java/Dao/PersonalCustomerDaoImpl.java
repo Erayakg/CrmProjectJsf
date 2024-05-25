@@ -11,39 +11,34 @@ import java.util.List;
  *
  * @author furka
  */
-public class PersonalCustomerDaoImpl extends AbstractDao implements DaoOperation<PersonalCustomer> {
-    
+public class PersonalCustomerDaoImpl extends AbstractDao<PersonalCustomer> implements DaoOperation<PersonalCustomer> {
+
+    public PersonalCustomerDaoImpl() {
+        super(PersonalCustomer.class);
+    }
+
     @Override
-    public void createTable(PersonalCustomer t) {
+    public void create(PersonalCustomer personalCustomer) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(personalCustomer);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(PersonalCustomer t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
-    @Override
-    public void deleteById(PersonalCustomer t, Long id) {
-        super.delete(t, id);
-    }
-    
+
     @Override
     public List<PersonalCustomer> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return super.findAll();
     }
-    
+
     @Override
-    public PersonalCustomer getByid(PersonalCustomer t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public PersonalCustomer getByid(Long id) {
+        return super.find(id);
     }
-    
+
 }

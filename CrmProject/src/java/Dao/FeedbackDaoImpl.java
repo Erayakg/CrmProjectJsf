@@ -9,41 +9,36 @@ import java.util.List;
 
 /**
  *
- * @author furka
+ * @author baran
  */
-public class FeedbackDaoImpl extends AbstractDao implements DaoOperation<Feedback> {
-    
+public class FeedbackDaoImpl extends AbstractDao<Feedback> implements DaoOperation<Feedback> {
+
+    public FeedbackDaoImpl() {
+        super(Feedback.class);
+    }
+
     @Override
-    public void createTable(Feedback t) {
+    public void create(Feedback feedback) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(feedback);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(Feedback t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
-    public void deleteById(Feedback t, Long id) {
-        super.delete(t, id);
+    public List<Feedback> getList() {
+        return super.findAll();
     }
-    
+
     @Override
-    public List<Feedback> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBod   y
+    public Feedback getByid(Long id) {
+        return super.find(id);
     }
-    
-    @Override
-    public Feedback getByid(Feedback t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }

@@ -5,47 +5,40 @@
 package Dao;
 
 import entity.Employee;
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Named;
 import java.util.List;
 
 /**
  *
  * @author baran
  */
-public class EmployeeDaoImpl extends AbstractDao implements DaoOperation<Employee> {
-    
+public class EmployeeDaoImpl extends AbstractDao<Employee> implements DaoOperation<Employee> {
+
+    public EmployeeDaoImpl() {
+        super(Employee.class);
+    }
+
     @Override
-    public void createTable(Employee t) {
+    public void create(Employee employee) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(employee);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(Employee t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
-    public void deleteById(Employee t, Long id) {
-        super.delete(t, id);
+    public List<Employee> getList() {
+        return super.findAll();
     }
-    
+
     @Override
-    public List<Employee> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Employee getByid(Long id) {
+        return super.find(id);
     }
-    
-    @Override
-    public Employee getByid(Employee t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }

@@ -11,39 +11,34 @@ import java.util.List;
  *
  * @author baran
  */
-public class InvoiceDaoImpl extends AbstractDao implements DaoOperation<Invoice> {
-    
+public class InvoiceDaoImpl extends AbstractDao<Invoice> implements DaoOperation<Invoice> {
+
+    public InvoiceDaoImpl() {
+        super(Invoice.class);
+    }
+
     @Override
-    public void createTable(Invoice t) {
+    public void create(Invoice invoice) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(invoice);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(Invoice t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
-    public void deleteById(Invoice t, Long id) {
-        super.delete(t, id);
+    public List<Invoice> getList() {
+        return super.findAll();
     }
-    
+
     @Override
-    public List<Invoice> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Invoice getByid(Long id) {
+        return super.find(id);
     }
-    
-    @Override
-    public Invoice getByid(Invoice t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }

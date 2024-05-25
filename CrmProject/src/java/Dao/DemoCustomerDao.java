@@ -5,82 +5,40 @@
 package Dao;
 
 import entity.demoCustomer;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author erayb
  */
-public class DemoCustomerDao extends AbstractDao implements DaoOperation<demoCustomer>{
+public class DemoCustomerDao extends AbstractDao<demoCustomer> implements DaoOperation<demoCustomer> {
 
-    public DemoCustomerDao() {
+    public DemoCustomerDao(Class<demoCustomer> entityClass) {
+        super(demoCustomer.class);
     }
-    
-    
+
     @Override
-    public void create(demoCustomer customer) {
-       
+    public void create(demoCustomer demoCustomer) {
         try {
-            
-            super.createEntity(customer);
+            super.saveJpa(demoCustomer);
         } catch (Exception ex) {
-            System.out.println("error"+ex);
+            System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void deleteById(demoCustomer t, Long id) {
-        super.delete(t, id);
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
     public List<demoCustomer> getList() {
-        List<Object[]> tableData = null;
-        demoCustomer c = new demoCustomer();
-        try {
-            tableData = super.returnTable(c);
-        } catch (SQLException ex) {
-            Logger.getLogger(DemoCustomerDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        List<demoCustomer> customers = new ArrayList<>();
-
-        if (tableData != null) {
-            for (Object[] row : tableData) {
-                if (row.length >= 3 && row[0] instanceof Integer && row[1] instanceof String && row[2] instanceof String) {
-                    demoCustomer customer = new demoCustomer();
-                    customer.setId(((Integer) row[0]).longValue()); // Integer'ı Long'a dönüştürüyoruz
-                    customer.setName((String) row[1]); 
-                    customer.setSurname((String) row[2]);
-                    System.out.println(customer.toString());
-                    customers.add(customer);
-                } 
-            }
-        }
-        return customers;
-    }
-    
-    @Override
-    public demoCustomer getByid(demoCustomer t, Long id) {
-        
-        //Object returnObjectById = super.returnObjectById(t, id);
-        
-        return  null; 
-       
+        return super.findAll();
     }
 
     @Override
-    public void createTable(demoCustomer t) {
-        try {
-            super.createTableConn(t);
-        } catch (Exception ex) {
-                System.out.println("error"+ ex);
-
-        }
+    public demoCustomer getByid(Long id) {
+        return super.find(id);
     }
 
-    
 }

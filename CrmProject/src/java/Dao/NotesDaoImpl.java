@@ -9,41 +9,37 @@ import java.util.List;
 
 /**
  *
- * @author furka
+ * @author baran
  */
-public class NotesDaoImpl extends AbstractDao implements DaoOperation<Notes> {
-    
+public class NotesDaoImpl extends AbstractDao<Notes> implements DaoOperation<Notes> {
+
+    public NotesDaoImpl() {
+        super(Notes.class);
+    }
+
     @Override
-    public void createTable(Notes t) {
+    public void create(Notes notes) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(notes);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(Notes t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
-    public void deleteById(Notes t, Long id) {
-        super.delete(t, id);
+    public List<Notes> getList() {
+        return super.findAll();
     }
-    
+
     @Override
-    public List<Notes> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Notes getByid(Long id) {
+
+        return super.find(id);
     }
-    
-    @Override
-    public Notes getByid(Notes t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }
