@@ -9,41 +9,36 @@ import java.util.List;
 
 /**
  *
- * @author furka
+ * @author baran
  */
-public class ContactDaoImpl extends AbstractDao implements DaoOperation<Contact> {
-    
+public class ContactDaoImpl extends AbstractDao<Contact> implements DaoOperation<Contact> {
+
+    public ContactDaoImpl() {
+        super(Contact.class);
+    }
+
     @Override
-    public void createTable(Contact t) {
+    public void create(Contact contact) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(contact);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
-    
+
     @Override
-    public void create(Contact t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
-    
+
     @Override
-    public void deleteById(Contact t, Long id) {
-        super.delete(t, id);
+    public List<Contact> getList() {
+        return super.findAll();
     }
-    
+
     @Override
-    public List<Contact> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Contact getByid(Long id) {
+        return super.find(id);
     }
-    
-    @Override
-    public Contact getByid(Contact t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
+
 }

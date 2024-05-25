@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Personal Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <h:outputStylesheet library="css" name="adminlogin.css" />
+    </h:head>
+    <h:body>
+        <div class="admin-login-container">
+            <div class="admin-login-form">
+                <h1>Personal Login</h1>
+                <h:form id="admin-login-form">
+                    <div class="form-group">
+                        <label for="personnel-service-number">Personel Service Number</label>
+                        <h:inputText id="personnel-service-number" required="true" requiredMessage="Personel service number is required"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <h:inputSecret id="password" required="true" requiredMessage="Password is required"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Login" action="#{navigationBean.login()}" styleClass="cta-button"/>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+</html>

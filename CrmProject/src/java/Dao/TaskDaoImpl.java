@@ -4,23 +4,23 @@
  */
 package Dao;
 
-import entity.Report;
+import entity.Task;
 import java.util.List;
 
 /**
  *
  * @author furka
  */
-public class ReportDaoImpl extends AbstractDao<Report> implements DaoOperation<Report> {
+public class TaskDaoImpl extends AbstractDao<Task> implements DaoOperation<Task> {
 
-    public ReportDaoImpl() {
-        super(Report.class);
+    public TaskDaoImpl() {
+        super(Task.class);
     }
 
     @Override
-    public void create(Report report) {
+    public void create(Task task) {
         try {
-            super.saveJpa(report);
+            super.saveJpa(task);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
@@ -32,12 +32,12 @@ public class ReportDaoImpl extends AbstractDao<Report> implements DaoOperation<R
     }
 
     @Override
-    public List<Report> getList() {
+    public List<Task> getList() {
         return super.findAll();
     }
 
     @Override
-    public Report getByid(Long id) {
+    public Task getByid(Long id) {
         return super.find(id);
     }
 

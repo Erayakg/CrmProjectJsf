@@ -9,41 +9,37 @@ import java.util.List;
 
 /**
  *
- * @author furka
+ * @author baran
  */
-public class ContractDaoImpl extends AbstractDao implements DaoOperation<Contract> {
+public class ContractDaoImpl extends AbstractDao<Contract> implements DaoOperation<Contract> {
+
+    public ContractDaoImpl() {
+        super(Contract.class);
+    }
 
     @Override
-    public void createTable(Contract t) {
+    public void create(Contract contract) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(contract);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
 
     @Override
-    public void create(Contract t) {
-        try {
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
 
     @Override
-    public void deleteById(Contract t, Long id) {
-        super.delete(t, id);
+    public List<Contract> getList() {
+
+        return super.findAll();
     }
 
     @Override
-    public List<Contract> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Contract getByid(Contract t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Contract getByid(Long id) {
+        return super.find(id);
     }
 
 }

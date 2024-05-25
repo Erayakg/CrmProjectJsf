@@ -11,41 +11,34 @@ import java.util.List;
  *
  * @author baran
  */
-public class CompanyDaoImpl extends AbstractDao implements DaoOperation<Company> {
+public class CompanyDaoImpl extends AbstractDao<Company> implements DaoOperation<Company> {
+
+    public CompanyDaoImpl() {
+        super(Company.class);
+    }
 
     @Override
-    public void createTable(Company t) {
+    public void create(Company company) {
         try {
-            super.createTableConn(t);
+            super.saveJpa(company);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
     }
 
     @Override
-    public void create(Company t) {
-
-        try {
-
-            super.createEntity(t);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
+    public void deleteById(Long id) {
+        super.delete(id);
     }
 
     @Override
-    public void deleteById(Company t, Long id) {
-        super.delete(t, id);
+    public List<Company> getList() {
+        return super.findAll();
     }
 
     @Override
-    public List<Company> getList( ) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Company getByid(Company t, Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Company getByid(Long id) {
+        return super.find(id);
     }
 
 }

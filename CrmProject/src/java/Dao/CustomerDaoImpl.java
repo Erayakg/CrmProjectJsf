@@ -4,23 +4,23 @@
  */
 package Dao;
 
-import entity.Report;
+import entity.Customer;
 import java.util.List;
 
 /**
  *
- * @author furka
+ * @author erayb
  */
-public class ReportDaoImpl extends AbstractDao<Report> implements DaoOperation<Report> {
+public class CustomerDaoImpl extends AbstractDao<Customer> implements DaoOperation<Customer> {
 
-    public ReportDaoImpl() {
-        super(Report.class);
+    public CustomerDaoImpl() {
+        super(Customer.class);
     }
 
     @Override
-    public void create(Report report) {
+    public void create(Customer customer) {
         try {
-            super.saveJpa(report);
+            super.saveJpa(customer);
         } catch (Exception ex) {
             System.out.println("error" + ex);
         }
@@ -32,12 +32,12 @@ public class ReportDaoImpl extends AbstractDao<Report> implements DaoOperation<R
     }
 
     @Override
-    public List<Report> getList() {
+    public List<Customer> getList() {
         return super.findAll();
     }
 
     @Override
-    public Report getByid(Long id) {
+    public Customer getByid(Long id) {
         return super.find(id);
     }
 
