@@ -4,6 +4,9 @@
  */
 package entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -11,108 +14,16 @@ import java.util.Objects;
  *
  * @author 90552
  */
-public class Report implements BaseEntity {
-
-    private Long id;
+@Entity
+public class Report extends BaseEntity {
+    
     private String subject;
     private String description;
     private String title;
     private LocalDateTime date;
-    private String ReportEmail;
+    private String reportEmail;
 
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public String getReportEmail() {
-        return ReportEmail;
-    }
-
-    public void setReportEmail(String ReportEmail) {
-        this.ReportEmail = ReportEmail;
-    }
-
-    public Report(Long id, String subject, String description, String title, LocalDateTime date, String ReportEmail) {
-        this.id = id;
-        this.subject = subject;
-        this.description = description;
-        this.title = title;
-        this.date = date;
-        this.ReportEmail = ReportEmail;
-    }
-
-    public Report() {
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + Objects.hashCode(this.id);
-        hash = 29 * hash + Objects.hashCode(this.subject);
-        hash = 29 * hash + Objects.hashCode(this.description);
-        hash = 29 * hash + Objects.hashCode(this.title);
-        hash = 29 * hash + Objects.hashCode(this.date);
-        hash = 29 * hash + Objects.hashCode(this.ReportEmail);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Report other = (Report) obj;
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
-    public String toString() {
-        return "Report{" + "id=" + id + ", subject=" + subject + ", description=" + description + ", title=" + title + ", date=" + date + ", ReportEmail=" + ReportEmail + '}';
-    }
-
-   
-
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ad56dc27-27d4-406f-9e2f-77de14332ee6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/CrmProject/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/conf/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/conf/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/Bean/DemoCustomerBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/Bean/DemoCustomerBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/Dao/AbstractDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/Dao/AbstractDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/Dao/DaoOperation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/Dao/DemoCustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/Dao/DemoCustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/DemoCustomerJpaDaoImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/constant/SqlConnConstant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Campaign.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Campaign.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/CompanyCustomer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Contract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Invoice.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Invoice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Notes.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Note.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Orders.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/PersonalCustomer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CrmProject/src/java/entity/demoCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/CrmProject/src/java/entity/demoCustomer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Erayakg"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Erayakg/CrmProjectJsf.git",
+    "accountId": "7b0fdf15-8438-4804-b80a-ec856accacdd"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2hMKlUWBATlT8g7SwZVsMQiMBbR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "EraysLastBranch",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/erayb/Documents/GitHub/CrmProjectJsf",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.42988506",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ad56dc27-27d4-406f-9e2f-77de14332ee6" name="Changes" comment="" />
+      <created>1717398656530</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717398656530</updated>
+      <workItem from="1717398657673" duration="112000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

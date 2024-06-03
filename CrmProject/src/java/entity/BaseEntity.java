@@ -4,14 +4,36 @@
  */
 package entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  *
  * @author baran
  */
-public interface BaseEntity extends Serializable{
+@MappedSuperclass
+public abstract class BaseEntity implements Serializable{
     
-  public Long  getId();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
+
+    LocalDateTime createdDate;
+    LocalDateTime updatedDate;
+    
+    @PrePersist
+    public void setCreatedDate(){
+        this.createdDate=LocalDateTime.now();
+    }
+    @PreUpdate
+    public void setUpdatedDate(){
+        this.updatedDate=LocalDateTime.now();
+    }
     
 }

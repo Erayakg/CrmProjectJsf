@@ -5,7 +5,9 @@
 package Bean;
 import Dao.DemoCustomerDao;
 import entity.demoCustomer;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -15,27 +17,16 @@ import java.util.List;
  * @author erayb
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
     private static final long serialVersionUID = 1L;
 
     private demoCustomer customer;
-
-    private DemoCustomerDao customerdaoimpl;
+    @EJB
+    private DemoCustomerDao customerDao;
   
-    
-    public DemoCustomerBean() {
-    }
 
-    
-    
-    public DemoCustomerDao getDaoCustomer(){
-        if (this.customerdaoimpl==null) {
-            this.customerdaoimpl=new DemoCustomerDao();
-        }
-        return customerdaoimpl;
-    }
 
     public demoCustomer getCustomer() {
         if (this.customer==null) {
@@ -49,17 +40,11 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
     }
 
     public void saveUser() {
-        getDaoCustomer().saveJpa(this.customer);
+       customerDao.create(customer);
        
     }
 
-    public void deleteUser() {
-        getDaoCustomer().getByid(customer, customer.getId());
-        customer = new demoCustomer();
-
-    }
-
-    @Override
+   
     public void save() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
