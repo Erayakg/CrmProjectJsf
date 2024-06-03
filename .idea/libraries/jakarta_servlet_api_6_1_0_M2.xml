@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jakarta.servlet-api-6.1.0-M2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jakarta.servlet-api-6.1.0-M2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <excluded>
+      <root url="jar://$USER_HOME$/Downloads/jakarta.servlet-api-6.1.0-M2.jar!/" />
+    </excluded>
+  </library>
+</component>
