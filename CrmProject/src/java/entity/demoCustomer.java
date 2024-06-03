@@ -14,10 +14,7 @@ import jakarta.persistence.Id;
  * @author erayb
  */
 @Entity
-public class demoCustomer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class demoCustomer extends BaseEntity{
      
     String name;
     String surname;

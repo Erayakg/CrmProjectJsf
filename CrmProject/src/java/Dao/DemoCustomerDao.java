@@ -5,40 +5,27 @@
 package Dao;
 
 import entity.demoCustomer;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.List;
 
 /**
  *
  * @author erayb
  */
-public class DemoCustomerDao extends AbstractDao<demoCustomer> implements DaoOperation<demoCustomer> {
+@Stateless
+public class DemoCustomerDao extends AbstractDao<demoCustomer>{
 
-    public DemoCustomerDao(Class<demoCustomer> entityClass) {
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
+
+    public DemoCustomerDao() {
         super(demoCustomer.class);
     }
-
-    @Override
-    public void create(demoCustomer demoCustomer) {
-        try {
-            super.saveJpa(demoCustomer);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<demoCustomer> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public demoCustomer getByid(Long id) {
-        return super.find(id);
-    }
-
 }

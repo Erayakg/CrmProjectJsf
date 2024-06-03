@@ -4,27 +4,35 @@
  */
 package entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
  * @author baran
  */
-public class Task implements BaseEntity{
+@Entity
+public class Task extends BaseEntity {
     
-    private Long id;
-    private  String title;
-    private  String description;
+    private String title;
+    private String description;
     private LocalDateTime dueDate;
-    private  LocalDateTime lastUpdate;
 
-    @Override
-    public long  getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee assignedEmployee;
+
+    public Task() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Task(String title, String description, LocalDateTime dueDate, Employee assignedEmployee) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.assignedEmployee = assignedEmployee;
     }
 
     public String getTitle() {
@@ -51,30 +59,76 @@ public class Task implements BaseEntity{
         this.dueDate = dueDate;
     }
 
-    public LocalDateTime getLastUpdate() {
-        return lastUpdate;
+    public Employee getAssignedEmployee() {
+        return assignedEmployee;
     }
 
-    public void setLastUpdate(LocalDateTime lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setAssignedEmployee(Employee assignedEmployee) {
+        this.assignedEmployee = assignedEmployee;
     }
 
-    public Task(Long id, String title, String description, LocalDateTime dueDate, LocalDateTime lastUpdate) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.dueDate = dueDate;
-        this.lastUpdate = lastUpdate;
+    public long getId() {
+        return id;
     }
 
-    public Task() {
-    }
-
-    public Task(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(LocalDateTime updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.title);
+        hash = 59 * hash + Objects.hashCode(this.description);
+        hash = 59 * hash + Objects.hashCode(this.dueDate);
+        hash = 59 * hash + Objects.hashCode(this.assignedEmployee);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Task other = (Task) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.dueDate, other.dueDate)) {
+            return false;
+        }
+        return Objects.equals(this.assignedEmployee, other.assignedEmployee);
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" + "title=" + title + ", description=" + description + ", dueDate=" + dueDate + ", assignedEmployee=" + assignedEmployee + '}';
+    }
     
     
 }
