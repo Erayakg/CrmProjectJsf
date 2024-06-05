@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Report;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author furka
  */
-public class ReportDaoImpl extends AbstractDao<Report> implements DaoOperation<Report> {
+public class ReportDaoImpl extends AbstractDao<Report> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public ReportDaoImpl() {
         super(Report.class);
-    }
-
-    @Override
-    public void create(Report report) {
-        try {
-            super.saveJpa(report);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Report> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Report getByid(Long id) {
-        return super.find(id);
     }
 
 }

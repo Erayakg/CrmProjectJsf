@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Contact;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author baran
  */
-public class ContactDaoImpl extends AbstractDao<Contact> implements DaoOperation<Contact> {
+public class ContactDaoImpl extends AbstractDao<Contact> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public ContactDaoImpl() {
         super(Contact.class);
-    }
-
-    @Override
-    public void create(Contact contact) {
-        try {
-            super.saveJpa(contact);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Contact> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Contact getByid(Long id) {
-        return super.find(id);
     }
 
 }

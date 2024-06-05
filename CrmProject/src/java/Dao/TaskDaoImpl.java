@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Task;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author furka
  */
-public class TaskDaoImpl extends AbstractDao<Task> implements DaoOperation<Task> {
+public class TaskDaoImpl extends AbstractDao<Task> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public TaskDaoImpl() {
         super(Task.class);
-    }
-
-    @Override
-    public void create(Task task) {
-        try {
-            super.saveJpa(task);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Task> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Task getByid(Long id) {
-        return super.find(id);
     }
 
 }

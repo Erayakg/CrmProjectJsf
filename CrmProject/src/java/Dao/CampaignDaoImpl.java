@@ -5,39 +5,24 @@
 package Dao;
 
 import entity.Campaign;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author baran
  */
-public class CampaignDaoImpl extends AbstractDao<Campaign> implements DaoOperation<Campaign> {
+public class CampaignDaoImpl extends AbstractDao<Campaign> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public CampaignDaoImpl() {
         super(Campaign.class);
-    }
-
-    @Override
-    public void create(Campaign campaign) {
-        try {
-            super.saveJpa(campaign);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Campaign> getList() {
-            return super.findAll();
-    }
-
-    @Override
-    public Campaign getByid(Long id) {
-        return super.find(id);
     }
 }

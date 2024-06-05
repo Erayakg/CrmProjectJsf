@@ -4,42 +4,29 @@
  */
 package Dao;
 
-import entity.Notes;
-import java.util.List;
+
+
+import entity.Note;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+
 
 /**
  *
  * @author baran
  */
-public class NotesDaoImpl extends AbstractDao<Notes> implements DaoOperation<Notes> {
+public class NotesDaoImpl extends AbstractDao<Note>  {
+
+       @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public NotesDaoImpl() {
-        super(Notes.class);
-    }
-
-    @Override
-    public void create(Notes notes) {
-        try {
-            super.saveJpa(notes);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Notes> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Notes getByid(Long id) {
-
-        return super.find(id);
+        super(Note.class);
     }
 
 }
