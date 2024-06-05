@@ -5,41 +5,25 @@
 package Dao;
 
 import entity.Contract;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author baran
  */
-public class ContractDaoImpl extends AbstractDao<Contract> implements DaoOperation<Contract> {
+public class ContractDaoImpl extends AbstractDao<Contract> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public ContractDaoImpl() {
         super(Contract.class);
-    }
-
-    @Override
-    public void create(Contract contract) {
-        try {
-            super.saveJpa(contract);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Contract> getList() {
-
-        return super.findAll();
-    }
-
-    @Override
-    public Contract getByid(Long id) {
-        return super.find(id);
     }
 
 }

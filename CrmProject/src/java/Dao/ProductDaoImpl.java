@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Product;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author furka
  */
-public class ProductDaoImpl extends AbstractDao<Product> implements DaoOperation<Product> {
+public class ProductDaoImpl extends AbstractDao<Product> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public ProductDaoImpl() {
         super(Product.class);
-    }
-
-    @Override
-    public void create(Product product) {
-        try {
-            super.saveJpa(product);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Product> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Product getByid(Long id) {
-        return super.find(id);
     }
 
 }

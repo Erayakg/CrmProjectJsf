@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Employee;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author baran
  */
-public class EmployeeDaoImpl extends AbstractDao<Employee> implements DaoOperation<Employee> {
+public class EmployeeDaoImpl extends AbstractDao<Employee> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public EmployeeDaoImpl() {
         super(Employee.class);
-    }
-
-    @Override
-    public void create(Employee employee) {
-        try {
-            super.saveJpa(employee);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Employee> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Employee getByid(Long id) {
-        return super.find(id);
     }
 
 }

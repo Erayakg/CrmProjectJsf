@@ -5,40 +5,25 @@
 package Dao;
 
 import entity.Invoice;
-import java.util.List;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *
  * @author baran
  */
-public class InvoiceDaoImpl extends AbstractDao<Invoice> implements DaoOperation<Invoice> {
+public class InvoiceDaoImpl extends AbstractDao<Invoice> {
+
+    @PersistenceContext(unitName = "CrmProjectPU")
+    private EntityManager em;
+
+    @Override
+    protected EntityManager getEntityManager() {
+        return em;
+    }
 
     public InvoiceDaoImpl() {
         super(Invoice.class);
-    }
-
-    @Override
-    public void create(Invoice invoice) {
-        try {
-            super.saveJpa(invoice);
-        } catch (Exception ex) {
-            System.out.println("error" + ex);
-        }
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        super.delete(id);
-    }
-
-    @Override
-    public List<Invoice> getList() {
-        return super.findAll();
-    }
-
-    @Override
-    public Invoice getByid(Long id) {
-        return super.find(id);
     }
 
 }
