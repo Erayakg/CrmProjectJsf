@@ -1,68 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
+    <head>
         <title>Register Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script></script>
-
-    </h:head>
-    <h:body>
-        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html"
-                        xmlns:ui="http://java.sun.com/jsf/facelets"
-                        template="/panel/template/homepagenavbar.xhtml">
+        
+    </head>
+    <body>
+        <ui:composition template="/panel/template/homepagenavbar.xhtml">
             <ui:define name="content">
-                <h:outputStylesheet library="css" name="customer/registerpage.css" />
-                <div class="container">
-                    <h1>Register</h1>
-                    <form>
-                        <label for="name">First Name:</label>
-                        <input type="text" id="name" name="name" />
-                        
-                        <label for="name">Last Name:</label>
-                        <input type="text" id="name" name="name" />
-                        
-                        <label for="phone">Phone:</label>
-                        <input type="phone" id="phone" name="phone" />
-
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" />
-
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" />
-
-                        
-                        <label for="password">Reset Password:</label>
-                        <input type="password" id="password" name="password" />
-                        
-                        <label for="zipcode">Zip Code:</label>
-                        <input type="zipcode" id="zipcode" name="zipcode" />
-                        
-                        <label for="address">Address</label>
-                        <input type="address" id="address" name="address" />
-                        
-                        <label for="country">Country:</label>
-                        <select id="country" name="country">
-                            <option>Select a country</option>
-                        </select>
-                        
-                        <label for="city">City</label>
-                        <select id="city" name="city">
-                            <option>Select a city</option>
-                        </select>
-                        
-                        <input type="submit" value="Register" />
-
-                    </form>
-                    <p>Already registered? <a href="loginpage.xhtml">Login here</a></p>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+                <div class="container mt-5">
+                    <h1 class="text-center">Register</h1>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Personal Customer</h5>
+                                    <p class="card-text">Register as a Personal Customer</p>
+                                    <a href="personalRegister.xhtml" class="btn btn-primary">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title">Company Customer</h5>
+                                    <p class="card-text">Register as a Company Customer</p>
+                                    <a href="companyRegister.xhtml" class="btn btn-primary">Register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </ui:define>
         </ui:composition>
-        
-    </h:body>
+    </body>
 </html>

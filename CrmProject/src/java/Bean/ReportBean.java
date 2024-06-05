@@ -33,16 +33,13 @@ public class ReportBean implements BaseBean<Report> {
         this.report = report;
     }
 
-    public ReportDaoImpl getCampaingDaoImpl() {
+    public ReportDaoImpl getReportDaoImpl() {
         if (this.reportDaoImpl == null) {
             reportDaoImpl = new ReportDaoImpl();
         }
         return reportDaoImpl;
     }
 
-    public void setCampaingDaoImpl(ReportDaoImpl reportDaoImpl) {
-        this.reportDaoImpl = reportDaoImpl;
-    }
 
     public ReportBean() {
 
@@ -55,18 +52,17 @@ public class ReportBean implements BaseBean<Report> {
 
     @Override
     public void save() {
-
-        this.reportDaoImpl.create(this.getReport());
+        this.getReportDaoImpl().create(this.getReport());
     }
 
     @Override
     public void delete(Long id) {
-        this.reportDaoImpl.deleteById(this.getReport(), getReport().getId());
+        this.reportDaoImpl.deleteById(getReport().getId());
     }
 
     @Override
     public Report getById() {
-        return this.reportDaoImpl.getByid(this.getReport(), getReport().getId());
+        return this.reportDaoImpl.getByid(getReport().getId());
     }
 
     @Override
