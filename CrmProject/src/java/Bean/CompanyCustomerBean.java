@@ -3,6 +3,10 @@ package Bean;
 import Dao.CompanyCustomerDaoImpl;
 import entity.CompanyCustomer;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.validator.ValidatorException;
 import jakarta.inject.Named;
 import java.util.List;
 
@@ -12,17 +16,17 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
 
     private CompanyCustomer companycustomer;
 
-    private CompanyCustomerDaoImpl companycustomerDaoImpl;
+    private CompanyCustomerDaoImpl companyCustomerDaoImpl;
 
      public CompanyCustomerBean() {
-           companycustomerDaoImpl = new CompanyCustomerDaoImpl();
+           
     }
 
-    public CompanyCustomerBean(CompanyCustomer companycustomer, CompanyCustomerDaoImpl companycustomerDaoImpl) {
+    public CompanyCustomerBean(CompanyCustomer companycustomer, CompanyCustomerDaoImpl companyCustomerDaoImpl) {
         this.companycustomer = companycustomer;
-        this.companycustomerDaoImpl = companycustomerDaoImpl;
+        this.companyCustomerDaoImpl = companyCustomerDaoImpl;
     }
-    
+     
     public CompanyCustomer getCompanyCustomer() {
         if (this.companycustomer == null) {
             companycustomer = new CompanyCustomer();
@@ -34,31 +38,25 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
         this.companycustomer = companycustomer;
     }
 
-    public CompanyCustomerDaoImpl getCampaingDaoImpl() {
-        if (this.companycustomerDaoImpl == null) {
-            companycustomerDaoImpl = new CompanyCustomerDaoImpl();
+    public CompanyCustomerDaoImpl getCompanycustomerDaoImpl() {
+        if (this.companyCustomerDaoImpl == null) {
+            companyCustomerDaoImpl = new CompanyCustomerDaoImpl();
         }
-        return companycustomerDaoImpl;
+        return companyCustomerDaoImpl;
     }
 
     public void setCampaingDaoImpl(CompanyCustomerDaoImpl companycustomerDaoImpl) {
-        this.companycustomerDaoImpl = companycustomerDaoImpl;
+        this.companyCustomerDaoImpl = companycustomerDaoImpl;
     }
-
    
     @Override
     public void save() {
-        if(this.companycustomer==null){
-            this.companycustomer=new CompanyCustomer();
-        }
-        this.companycustomerDaoImpl.createTable(this.getCompanyCustomer());
-            
-        this.companycustomerDaoImpl.create(this.getCompanyCustomer());
+        this.getCompanycustomerDaoImpl().create(this.getCompanyCustomer());
     }
 
     @Override
     public void delete(Long id) {
-        this.companycustomerDaoImpl.deleteById(this.getCompanyCustomer(), getCompanyCustomer().getId());
+        this.getCompanycustomerDaoImpl().deleteById(this.getCompanyCustomer().getId());
     }
 
     @Override
@@ -69,5 +67,20 @@ public class CompanyCustomerBean implements BaseBean<CompanyCustomer> {
     @Override
     public CompanyCustomer getById() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public void login(){
+        
+    }
+    public void register(){
+        
+    }
+    public boolean validatePassword(FacesContext context, UIComponent cmp, Object value)throws ValidatorException{
+        String v=(String) value;
+        if(v.isEmpty()){
+            throw new ValidatorException(new FacesMessage("Şifre alanı boş olamaz!"));
+        }else if(v.length()<8){
+             throw new ValidatorException(new FacesMessage("Şifre alanı 8 karakterden az olamaz!"));
+        }
+        return true;
     }
 }

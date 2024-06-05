@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>Personel Customer Register</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </head>
+    <body>
+        <ui:composition template="/panel/template/homepagenavbar.xhtml">
+            <ui:define name="content">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+                <div class="container mt-5">
+                    <h1 class="text-center">Personel Customer Register</h1>
+                    <div class="row mt-4">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    
+                                    <h:form>
+                                        <div class="form-group">
+                                            <label for="phone">Phone:</label>
+                                            <h:inputText id="phone" value="#{personalCustomerBean.personalCustomer.phone}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Address:</label>
+                                            <h:inputText id="address" value="#{personalCustomerBean.personalCustomer.address}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="mail">Email:</label>
+                                            <h:inputText id="mail" value="#{personalCustomerBean.personalCustomer.mail}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password:</label>
+                                            <h:inputSecret id="password" value="#{personalCustomerBean.personalCustomer.password}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <h:inputText id="name" value="#{personalCustomerBean.personalCustomer.name}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="surname">Surname:</label>
+                                            <h:inputText id="surname" value="#{personalCustomerBean.personalCustomer.surname}" class="form-control"/>
+                                        </div>
+                                        <h:commandButton value="Register" action="#{personalCustomerBean.save()}" class="btn btn-primary btn-block"/>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

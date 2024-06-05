@@ -8,7 +8,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Contact Page</title>
+        <title>Report Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -29,21 +29,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                                     <h:form>
                                         <div class="form-group">
                                             <label for="subject">Subject:</label>
-                                            <h:inputText id="subject" value="#{reportBean.subject}" class="form-control"/>
+                                            <h:inputText id="subject" value="#{reportBean.report.subject}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Description:</label>
-                                            <h:inputTextarea id="description" value="#{reportBean.description}" rows="5" class="form-control"/>
+                                            <h:inputTextarea id="description" value="#{reportBean.report.description}" rows="5" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="title">Title:</label>
-                                            <h:inputText id="title" value="#{reportBean.title}" class="form-control"/>
+                                            <h:inputText id="title" value="#{reportBean.report.title}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <h:inputText id="email" value="#{reportBean.email}" class="form-control"/>
+                                            <h:inputText id="email" value="#{reportBean.report.reportEmail}" class="form-control"/>
                                         </div>
-                                        <h:commandButton value="Submit" action="#{reportBean.submitReport}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Submit" action="#{reportBean.save()}" class="btn btn-primary btn-block"/>
                                     </h:form>
                                 </div>
                             </div>

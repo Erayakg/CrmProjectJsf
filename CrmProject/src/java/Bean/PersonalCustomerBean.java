@@ -61,16 +61,19 @@ public class PersonalCustomerBean implements BaseBean<PersonalCustomer> {
 
     @Override
     public void delete(Long id) {
-        this.personalcustomerDaoImpl.deleteById(this.getPersonalCustomer(), getPersonalCustomer().getId());
+        this.personalcustomerDaoImpl.deleteById(getPersonalCustomer().getId());
     }
 
     @Override
     public PersonalCustomer getById() {
-        return this.personalcustomerDaoImpl.getByid(this.getPersonalCustomer(), getPersonalCustomer().getId());
+        return this.personalcustomerDaoImpl.getByid( getPersonalCustomer().getId());
     }
 
     @Override
     public List<PersonalCustomer> getList() {
          throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public void login(){
+        
     }
 }
