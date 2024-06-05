@@ -1,15 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
     <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Admin Orders Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <h:outputStylesheet library="css" name="adminorders.css" />
+
     </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+    <h:body>
+        <ui:composition template="/panel/template/adminnavbar.xhtml">
+
+            <ui:define name="content">
+                <h:outputStylesheet library="css" name="adminorders.css" />
+                <div class="container">
+                    <ui:include src="/panel/template/dashboardsidebar.xhtml"></ui:include>
+                    <h:outputStylesheet library="css" name="dashboard.css" />
+                    <div class="admin-orders-container">
+                        <div class="admin-orders-header">
+                            <h1>Orders</h1>
+                        </div>
+                        <div class="admin-orders-content">
+                            <h:form>
+                                <h:dataTable value="#{ordersBean.orders}" var="order" styleClass="orders-table" headerClass="orders-table-header" rowClasses="orders-table-row-odd,orders-table-row-even">
+                                    <h:column>
+                                        <f:facet name="header">Order ID</f:facet>
+                                            #{order.id}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Customer ID</f:facet>
+                                            #{order.customerID}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Order Date</f:facet>
+                                            #{order.orderDate}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Shipping Address</f:facet>
+                                            #{order.shippingAddress}
+                                    </h:column>
+
+                                    <h:column>
+                                        <f:facet name="header">Total Amount</f:facet>
+                                            #{order.totalAmount}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Order Status</f:facet>
+                                            #{order.status}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Product Detail</f:facet>
+                                        <h:commandButton value="View Details" action="#{ordersBean.viewOrderDetails(product.id)}" styleClass="details-button"/>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
+
+                            <h:form class="order">
+                                <h2>Add New Orders</h2>
+                                <h:panelGrid columns="2" columnClasses="label, input">
+                                    <h:outputLabel for="customerName" value="Customer Name:"/>
+                                    <h:inputText id="customerName" value="#{OrderBean.Order.customerName}" required="true" requiredMessage="Customer name is required"/>
+                                    <h:outputLabel for="orderDate" value="Order Date:"/>
+                                    <h:inputText id="orderDate" value="#{OrderBean.Order.orderDate}" required="true" requiredMessage="Order date is required">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:inputText>
+                                    <h:outputLabel for="shippingAddress" value="Shipping Address:"/>
+                                    <h:inputText id="shippingAddress" value="#{OrderBean.Order.shippingAddress}" required="true" requiredMessage="Shipping address is required"/>
+                                    <h:outputLabel for="totalAmount" value="Total Amount:"/>
+                                    <h:inputText id="totalAmount" value="#{OrderBean.Order.totalAmount}" required="true" requiredMessage="Total amount is required"/>
+                                    <h:outputLabel for="status" value="Order Status:"/>
+                                    <h:selectOneMenu id="status" value="#{OrderBean.Order.status}" required="true" requiredMessage="Order status is required">
+                                        <f:selectItem itemValue="Pending" itemLabel="Completed"/>
+                                        <f:selectItem itemValue="Shipped" itemLabel="Incomplete"/>
+                                        
+                                    </h:selectOneMenu>
+                                    <h:commandButton value="Submit Order" action="#{ordersBean.addOrder}" styleClass="submit-order-button"/>
+                                </h:panelGrid>
+                            </h:form>
+
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <p>&copy; 2024 Admin Panel</p>
+                </footer>
+            </ui:define>
+        </ui:composition>
+        <h:outputScript library="js" name="adminorders.js" />
+    </h:body>
 </html>
