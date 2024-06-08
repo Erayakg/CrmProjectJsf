@@ -19,7 +19,7 @@ import java.util.Objects;
 public class Customer extends BaseEntity {
     
     private String name;
-    
+    private String password;
     private String surname;
     private int zipCode;
     private String address;
@@ -82,6 +82,14 @@ public class Customer extends BaseEntity {
         return country;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setCountry(String country) {
         this.country = country;
     }
@@ -136,17 +144,20 @@ public class Customer extends BaseEntity {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.name);
-        hash = 73 * hash + Objects.hashCode(this.surname);
-        hash = 73 * hash + this.zipCode;
-        hash = 73 * hash + Objects.hashCode(this.address);
-        hash = 73 * hash + Objects.hashCode(this.country);
-        hash = 73 * hash + Objects.hashCode(this.city);
-        hash = 73 * hash + Objects.hashCode(this.orders);
-        hash = 73 * hash + Objects.hashCode(this.notes);
+        int hash = 5;
+        hash = 47 * hash + Objects.hashCode(this.name);
+        hash = 47 * hash + Objects.hashCode(this.password);
+        hash = 47 * hash + Objects.hashCode(this.surname);
+        hash = 47 * hash + this.zipCode;
+        hash = 47 * hash + Objects.hashCode(this.address);
+        hash = 47 * hash + Objects.hashCode(this.country);
+        hash = 47 * hash + Objects.hashCode(this.city);
+        hash = 47 * hash + Objects.hashCode(this.orders);
+        hash = 47 * hash + Objects.hashCode(this.notes);
         return hash;
     }
+
+
 
     @Override
     public boolean equals(Object obj) {
@@ -184,9 +195,12 @@ public class Customer extends BaseEntity {
         return Objects.equals(this.notes, other.notes);
     }
 
+   
     @Override
     public String toString() {
-        return "Customer{" + "name=" + name + ", surname=" + surname + ", zipCode=" + zipCode + ", address=" + address + ", country=" + country + ", city=" + city + ", orders=" + orders + ", notes=" + notes + '}';
+        return "Customer{" + "name=" + name + ", password=" + password + ", surname=" + surname + ", zipCode=" + zipCode + ", address=" + address + ", country=" + country + ", city=" + city + ", orders=" + orders + ", notes=" + notes + '}';
     }
+
+    
     
 }

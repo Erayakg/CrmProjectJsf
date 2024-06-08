@@ -10,9 +10,9 @@
       
         Adı: <h:inputText id="name" value="#{demoCustomerBean.customer.name}" />
         <br/>
-        Soyadı: <h:inputText id="surname" value="#{demoCustomerBean.customer.surname}" />
+        sifre <h:inputText id="surname" value="#{demoCustomerBean.customer.password}" />
         <br/>
-        <h:commandButton value="Kaydet" action="#{demoCustomerBean.saveUser()}" />
+        <h:commandButton value="Kaydet" action="#{demoCustomerBean.login()}" />
     </h:form>
 </h:body>
 </html>

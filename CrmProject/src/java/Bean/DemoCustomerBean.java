@@ -7,6 +7,8 @@ import Dao.DemoCustomerDao;
 import entity.demoCustomer;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -42,6 +44,14 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
     public void saveUser() {
        customerDao.create(customer);
        
+    }
+    public  void login(){
+         if (customer.getName().equals("baran") && customer.getPassword().equals("123")) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("customer", customer);
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kulanıcı adı ve sifre yanlis"));
+        }
+        
     }
 
    

@@ -2,7 +2,21 @@
 <persistence version="3.0" xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
   <persistence-unit name="CrmProjectPU" transaction-type="JTA">
     <jta-data-source>demojindi</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>entity.Campaign</class>
+    <class>entity.Company</class>
+    <class>entity.Contact</class>
+    <class>entity.Contract</class>
+    <class>entity.Customer</class>
+    <class>entity.Employee</class>
+    <class>entity.Feedback</class>
+    <class>entity.Invoice</class>
+    <class>entity.Note</class>
+    <class>entity.Order</class>
+    <class>entity.Product</class>
+    <class>entity.Report</class>
+    <class>entity.Task</class>
+    <class>entity.demoCustomer</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
     </properties>

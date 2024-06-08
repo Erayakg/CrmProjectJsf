@@ -18,6 +18,15 @@ public class demoCustomer extends BaseEntity{
      
     String name;
     String surname;
+    private  String  password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -45,8 +54,10 @@ public class demoCustomer extends BaseEntity{
 
     @Override
     public String toString() {
-        return "demoCustomer{" + "id=" + id + ", name=" + name + ", surname=" + surname + '}';
+        return "demoCustomer{" + "name=" + name + ", surname=" + surname + ", password=" + password + '}';
     }
+
+   
     
     
 }
