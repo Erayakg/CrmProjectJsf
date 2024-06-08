@@ -35,14 +35,14 @@ public class CustomerLoginFilter implements Filter {
             customer = (demoCustomer) session.getAttribute("customer");
         }
         if (customer == null) {
-            if (url.contains("feedback")) {
-                response.sendRedirect(request.getContextPath() + "/panel/homepage/account/companyLogin.xhtml");
+            if (url.contains("homepage")) {
+                response.sendRedirect(request.getContextPath() + "/panel/homepage/homepage.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
             }
         } else {
-            if (url.contains("feedback")) {
-                response.sendRedirect(request.getContextPath() + "/panel/homepage/feedback/feedbackpage.xhtml");
+            if (url.contains("homepage")) {
+                response.sendRedirect(request.getContextPath() + "/panel/homepage/homepage.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
             }

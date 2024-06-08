@@ -14,17 +14,15 @@ import java.util.Objects;
  *
  * @author erayb
  */
-
 @Entity
 public class Customer extends BaseEntity {
-    
+
     private String name;
     private String password;
     private String surname;
-    private int zipCode;
     private String address;
-    private String country;
-    private String city;
+    private String mail;
+    private String phone;
 
     @OneToMany(mappedBy = "customer")
     private List<Order> orders;
@@ -35,51 +33,12 @@ public class Customer extends BaseEntity {
     public Customer() {
     }
 
-    public Customer(String name, String surname, int zipCode, String address, String country, String city, List<Order> orders, List<Note> notes) {
-        this.name = name;
-        this.surname = surname;
-        this.zipCode = zipCode;
-        this.address = address;
-        this.country = country;
-        this.city = city;
-        this.orders = orders;
-        this.notes = notes;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public String getPassword() {
@@ -90,16 +49,36 @@ public class Customer extends BaseEntity {
         this.password = password;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public String getSurname() {
+        return surname;
     }
 
-    public String getCity() {
-        return city;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public List<Order> getOrders() {
@@ -142,22 +121,44 @@ public class Customer extends BaseEntity {
         this.updatedDate = updatedDate;
     }
 
+    public Customer(String name, String password, String surname, String address, String mail, String phone, List<Order> orders, List<Note> notes) {
+        this.name = name;
+        this.password = password;
+        this.surname = surname;
+        this.address = address;
+        this.mail = mail;
+        this.phone = phone;
+        this.orders = orders;
+        this.notes = notes;
+    }
+
+    public Customer(String name, String password, String surname, String address, String mail, String phone) {
+        this.name = name;
+        this.password = password;
+        this.surname = surname;
+        this.address = address;
+        this.mail = mail;
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "name=" + name + ", password=" + password + ", surname=" + surname + ", address=" + address + ", mail=" + mail + ", phone=" + phone + ", orders=" + orders + ", notes=" + notes + '}';
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 47 * hash + Objects.hashCode(this.name);
-        hash = 47 * hash + Objects.hashCode(this.password);
-        hash = 47 * hash + Objects.hashCode(this.surname);
-        hash = 47 * hash + this.zipCode;
-        hash = 47 * hash + Objects.hashCode(this.address);
-        hash = 47 * hash + Objects.hashCode(this.country);
-        hash = 47 * hash + Objects.hashCode(this.city);
-        hash = 47 * hash + Objects.hashCode(this.orders);
-        hash = 47 * hash + Objects.hashCode(this.notes);
+        hash = 53 * hash + Objects.hashCode(this.name);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + Objects.hashCode(this.surname);
+        hash = 53 * hash + Objects.hashCode(this.address);
+        hash = 53 * hash + Objects.hashCode(this.mail);
+        hash = 53 * hash + Objects.hashCode(this.phone);
+        hash = 53 * hash + Objects.hashCode(this.orders);
+        hash = 53 * hash + Objects.hashCode(this.notes);
         return hash;
     }
-
-
 
     @Override
     public boolean equals(Object obj) {
@@ -171,10 +172,10 @@ public class Customer extends BaseEntity {
             return false;
         }
         final Customer other = (Customer) obj;
-        if (this.zipCode != other.zipCode) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.password, other.password)) {
             return false;
         }
         if (!Objects.equals(this.surname, other.surname)) {
@@ -183,10 +184,10 @@ public class Customer extends BaseEntity {
         if (!Objects.equals(this.address, other.address)) {
             return false;
         }
-        if (!Objects.equals(this.country, other.country)) {
+        if (!Objects.equals(this.mail, other.mail)) {
             return false;
         }
-        if (!Objects.equals(this.city, other.city)) {
+        if (!Objects.equals(this.phone, other.phone)) {
             return false;
         }
         if (!Objects.equals(this.orders, other.orders)) {
@@ -194,13 +195,4 @@ public class Customer extends BaseEntity {
         }
         return Objects.equals(this.notes, other.notes);
     }
-
-   
-    @Override
-    public String toString() {
-        return "Customer{" + "name=" + name + ", password=" + password + ", surname=" + surname + ", zipCode=" + zipCode + ", address=" + address + ", country=" + country + ", city=" + city + ", orders=" + orders + ", notes=" + notes + '}';
-    }
-
-    
-    
 }

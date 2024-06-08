@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
                 <div class="container mt-5">
-                    <h1 class="text-center">Personel Customer Register</h1>
+                    <h1 class="text-center">Customer Register</h1>
                     <div class="row mt-4">
                         <div class="col-md-6 offset-md-3">
                             <div class="card">
@@ -22,29 +22,29 @@
                                     <h:form>
                                         <div class="form-group">
                                             <label for="phone">Phone:</label>
-                                            <h:inputText id="phone" value="#{personalCustomerBean.personalCustomer.phone}" class="form-control"/>
+                                            <h:inputText id="phone" value="#{customerBean.customer.phone}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="address">Address:</label>
-                                            <h:inputText id="address" value="#{personalCustomerBean.personalCustomer.address}" class="form-control"/>
+                                            <h:inputText id="address" value="#{customerBean.customer.address}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="mail">Email:</label>
-                                            <h:inputText id="mail" value="#{personalCustomerBean.personalCustomer.mail}" class="form-control"/>
+                                            <h:inputText id="mail" value="#{customerBean.customer.mail}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <h:inputSecret id="password" value="#{personalCustomerBean.personalCustomer.password}" class="form-control"/>
+                                            <h:inputSecret id="password" value="#{customerBean.customer.password}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="name">Name:</label>
-                                            <h:inputText id="name" value="#{personalCustomerBean.personalCustomer.name}" class="form-control"/>
+                                            <h:inputText id="name" value="#{customerBean.customer.name}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="surname">Surname:</label>
-                                            <h:inputText id="surname" value="#{personalCustomerBean.personalCustomer.surname}" class="form-control"/>
+                                            <h:inputText id="surname" value="#{customerBean.customer.surname}" class="form-control"/>
                                         </div>
-                                        <h:commandButton value="Register" action="#{personalCustomerBean.save()}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Register" action="#{customerBean.save()}" class="btn btn-primary btn-block"/>
                                     </h:form>
                                 </div>
                             </div>

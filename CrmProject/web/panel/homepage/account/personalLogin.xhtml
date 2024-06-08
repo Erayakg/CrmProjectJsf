@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
                 <div class="container mt-5">
-                    <h1 class="text-center">Personel Customer Login</h1>
+                    <h1 class="text-center">Customer Login</h1>
                     <div class="row mt-4">
                         <div class="col-md-6 offset-md-3">
                             <div class="card">
@@ -22,13 +22,13 @@
                                     <h:form>
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <h:inputText id="email" value="#{personalCustomerBean.personalCustomer.mail}" class="form-control"/>
+                                            <h:inputText id="email" value="#{customerBean.customer.mail}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <h:inputSecret id="password" value="#{personalCustomerBean.personalCustomer.password}" class="form-control"/>
+                                            <h:inputSecret id="password" value="#{customerBean.customer.password}" class="form-control"/>
                                         </div>
-                                        <h:commandButton value="Login" action="#{personalCustomerBean.login()}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Login" action="#{customerBean.login()}" class="btn btn-primary btn-block"/>
                                     </h:form>
                                     <p class="text-center mt-4">Haven't registered yet? <a href="registerpage.xhtml">Register here</a></p>
                                 </div>
