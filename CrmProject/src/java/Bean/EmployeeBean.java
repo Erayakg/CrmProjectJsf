@@ -1,12 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Bean;
 
+import Dao.CustomerDaoImpl;
 import Dao.EmployeeDaoImpl;
+import entity.Customer;
 import entity.Employee;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.ViewScoped;
 
 import jakarta.inject.Named;
 import java.util.List;
@@ -16,12 +19,15 @@ import java.util.List;
  * @author baran
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class EmployeeBean implements BaseBean<Employee> {
 
-    private Employee employee;
-    private EmployeeDaoImpl employeeDaoImpl;
+    private static final long serialVersionUID = 1L;
 
+    private Employee employee;
+    
+    private EmployeeDaoImpl employeeDaoImpl;
+    
     public Employee getEmployee() {
         return employee;
     }
@@ -40,18 +46,28 @@ public class EmployeeBean implements BaseBean<Employee> {
 
     @Override
     public void save() {
-        this.getEmployeeDaoImpl().create(getEmployee());
-
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-
+    public void saveUser() {
+       this.getEmployeeDaoImpl().create(this.getEmployee());
+    }
+    
     @Override
     public void delete(Long id) {
-        this.getEmployeeDaoImpl().deleteById(this.getEmployee(), this.getEmployee().getId());
+        
+    }
+    public  void login(){
+         if (employee.getMail().equals("baran@gmail.com") && employee.getPassword().equals("123")) {
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("employee", employee);
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kulanıcı adı ve sifre yanlis"));
+        }
+        
     }
 
     @Override
     public Employee getById() {
-        return this.getEmployeeDaoImpl().getByid(getEmployee(), this.getEmployee().getId());
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
