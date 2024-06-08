@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Default Navbar</title>
+        <title>Customer Navbar</title>
     </h:head>
     <h:body>
         <header>
@@ -24,9 +24,11 @@
                         Contact
                         <ul class="submenu">
                             <li><a href="/CrmProject/panel//homepage/contact/report.xhtml">Report</a></li>
+                            <li><a href="/CrmProject/panel//homepage/feedback/feedback.xhtml">Feedback</a></li>
                         </ul>
                     </li>
-                    <li><h:link value="Sign In" outcome="/panel/homepage/account/loginpage.xhtml"/></li>
+                    <li><h:link value="Profile" outcome="/panel/homepage/account/profilepage.xhtml"/></li>
+                    <li><h:commandLink value="Sign Out" action="#{userSession.logout()}"/></li>
                 </ul>
             </nav>
         </header>

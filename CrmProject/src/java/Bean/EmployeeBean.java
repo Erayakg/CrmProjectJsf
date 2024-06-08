@@ -58,9 +58,9 @@ public class EmployeeBean implements BaseBean<Employee> {
     }
     public  void login(){
          if (employee.getMail().equals("baran@gmail.com") && employee.getPassword().equals("123")) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("employee", employee);
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("customer", employee);
         } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kulanıcı adı ve sifre yanlis"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kullanıcı adı ve sifre yanlis"));
         }
         
     }
