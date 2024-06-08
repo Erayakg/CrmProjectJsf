@@ -1,33 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-
-    <h:head>
-        <title>HOME PAGE</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </h:head>
-    <h:body>
-        <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                        xmlns:h="http://xmlns.jcp.org/jsf/html"
-                        xmlns:ui="http://java.sun.com/jsf/facelets"
-                        template="/panel/template/homepagenavbar.xhtml">
-            <ui:define name="content">
-                <h:outputStylesheet library="css" name="homepage.css" />
-                <main>
-                    <section class="intro">
-                        <h1>Hoş Geldiniz</h1>
-                        <p>CRM sisteminize hoş geldiniz. Verimliliğinizi artırın, müşteri ilişkilerinizi güçlendirin.</p>
-                    </section>
-                </main>
-                <footer>
-                    <p>&copy; 2024 CRM Projesi</p>
-                </footer>
-            </ui:define>
-        </ui:composition>
-        <h:outputScript library="js" name="homepage.js" />
-
-    </h:body>
+    <ui:composition template="/panel/template/mainTemplate.xhtml">
+        <ui:define name="title">HOME PAGE</ui:define>
+        
+        <ui:define name="content">
+            <h:outputStylesheet library="css" name="homepage.css" />
+            <main>
+                <section class="intro">
+                    <h1>Hoş Geldiniz</h1>
+                    <p>CRM sisteminize hoş geldiniz. Verimliliğinizi artırın, müşteri ilişkilerinizi güçlendirin.</p>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2024 CRM Projesi</p>
+            </footer>
+        </ui:define>
+    </ui:composition>
+    <h:outputScript library="js" name="homepage.js" />
 </html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title><ui:insert name="title">Home Page</ui:insert></title>
+        <h:outputStylesheet library="css" name="navbar.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <!-- Dynamic Navbar -->
+            <ui:include src="#{userSession.loggedIn ? (userSession.role eq 'customer' ? '/panel/template/validationNavbar/customerNavbar.xhtml' : '/panel/template/validationNavbar/employeeNavbar.xhtml') : '/panel/template/homepagenavbar.xhtml'}"/>
+
+            <!-- Main Content -->
+            <ui:insert name="content"/>
+            
+            <h:outputScript library="js" name="homepage.js"/>
+        </h:form>
+    </h:body>
+</html>

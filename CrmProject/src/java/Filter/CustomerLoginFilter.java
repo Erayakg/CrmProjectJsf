@@ -35,13 +35,13 @@ public class CustomerLoginFilter implements Filter {
             customer = (demoCustomer) session.getAttribute("customer");
         }
         if (customer == null) {
-            if (url.contains("homepage")) {
+            if (url.contains("feedback")) {
                 response.sendRedirect(request.getContextPath() + "/panel/homepage/homepage.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
             }
         } else {
-            if (url.contains("homepage")) {
+            if (url.contains("employee")) {
                 response.sendRedirect(request.getContextPath() + "/panel/homepage/homepage.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
