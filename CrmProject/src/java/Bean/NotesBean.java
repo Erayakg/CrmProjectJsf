@@ -5,7 +5,8 @@
 package Bean;
 
 import Dao.NotesDaoImpl;
-import entity.Notes;
+import entity.Note;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -16,39 +17,30 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class NotesBean implements BaseBean<Notes> {
+public class NotesBean implements BaseBean<Note> {
 
-    private Notes notes;
-
+    private Note notes;
+    @EJB
     private NotesDaoImpl notesDaoImpl;
 
-    public Notes getNotes() {
+    public Note getNotes() {
         if (this.notes == null) {
-            notes = new Notes();
+            notes = new Note();
         }
         return notes;
     }
 
-    public void setNotes(Notes notes) {
+    public void setNote(Note notes) {
         this.notes = notes;
     }
 
-    public NotesDaoImpl getCampaingDaoImpl() {
-        if (this.notesDaoImpl == null) {
-            notesDaoImpl = new NotesDaoImpl();
-        }
-        return notesDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(NotesDaoImpl notesDaoImpl) {
-        this.notesDaoImpl = notesDaoImpl;
-    }
 
     public NotesBean() {
 
     }
 
-    public NotesBean(Notes notes, NotesDaoImpl notesDaoImpl) {
+    public NotesBean(Note notes, NotesDaoImpl notesDaoImpl) {
         this.notes = notes;
         this.notesDaoImpl = notesDaoImpl;
     }
@@ -61,16 +53,16 @@ public class NotesBean implements BaseBean<Notes> {
 
     @Override
     public void delete(Long id) {
-        this.notesDaoImpl.deleteById(this.getNotes(), getNotes().getId());
+        this.notesDaoImpl.remove(this.getNotes());
     }
 
     @Override
-    public Notes getById() {
-        return this.notesDaoImpl.getByid(this.getNotes(), getNotes().getId());
+    public Note getById() {
+        return this.notesDaoImpl.find(getNotes().getId());
     }
 
     @Override
-    public List<Notes> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Note> getList() {
+        return this.notesDaoImpl.findAll();
     }
 }

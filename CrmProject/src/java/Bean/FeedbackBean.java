@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.FeedbackDaoImpl;
 import entity.Feedback;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class FeedbackBean implements BaseBean<Feedback> {
 
     private Feedback feedback;
-
+    @EJB
     private FeedbackDaoImpl feedbackDaoImpl;
 
     public Feedback getFeedback() {
@@ -33,16 +34,7 @@ public class FeedbackBean implements BaseBean<Feedback> {
         this.feedback = feedback;
     }
 
-    public FeedbackDaoImpl getCampaingDaoImpl() {
-        if (this.feedbackDaoImpl == null) {
-            feedbackDaoImpl = new FeedbackDaoImpl();
-        }
-        return feedbackDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(FeedbackDaoImpl feedbackDaoImpl) {
-        this.feedbackDaoImpl = feedbackDaoImpl;
-    }
 
     public FeedbackBean() {
 
@@ -61,16 +53,16 @@ public class FeedbackBean implements BaseBean<Feedback> {
 
     @Override
     public void delete(Long id) {
-        this.feedbackDaoImpl.deleteById(this.getFeedback(), getFeedback().getId());
+        this.feedbackDaoImpl.remove(this.getFeedback());
     }
 
     @Override
     public Feedback getById() {
-        return this.feedbackDaoImpl.getByid(this.getFeedback(), getFeedback().getId());
+        return this.feedbackDaoImpl.find(getFeedback().getId());
     }
 
     @Override
     public List<Feedback> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.feedbackDaoImpl.findAll();
     }
 }

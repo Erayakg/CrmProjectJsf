@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.CompanyDaoImpl;
 import entity.Company;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
 public class CompanyBean implements BaseBean<Company> {
 
     private Company Company;
+    
+    @EJB
     private CompanyDaoImpl companyDaoImpl;
 
     public Company getCompany() {
@@ -32,36 +35,27 @@ public class CompanyBean implements BaseBean<Company> {
         this.Company = Company;
     }
 
-    public CompanyDaoImpl getCompanyDaoImpl() {
-        if (this.companyDaoImpl == null) {
-            this.companyDaoImpl = new CompanyDaoImpl();
-        }
-        return companyDaoImpl;
-    }
 
-    public void setCompanyDaoImpl(CompanyDaoImpl companyDaoImpl) {
-        this.companyDaoImpl = companyDaoImpl;
-    }
 
     @Override
     public void save() {
-        this.getCompanyDaoImpl().create(this.getCompany());
+        this.companyDaoImpl.create(this.getCompany());
     }
 
     @Override
     public void delete(Long id) {
-        this.getCompanyDaoImpl().deleteById(this.getCompany(), this.getCompany().getId());
+        this.companyDaoImpl.remove(this.getCompany());
     }
 
 
     @Override
     public List<Company> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companyDaoImpl.findAll();
     }
 
     @Override
     public Company getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.companyDaoImpl.find(getCompany().getId());
     }
 
 }

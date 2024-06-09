@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.ContractDaoImpl;
 import entity.Contract;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ContractBean implements BaseBean<Contract> {
 
     private Contract contract;
-
+    @EJB
     private ContractDaoImpl contractDaoImpl;
 
     public Contract getContract() {
@@ -33,16 +34,7 @@ public class ContractBean implements BaseBean<Contract> {
         this.contract = contract;
     }
 
-    public ContractDaoImpl getCampaingDaoImpl() {
-        if (this.contractDaoImpl == null) {
-            contractDaoImpl = new ContractDaoImpl();
-        }
-        return contractDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(ContractDaoImpl contractDaoImpl) {
-        this.contractDaoImpl = contractDaoImpl;
-    }
 
     public ContractBean() {
 
@@ -61,16 +53,16 @@ public class ContractBean implements BaseBean<Contract> {
 
     @Override
     public void delete(Long id) {
-        this.contractDaoImpl.deleteById(this.getContract(), getContract().getId());
+        this.contractDaoImpl.remove(this.getContract());
     }
 
     @Override
     public Contract getById() {
-        return this.contractDaoImpl.getByid(this.getContract(), getContract().getId());
+        return this.contractDaoImpl.find(getContract().getId());
     }
 
     @Override
     public List<Contract> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return this.contractDaoImpl.findAll();
     }
 }

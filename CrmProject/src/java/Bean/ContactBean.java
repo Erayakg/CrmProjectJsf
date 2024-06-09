@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.ContactDaoImpl;
 import entity.Contact;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ContactBean implements BaseBean<Contact> {
 
     private Contact contact;
-
+    @EJB
     private ContactDaoImpl contactDaoImpl;
 
     public Contact getContact() {
@@ -33,16 +34,7 @@ public class ContactBean implements BaseBean<Contact> {
         this.contact = contact;
     }
 
-    public ContactDaoImpl getCampaingDaoImpl() {
-        if (this.contactDaoImpl == null) {
-            contactDaoImpl = new ContactDaoImpl();
-        }
-        return contactDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(ContactDaoImpl contactDaoImpl) {
-        this.contactDaoImpl = contactDaoImpl;
-    }
 
     public ContactBean() {
 
@@ -61,16 +53,16 @@ public class ContactBean implements BaseBean<Contact> {
 
     @Override
     public void delete(Long id) {
-        this.contactDaoImpl.deleteById(this.getContact(), getContact().getId());
+        this.contactDaoImpl.remove(this.getContact());
     }
 
     @Override
     public Contact getById() {
-        return this.contactDaoImpl.getByid(this.getContact(), getContact().getId());
+        return this.contactDaoImpl.find(getContact().getId());
     }
 
     @Override
     public List<Contact> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return this.contactDaoImpl.findAll();
     }
 }

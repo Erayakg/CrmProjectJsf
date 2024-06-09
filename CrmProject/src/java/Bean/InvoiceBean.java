@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.InvoiceDaoImpl;
 import entity.Invoice;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class InvoiceBean implements BaseBean<Invoice>{
 
     private Invoice Invoice;
+    @EJB
     private InvoiceDaoImpl invoiceDaoImpl;
 
     public Invoice getInvoice() {
@@ -32,35 +34,26 @@ public class InvoiceBean implements BaseBean<Invoice>{
         this.Invoice = Invoice;
     }
 
-    public InvoiceDaoImpl getInvoiceDaoImpl() {
-        if (this.invoiceDaoImpl == null) {
-            this.invoiceDaoImpl = new InvoiceDaoImpl();
-        }
-        return invoiceDaoImpl;
-    }
 
-    public void setInvoiceDaoImpl(InvoiceDaoImpl invoiceDaoImpl) {
-        this.invoiceDaoImpl = invoiceDaoImpl;
-    }
 
     @Override
     public void save() {
-        this.getInvoiceDaoImpl().create(this.getInvoice());
+        this.invoiceDaoImpl.create(this.getInvoice());
     }
 
     @Override
     public void delete(Long id) {
-        this.getInvoiceDaoImpl().deleteById(this.getInvoice(), this.getInvoice().getId());
+        this.invoiceDaoImpl.remove(this.getInvoice());
     }
 
     @Override
     public Invoice getById() {
-        return this.getInvoiceDaoImpl().getByid(this.getInvoice(), this.getInvoice().getId());
+        return this.invoiceDaoImpl.find(this.getInvoice().getId());
     }
 
     @Override
     public List<Invoice> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         return this.invoiceDaoImpl.findAll();
     }
     
 }

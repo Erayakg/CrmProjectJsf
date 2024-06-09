@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.ReportDaoImpl;
 import entity.Report;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class ReportBean implements BaseBean<Report> {
 
     private Report report;
-
+    @EJB
     private ReportDaoImpl reportDaoImpl;
 
     public Report getReport() {
@@ -33,12 +34,7 @@ public class ReportBean implements BaseBean<Report> {
         this.report = report;
     }
 
-    public ReportDaoImpl getReportDaoImpl() {
-        if (this.reportDaoImpl == null) {
-            reportDaoImpl = new ReportDaoImpl();
-        }
-        return reportDaoImpl;
-    }
+
 
 
     public ReportBean() {
@@ -52,21 +48,21 @@ public class ReportBean implements BaseBean<Report> {
 
     @Override
     public void save() {
-        this.getReportDaoImpl().create(this.getReport());
+        this.reportDaoImpl.create(this.getReport());
     }
 
     @Override
     public void delete(Long id) {
-        this.reportDaoImpl.deleteById(getReport().getId());
+        this.reportDaoImpl.remove(this.getReport());
     }
 
     @Override
     public Report getById() {
-        return this.reportDaoImpl.getByid(getReport().getId());
+        return this.reportDaoImpl.find(getReport().getId());
     }
 
     @Override
     public List<Report> getList() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.reportDaoImpl.findAll();
     }
 }
