@@ -22,7 +22,7 @@ public abstract class BaseEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     LocalDateTime createdDate;
     LocalDateTime updatedDate;
