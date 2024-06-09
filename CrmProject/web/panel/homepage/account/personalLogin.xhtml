@@ -28,7 +28,7 @@
                                             <label for="password">Password:</label>
                                             <h:inputSecret id="password" value="#{customerBean.customer.password}" class="form-control"/>
                                         </div>
-                                        <h:commandButton value="Login" action="#{customerBean.login()}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Login" action="#{userSession.loginAsCustomer()}" class="btn btn-primary btn-block"/>
                                     </h:form>
                                     <p class="text-center mt-4">Haven't registered yet? <a href="registerpage.xhtml">Register here</a></p>
                                 </div>
