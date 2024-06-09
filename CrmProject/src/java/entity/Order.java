@@ -7,18 +7,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "order")
 public class Order extends BaseEntity {
     
     private LocalDateTime orderDate;
     private String shippingAddress;
     private String billingAddress;
     private float totalAmount;
-    private boolean status;
+    private Boolean status;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
