@@ -5,6 +5,7 @@
 package Bean;
 
 import Dao.ProductDaoImpl;
+import jakarta.ejb.EJB;
 import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
@@ -20,50 +21,89 @@ import java.util.List;
 public class ProductBean implements BaseBean<Product> {
 
     private Product product;
-
+    @EJB
     private ProductDaoImpl productDaoImpl;
+    
+    private int currentPage=0;
+    private int pageSize=10;
+    private int totalProducts;
+    private List<Product> productList;
 
     
     public Product getProduct() {
         
         if (this.product == null) {
             product = new Product();
-            product.setCreatedDate(LocalDateTime.now());
         }
-        
-        return product;
-        
+        return product;  
     }
 
     public void setProduct(Product product) {
         this.product = product;
     }
 
-    public ProductDaoImpl getProductDaoImpl() {
-        if (this.productDaoImpl == null) {
-            productDaoImpl = new ProductDaoImpl();
+    
+    
+    public List<Product> getProductList(){
+        if(productList==null)
+            loadProducts();
+        return productList;
+    }
+    
+    private void loadProducts(){
+        totalProducts=productDaoImpl.count();
+        int[] range = {currentPage * pageSize, (currentPage + 1) * pageSize - 1};
+        productList=productDaoImpl.findRange(range);
+    }
+    public int getCurrentPage(){
+        return currentPage;
+    }
+    public void setCurrentPage(int currentPage){
+        this.currentPage=currentPage;
+        loadProducts();
+    }
+    public int getTotalPages(){
+        return (int) Math.ceil((double) totalProducts/pageSize);
+    }
+    public int getPageSize(){
+        return pageSize;
+    }
+    public void setPageSize(int pageSize){
+        this.pageSize=pageSize;
+        loadProducts();
+    }
+    public void nextPage(){
+        if(currentPage<getTotalPages()-1){
+            currentPage++;
+            loadProducts();
         }
-        return productDaoImpl;
+    }
+    public void previousPage(){
+        if(currentPage>0)
+        {
+            currentPage--;
+            loadProducts();
+        }
     }
 
     @Override
     public void save() {
-        getProductDaoImpl().create(product);
+        productDaoImpl.create(this.getProduct());
     }
 
     @Override
     public void delete(Long id) {
-        getProductDaoImpl().deleteById(product,id);
+         productDaoImpl.remove(product);
     }
 
     @Override
     public Product getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return productDaoImpl.find(getProduct().getId());
     }
 
     @Override
     public List<Product> getList() {
-        return getProductDaoImpl().getList();
+         return productDaoImpl.findAll();
     }
 
 }

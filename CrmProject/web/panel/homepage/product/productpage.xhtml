@@ -13,17 +13,25 @@
         <ui:composition template="/panel/template/mainTemplate.xhtml">
             <ui:define name="content">
                 <h:outputStylesheet library="css" name="products.css" />
+                <h:outputScript library="js" name="products.js" />
                 <div class="products-container">
                     <div class="product-list">
-                        <div class="product-item">
-                            <h2>Data Science Kit</h2>
-                            <p>The most successful training for Data Science</p>
-                        </div>
-                        <div class="product-item">
-                            <h2>Web Development Kit</h2>
-                            <p>The most successful training for Web Development</p>
-                        </div>
-                        <!-- Add more product items here -->
+                        <ui:repeat value="#{productBean.productList}" var="product">
+                            <div class="product-item">
+                                <h2><h:outputText value="#{product.name}" /></h2>
+                                <p><h:outputText value="#{product.description}" /></p>
+                                <p><h:outputText value="#{product.price}" /></p>
+                                <p><h:outputText value="#{product.stockQuantity}" /></p>
+                                <p><h:outputText value="#{product.isActive ? 'Aktif' : 'Pasif'}" /></p>
+                            </div>
+                        </ui:repeat>
+                    </div>
+                    <div class="pagination-controls">
+                        <h:commandButton value="&laquo; Önceki" action="#{productBean.previousPage}" 
+                                         disabled="#{productBean.currentPage == 0}" />
+                        <span>Sayfa #{productBean.currentPage + 1} / #{productBean.totalPages}</span>
+                        <h:commandButton value="Sonraki &raquo;" action="#{productBean.nextPage}" 
+                                         disabled="#{productBean.currentPage >= productBean.totalPages - 1}" />
                     </div>
                 </div>
             </ui:define>

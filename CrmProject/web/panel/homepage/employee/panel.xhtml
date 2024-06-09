@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Employee Management</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="/panel/template/mainTemplate.xhtml">
+            <ui:define name="content">
+                <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+                <div class="container">
+                    <h1>Employee Panel</h1>
+
+                    <h2>Product Operations</h2>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="productName" value="Product Name:"/>
+                            <h:inputText id="productName" value="#{productBean.product.name}"/>
+                            <h:inputText id="productName" value="#{productBean.product.description}"/>
+                            <h:inputText id="productName" value="#{productBean.product.price}"/>
+                            <h:inputText id="productName" value="#{productBean.product.isActive}"/>
+                        </h:panelGrid>
+                    </h:form>
+
+                    <h2>Campaign Operations</h2>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="campaignName" value="Campaign Name:"/>
+                            <h:inputText id="campaignName" value="#{campaignBean.campaign.name}"/>
+                            <h:inputText id="campaignName" value="#{campaignBean.campaign.description}"/>
+                            <h:inputText id="campaignName" value="#{campaignBean.campaign.createdDate}"/>
+                            <h:inputText id="campaignName" value="#{campaignBean.campaign.endDate}"/>
+                            <h:inputText id="campaignName" value="#{campaignBean.campaign.isActive}"/>
+                        </h:panelGrid>
+                    </h:form>
+
+                    <h2>Order Operations</h2>
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel for="customerName" value="Customer Name:"/>
+                            
+                        </h:panelGrid>
+                    </h:form>
+
+                    <h2>Feedbacks</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Description</th>
+                                    <th>Response</th>
+                                    <th>Status</th>
+                                    <th>Employee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{feedbackBean.list}" var="feedback">
+                                    <tr>
+                                        <td>#{feedback.title}</td>
+                                        <td>#{feedbackBean.feedback.subject}</td>
+                                        <td>#{feedbackBean.feedback.description}</td>
+                                        <td>#{feedbackBean.feedback.status}</td>
+                                        <td>#{feedbackBean.feedback.response}</td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>Reports</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Description</th>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Report Email</th>
+                                    <th>Employee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{reportBean.reportList}" var="report">
+                                    <tr>
+                                        <td>#{report.subject}</td>
+                                        <td>#{report.description}</td>
+                                        <td>#{report.title}</td>
+                                        <td>#{report.date}</td>
+                                        <td>#{report.reportEmail}</td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

@@ -8,30 +8,76 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-            <ui:composition template="/panel/template/mainTemplate.xhtml">
-                <ui:define name="content">
-                    <h:outputStylesheet library="css" name="customer/profilepage.css" />
-                    <main>
-                        <section id="profile">
-                            <h2>Profil Bilgileri</h2>
-                            <div id="profile-info">
-                                <!-- Profil bilgileri buraya gelecek -->
-                            </div>
-                        </section>
-                        <section id="contact">
-                            <h2>İletişim Bilgileri</h2>
-                            <div id="contact-info">
-                                <!-- İletişim bilgileri buraya gelecek -->
-                            </div>
-                        </section>
-                        <section id="order-history">
-                            <h2>Sipariş Geçmişi</h2>
-                            <div id="orders">
-                                <!-- Sipariş geçmişi buraya gelecek -->
-                            </div>
-                        </section>
-                    </main>
-                </ui:define>
-            </ui:composition>
-        </h:body>
+        <ui:composition template="/panel/template/mainTemplate.xhtml">
+            <ui:define name="content">
+                <h:outputStylesheet library="css" name="customer/profilepage.css" />
+                <main>
+                    <section id="profile">
+                        <h2>Profil Bilgileri</h2>
+                        <div id="profile-info">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Ad: " />
+                                <h:outputText value="#{customerBean.customer.name}" />
+                                
+                                <h:outputLabel value="Soyad: " />
+                                <h:outputText value="#{customerBean.customer.surname}" />
+                                
+                                <h:outputLabel value="Adres: " />
+                                <h:outputText value="#{customerBean.customer.address}" />
+                                
+                                <h:outputLabel value="E-posta: " />
+                                <h:outputText value="#{customerBean.customer.mail}" />
+                                
+                                <h:outputLabel value="Telefon: " />
+                                <h:outputText value="#{customerBean.customer.phone}" />
+                            </h:panelGrid>
+                        </div>
+                    </section>
+                    
+                    <section id="contact">
+                        <h2>İletişim Bilgileri</h2>
+                        <div id="contact-info">
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="E-posta: " />
+                                <h:outputText value="#{customerBean.customer.mail}" />
+                                
+                                <h:outputLabel value="Telefon: " />
+                                <h:outputText value="#{customerBean.customer.phone}" />
+                            </h:panelGrid>
+                        </div>
+                    </section>
+                    
+                    <section id="order-history">
+                        <h2>Sipariş Geçmişi</h2>
+                        <div id="orders">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Sipariş ID</th>
+                                        <th>Tarih</th>
+                                        <th>Toplam</th>
+                                        <th>Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ui:repeat value="#{customerBean.list}" var="order">
+                                        <tr>
+                                            <td><h:outputText value="#{order.orderDate}"/></td>
+                                            <td><h:outputText value="#{order.shippingAddress}" /></td>
+                                            <td><h:outputText value="#{order.billingAddress}" /></td>
+                                            <td><h:outputText value="#{order.totalAmount}" /></td>
+                                            <td><h:outputText value="#{order.status}" /></td>
+                                            <td>
+                                                <h:commandLink styleClass="" action="customerBean.setEntity(order)" value="#{order.customerName}"/>
+                                            </td>
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </main>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
