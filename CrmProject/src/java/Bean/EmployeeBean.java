@@ -29,6 +29,8 @@ public class EmployeeBean implements BaseBean<Employee> {
     private EmployeeDaoImpl employeeDaoImpl;
     
     public Employee getEmployee() {
+        if(employee==null)
+            employee=new Employee();
         return employee;
     }
 
@@ -37,6 +39,8 @@ public class EmployeeBean implements BaseBean<Employee> {
     }
 
     public EmployeeDaoImpl getEmployeeDaoImpl() {
+        if(employeeDaoImpl==null)
+            employeeDaoImpl=new EmployeeDaoImpl();
         return employeeDaoImpl;
     }
 

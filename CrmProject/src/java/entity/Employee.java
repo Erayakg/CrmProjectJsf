@@ -33,6 +33,20 @@ public class Employee extends BaseEntity {
     public Employee() {
     }
 
+    public Employee(String mail, String password) {
+        this.mail = mail;
+        this.password = password;
+    }
+
+    public Employee(String name, String surname, String phone, String address, String mail, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.phone = phone;
+        this.address = address;
+        this.mail = mail;
+        this.password = password;
+    }
+
     public Employee(String name, String surname, String phone, String address, String mail, String password, Double salary, List<Feedback> feedbacks, List<Task> tasks) {
         this.name = name;
         this.surname = surname;

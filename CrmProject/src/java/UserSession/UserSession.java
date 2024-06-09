@@ -10,6 +10,9 @@ public class UserSession implements Serializable {
     private boolean loggedIn;
     private String role; // "customer" or "employee"
 
+    public UserSession() {
+    }
+
     public boolean isLoggedIn() {
         return loggedIn;
     }

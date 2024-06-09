@@ -28,7 +28,7 @@
                                             <label for="password">Password:</label>
                                             <h:inputSecret id="password" value="#{employeeBean.employee.password}" class="form-control"/>
                                         </div>
-                                        <h:commandButton value="Login" action="#{employee.login()}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Login" action="#{userSession.loginAsEmployee()}" class="btn btn-primary btn-block"/>
                                     </h:form>
                                 </div>
                             </div>
