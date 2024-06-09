@@ -41,7 +41,7 @@ public class EmployeeConverter implements Converter, Serializable {
 	public String getAsString(FacesContext fc, UIComponent uic, Object t) {
 		if (t != null) {
 			Employee c = (Employee) t;
-                        return c.getId().toString();
+            return String.valueOf(c.getId()); 
 		} else {
 			return "";
 		}

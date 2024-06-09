@@ -41,7 +41,7 @@ public class OrderConverter implements Converter, Serializable {
 	public String getAsString(FacesContext fc, UIComponent uic, Object t) {
 		if (t != null) {
 			Order c = (Order) t;
-                        return c.getId().toString();
+            return String.valueOf(c.getId()); 
 		} else {
 			return "";
 		}

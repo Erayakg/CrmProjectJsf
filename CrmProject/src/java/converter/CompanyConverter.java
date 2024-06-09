@@ -41,7 +41,7 @@ public class CompanyConverter implements Converter, Serializable {
 	public String getAsString(FacesContext fc, UIComponent uic, Object t) {
 		if (t != null) {
 			Company c = (Company) t;
-                        return c.getId().toString();
+            return String.valueOf(c.getId()); 
 		} else {
 			return "";
 		}

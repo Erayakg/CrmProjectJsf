@@ -41,7 +41,7 @@ public class FeedbackConverter implements Converter, Serializable {
 	public String getAsString(FacesContext fc, UIComponent uic, Object t) {
 		if (t != null) {
 			Feedback c = (Feedback) t;
-                        return c.getId().toString();
+            return String.valueOf(c.getId()); 
 		} else {
 			return "";
 		}

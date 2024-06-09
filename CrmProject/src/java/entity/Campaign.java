@@ -145,10 +145,7 @@ public class Campaign extends BaseEntity {
         return Objects.equals(this.companies, other.companies);
     }
 
-    @Override
-    public String toString() {
-        return "Campaign{" + "name=" + name + ", description=" + description + ", startDate=" + startDate + ", endDate=" + endDate + ", isActive=" + isActive + ", companies=" + companies + '}';
-    }
+  
     
     
 }
