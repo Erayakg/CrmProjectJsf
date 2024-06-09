@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.CampaignDaoImpl;
 import entity.Campaign;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.io.Serializable;
@@ -20,7 +21,8 @@ import java.util.List;
 public class CampaignBean implements BaseBean<Campaign> {
 
     private Campaign campaign;
-
+    
+    @EJB
     private CampaignDaoImpl campaignDaoImpl;
 
     public Campaign getCampaign() {
@@ -34,16 +36,8 @@ public class CampaignBean implements BaseBean<Campaign> {
         this.campaign = campaign;
     }
 
-    public CampaignDaoImpl getCampaingDaoImpl() {
-        if (this.campaignDaoImpl == null) {
-            campaignDaoImpl = new CampaignDaoImpl();
-        }
-        return campaignDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(CampaignDaoImpl campaingDaoImpl) {
-        this.campaignDaoImpl = campaingDaoImpl;
-    }
+
 
     public CampaignBean() {
 
@@ -57,24 +51,24 @@ public class CampaignBean implements BaseBean<Campaign> {
     @Override
     public void save() {
 
-        this.getCampaingDaoImpl().create(this.getCampaign());
+        this.campaignDaoImpl.create(this.getCampaign());
     }
 
     @Override
     public void delete(Long id) {
-        this.getCampaingDaoImpl().deleteById(this.getCampaign(), this.getCampaign().getId());
+        this.campaignDaoImpl.remove(getCampaign());
     }
 
  
     @Override
     public List<Campaign> getList() {
-        //return  this.getCampaingDaoImpl().getList(getCampaign());
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     return this.campaignDaoImpl.findAll();
+      
     }
 
     @Override
     public Campaign getById() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     return  this.campaignDaoImpl.find(getCampaign().getId());
     }
 
 }

@@ -25,7 +25,8 @@ public class EmployeeBean implements BaseBean<Employee> {
     private static final long serialVersionUID = 1L;
 
     private Employee employee;
-    
+   
+    @EJB
     private EmployeeDaoImpl employeeDaoImpl;
     
     public Employee getEmployee() {
@@ -38,27 +39,19 @@ public class EmployeeBean implements BaseBean<Employee> {
         this.employee = employee;
     }
 
-    public EmployeeDaoImpl getEmployeeDaoImpl() {
-        if(employeeDaoImpl==null)
-            employeeDaoImpl=new EmployeeDaoImpl();
-        return employeeDaoImpl;
-    }
-
-    public void setEmployeeDaoImpl(EmployeeDaoImpl employeeDaoImpl) {
-        this.employeeDaoImpl = employeeDaoImpl;
-    }
+ 
 
     @Override
     public void save() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.employeeDaoImpl.create(this.getEmployee());
     }
     public void saveUser() {
-       this.getEmployeeDaoImpl().create(this.getEmployee());
+       this.employeeDaoImpl.create(this.getEmployee());
     }
     
     @Override
     public void delete(Long id) {
-        
+        this.employeeDaoImpl.remove(this.getEmployee());
     }
     public  void login(){
          if (employee.getMail().equals("baran@gmail.com") && employee.getPassword().equals("123")) {
@@ -71,12 +64,12 @@ public class EmployeeBean implements BaseBean<Employee> {
 
     @Override
     public Employee getById() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return this.employeeDaoImpl.find(getEmployee().getId());
     }
 
     @Override
     public List<Employee> getList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.employeeDaoImpl.findAll();
     }
 
 }

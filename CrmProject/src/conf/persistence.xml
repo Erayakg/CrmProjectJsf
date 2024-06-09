@@ -16,7 +16,7 @@
     <class>entity.Report</class>
     <class>entity.Task</class>
     <class>entity.demoCustomer</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
     </properties>

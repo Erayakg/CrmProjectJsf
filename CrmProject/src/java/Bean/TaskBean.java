@@ -6,6 +6,7 @@ package Bean;
 
 import Dao.TaskDaoImpl;
 import entity.Task;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @SessionScoped
 public class TaskBean implements BaseBean<Task> {
      private Task task;
-
+    @EJB
     private TaskDaoImpl taskDaoImpl;
 
     public Task getTask() {
@@ -32,16 +33,7 @@ public class TaskBean implements BaseBean<Task> {
         this.task = task;
     }
 
-    public TaskDaoImpl getCampaingDaoImpl() {
-        if (this.taskDaoImpl == null) {
-            taskDaoImpl = new TaskDaoImpl();
-        }
-        return taskDaoImpl;
-    }
 
-    public void setCampaingDaoImpl(TaskDaoImpl taskDaoImpl) {
-        this.taskDaoImpl = taskDaoImpl;
-    }
 
     public TaskBean() {
 
@@ -59,17 +51,19 @@ public class TaskBean implements BaseBean<Task> {
     }
 
     @Override
-    public void delete() {
-        this.taskDaoImpl.deleteById(this.getTask(), getTask().getId());
+    public void delete(Long id) {
+        this.taskDaoImpl.remove(this.getTask());
     }
 
     @Override
     public Task getById() {
-        return this.taskDaoImpl.getByid(this.getTask(), getTask().getId());
+        return this.taskDaoImpl.find(getTask().getId());
     }
 
     @Override
     public List<Task> getList() {
-         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.taskDaoImpl.findAll();
     }
+
+  
 }

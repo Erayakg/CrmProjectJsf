@@ -6,8 +6,9 @@ package Bean;
 
 import Dao.OrderDaoImpl;
 import Dao.ProductDaoImpl;
-import entity.Orders;
+import entity.Order;
 import entity.Product;
+import jakarta.ejb.EJB;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 import java.util.List;
@@ -18,29 +19,25 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class OrderBean implements BaseBean<Orders> {
+public class OrderBean implements BaseBean<Order> {
 
-    private Orders order;
-
+    private Order order;
+    
+    @EJB
     private OrderDaoImpl orderDaoImpl;
-    private ProductDaoImpl productDaoImpl;
+   
     
     
-    public ProductDaoImpl getProductDaoImpl() {
-        if (this.productDaoImpl == null) {
-            productDaoImpl = new ProductDaoImpl();
-        }
-        return productDaoImpl;
-    }
+ 
 
-    public Orders getOrder() {
+    public Order getOrder() {
         if (this.order == null) {
-            order = new Orders();
+            order = new Order();
         }
         return order;
     }
 
-    public void setOrder(Orders order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
@@ -59,34 +56,31 @@ public class OrderBean implements BaseBean<Orders> {
 
     }
 
-    public OrderBean(Orders order, OrderDaoImpl orderDaoImpl) {
+    public OrderBean(Order order, OrderDaoImpl orderDaoImpl) {
         this.order = order;
         this.orderDaoImpl = orderDaoImpl;
     }
 
     @Override
     public void save() {
-
-        getOrderDaoImpl().createTable(order);
-       // getOrderDaoImpl().create(order);
+        
+       this.orderDaoImpl.create(this.getOrder());
     }
 
     @Override
     public void delete(Long id) {
-        getOrderDaoImpl().deleteById(order, id);
+        this.orderDaoImpl.remove(this.getOrder());
     }
 
     @Override
-    public Orders getById() {
-        return getOrderDaoImpl().getByid(this.getOrder(), getOrder().getId());
+    public Order getById() {
+        return this.orderDaoImpl.find(getOrder().getId());
     }
 
     @Override
-    public List<Orders> getList() {
-            return getOrderDaoImpl().getList();
+    public List<Order> getList() {
+            return this.orderDaoImpl.findAll();
     }
-    public void addProductToOrder(Orders o,Product p){
-        productDaoImpl.addProductToOrder(o,p);
-    }
+
 
 }
