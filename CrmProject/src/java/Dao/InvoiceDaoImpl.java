@@ -5,6 +5,7 @@
 package Dao;
 
 import entity.Invoice;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.PersistenceContext;
  *
  * @author baran
  */
+@Stateless
 public class InvoiceDaoImpl extends AbstractDao<Invoice> {
 
     @PersistenceContext(unitName = "CrmProjectPU")

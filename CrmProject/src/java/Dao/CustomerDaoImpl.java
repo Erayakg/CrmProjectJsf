@@ -5,6 +5,7 @@
 package Dao;
 
 import entity.Customer;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.PersistenceContext;
  *
  * @author erayb
  */
+@Stateless
 public class CustomerDaoImpl extends AbstractDao<Customer> {
 
     @PersistenceContext(unitName = "CrmProjectPU")

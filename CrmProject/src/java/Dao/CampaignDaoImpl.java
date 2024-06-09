@@ -5,6 +5,7 @@
 package Dao;
 
 import entity.Campaign;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
@@ -12,6 +13,7 @@ import jakarta.persistence.PersistenceContext;
  *
  * @author baran
  */
+@Stateless
 public class CampaignDaoImpl extends AbstractDao<Campaign> {
 
     @PersistenceContext(unitName = "CrmProjectPU")
