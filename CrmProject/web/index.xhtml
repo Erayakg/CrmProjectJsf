@@ -8,11 +8,11 @@
     <h3>Kullanıcı Bilgi Formu</h3>
     <h:form> 
       
-        Adı: <h:inputText id="name" value="#{demoCustomerBean.customer.name}" />
+        Adı: <h:inputText id="name" value="#{productBean.product.name}" />
         <br/>
-        sifre <h:inputText id="surname" value="#{demoCustomerBean.customer.password}" />
+        sifre <h:inputText id="surname" value="#{productBean.product.description}" />
         <br/>
-        <h:commandButton value="Kaydet" action="#{demoCustomerBean.login()}" />
+        <h:commandButton value="Kaydet" action="#{productBean.save()}" />
     </h:form>
 </h:body>
 </html>

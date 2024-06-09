@@ -43,7 +43,6 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
 
     public void saveUser() {
        customerDao.create(customer);
-       
     }
     public  void login(){
          if (customer.getName().equals("baran") && customer.getPassword().equals("123")) {

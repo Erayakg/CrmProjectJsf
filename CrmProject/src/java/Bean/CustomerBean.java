@@ -5,6 +5,7 @@
 package Bean;
 import Dao.CustomerDaoImpl;
 import Dao.DemoCustomerDao;
+import UserSession.UserSession;
 import entity.Customer;
 
 import jakarta.ejb.EJB;
@@ -18,17 +19,37 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class CustomerBean implements BaseBean<Customer>{
+public class CustomerBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private Customer customer;
     
+    @EJB
     private CustomerDaoImpl customerDao;
+
+    private UserSession session;
+
     
+
+    public void setCustomerDao(CustomerDaoImpl customerDao) {
+        this.customerDao = customerDao;
+    }
+
+    public UserSession getSession() {
+        if (session == null) {
+            session = new UserSession();
+        }
+        return session;
+    }
+
+    public void setSession(UserSession session) {
+        this.session = session;
+    }
+
     public Customer getCustomer() {
-        if (this.customer==null) {
-            this.customer=new Customer();
+        if (this.customer == null) {
+            this.customer = new Customer();
         }
         return customer;
     }
@@ -38,35 +59,28 @@ public class CustomerBean implements BaseBean<Customer>{
     }
 
     public void saveUser() {
-       customerDao.create(customer);
-       
-    }
-    public  void login(){
-         if (customer.getMail().equals("baran@gmail.com") && customer.getPassword().equals("123")) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("customer", customer);
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kulanıcı adı ve sifre yanlis"));
-        }
-        
-    }
-    @Override
-    public void save() {
-        this.customerDao.create(this.getCustomer());
+        customerDao.create(this.getCustomer());
     }
 
-    @Override
+    public void login() {
+        if (this.getCustomer().getMail().equals("baran@gmail.com") && this.getCustomer().getPassword().equals("123")) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Login successful!"));
+
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect username or password"));
+
+        }
+    }
     public void delete(Long id) {
         this.customerDao.remove(this.getCustomer());
     }
 
-    @Override
     public Customer getById() {
         return this.customerDao.find(getCustomer().getId());
     }
 
-    @Override
     public List<Customer> getList() {
         return this.customerDao.findAll();
     }
-
 }
