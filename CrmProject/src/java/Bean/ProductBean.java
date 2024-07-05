@@ -5,10 +5,13 @@
 package Bean;
 
 import Dao.ProductDaoImpl;
+import util.Connector;
+import java.sql.Connection;
 import jakarta.ejb.EJB;
 import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +22,9 @@ import java.util.List;
 @Named
 @SessionScoped
 public class ProductBean implements BaseBean<Product> {
-
+    private Connector connector;
+    private Connection connection;
+    
     private Product product;
     @EJB
     private ProductDaoImpl productDaoImpl;
@@ -106,4 +111,24 @@ public class ProductBean implements BaseBean<Product> {
          return productDaoImpl.findAll();
     }
 
+    public Connector getConnector() {
+        if(this.connector==null)
+            this.connector=new Connector();
+        return connector;
+    }
+
+    public void setConnector(Connector connector) {
+        this.connector = connector;
+    }
+
+    public Connection getConnection() {
+        if(this.connection==null)
+            this.connection=this.getConnector().connect();
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
+   
 }
