@@ -16,7 +16,7 @@ public class Connector {
     
     private static final String URL = "jdbc:postgresql://localhost:5432/CrmProject";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "123456";
+    private static final String PASSWORD = "1905";
 
     public Connection connect() {
         try {
