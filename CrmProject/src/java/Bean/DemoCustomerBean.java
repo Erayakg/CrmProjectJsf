@@ -50,7 +50,7 @@ public class DemoCustomerBean implements BaseBean<demoCustomer>{
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("kulanıcı adı ve sifre yanlis"));
         }
-        
+         
     }
 
     @Override
