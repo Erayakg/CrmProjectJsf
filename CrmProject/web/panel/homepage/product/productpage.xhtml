@@ -22,16 +22,15 @@
                                 <h2><h:outputText value="#{product.name}" /></h2>
                                 <h:dataTable styleClass="table" value="#{documentBean.documentList}" var="d">
                                     <h:column>
-                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains("image")}">
-                                            <h:graphicImage width="100" height="100" value="/file/"></h:graphicImage>
+                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains('image')}">
+                                            <h:graphicImage width="100" height="100" value="/file/#{d.fileName}" />
                                         </h:panelGroup>
-                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains("application")}">
+                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains('application')}">
                                             <a href="/javaWeb/faces/file/#{d.fileName}">#{d.fileName}</a>
                                         </h:panelGroup>
                                     </h:column>
-
-
                                 </h:dataTable>
+
                                 <p><h:outputText value="#{product.description}" /></p>
                                 <p><h:outputText value="#{product.price}" /></p>
                                 <p><h:outputText value="#{product.stockQuantity}" /></p>

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:jsf="http://xlmns.jcp.org/jsf">
+      >
     <h:head>
         <title>Employee Management</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,7 +14,7 @@
             <ui:define name="content">
                 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
                 <div class="container">
-                    <h:form enctype="multipart/form-data">
+                    <h:form enctype="multipart/form-data" >
                         <div class="form-group">
                             <label>Dosya: </label>
                             <h:inputFile value="#{documentBean.doc}" styleClass="custom-file"/>
