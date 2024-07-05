@@ -31,14 +31,12 @@ public class DocumentBean implements Serializable{
     
     private Part doc;
     
-    private final String uploadTo="C:\\Users\\gbara\\upload\\";
+    private final String uploadTo="C:/Users/gbara/upload/";
 
     public String getUploadTo() {
         return uploadTo;
     }
-    
-    
-    
+   
     public DocumentBean() {
     }
 
