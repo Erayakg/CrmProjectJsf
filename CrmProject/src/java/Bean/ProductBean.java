@@ -5,6 +5,7 @@
 package Bean;
 
 import Dao.ProductDaoImpl;
+import entity.Invoice;
 import util.Connector;
 import java.sql.Connection;
 import jakarta.ejb.EJB;
@@ -129,6 +130,12 @@ public class ProductBean implements BaseBean<Product> {
 
     public void setConnection(Connection connection) {
         this.connection = connection;
+    }
+    
+    public List<Invoice> getInvoiceListByProductId(Product product){
+        
+        return productDaoImpl.getInvoiceListByProductId(product.getId());
+        
     }
    
 }

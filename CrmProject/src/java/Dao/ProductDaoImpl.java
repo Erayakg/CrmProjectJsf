@@ -4,10 +4,12 @@
  */
 package Dao;
 
+import entity.Invoice;
 import entity.Product;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  *
@@ -28,4 +30,9 @@ public class ProductDaoImpl extends AbstractDao<Product> {
         super(Product.class);
     }
 
+    public List<Invoice> getInvoiceListByProductId(Long productId) {
+        return em.createQuery("SELECT p.invoice FROM Product p WHERE p.id = :productId", Invoice.class)
+                 .setParameter("productId", productId)
+                 .getResultList();
+    }
 }
