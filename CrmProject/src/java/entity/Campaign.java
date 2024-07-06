@@ -15,10 +15,10 @@ public class Campaign extends BaseEntity {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private boolean isActive;
-
+    
     @ManyToMany(mappedBy = "campaigns")
     private List<Company> companies;
-
+    
     public Campaign() {
     }
 
@@ -119,7 +119,7 @@ public class Campaign extends BaseEntity {
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        }
+    }
         if (obj == null) {
             return false;
         }
@@ -144,7 +144,7 @@ public class Campaign extends BaseEntity {
         }
         return Objects.equals(this.companies, other.companies);
     }
-
+    
   
     
     

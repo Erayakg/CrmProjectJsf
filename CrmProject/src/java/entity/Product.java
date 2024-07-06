@@ -25,7 +25,7 @@ public class Product extends BaseEntity {
     private int stockQuantity;
     private boolean isActive;
     
-    
+
     @ManyToOne
     @JoinColumn(name = "invoice_id")
     private Invoice invoice;
@@ -130,10 +130,10 @@ public class Product extends BaseEntity {
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        }
+    }
         if (obj == null) {
             return false;
-        }
+}
         if (getClass() != obj.getClass()) {
             return false;
         }

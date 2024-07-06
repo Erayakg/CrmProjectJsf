@@ -21,7 +21,7 @@ import java.util.List;
 public class CampaignBean implements BaseBean<Campaign> {
 
     private Campaign campaign;
-    
+
     @EJB
     private CampaignDaoImpl campaignDaoImpl;
 
@@ -50,7 +50,7 @@ public class CampaignBean implements BaseBean<Campaign> {
 
     @Override
     public void save() {
-
+                
         this.campaignDaoImpl.create(this.getCampaign());
     }
 
@@ -62,8 +62,8 @@ public class CampaignBean implements BaseBean<Campaign> {
  
     @Override
     public List<Campaign> getList() {
-     return this.campaignDaoImpl.findAll();
-      
+        return this.campaignDaoImpl.findAll();
+
     }
 
     @Override
