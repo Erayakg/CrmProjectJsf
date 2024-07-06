@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dao;
 
 import entity.Invoice;
@@ -12,8 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import java.util.List;
 
 /**
- *
- * @author furka
+ * DAO implementation for Product entity using JPA.
  */
 @Stateless
 public class ProductDaoImpl extends AbstractDao<Product> {
@@ -30,9 +25,17 @@ public class ProductDaoImpl extends AbstractDao<Product> {
         super(Product.class);
     }
 
-    public List<Invoice> getInvoiceListByProductId(Long productId) {
-        return em.createQuery("SELECT p.invoice FROM Product p WHERE p.id = :productId", Invoice.class)
-                 .setParameter("productId", productId)
-                 .getResultList();
+    public Product insertProduct(Product p) {
+        em.persist(p);
+        em.flush();
+        return p;
     }
+
+    public Long insert(Product p) {
+        em.persist(p);
+        em.flush();
+        return p.getId();
+    }
+
+   
 }

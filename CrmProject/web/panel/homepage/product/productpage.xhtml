@@ -1,60 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Product Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </h:head>
-    <h:body>
-        <ui:composition template="/panel/template/mainTemplate.xhtml">
-            <ui:define name="content">
-                <h:outputStylesheet library="css" name="products.css" />
-                <h:outputScript library="js" name="products.js" />
-                <div class="products-container">
-                    <div class="product-list">
-                        <ui:repeat value="#{productBean.productList}" var="product">
-                            <div class="product-item">
-                                <h2><h:outputText value="#{product.name}" /></h2>
-                                <h:dataTable styleClass="table" value="#{documentBean.documentList}" var="d">
-                                    <h:column>
-                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains('image')}">
-                                            <h:graphicImage width="100" height="100" value="/file/#{d.fileName}" />
-                                        </h:panelGroup>
-                                        <h:panelGroup layout="block" rendered="#{d.fileType.contains('application')}">
-                                            <a href="/javaWeb/faces/file/#{d.fileName}">#{d.fileName}</a>
-                                        </h:panelGroup>
-                                    </h:column>
-                                </h:dataTable>
+<h:head>
+    <title>Product Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <h:outputStylesheet library="css" name="products.css"/>
+</h:head>
+<h:body>
+    <ui:composition template="/panel/template/mainTemplate.xhtml">
+        <ui:define name="content">
+            <h:outputStylesheet library="css" name="products.css"/>
+            <h:outputScript library="js" name="products.js"/>
+            <div class="products-container">
+                <div class="product-list">
+                    <ui:repeat value="#{productBean.productList}" var="product">
+                        <div class="product-item">
+                            <h2><h:outputText value="#{product.name}"/></h2>
+                            <!-- Displaying product images -->
+                            <h:graphicImage width="100" height="100" value="/file/#{product.fileName}"
+                                            rendered="#{product.fileType.contains('image')}"/>
 
-                                <p><h:outputText value="#{product.description}" /></p>
-                                <p><h:outputText value="#{product.price}" /></p>
-                                <p><h:outputText value="#{product.stockQuantity}" /></p>
-                                <p><h:outputText value="#{product.isActive ? 'Aktif' : 'Pasif'}" /></p>
-                                <h:dataTable styleClass="table" value="#{productBean.getInvoiceListByProductId(product)}" var="invoice">
-                                    <h:column>
-                                        <f:facet name="header">Invoice ID</f:facet>
-                                        <h:outputText value="#{invoice.id}" />
-                                    </h:column>
-                                    
-                                </h:dataTable>
-                            </div>
-                        </ui:repeat>
-                    </div>
-                    <div class="pagination-controls">
-                        <h:commandButton value="&laquo; Önceki" action="#{productBean.previousPage}" 
-                                         disabled="#{productBean.currentPage == 0}" />
-                        <span>Sayfa #{productBean.currentPage + 1} / #{productBean.totalPages}</span>
-                        <h:commandButton value="Sonraki &raquo;" action="#{productBean.nextPage}" 
-                                         disabled="#{productBean.currentPage >= productBean.totalPages - 1}" />
-                    </div>
+                            <p><h:outputText value="#{product.description}"/></p>
+                            <p><h:outputText value="#{product.price}"/></p>
+                            <p><h:outputText value="#{product.stockQuantity}"/></p>
+                            <p><h:outputText value="#{product.isActive ? 'Aktif' : 'Pasif'}"/></p>
+                        </div>
+                    </ui:repeat>
                 </div>
-            </ui:define>
-        </ui:composition>
-        <h:outputScript library="js" name="products.js" />
-    </h:body>
+                <div class="pagination-controls">
+                    <!-- Pagination controls -->
+                    <h:commandButton value="&laquo; Önceki" action="#{productBean.previousPage}"
+                                     disabled="#{productBean.currentPage == 0}"/>
+                    <span>Sayfa #{productBean.currentPage + 1} / #{productBean.totalPages}</span>
+                    <h:commandButton value="Sonraki &raquo;" action="#{productBean.nextPage}"
+                                     disabled="#{productBean.currentPage >= productBean.totalPages - 1}"/>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+    <h:outputScript library="js" name="products.js"/>
+</h:body>
 </html>

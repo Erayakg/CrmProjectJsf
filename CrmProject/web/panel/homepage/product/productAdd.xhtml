@@ -1,65 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
         <title>Product Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="navbar.css"/>
     </h:head>
+
     <h:body>
-        <ui:composition template="/panel/template/mainTemplate.xhtml">
-            <ui:define name="content">
-                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-                <div class="container mt-5">
-                    <h1 class="text-center">Product Page</h1>
-                    <div class="row mt-4">
-                        <div class="col-md-6 offset-md-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h2 class="card-title">Submit a Product</h2>
-                                    <h:form>
-                                        <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <h:inputText id="name" value="#{productBean.product.name}" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="description">Description:</label>
-                                            <h:inputTextarea id="description" value="#{productBean.product.description}" rows="5" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="price">Price</label>
-                                            <h:inputText id="price" value="#{productBean.product.price}" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="stockQuantity">Stock Quantity</label>
-                                            <h:inputText id="stockQuantity" value="#{productBean.product.stockQuantity}" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="isActive">Aktif mi?</label>
-                                            <h:selectBooleanCheckbox id="isActive" value="#{productBean.product.isActive}" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="invoice">Invoice</label>
-                                            <h:inputText id="invoice" value="#{productBean.product.invoice}" class="form-control" converter="invoiceConverter"/>
-                                        </div>
-                                        <h:commandButton value="Submit" action="#{productBean.save}">
-                                            <f:ajax execute="@form" render="@form"/>
-                                        </h:commandButton>
-                                    </h:form>
+        <header>
+            <nav>
+                <div class="logo">CRM Logo</div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-links">
+                    <li><h:link value="Home Page" outcome="/panel/homepage/homepage.xhtml"/></li>
+                    <li><h:link value="Products" outcome="/panel/homepage/product/productpage.xhtml"/></li>
+                    <li><h:link value="Campaign" outcome="/panel/homepage/product/campaign.xhtml"/></li>
+                    <li>
+                        Contact
+                        <ul class="submenu">
+                            <li><a href="/CrmProject/panel//homepage/contact/report.xhtml">Report</a></li>
+                        </ul>
+                    </li>
+                    <li><h:link value="Sign In" outcome="/panel/homepage/account/loginpage.xhtml"/></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="container mt-5">
+            <h1 class="text-center">Product Page</h1>
+            <div class="row mt-4">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Submit a Product</h2>
+                            <h:form enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <h:inputText id="name" value="#{productBean.product.name}" class="form-control"/>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <h:inputTextarea id="description" value="#{productBean.product.description}" rows="5" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Price</label>
+                                    <h:inputText id="price" value="#{productBean.product.price}" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="stockQuantity">Stock Quantity</label>
+                                    <h:inputText id="stockQuantity" value="#{productBean.product.stockQuantity}" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="isActive">Aktif mi?</label>
+                                    <h:selectBooleanCheckbox id="isActive" value="#{productBean.product.isActive}" class="form-control" />
+                                </div>
+                                <h:inputFile value="#{productBean.doc}" styleClass="custom-file" />
+                                <h:commandButton value="Submit" action="#{productBean.upload()}">
+                                    <f:ajax execute="@form" render="@form"/>
+                                </h:commandButton>
+                            </h:form>
+
+                            <h:form>
+                                <h:dataTable styleClass="table" value="#{productBean.list}" var="product">
+                                    <h:column>
+                                        <f:facet name="header"> ID </f:facet>
+                                            #{product.id}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> PATH </f:facet>
+                                            #{product.filePath}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Name </f:facet>
+                                            #{product.name}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Description </f:facet>
+                                            #{product.description}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Price </f:facet>
+                                            #{product.price}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Stock Quantity </f:facet>
+                                            #{product.stockQuantity}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> IsActive </f:facet>
+                                            #{product.isActive ? 'Aktif' : 'Pasif'}
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Actions </f:facet>
+                                        <h:commandLink action="#{productBean.delete(product.id)}" styleClass="btn btn-danger btn-sm" onclick="if (!confirm('Are you sure you want to delete this product?'))
+                                                    return false;">
+                                            Delete
+                                        </h:commandLink>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
                         </div>
                     </div>
                 </div>
-            </ui:define>
-        </ui:composition>
+            </div>
+        </div>
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
