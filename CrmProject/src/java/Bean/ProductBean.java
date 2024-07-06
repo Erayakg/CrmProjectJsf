@@ -5,6 +5,7 @@
 package Bean;
 
 import Dao.ProductDaoImpl;
+import entity.Document;
 import entity.Invoice;
 import util.Connector;
 import java.sql.Connection;
@@ -12,6 +13,10 @@ import jakarta.ejb.EJB;
 import entity.Product;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
+import jakarta.servlet.http.Part;
+import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +35,8 @@ public class ProductBean implements BaseBean<Product> {
     @EJB
     private ProductDaoImpl productDaoImpl;
     
+    private Part doc;
+    
     private int currentPage=0;
     private int pageSize=10;
     private int totalProducts;
@@ -46,6 +53,30 @@ public class ProductBean implements BaseBean<Product> {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+    
+
+    private final String uploadTo = "C:\\Users\\gbara\\upload\\";
+    
+    public void upload() {
+        
+        try {
+
+            InputStream input = doc.getInputStream();
+            File file = new File(uploadTo + doc.getSubmittedFileName());
+            Files.copy(input, file.toPath());
+            
+            Product p = new Product();
+            p.setFilePath(file.getParent());
+            p.setFileName(file.getName());
+            p.setFileType(doc.getContentType());
+            
+            productDaoImpl.insert(p);
+
+
+        } catch (Exception e) {
+            System.out.println("Yükleme hatası: " + e.getMessage());
+        }
     }
 
     
@@ -137,5 +168,14 @@ public class ProductBean implements BaseBean<Product> {
         return productDaoImpl.getInvoiceListByProductId(product.getId());
         
     }
+
+    public Part getDoc() {
+        return doc;
+    }
+
+    public void setDoc(Part doc) {
+        this.doc = doc;
+    }
+    
    
 }

@@ -24,6 +24,9 @@ public class Product extends BaseEntity {
     private float price;
     private int stockQuantity;
     private boolean isActive;
+    private String filePath;
+    private String fileName;
+    private String fileType;
     
 
     @ManyToOne
@@ -113,6 +116,32 @@ public class Product extends BaseEntity {
     public void setUpdatedDate(LocalDateTime updatedDate) {
         this.updatedDate = updatedDate;
     }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
+    }
+    
+    
 
     @Override
     public int hashCode() {
