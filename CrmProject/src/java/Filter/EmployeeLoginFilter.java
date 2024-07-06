@@ -5,6 +5,7 @@
 package Filter;
 
 import entity.Customer;
+import entity.Employee;
 import entity.demoCustomer;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -22,7 +23,7 @@ import java.io.IOException;
  * @author baran
  */
 @WebFilter("/*")
-public class CustomerLoginFilter implements Filter {
+public class EmployeeLoginFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest sr, ServletResponse sr1, FilterChain fc) throws IOException, ServletException {
@@ -30,13 +31,13 @@ public class CustomerLoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) sr1;
         String url = request.getRequestURI();
         HttpSession session = request.getSession();
-        Customer customer = null;
+        Employee employee=null;
         if (session != null) {
-            customer = (Customer) session.getAttribute("customer");
+            employee = (Employee) session.getAttribute("employee");
         }
-        if (customer == null) {
-            if (url.contains("feedback")) {
-                response.sendRedirect(request.getContextPath() + "/panel/homepage/account/customerLogin.xhtml");
+        if (employee == null) {
+            if (url.contains("productAdd")) {
+                response.sendRedirect(request.getContextPath() + "/panel/homepage/account/employeeLogin.xhtml");
             } else {
                 fc.doFilter(sr, sr1);
             }

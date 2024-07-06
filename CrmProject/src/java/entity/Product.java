@@ -77,7 +77,7 @@ public class Product extends BaseEntity {
         this.stockQuantity = stockQuantity;
     }
 
-    public boolean isIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
