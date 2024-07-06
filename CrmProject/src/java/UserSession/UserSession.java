@@ -20,8 +20,6 @@ public class UserSession implements Serializable {
     @Inject
     private CustomerBean customerbean;
     
-    private Customer customer;
-    
     @Inject
     private EmployeeBean employeebean;
 
@@ -35,7 +33,7 @@ public class UserSession implements Serializable {
         this.customerbean = customerbean;
     }
 
-    public Customer getCustomer() {
+    /*public Customer getCustomer() {
         if(customer==null)
             customer=new Customer();
         return customer;
@@ -44,7 +42,7 @@ public class UserSession implements Serializable {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-
+*/
     public EmployeeBean getEmployeebean() {
         if(employeebean==null)
             employeebean=new EmployeeBean();
@@ -79,20 +77,22 @@ public class UserSession implements Serializable {
     }
 
     // Simulate login methods
-    public String loginAsCustomer() {
-        this.loggedIn = true;
-        this.role="customer";
-        if (this.getCustomerbean().getCustomer().getMail().equals("baran@gmail.com") && this.getCustomerbean().getCustomer().getPassword().equals("123")) {
-            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("customer", this);
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Login successful!"));
-            return "/panel/homepage/homepage.xhtml?faces-redirect=true";
-        } else {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect username or password"));
-            return "";
-        }
-        
+  public String loginAsCustomer() {
+    this.loggedIn = true;
+    this.role = "customer";
+    Customer customer = this.getCustomerbean().getCustomer();
+
+    if (customer.getMail().equals("baran@gmail.com") && customer.getPassword().equals("123")) {
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("customer", customer);
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Login successful!"));
+        return "/panel/homepage/homepage.xhtml?faces-redirect=true";
+    } else {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect username or password"));
+        return "";
     }
+}
+
 
     public String loginAsEmployee() {
         this.loggedIn = true;

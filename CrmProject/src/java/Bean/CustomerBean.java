@@ -28,7 +28,7 @@ public class CustomerBean implements Serializable {
     @EJB
     private CustomerDaoImpl customerDao;
 
-    private UserSession session;
+   
 
     
 
@@ -36,16 +36,6 @@ public class CustomerBean implements Serializable {
         this.customerDao = customerDao;
     }
 
-    public UserSession getSession() {
-        if (session == null) {
-            session = new UserSession();
-        }
-        return session;
-    }
-
-    public void setSession(UserSession session) {
-        this.session = session;
-    }
 
     public Customer getCustomer() {
         if (this.customer == null) {
@@ -63,7 +53,7 @@ public class CustomerBean implements Serializable {
     }
 
     public void login() {
-        if (this.getCustomer().getMail().equals("baran@gmail.com") && this.getCustomer().getPassword().equals("123")) {
+        if (this.customer.getMail().equals("baran@gmail.com") && this.customer.getPassword().equals("123")) {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "Login successful!"));
 
