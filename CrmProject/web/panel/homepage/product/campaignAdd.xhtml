@@ -1,15 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>campaign Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+    </h:head>
+    <h:body>
+        <ui:composition template="/panel/template/mainTemplate.xhtml">
+            <ui:define name="content">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+                <h:outputStylesheet library="css" name="contact.css" />
+                <div class="container mt-5">
+                    <h1 class="text-center">product Page</h1>
+                    <div class="row mt-4">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h2 class="card-title">Submit a Product</h2>
+                                    <h:form>
+                                        <div class="form-group">
+                                            <label for="name">name</label>
+                                            <h:inputText id="name" value="#{campaignBean.campaign.name}" class="form-control"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="startDate">start Date</label>
+                                              <h:inputText id="startDate" value="#{campaignBean.campaign.startDate}" class="form-control"/> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="endDate">End Date</label>
+                                        <h:inputText id="endDate" value="#{campaignBean.campaign.endDate}" class="form-control"/> 
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="isActive">Aktif mi?</label>
+                                            <h:selectBooleanCheckbox id="isActive" value="#{campaignBean.campaign.isActive}" class="form-control" />
+                                        </div>
+
+                                        <h:commandButton value="Submit" action="#{campaignBean.save()}" class="btn btn-primary btn-block"/>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>

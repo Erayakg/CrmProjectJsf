@@ -141,6 +141,11 @@ public class Customer extends BaseEntity {
         this.phone = phone;
     }
 
+    public Customer(String mail,String password ) {
+        this.password = password;
+        this.mail = mail;
+    }
+
     @Override
     public String toString() {
         return "Customer{" + "name=" + name + ", password=" + password + ", surname=" + surname + ", address=" + address + ", mail=" + mail + ", phone=" + phone + ", orders=" + orders + ", notes=" + notes + '}';
