@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+          <div class="container">
+          <h1>Employee Panel</h1>
+
+          <h2>Product Operations</h2>
+
+          <h:form enctype="multipart/form-data">
+            <h:inputText value="#{productBean.product.name}"/>
+            <h:inputText value="#{productBean.product.description}"/>
+            <h:inputText value="#{productBean.product.price}"/>
+            <h:inputText value="#{productBean.product.isActive}"/>
+            <h:inputFile value="#{productBean.doc}" styleClass="custom-file" />
+            <h:commandButton action="#{productBean.upload()}" value="upload" />
+          </h:form>
+        </div>
+    </body>
+</html>
