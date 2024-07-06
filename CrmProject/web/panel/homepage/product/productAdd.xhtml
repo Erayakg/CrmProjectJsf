@@ -6,18 +6,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>product Page</title>
+        <title>Product Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
     </h:head>
     <h:body>
         <ui:composition template="/panel/template/mainTemplate.xhtml">
             <ui:define name="content">
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-                <h:outputStylesheet library="css" name="contact.css" />
                 <div class="container mt-5">
-                    <h1 class="text-center">product Page</h1>
+                    <h1 class="text-center">Product Page</h1>
                     <div class="row mt-4">
                         <div class="col-md-6 offset-md-3">
                             <div class="card">
@@ -25,7 +26,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                                     <h2 class="card-title">Submit a Product</h2>
                                     <h:form>
                                         <div class="form-group">
-                                            <label for="name">name</label>
+                                            <label for="name">Name</label>
                                             <h:inputText id="name" value="#{productBean.product.name}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
@@ -33,11 +34,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                                             <h:inputTextarea id="description" value="#{productBean.product.description}" rows="5" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="price">price</label>
+                                            <label for="price">Price</label>
                                             <h:inputText id="price" value="#{productBean.product.price}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="stockQuantity">stockQuantity</label>
+                                            <label for="stockQuantity">Stock Quantity</label>
                                             <h:inputText id="stockQuantity" value="#{productBean.product.stockQuantity}" class="form-control"/>
                                         </div>
                                         <div class="form-group">
@@ -45,20 +46,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/xhtml.xhtml to edit this te
                                             <h:selectBooleanCheckbox id="isActive" value="#{productBean.product.isActive}" class="form-control" />
                                         </div>
                                         <div class="form-group">
-                                            <label for="invoice">invoice</label>
+                                            <label for="invoice">Invoice</label>
                                             <h:inputText id="invoice" value="#{productBean.product.invoice}" class="form-control" converter="invoiceConverter"/>
                                         </div>
-                                        <h:commandButton value="Submit" action="#{productBean.save()}" class="btn btn-primary btn-block"/>
+                                        <h:commandButton value="Submit" action="#{productBean.save}">
+                                            <f:ajax execute="@form" render="@form"/>
+                                        </h:commandButton>
                                     </h:form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </ui:define>
         </ui:composition>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </h:body>
 </html>

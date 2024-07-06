@@ -4,15 +4,17 @@
  */
 package Bean;
 
-import jakarta.inject.Named;
-import jakarta.enterprise.context.Dependent;
-import jakarta.enterprise.context.SessionScoped;
-import java.io.Serializable;
 import Dao.DocumentDao;
 import entity.Document;
+
+import jakarta.ejb.EJB;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 import jakarta.servlet.http.Part;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.List;
 
@@ -22,47 +24,52 @@ import java.util.List;
  */
 @Named
 @SessionScoped
-public class DocumentBean implements Serializable{
-    private static final long serialVersionUID = 1L;
-    
+public class DocumentBean implements Serializable {
+
     private Document document;
     private List<Document> documentList;
+
+    @EJB
     private DocumentDao documentDao;
-    
+
     private Part doc;
-    
-    private final String uploadTo="C:/Users/gbara/upload/";
+
+    private final String uploadTo = "C:\\Users\\gbara\\upload\\";
 
     public String getUploadTo() {
         return uploadTo;
     }
-   
+
     public DocumentBean() {
     }
 
-    public void upload(){
-         try {
-            if (doc != null) {
-                InputStream input = doc.getInputStream();
-                File file = new File(uploadTo + doc.getSubmittedFileName());
-                Files.copy(input, file.toPath());
-                // Save file details to database
-                Document document = new Document();
-                document.setFilePath(file.getParent());
-                document.setFileName(file.getName());
-                document.setFileType(doc.getContentType());
-                this.getDocumentDao().insert(document);
-            } else {
-                System.out.println("Dosya seçilmedi.");
-            }
+    public Document upload() {
+        
+        try {
+
+            InputStream input = doc.getInputStream();
+            File file = new File(uploadTo + doc.getSubmittedFileName());
+            Files.copy(input, file.toPath());
+            
+            Document document = new Document();
+            document.setFilePath(file.getParent());
+            document.setFileName(file.getName());
+            document.setFileType(doc.getContentType());
+            
+            return getDocumentDao().insertDocument(document);
+
+
         } catch (Exception e) {
             System.out.println("Yükleme hatası: " + e.getMessage());
         }
-        
+        return null;
+
     }
+
     public Document getDocument() {
-        if(this.document==null)
-            this.document=new Document();
+        if (this.document == null) {
+            this.document = new Document();
+        }
         return document;
     }
 
@@ -71,8 +78,9 @@ public class DocumentBean implements Serializable{
     }
 
     public List<Document> getDocumentList() {
-        if(this.documentList==null)
-            this.documentList=this.getDocumentDao().findAll();
+        if (this.documentList == null) {
+            this.documentList = this.getDocumentDao().findAll();
+        }
         return documentList;
     }
 
@@ -81,8 +89,7 @@ public class DocumentBean implements Serializable{
     }
 
     public DocumentDao getDocumentDao() {
-        if(this.documentDao==null)
-            this.documentDao=new DocumentDao();
+        
         return documentDao;
     }
 
@@ -97,9 +104,5 @@ public class DocumentBean implements Serializable{
     public void setDoc(Part doc) {
         this.doc = doc;
     }
-    
-    
-    
-    
-    
+
 }

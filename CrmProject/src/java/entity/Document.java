@@ -4,25 +4,48 @@
  */
 package entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+
 /**
  *
  * @author gbara
  */
+@Entity
 public class Document {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String filePath;
     private String fileName;
     private String fileType;
-
+    
+   
+    
     public Document() {
     }
 
-    public Document(String filePath, String fileName, String fileType) {
+    public Document(Long id, String filePath, String fileName, String fileType) {
+        this.id = id;
         this.filePath = filePath;
         this.fileName = fileName;
         this.fileType = fileType;
+        
     }
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFilePath() {
         return filePath;
@@ -48,12 +71,8 @@ public class Document {
         this.fileType = fileType;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
+        
     
 }
